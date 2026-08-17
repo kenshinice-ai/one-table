@@ -1748,5 +1748,435 @@
     "objectKey": "media/cny-tangyuan-black-sesame.webp",
     "generatedAt": "2026-08-17T13:00:20.367Z",
     "aiModel": "imagegen-editorial-v2"
+  },
+  "middle-eastern-chicken-couscous-tray": {
+    "objectKey": "media/middle-eastern-chicken-couscous-tray.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "latin-chipotle-black-bean-bowl": {
+    "objectKey": "media/latin-chipotle-black-bean-bowl.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "latin-beef-tortilla-plates": {
+    "objectKey": "media/latin-beef-tortilla-plates.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "latin-lime-chicken-tray": {
+    "objectKey": "media/latin-lime-chicken-tray.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "australian-lamb-rosemary-roast": {
+    "objectKey": "media/australian-lamb-rosemary-roast.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "australian-pumpkin-lentil-bake": {
+    "objectKey": "media/australian-pumpkin-lentil-bake.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "western-cottage-pie-lentil": {
+    "objectKey": "media/western-cottage-pie-lentil.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "western-roast-chicken-vegetables": {
+    "objectKey": "media/western-roast-chicken-vegetables.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "western-beef-mushroom-stew": {
+    "objectKey": "media/western-beef-mushroom-stew.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "western-baked-mac-cheddar": {
+    "objectKey": "media/western-baked-mac-cheddar.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "other-tempeh-peanut-stir-fry": {
+    "objectKey": "media/other-tempeh-peanut-stir-fry.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "other-halloumi-vegetable-tray": {
+    "objectKey": "media/other-halloumi-vegetable-tray.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "other-chickpea-spinach-curry": {
+    "objectKey": "media/other-chickpea-spinach-curry.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "other-salmon-soba-bowl": {
+    "objectKey": "media/other-salmon-soba-bowl.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "japanese-oyakodon-style-chicken-egg": {
+    "objectKey": "media/japanese-oyakodon-style-chicken-egg.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cantonese-ginger-spring-onion-chicken": {
+    "objectKey": "media/cantonese-ginger-spring-onion-chicken.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "northern-pork-cabbage-dumpling-filling": {
+    "objectKey": "media/northern-pork-cabbage-dumpling-filling.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "thai-prawn-pineapple-fried-rice": {
+    "objectKey": "media/thai-prawn-pineapple-fried-rice.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-vegetable-biryani-style": {
+    "objectKey": "media/indian-vegetable-biryani-style.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "mediterranean-prawn-orzo-bake": {
+    "objectKey": "media/mediterranean-prawn-orzo-bake.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "sichuan-numbing-cucumber-side": {
+    "objectKey": "media/sichuan-numbing-cucumber-side.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "northern-vinegar-potato-shreds": {
+    "objectKey": "media/northern-vinegar-potato-shreds.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "japanese-sesame-green-beans": {
+    "objectKey": "media/japanese-sesame-green-beans.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "southeast-asian-coconut-greens": {
+    "objectKey": "media/southeast-asian-coconut-greens.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-cumin-roasted-cauliflower": {
+    "objectKey": "media/indian-cumin-roasted-cauliflower.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-spiced-sweet-potato-mash": {
+    "objectKey": "media/indian-spiced-sweet-potato-mash.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "mediterranean-lemon-asparagus": {
+    "objectKey": "media/mediterranean-lemon-asparagus.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "mediterranean-braised-fennel-tomato": {
+    "objectKey": "media/mediterranean-braised-fennel-tomato.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-garlic-broccolini": {
+    "objectKey": "media/italian-garlic-broccolini.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-rosemary-roast-potatoes": {
+    "objectKey": "media/italian-rosemary-roast-potatoes.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "french-green-beans-almond": {
+    "objectKey": "media/french-green-beans-almond.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "french-glazed-carrots-thyme": {
+    "objectKey": "media/french-glazed-carrots-thyme.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "middle-eastern-roasted-eggplant-tahini": {
+    "objectKey": "media/middle-eastern-roasted-eggplant-tahini.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "latin-charred-corn-lime": {
+    "objectKey": "media/latin-charred-corn-lime.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "australian-roast-pumpkin-seeds": {
+    "objectKey": "media/australian-roast-pumpkin-seeds.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "western-creamed-spinach-nutmeg": {
+    "objectKey": "media/western-creamed-spinach-nutmeg.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "western-honey-mustard-carrots": {
+    "objectKey": "media/western-honey-mustard-carrots.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "other-charred-cabbage-wedges": {
+    "objectKey": "media/other-charred-cabbage-wedges.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "chinese-scallion-oil-noodles": {
+    "objectKey": "media/chinese-scallion-oil-noodles.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "japanese-mushroom-rice-donabe": {
+    "objectKey": "media/japanese-mushroom-rice-donabe.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-flatbread-coriander": {
+    "objectKey": "media/indian-flatbread-coriander.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "mediterranean-olive-oil-mash": {
+    "objectKey": "media/mediterranean-olive-oil-mash.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "other-herbed-oat-flatbread": {
+    "objectKey": "media/other-herbed-oat-flatbread.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "jiangnan-osmanthus-poached-pear": {
+    "objectKey": "media/jiangnan-osmanthus-poached-pear.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "northern-red-bean-glutinous-balls": {
+    "objectKey": "media/northern-red-bean-glutinous-balls.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "japanese-matcha-free-sesame-pudding": {
+    "objectKey": "media/japanese-matcha-free-sesame-pudding.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "korean-honey-cinnamon-rice-cake": {
+    "objectKey": "media/korean-honey-cinnamon-rice-cake.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "southeast-asian-coconut-banana": {
+    "objectKey": "media/southeast-asian-coconut-banana.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "mediterranean-yogurt-honey-pistachio": {
+    "objectKey": "media/mediterranean-yogurt-honey-pistachio.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-berry-ricotta-cups": {
+    "objectKey": "media/italian-berry-ricotta-cups.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-affogato-style-chocolate": {
+    "objectKey": "media/italian-affogato-style-chocolate.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "french-chocolate-pots-cream": {
+    "objectKey": "media/french-chocolate-pots-cream.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "middle-eastern-date-walnut-bites": {
+    "objectKey": "media/middle-eastern-date-walnut-bites.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "australian-pavlova-berries": {
+    "objectKey": "media/australian-pavlova-berries.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-steamed-whole-fish-scallion": {
+    "objectKey": "media/cny-steamed-whole-fish-scallion.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-white-cut-chicken-ginger": {
+    "objectKey": "media/cny-white-cut-chicken-ginger.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-braised-pork-belly-chestnut": {
+    "objectKey": "media/cny-braised-pork-belly-chestnut.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-prawn-lettuce-fortune": {
+    "objectKey": "media/cny-prawn-lettuce-fortune.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-pork-chive-dumplings": {
+    "objectKey": "media/cny-pork-chive-dumplings.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-spring-rolls-vegetable": {
+    "objectKey": "media/cny-spring-rolls-vegetable.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-buddha-vegetables-braise": {
+    "objectKey": "media/cny-buddha-vegetables-braise.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-longevity-noodles-mushroom": {
+    "objectKey": "media/cny-longevity-noodles-mushroom.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-radish-cake-panfried": {
+    "objectKey": "media/cny-radish-cake-panfried.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-sweet-sour-fish-fillet": {
+    "objectKey": "media/cny-sweet-sour-fish-fillet.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-garlic-poached-lettuce-oyster": {
+    "objectKey": "media/cny-garlic-poached-lettuce-oyster.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-kung-hei-cashew-chicken": {
+    "objectKey": "media/cny-kung-hei-cashew-chicken.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-five-spice-beef-shin": {
+    "objectKey": "media/cny-five-spice-beef-shin.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-golden-corn-soup-egg": {
+    "objectKey": "media/cny-golden-corn-soup-egg.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-osmanthus-lotus-root-sweet": {
+    "objectKey": "media/cny-osmanthus-lotus-root-sweet.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-lion-head-meatballs": {
+    "objectKey": "media/cny-lion-head-meatballs.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-fortune-fried-rice-ham": {
+    "objectKey": "media/cny-fortune-fried-rice-ham.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-ginger-milk-pudding": {
+    "objectKey": "media/cny-ginger-milk-pudding.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-crispy-lotus-chips": {
+    "objectKey": "media/cny-crispy-lotus-chips.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-tea-eggs-star-anise": {
+    "objectKey": "media/cny-tea-eggs-star-anise.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-abundance-mushroom-lettuce": {
+    "objectKey": "media/cny-abundance-mushroom-lettuce.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-pineapple-free-sweet-sour-pork": {
+    "objectKey": "media/cny-pineapple-free-sweet-sour-pork.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-red-date-chicken-soup": {
+    "objectKey": "media/cny-red-date-chicken-soup.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-garlic-chive-flower-squid-free": {
+    "objectKey": "media/cny-garlic-chive-flower-squid-free.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-nian-gao-stir-fry": {
+    "objectKey": "media/cny-nian-gao-stir-fry.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-walnut-sweet-soup": {
+    "objectKey": "media/cny-walnut-sweet-soup.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-steamed-chicken-mushroom-lily": {
+    "objectKey": "media/cny-steamed-chicken-mushroom-lily.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-crab-free-sweetcorn-fritters": {
+    "objectKey": "media/cny-crab-free-sweetcorn-fritters.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-double-boiled-pear-chestnut": {
+    "objectKey": "media/cny-double-boiled-pear-chestnut.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-mandarin-salad-fennel": {
+    "objectKey": "media/cny-mandarin-salad-fennel.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-firecracker-chicken-bites": {
+    "objectKey": "media/cny-firecracker-chicken-bites.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-jade-broccolini-garlic": {
+    "objectKey": "media/cny-jade-broccolini-garlic.webp",
+    "generatedAt": "2026-08-17T23:55:33.908Z",
+    "aiModel": "imagegen-editorial-v2"
   }
 }
