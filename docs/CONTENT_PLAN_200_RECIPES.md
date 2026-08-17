@@ -4,25 +4,25 @@
 
 Primary-role totals:
 
-| Role | Count |
-|---|---:|
-| Main | 65 |
-| Side / vegetable / salad | 45 |
-| Starter / soup / snack | 35 |
-| Rice / noodle / grain / potato staple | 25 |
-| Dessert | 30 |
-| Total | 200 |
+| Role                                  | Count |
+| ------------------------------------- | ----: |
+| Main                                  |    65 |
+| Side / vegetable / salad              |    45 |
+| Starter / soup / snack                |    35 |
+| Rice / noodle / grain / potato staple |    25 |
+| Dessert                               |    30 |
+| Total                                 |   200 |
 
 Cuisine totals:
 
-| Cuisine group | Count |
-|---|---:|
-| Chinese regional | 55 |
-| Japanese, Korean, Southeast Asian and Indian | 50 |
-| Mediterranean and European | 40 |
-| Australian modern and Western home cooking | 30 |
-| Middle Eastern, Latin American and other | 25 |
-| Total | 200 |
+| Cuisine group                                | Count |
+| -------------------------------------------- | ----: |
+| Chinese regional                             |    55 |
+| Japanese, Korean, Southeast Asian and Indian |    50 |
+| Mediterranean and European                   |    40 |
+| Australian modern and Western home cooking   |    30 |
+| Middle Eastern, Latin American and other     |    25 |
+| Total                                        |   200 |
 
 Cross-cutting coverage, with overlapping tags:
 
@@ -128,4 +128,3 @@ Before launch, report:
 - Recipes with unknown allergen relations.
 - Published recipes without a rights-reviewed image.
 - Recipes never appearing in a valid generated menu.
-

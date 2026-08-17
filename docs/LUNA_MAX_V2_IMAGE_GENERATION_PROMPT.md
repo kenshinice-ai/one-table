@@ -21,6 +21,7 @@ GitHub 远端：`https://github.com/kenshinice-ai/one-table`（分支 `main`）
 **只做这一件事**：生成 200 张菜品图并提交。
 
 明确不做：
+
 - 不改动 `src/`、`data/`、`docs/` 下的任何逻辑或文案（唯一例外见第 5 节：写回 `generatedAt` / `aiModel` 的媒体元数据）。
 - 不新增菜谱、不改营养/价格/过敏原数据。
 - 不改动已有 200 道菜的配图（`data/recipes/index.ts` 中 `generatedMedia` 已登记的那些）。
@@ -41,17 +42,17 @@ npm run recipes:briefs
 
 生成 `.generated/image-briefs.json`，含 200 条记录，每条：
 
-| 字段 | 用途 |
-| --- | --- |
-| `slug` | 文件名，**唯一权威** |
-| `outputFile` | 落盘路径 `public/media/<slug>.webp` |
-| `titleEn` / `titleZh` | 菜名 |
-| `role` | 课程（starter/soup/salad/snack/main/side/staple/dessert）——决定器皿与分量 |
-| `cuisine` | 菜系——决定器皿风格与摆盘习惯 |
-| `method` | 烹饪方式——决定成品状态（带汤汁 / 焦边 / 生鲜） |
-| `ingredients` | **画面中只允许出现这些食材** |
-| `altEn` / `altZh` | 已写好的 alt 文案，不要改 |
-| `prompt` | 由数据生成的基础提示词，作为起点 |
+| 字段                  | 用途                                                                      |
+| --------------------- | ------------------------------------------------------------------------- |
+| `slug`                | 文件名，**唯一权威**                                                      |
+| `outputFile`          | 落盘路径 `public/media/<slug>.webp`                                       |
+| `titleEn` / `titleZh` | 菜名                                                                      |
+| `role`                | 课程（starter/soup/salad/snack/main/side/staple/dessert）——决定器皿与分量 |
+| `cuisine`             | 菜系——决定器皿风格与摆盘习惯                                              |
+| `method`              | 烹饪方式——决定成品状态（带汤汁 / 焦边 / 生鲜）                            |
+| `ingredients`         | **画面中只允许出现这些食材**                                              |
+| `altEn` / `altZh`     | 已写好的 alt 文案，不要改                                                 |
+| `prompt`              | 由数据生成的基础提示词，作为起点                                          |
 
 `prompt` 字段是自动生成的骨架。你需要在它基础上补齐第 3 节的风格约束再送入模型。
 

@@ -4,18 +4,18 @@ This document tells the implementation agent which installed skill to use, when 
 
 ## Required and recommended skills
 
-| Skill | Status | Trigger | Expected output |
-|---|---|---|---|
-| `ui-ux-pro-max` | Required for UI work | Before creating or materially changing layouts, responsive behaviour, forms, accessibility, tokens or interaction | Persisted design system, relevant page override, implementation aligned with touch/accessibility guidance |
-| `browser:control-in-app-browser` | Required for browser QA | When a runnable local UI exists and a task requires interaction or screenshot verification | Tested flows, viewport evidence, console/runtime observations and screenshots where useful |
-| `pdf:pdf` | Required for PDF delivery | When implementing or reviewing host, guest or bilingual PDF output | Rendered page images plus visual QA; no PDF is accepted from code generation alone |
-| `imagegen` | Conditional | When creating missing recipe/ingredient illustrations or concept imagery | Project-local raster assets with prompt/provenance; AI illustration label preserved |
-| `spreadsheets:Spreadsheets` | Recommended for content pipeline | When creating the 200-recipe intake/review workbook or bulk QA report | Verified XLSX/CSV with validation-ready columns and no sensitive personal data |
-| `diff-check` | Required before commit/PR | Only before a user-requested commit or PR, or before declaring a diff ready for review | Report in the skill's required READY/NEEDS FIXES format; it reports and does not silently fix |
-| `jscpd` | Required at code-complete gates | After domain/UI modules stabilise and before release review | Duplication report for TypeScript/JavaScript excluding generated files and fixtures |
-| `openai-docs` | Conditional | Before OpenAI API/model/SDK, Codex or Luna-specific implementation decisions | Current official documentation evidence and model/API-correct implementation |
-| `understand-anything-knowledge-graph` | Optional later | When the codebase has grown enough that module relationships are hard to audit | Read-only interactive map; not useful during initial scaffolding |
-| `computer-use:computer-use` | Last resort | When a required desktop/cloud UI cannot be operated through a connector, CLI or browser | Explicit UI operation evidence; avoid for normal code/test work |
+| Skill                                 | Status                           | Trigger                                                                                                           | Expected output                                                                                           |
+| ------------------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `ui-ux-pro-max`                       | Required for UI work             | Before creating or materially changing layouts, responsive behaviour, forms, accessibility, tokens or interaction | Persisted design system, relevant page override, implementation aligned with touch/accessibility guidance |
+| `browser:control-in-app-browser`      | Required for browser QA          | When a runnable local UI exists and a task requires interaction or screenshot verification                        | Tested flows, viewport evidence, console/runtime observations and screenshots where useful                |
+| `pdf:pdf`                             | Required for PDF delivery        | When implementing or reviewing host, guest or bilingual PDF output                                                | Rendered page images plus visual QA; no PDF is accepted from code generation alone                        |
+| `imagegen`                            | Conditional                      | When creating missing recipe/ingredient illustrations or concept imagery                                          | Project-local raster assets with prompt/provenance; AI illustration label preserved                       |
+| `spreadsheets:Spreadsheets`           | Recommended for content pipeline | When creating the 200-recipe intake/review workbook or bulk QA report                                             | Verified XLSX/CSV with validation-ready columns and no sensitive personal data                            |
+| `diff-check`                          | Required before commit/PR        | Only before a user-requested commit or PR, or before declaring a diff ready for review                            | Report in the skill's required READY/NEEDS FIXES format; it reports and does not silently fix             |
+| `jscpd`                               | Required at code-complete gates  | After domain/UI modules stabilise and before release review                                                       | Duplication report for TypeScript/JavaScript excluding generated files and fixtures                       |
+| `openai-docs`                         | Conditional                      | Before OpenAI API/model/SDK, Codex or Luna-specific implementation decisions                                      | Current official documentation evidence and model/API-correct implementation                              |
+| `understand-anything-knowledge-graph` | Optional later                   | When the codebase has grown enough that module relationships are hard to audit                                    | Read-only interactive map; not useful during initial scaffolding                                          |
+| `computer-use:computer-use`           | Last resort                      | When a required desktop/cloud UI cannot be operated through a connector, CLI or browser                           | Explicit UI operation evidence; avoid for normal code/test work                                           |
 
 ## Skills not appropriate for the current target
 
@@ -26,17 +26,17 @@ This document tells the implementation agent which installed skill to use, when 
 
 ## Phase routing
 
-| Phase | Skills |
-|---|---|
+| Phase                             | Skills                                    |
+| --------------------------------- | ----------------------------------------- |
 | Repository and backend foundation | None required; use normal code/test tools |
-| Design system and planner UI | `ui-ux-pro-max` |
-| Interactive UI acceptance | `browser:control-in-app-browser` |
-| Recipe content workbook | `spreadsheets:Spreadsheets` |
-| AI illustrations | `imagegen` |
-| PDF exports | `pdf:pdf` |
-| OpenAI AI adapter | `openai-docs` |
-| Code-complete audit | `jscpd` |
-| Commit/PR handoff | `diff-check` |
+| Design system and planner UI      | `ui-ux-pro-max`                           |
+| Interactive UI acceptance         | `browser:control-in-app-browser`          |
+| Recipe content workbook           | `spreadsheets:Spreadsheets`               |
+| AI illustrations                  | `imagegen`                                |
+| PDF exports                       | `pdf:pdf`                                 |
+| OpenAI AI adapter                 | `openai-docs`                             |
+| Code-complete audit               | `jscpd`                                   |
+| Commit/PR handoff                 | `diff-check`                              |
 
 ## UI skill procedure
 
@@ -90,4 +90,3 @@ This document tells the implementation agent which installed skill to use, when 
 ## Plugin note
 
 No additional skill installation is required for the planned MVP. GitHub and Cloudflare plugins become useful only when the user authorises external repository operations or deployment management; they are connections, not substitutes for the local implementation skills above.
-

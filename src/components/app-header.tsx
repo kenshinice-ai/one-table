@@ -1,7 +1,7 @@
 'use client';
 
 import type { PlannerRecipe } from '@/domain/catalogue';
-import { copy, fill, type Locale } from '@/i18n/copy';
+import { copy, type Locale } from '@/i18n/copy';
 
 import { GlobalSearch, type SearchHit } from './global-search';
 import { TableMark } from './icons';
@@ -40,7 +40,6 @@ export function AppHeader({
         recipes={recipes}
       />
       <div className="header-actions">
-        <span className="catalogue-pill">{fill(t.recipes, { count: recipes.length })}</span>
         <div aria-label={locale === 'zh-CN' ? '语言' : 'Language'} className="locale-switch">
           <button
             aria-pressed={locale === 'zh-CN'}

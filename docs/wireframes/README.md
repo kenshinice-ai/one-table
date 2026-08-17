@@ -24,4 +24,3 @@ Key points:
 - All facets can be opened in any order.
 - Selection counts remain visible when collapsed.
 - Sticky eligible-count and menu entry above the safe area.
-

@@ -95,10 +95,7 @@ const planning = writeHashed(
     recipes: launchRecipes.map(toPlanning),
   }),
 );
-const details = writeHashed(
-  'details',
-  JSON.stringify({ recipes: launchRecipes.map(toDetail) }),
-);
+const details = writeHashed('details', JSON.stringify({ recipes: launchRecipes.map(toDetail) }));
 
 const manifest = {
   planning: `/data/${planning.name}`,

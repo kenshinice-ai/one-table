@@ -33,4 +33,3 @@ Nutrition and balance outputs remain estimates and must not be presented as medi
 - [TheMealDB API](https://www.themealdb.com/api.php) and [terms](https://www.themealdb.com/terms_of_use.php): useful for prototypes or controlled source material subject to its production and attribution terms.
 
 Every provider's current terms must be rechecked before an import connector is enabled.
-

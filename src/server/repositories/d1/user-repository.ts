@@ -1,8 +1,4 @@
-import type {
-  CreateUserInput,
-  UserRecord,
-  UserRepository,
-} from '@/server/repositories/contracts';
+import type { CreateUserInput, UserRecord, UserRepository } from '@/server/repositories/contracts';
 
 import { firstOrNull, newId, nowIso } from './helpers';
 
@@ -76,4 +72,3 @@ export class D1UserRepository implements UserRepository {
     };
   }
 }
-

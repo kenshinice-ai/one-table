@@ -119,4 +119,3 @@ export class D1EventRepository implements EventRepository {
     return id;
   }
 }
-

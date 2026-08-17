@@ -18,6 +18,8 @@ export function Dropdown({
   searchable = false,
   emptyText,
   customInput,
+  icon,
+  active,
   children,
 }: {
   id: string;
@@ -30,6 +32,13 @@ export function Dropdown({
   searchable?: boolean;
   emptyText?: string;
   customInput?: { label: string; value: number; onChange: (value: number) => void };
+  /** Glyph shown beside the label; decorative, the text label carries meaning. */
+  icon?: React.ComponentType<{ className?: string }>;
+  /**
+   * Whether this control is currently narrowing the result. The glyph tints to
+   * say so, which reads faster than counting badges across eleven controls.
+   */
+  active?: boolean;
   /** Extra controls rendered above the option list, e.g. the structure editor. */
   children?: React.ReactNode;
 }) {
@@ -39,6 +48,7 @@ export function Dropdown({
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const optionPrefix = useId();
+  const Icon = icon;
 
   const visible = options.filter((option) =>
     `${option.zh} ${option.en}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
@@ -105,7 +115,7 @@ export function Dropdown({
       <button
         aria-controls={`${id}-panel`}
         aria-expanded={open}
-        className="dropdown-trigger"
+        className={`dropdown-trigger ${active ? 'is-active' : ''}`.trim()}
         onClick={() => {
           setActiveIndex(-1);
           setOpen((value) => !value);
@@ -113,6 +123,7 @@ export function Dropdown({
         ref={triggerRef}
         type="button"
       >
+        {Icon && <Icon />}
         <span className="dropdown-label">
           <span>{labelText}</span>
           <strong>{summary}</strong>

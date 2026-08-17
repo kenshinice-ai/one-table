@@ -11,4 +11,3 @@ export function newId(prefix: string): string {
 export function firstOrNull<T>(result: D1Result<T>): T | null {
   return result.results[0] ?? null;
 }
-

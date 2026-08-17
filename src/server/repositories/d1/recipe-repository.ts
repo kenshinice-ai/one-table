@@ -199,7 +199,13 @@ export class D1RecipeRepository implements RecipeRepository {
             id, actor_user_id, entity_type, entity_id, action, after_json, created_at
           ) VALUES (?1, ?2, 'recipe', ?3, 'publish', ?4, ?5)`,
         )
-        .bind(newId('audit'), actorId, recipeId, JSON.stringify({ status: 'published' }), timestamp),
+        .bind(
+          newId('audit'),
+          actorId,
+          recipeId,
+          JSON.stringify({ status: 'published' }),
+          timestamp,
+        ),
     ]);
     await this.createVersionSnapshot(recipeId, changeSummary, actorId);
     await this.rebuildSearchIndex();
@@ -252,4 +258,3 @@ export class D1RecipeRepository implements RecipeRepository {
     return result.results.length;
   }
 }
-

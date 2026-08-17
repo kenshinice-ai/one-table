@@ -9,7 +9,10 @@ import {
 } from '@/domain/planner';
 import { copy, fill, roleLabel, type Locale } from '@/i18n/copy';
 
-const PRESETS: Record<string, { style: PlannerPreferences['servingStyle']; roles: Partial<Record<PrimaryRole, number>> }> = {
+const PRESETS: Record<
+  string,
+  { style: PlannerPreferences['servingStyle']; roles: Partial<Record<PrimaryRole, number>> }
+> = {
   family: { style: 'family', roles: { main: 2, side: 1, staple: 1 } },
   plated: { style: 'plated', roles: { starter: 1, main: 1, dessert: 1 } },
   buffet: { style: 'buffet', roles: { main: 1, salad: 1, side: 1, staple: 1 } },

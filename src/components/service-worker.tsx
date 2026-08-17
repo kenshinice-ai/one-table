@@ -9,6 +9,15 @@ import { useEffect } from 'react';
 export function ServiceWorkerRegistration() {
   useEffect(() => {
     if (!('serviceWorker' in navigator)) return;
+    // Development assets are not content-hashed the way built ones are, so a
+    // cache-first worker would keep serving yesterday's CSS.
+    if (process.env.NODE_ENV !== 'production') {
+      navigator.serviceWorker
+        .getRegistrations()
+        .then((registrations) => registrations.forEach((registration) => registration.unregister()))
+        .catch(() => undefined);
+      return;
+    }
     const register = () => {
       navigator.serviceWorker.register('/sw.js').catch((error) => {
         console.error('Offline cache unavailable', error);

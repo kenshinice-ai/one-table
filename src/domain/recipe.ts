@@ -35,4 +35,3 @@ export interface RecipeRecord extends RecipeSummary {
     scalingStrategy: 'linear' | 'rounded' | 'constant' | 'manual';
   }>;
 }
-

@@ -28,7 +28,9 @@ export const recipeSchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   status: z.enum(['review', 'published']),
   primaryRole: z.enum(['snack', 'starter', 'soup', 'main', 'side', 'staple', 'salad', 'dessert']),
-  secondaryRoles: z.array(z.enum(['snack', 'starter', 'soup', 'main', 'side', 'staple', 'salad', 'dessert'])),
+  secondaryRoles: z.array(
+    z.enum(['snack', 'starter', 'soup', 'main', 'side', 'staple', 'salad', 'dessert']),
+  ),
   cuisines: z.array(id).min(1),
   methods: z.array(id).min(1),
   equipment: z.array(
@@ -39,10 +41,7 @@ export const recipeSchema = z.object({
       required: z.boolean().default(true),
     }),
   ),
-  servingStyles: z.record(
-    z.enum(['family', 'plated', 'buffet']),
-    z.number().int().min(0).max(100),
-  ),
+  servingStyles: z.record(z.enum(['family', 'plated', 'buffet']), z.number().int().min(0).max(100)),
   baseServings: quantity,
   activeMinutes: z.number().int().nonnegative(),
   totalMinutes: z.number().int().nonnegative(),

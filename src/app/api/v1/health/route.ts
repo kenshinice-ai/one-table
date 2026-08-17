@@ -15,4 +15,3 @@ export async function GET() {
     mediaBucket: Boolean(env.MEDIA_BUCKET),
   });
 }
-

@@ -4,4 +4,3 @@ export * from './d1/menu-repository';
 export * from './d1/recipe-repository';
 export * from './d1/review-repository';
 export * from './d1/user-repository';
-

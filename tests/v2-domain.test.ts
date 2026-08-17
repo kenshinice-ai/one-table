@@ -15,6 +15,12 @@ import {
 } from '../src/domain/planner';
 import { scaleRecipeIngredients } from '../src/domain/scaling';
 import { buildShoppingList } from '../src/domain/shopping-list';
+import {
+  buildRecipeCardInput,
+  recipeHasArtwork,
+  RECIPE_CARD_INGREDIENT_LIMIT,
+  RECIPE_CARD_STEP_LIMIT,
+} from '../src/domain/share-card';
 import { parsePlannerState, serializePlannerState } from '../src/domain/url-state';
 
 const sample = launchRecipes[0];
@@ -230,11 +236,12 @@ test('shopping list', async (t) => {
     const first = launchRecipes.find((r) =>
       r.ingredients.some((i) => i.unit === 'g' && i.scalingStrategy === 'linear'),
     )!;
-    const shared = first.ingredients.find(
-      (i) => i.unit === 'g' && i.scalingStrategy === 'linear',
-    )!;
+    const shared = first.ingredients.find((i) => i.unit === 'g' && i.scalingStrategy === 'linear')!;
     const one = buildShoppingList([first], first.baseServings);
-    const two = buildShoppingList([first, { ...first, id: `${first.id}_copy` }], first.baseServings);
+    const two = buildShoppingList(
+      [first, { ...first, id: `${first.id}_copy` }],
+      first.baseServings,
+    );
     const lineOne = one.find((line) => line.ingredientId === shared.ingredientId)!;
     const lineTwo = two.find((line) => line.ingredientId === shared.ingredientId)!;
     assert.equal(lineTwo.quantity, lineOne.quantity! * 2);
@@ -317,5 +324,67 @@ test('shareable links', async (t) => {
       first.recipes.map((recipe) => recipe.id),
       second.recipes.map((recipe) => recipe.id),
     );
+  });
+});
+
+test('recipe share card content', async (t) => {
+  const base = {
+    title: '示例菜',
+    summary: '示例说明',
+    role: '主菜',
+    facts: ['30 分钟', '≈ 400 kcal'],
+    ingredientsHeading: '食材',
+    stepsHeading: '烹饪过程',
+    brand: '一桌',
+    tagline: '为一桌人，配一桌好菜',
+    footer: 'PWE Studio',
+    moreIngredientsLabel: (count: number) => `另有 ${count} 种食材`,
+    imageUrl: '/media/demo-dish-1280.webp',
+  };
+  const ingredient = (index: number) => ({ name: `食材${index}`, amount: `${index * 10} g` });
+
+  await t.test('keeps every ingredient when the list fits', () => {
+    const input = buildRecipeCardInput({
+      ...base,
+      ingredients: [1, 2, 3].map(ingredient),
+      steps: ['一', '二'],
+    });
+    assert.equal(input.ingredients.length, 3);
+    assert.equal(input.moreIngredients, null);
+  });
+
+  await t.test('truncates a long list and says how many were dropped', () => {
+    const input = buildRecipeCardInput({
+      ...base,
+      ingredients: Array.from({ length: 12 }, (_, index) => ingredient(index + 1)),
+      steps: ['一'],
+    });
+    assert.equal(input.ingredients.length, RECIPE_CARD_INGREDIENT_LIMIT);
+    assert.equal(input.moreIngredients, '另有 4 种食材');
+  });
+
+  await t.test('caps the method at four steps', () => {
+    const input = buildRecipeCardInput({
+      ...base,
+      ingredients: [ingredient(1)],
+      steps: ['一', '二', '三', '四', '五', '六'],
+    });
+    assert.equal(input.steps.length, RECIPE_CARD_STEP_LIMIT);
+    assert.deepEqual(input.steps, ['一', '二', '三', '四']);
+  });
+
+  await t.test('carries a null image through for recipes without artwork', () => {
+    const input = buildRecipeCardInput({
+      ...base,
+      imageUrl: null,
+      ingredients: [ingredient(1)],
+      steps: ['一'],
+    });
+    assert.equal(input.imageUrl, null);
+  });
+
+  await t.test('only treats produced artwork as available', () => {
+    assert.equal(recipeHasArtwork('media/honey-soy-chicken.webp'), true);
+    assert.equal(recipeHasArtwork('recipes/v2/some-dish/hero-1600x1200.webp'), false);
   });
 });

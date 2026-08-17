@@ -137,4 +137,3 @@ Search and hard filtering are separate:
 
 - FTS ranks text relevance.
 - Relational joins enforce allergens, roles, methods, equipment and publication state.
-

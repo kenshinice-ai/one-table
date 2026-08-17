@@ -38,4 +38,3 @@ Nutrition sources may enrich canonical ingredients. Imported recipe text and ima
 - Live third-party recipe search as the main catalogue: rejected because runtime reliability, caching, rights and bilingual review cannot be guaranteed.
 - AI-generated recipes with no local record: rejected because the result is not reproducible or sufficiently safe.
 - Recipe content embedded in frontend code: rejected because versioning, review and future native clients require an API-backed data layer.
-

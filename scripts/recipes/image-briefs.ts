@@ -24,9 +24,7 @@ const briefs = pending.map((recipe) => ({
   role: recipe.primaryRole,
   cuisine: recipe.cuisines[0],
   method: recipe.methods[0],
-  ingredients: recipe.ingredients.map(
-    (item) => names.get(item.ingredientId) ?? item.ingredientId,
-  ),
+  ingredients: recipe.ingredients.map((item) => names.get(item.ingredientId) ?? item.ingredientId),
   altEn: recipe.media.altEn,
   altZh: recipe.media.altZh,
   prompt: recipe.media.aiPrompt,
@@ -44,5 +42,9 @@ const byCuisine = briefs.reduce<Record<string, number>>((counts, brief) => {
 }, {});
 
 console.log(
-  JSON.stringify({ pending: briefs.length, byCuisine, output: '.generated/image-briefs.json' }, null, 2),
+  JSON.stringify(
+    { pending: briefs.length, byCuisine, output: '.generated/image-briefs.json' },
+    null,
+    2,
+  ),
 );

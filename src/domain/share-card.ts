@@ -249,3 +249,236 @@ export function shareCardDishes(
     imageUrl: `/media/${recipe.slug}-640.webp`,
   }));
 }
+
+/* ------------------------------------------------------------------ *
+ * Single-recipe card
+ * ------------------------------------------------------------------ */
+
+const RECIPE_CARD_WIDTH = 1080;
+const RECIPE_CARD_HEIGHT = 1440;
+/** The photo occupies the short side of the golden section. */
+const PHOTO_HEIGHT = Math.round(RECIPE_CARD_HEIGHT * 0.382);
+
+export type RecipeCardInput = {
+  brand: string;
+  tagline: string;
+  title: string;
+  role: string;
+  summary: string;
+  facts: string[];
+  ingredientsHeading: string;
+  ingredients: Array<{ name: string; amount: string }>;
+  /** Rendered when the ingredient list is longer than the card can show. */
+  moreIngredients: string | null;
+  stepsHeading: string;
+  steps: string[];
+  imageUrl: string | null;
+  footer: string;
+};
+
+/**
+ * Stands in for a photograph that has not been produced yet. A grey "coming
+ * soon" plate is honest inside the app, but a card is something a reader sends
+ * to other people, so the placeholder is drawn as brand pattern instead — it
+ * reads as a design choice rather than a missing asset.
+ */
+function drawPhotoPlaceholder(context: CanvasRenderingContext2D, height: number) {
+  context.fillStyle = '#f6ece2';
+  context.fillRect(0, 0, RECIPE_CARD_WIDTH, height);
+  context.save();
+  context.globalAlpha = 0.5;
+  for (let row = -1; row < 6; row += 1) {
+    for (let column = -1; column < 8; column += 1) {
+      const x = column * 160 + (row % 2 ? 80 : 0);
+      const y = row * 120;
+      context.strokeStyle = row % 2 ? PALETTE.sage : PALETTE.terracotta;
+      context.lineWidth = 2;
+      context.beginPath();
+      context.arc(x + 80, y + 60, 34, 0, Math.PI * 2);
+      context.stroke();
+    }
+  }
+  context.restore();
+  drawTableMark(context, RECIPE_CARD_WIDTH / 2, height / 2, 74);
+}
+
+function wrapLine(context: CanvasRenderingContext2D, text: string, maxWidth: number) {
+  return truncate(context, text, maxWidth);
+}
+
+/**
+ * Renders one recipe as a portrait card. The menu card answers "what are we
+ * eating"; this one answers "send me that recipe", which is the smaller and
+ * more frequent share.
+ */
+export async function renderRecipeCard(input: RecipeCardInput): Promise<Blob | null> {
+  const canvas = document.createElement('canvas');
+  canvas.width = RECIPE_CARD_WIDTH;
+  canvas.height = RECIPE_CARD_HEIGHT;
+  const context = canvas.getContext('2d');
+  if (!context) return null;
+
+  context.fillStyle = PALETTE.paper;
+  context.fillRect(0, 0, RECIPE_CARD_WIDTH, RECIPE_CARD_HEIGHT);
+
+  const photo = input.imageUrl ? await loadImage(input.imageUrl) : null;
+  if (photo) {
+    context.save();
+    context.beginPath();
+    context.rect(0, 0, RECIPE_CARD_WIDTH, PHOTO_HEIGHT);
+    context.clip();
+    drawCover(context, photo, 0, 0, RECIPE_CARD_WIDTH, PHOTO_HEIGHT);
+    context.restore();
+  } else {
+    drawPhotoPlaceholder(context, PHOTO_HEIGHT);
+  }
+
+  const margin = 88;
+  const contentWidth = RECIPE_CARD_WIDTH - margin * 2;
+  let y = PHOTO_HEIGHT + 78;
+
+  context.textBaseline = 'alphabetic';
+  context.fillStyle = PALETTE.terracotta;
+  context.font = `700 24px ${SANS}`;
+  context.fillText(input.role.toUpperCase(), margin, y);
+
+  y += 58;
+  context.fillStyle = PALETTE.ink;
+  context.font = `700 58px ${SERIF}`;
+  context.fillText(wrapLine(context, input.title, contentWidth), margin, y);
+
+  y += 44;
+  context.fillStyle = PALETTE.muted;
+  context.font = `400 24px ${SANS}`;
+  context.fillText(wrapLine(context, input.summary, contentWidth), margin, y);
+
+  y += 46;
+  context.fillStyle = PALETTE.sage;
+  context.font = `700 24px ${SANS}`;
+  context.fillText(input.facts.join('   ·   '), margin, y);
+
+  y += 30;
+  context.strokeStyle = PALETTE.line;
+  context.lineWidth = 2;
+  context.beginPath();
+  context.moveTo(margin, y);
+  context.lineTo(RECIPE_CARD_WIDTH - margin, y);
+  context.stroke();
+
+  y += 48;
+  context.fillStyle = PALETTE.muted;
+  context.font = `700 22px ${SANS}`;
+  context.fillText(input.ingredientsHeading.toUpperCase(), margin, y);
+
+  y += 38;
+  const amountColumn = RECIPE_CARD_WIDTH - margin;
+  input.ingredients.forEach((ingredient) => {
+    context.fillStyle = PALETTE.ink;
+    context.font = `400 27px ${SANS}`;
+    context.fillText(wrapLine(context, ingredient.name, contentWidth - 220), margin, y);
+    context.font = `700 27px ${SANS}`;
+    context.textAlign = 'right';
+    context.fillText(ingredient.amount, amountColumn, y);
+    context.textAlign = 'left';
+    y += 40;
+  });
+
+  if (input.moreIngredients) {
+    context.fillStyle = PALETTE.muted;
+    context.font = `400 24px ${SANS}`;
+    context.fillText(input.moreIngredients, margin, y);
+    y += 40;
+  }
+
+  y += 26;
+  context.fillStyle = PALETTE.muted;
+  context.font = `700 22px ${SANS}`;
+  context.fillText(input.stepsHeading.toUpperCase(), margin, y);
+
+  y += 40;
+  input.steps.forEach((step, index) => {
+    context.fillStyle = PALETTE.terracotta;
+    context.font = `700 24px ${SANS}`;
+    context.fillText(String(index + 1).padStart(2, '0'), margin, y);
+    context.fillStyle = PALETTE.ink;
+    context.font = `400 25px ${SANS}`;
+    context.fillText(wrapLine(context, step, contentWidth - 56), margin + 56, y);
+    y += 42;
+  });
+
+  drawTableMark(context, margin + 22, RECIPE_CARD_HEIGHT - 76, 22);
+  context.fillStyle = PALETTE.ink;
+  context.font = `700 30px ${SERIF}`;
+  context.fillText(input.brand, margin + 60, RECIPE_CARD_HEIGHT - 78);
+  context.fillStyle = PALETTE.muted;
+  context.font = `400 20px ${SANS}`;
+  context.fillText(input.tagline, margin + 60, RECIPE_CARD_HEIGHT - 52);
+  context.textAlign = 'right';
+  context.fillText(input.footer, RECIPE_CARD_WIDTH - margin, RECIPE_CARD_HEIGHT - 52);
+  context.textAlign = 'left';
+
+  return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), 'image/png', 0.95));
+}
+
+/** How many ingredient rows fit on a card before it starts to crowd. */
+export const RECIPE_CARD_INGREDIENT_LIMIT = 8;
+/** How many steps a card shows; the rest belong in the app or the printout. */
+export const RECIPE_CARD_STEP_LIMIT = 4;
+
+/**
+ * Assembles the card's content from what the dialog is showing. Kept separate
+ * from the drawing so the truncation rules can be tested without a canvas.
+ */
+export function buildRecipeCardInput({
+  title,
+  summary,
+  role,
+  facts,
+  ingredients,
+  steps,
+  ingredientsHeading,
+  stepsHeading,
+  brand,
+  tagline,
+  footer,
+  moreIngredientsLabel,
+  imageUrl,
+}: {
+  title: string;
+  summary: string;
+  role: string;
+  facts: string[];
+  ingredients: Array<{ name: string; amount: string }>;
+  steps: string[];
+  ingredientsHeading: string;
+  stepsHeading: string;
+  brand: string;
+  tagline: string;
+  footer: string;
+  /** Receives the number of ingredients that did not fit. */
+  moreIngredientsLabel: (count: number) => string;
+  imageUrl: string | null;
+}): RecipeCardInput {
+  const shown = ingredients.slice(0, RECIPE_CARD_INGREDIENT_LIMIT);
+  const hidden = ingredients.length - shown.length;
+  return {
+    brand,
+    tagline,
+    title,
+    role,
+    summary,
+    facts,
+    ingredientsHeading,
+    ingredients: shown,
+    moreIngredients: hidden > 0 ? moreIngredientsLabel(hidden) : null,
+    stepsHeading,
+    steps: steps.slice(0, RECIPE_CARD_STEP_LIMIT),
+    imageUrl,
+    footer,
+  };
+}
+
+/** Recipes whose artwork has not been produced keep the card's brand pattern. */
+export function recipeHasArtwork(objectKey: string) {
+  return objectKey.startsWith('media/');
+}

@@ -22,11 +22,7 @@ function normalize(value: string) {
  * Builds the client-side index once per catalogue. Everything searchable is
  * already in memory, so there is no request behind the search box.
  */
-function buildIndex(
-  recipes: PlannerRecipe[],
-  ingredients: IngredientDefinition[],
-  locale: Locale,
-) {
+function buildIndex(recipes: PlannerRecipe[], ingredients: IngredientDefinition[], locale: Locale) {
   const usedIngredientIds = new Set(
     recipes.flatMap((recipe) => recipe.ingredients.map((item) => item.ingredientId)),
   );

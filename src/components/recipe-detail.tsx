@@ -7,8 +7,10 @@ import { healthScore } from '@/domain/health';
 import { scaleRecipeIngredients } from '@/domain/scaling';
 import { copy, fill, roleLabel, type Locale } from '@/i18n/copy';
 
-import { CloseIcon, LeafScore } from './icons';
-import { IngredientImage, RecipeImage } from './images';
+import { buildRecipeCardInput, recipeHasArtwork, renderRecipeCard } from '@/domain/share-card';
+
+import { CloseIcon, ImageIcon, LeafScore } from './icons';
+import { IngredientImage, ProgressiveRecipeImage, recipeImageUrl } from './images';
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -31,6 +33,10 @@ export function RecipeDetail({
 }) {
   const t = copy[locale];
   const [scaled, setScaled] = useState(true);
+  const [saving, setSaving] = useState(false);
+  // Batches whose artwork is still being produced fall back to the card's own
+  // brand pattern rather than embedding a missing-image placeholder.
+  const hasArtwork = recipeHasArtwork(recipe.media.objectKey);
   const dialogRef = useRef<HTMLElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
 
@@ -87,6 +93,48 @@ export function RecipeDetail({
     };
   }, [onClose]);
 
+  // The card is drawn from exactly what the dialog shows, including the
+  // guest-count scaling, so what gets shared matches what was read.
+  async function saveCard() {
+    if (saving) return;
+    setSaving(true);
+    try {
+      const blob = await renderRecipeCard(
+        buildRecipeCardInput({
+          brand: t.brand,
+          tagline: t.eyebrow,
+          title: translation.title,
+          role: roleLabel(recipe.primaryRole, locale),
+          summary: translation.summary,
+          facts: [
+            `${recipe.totalMinutes} ${t.minutes}`,
+            `≈ ${recipe.nutrition.energyKcal} kcal`,
+            fill(t.healthScore, { score }),
+          ],
+          ingredientsHeading: `${t.ingredients} · ${fill(t.scaleTo, { count: guests })}`,
+          ingredients: ingredients.map((item) => ({
+            name: ingredientNames.get(item.ingredientId) ?? item.ingredientId,
+            amount: item.display,
+          })),
+          moreIngredientsLabel: (count) => fill(t.moreIngredients, { count }),
+          stepsHeading: t.steps,
+          steps: steps.map((step) => step.text),
+          imageUrl: hasArtwork ? recipeImageUrl(recipe.slug, 1280) : null,
+          footer: 'PWE Studio · 天域文创出品',
+        }),
+      );
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `one-table-${recipe.slug}.png`;
+      link.click();
+      URL.revokeObjectURL(url);
+    } finally {
+      setSaving(false);
+    }
+  }
+
   function renderIngredients(items: typeof ingredients, title: string) {
     if (!items.length) return null;
     return (
@@ -129,11 +177,16 @@ export function RecipeDetail({
         ref={dialogRef}
         role="dialog"
       >
-        <button aria-label={t.close} className="icon-button close-detail" onClick={onClose} type="button">
+        <button
+          aria-label={t.close}
+          className="icon-button close-detail"
+          onClick={onClose}
+          type="button"
+        >
           <CloseIcon />
         </button>
         <div className="detail-hero">
-          <RecipeImage locale={locale} preload recipe={recipe} sizes="(max-width: 900px) 100vw, 640px" />
+          <ProgressiveRecipeImage locale={locale} recipe={recipe} />
         </div>
         <div className="detail-copy">
           <p className="eyebrow">{roleLabel(recipe.primaryRole, locale)}</p>
@@ -198,6 +251,13 @@ export function RecipeDetail({
               </li>
             ))}
           </ol>
+          <div className="detail-actions">
+            <button className="primary-action" disabled={saving} onClick={saveCard} type="button">
+              <ImageIcon />
+              <span>{saving ? t.saving : t.saveRecipe}</span>
+            </button>
+            <p className="detail-actions-hint">{t.saveRecipeHint}</p>
+          </div>
           {detail?.safetyNotes && <p className="safety-note">{detail.safetyNotes}</p>}
           <p className="estimate-note">{t.estimated}</p>
         </div>

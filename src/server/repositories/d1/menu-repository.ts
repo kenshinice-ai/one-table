@@ -59,4 +59,3 @@ export class D1MenuRepository implements MenuRepository {
     ]);
   }
 }
-

@@ -33,6 +33,7 @@ import { PrintView } from './print-view';
 import { RecipeDetail } from './recipe-detail';
 import { ShoppingListPanel } from './shopping-list-panel';
 import { TableSettings } from './table-settings';
+import { warmMenuMedia } from './warm-images';
 
 type Snapshot = { filters: PlannerFilters; preferences: PlannerPreferences };
 
@@ -91,10 +92,7 @@ export function PlannerApp({
   const [savingImage, setSavingImage] = useState(false);
 
   const search = useSyncExternalStore(subscribeToHistory, readSearch, readServerSearch);
-  const linkedState = useMemo(
-    () => (search ? parsePlannerState(search) : defaultState),
-    [search],
-  );
+  const linkedState = useMemo(() => (search ? parsePlannerState(search) : defaultState), [search]);
   const state = edits ?? linkedState;
   const { locale, filters, preferences, variation, substitutions } = state;
   const t = copy[locale];
@@ -152,15 +150,7 @@ export function PlannerApp({
       usePrerendered
         ? buildMenuFromRecipes(initialRecipes, preferences, filters)
         : composeMenu(recipes, preferences, variation, filters, substitutions),
-    [
-      usePrerendered,
-      initialRecipes,
-      recipes,
-      preferences,
-      variation,
-      filters,
-      substitutions,
-    ],
+    [usePrerendered, initialRecipes, recipes, preferences, variation, filters, substitutions],
   );
   const eligible = useMemo(() => getEligibleRecipes(recipes, filters), [recipes, filters]);
   const eligibility = useMemo(
@@ -215,6 +205,10 @@ export function PlannerApp({
   useEffect(() => {
     document.documentElement.lang = locale;
   }, [locale]);
+
+  // The dishes on the table are the ones a reader is most likely to open, so
+  // their full-size photos are decoded during the first idle moment.
+  useEffect(() => warmMenuMedia(menu.recipes), [menu.recipes]);
 
   // Writing the state back to the address bar keeps the browser's own history
   // and the copy-link action in step without adding a navigation.
@@ -375,9 +369,7 @@ export function PlannerApp({
           menu={menu}
           onOpenRecipe={openRecipe}
           onPrint={() => window.print()}
-          onRecompose={() =>
-            setEdits({ ...state, variation: variation + 1, substitutions: {} })
-          }
+          onRecompose={() => setEdits({ ...state, variation: variation + 1, substitutions: {} })}
           onShare={share}
           onSaveImage={saveImage}
           onShoppingList={() => setShoppingOpen(true)}

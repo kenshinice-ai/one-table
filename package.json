@@ -26,9 +26,10 @@
     "test": "node --import tsx --test tests/*.test.ts",
     "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build",
     "recipes:emit": "node --import tsx scripts/recipes/emit-static.ts",
-    "prebuild": "npm run recipes:emit",
+    "prebuild": "npm run clean:icloud && npm run recipes:emit",
     "media:sizes": "bash scripts/media/generate-sizes.sh",
-    "recipes:briefs": "node --import tsx scripts/recipes/image-briefs.ts"
+    "recipes:briefs": "node --import tsx scripts/recipes/image-briefs.ts",
+    "clean:icloud": "find . -path ./node_modules -prune -o -name '* [0-9].*' -print -delete 2>/dev/null; true"
   },
   "keywords": [],
   "author": "",

@@ -10,8 +10,19 @@ import type { Locale } from '@/i18n/copy';
 const RECIPE_WIDTHS = [320, 640, 1280];
 const INGREDIENT_WIDTHS = [64, 128];
 
+/** The width every dish card requests, and therefore the one already cached. */
+export const CARD_WIDTH = 320;
+
 function nearestWidth(available: number[], requested: number) {
   return available.find((width) => width >= requested) ?? available[available.length - 1];
+}
+
+export function recipeImageUrl(slug: string, width: number) {
+  return `/media/${slug}-${nearestWidth(RECIPE_WIDTHS, width)}.webp`;
+}
+
+export function ingredientImageUrl(ingredientId: string, width = 64) {
+  return `/media/ingredients/${ingredientId}-${nearestWidth(INGREDIENT_WIDTHS, width)}.webp`;
 }
 
 /**
@@ -59,6 +70,53 @@ export function RecipeImage({
   );
 }
 
+/**
+ * The hero of a recipe dialog. The card-sized file is already in cache from the
+ * menu behind the dialog, so it is painted immediately and the larger file
+ * fades in over it once decoded. A reader therefore never opens a recipe onto
+ * an empty frame, whatever the connection is doing.
+ */
+export function ProgressiveRecipeImage({
+  recipe,
+  locale,
+  sizes = '(max-width: 900px) 100vw, 560px',
+}: {
+  recipe: PlannerRecipe;
+  locale: Locale;
+  sizes?: string;
+}) {
+  const [failed, setFailed] = useState(false);
+  const [sharp, setSharp] = useState(false);
+  const alt = locale === 'zh-CN' ? recipe.media.altZh : recipe.media.altEn;
+
+  if (failed) return <ComingSoon label={alt} />;
+
+  return (
+    <>
+      <Image
+        alt=""
+        aria-hidden="true"
+        className={sharp ? 'hero-placeholder is-hidden' : 'hero-placeholder'}
+        fill
+        sizes={sizes}
+        src={recipeImageUrl(recipe.slug, CARD_WIDTH)}
+        unoptimized
+      />
+      <Image
+        alt={alt}
+        className={sharp ? 'hero-sharp is-ready' : 'hero-sharp'}
+        fill
+        loader={recipeLoader}
+        onError={() => setFailed(true)}
+        onLoad={() => setSharp(true)}
+        preload
+        sizes={sizes}
+        src={`/media/${recipe.slug}.webp`}
+      />
+    </>
+  );
+}
+
 export function IngredientImage({ ingredientId, name }: { ingredientId: string; name: string }) {
   const [failed, setFailed] = useState(false);
   if (failed) {
@@ -72,6 +130,7 @@ export function IngredientImage({ ingredientId, name }: { ingredientId: string; 
     <Image
       alt=""
       className="ingredient-image"
+      decoding="async"
       fill
       loader={ingredientLoader}
       onError={() => setFailed(true)}

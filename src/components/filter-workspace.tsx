@@ -5,7 +5,20 @@ import { activeFilterCount } from '@/domain/planner';
 import { copy, label, names, type Choice, type Locale } from '@/i18n/copy';
 
 import { Dropdown } from './dropdown';
-import { FilterIcon } from './icons';
+import {
+  AllergenIcon,
+  ChildIcon,
+  CuisineIcon,
+  DietIcon,
+  EquipmentIcon,
+  ExcludeIcon,
+  FilterIcon,
+  HealthIcon,
+  IncludeIcon,
+  MethodIcon,
+  SpiceIcon,
+  TimeIcon,
+} from './icons';
 
 export type FacetOptions = {
   cuisines: string[];
@@ -94,8 +107,11 @@ export function FilterWorkspace({
           </button>
         </div>
       </div>
+      <p className="filter-group-label">{t.groupFlavour}</p>
       <div className="filter-grid">
         <Dropdown
+          icon={CuisineIcon}
+          active={filters.cuisines.length > 0}
           id="cuisine"
           labelText={t.cuisine}
           locale={locale}
@@ -105,6 +121,8 @@ export function FilterWorkspace({
           selected={filters.cuisines}
         />
         <Dropdown
+          active={filters.methods.length > 0}
+          icon={MethodIcon}
           id="method"
           labelText={t.method}
           locale={locale}
@@ -113,6 +131,8 @@ export function FilterWorkspace({
           selected={filters.methods}
         />
         <Dropdown
+          active={filters.minHealthScore > 1}
+          icon={HealthIcon}
           id="health"
           labelText={t.health}
           locale={locale}
@@ -127,6 +147,29 @@ export function FilterWorkspace({
           selected={[String(filters.minHealthScore)]}
         />
         <Dropdown
+          active={filters.maxSpiceLevel < 5}
+          icon={SpiceIcon}
+          id="spice"
+          labelText={t.spice}
+          locale={locale}
+          multiple={false}
+          onChange={(next) => onChange({ ...filters, maxSpiceLevel: Number(next[0] ?? 5) })}
+          options={[
+            { value: '5', zh: copy['zh-CN'].any, en: en.any },
+            { value: '0', zh: '0 · 不辣', en: '0 · No heat' },
+            { value: '1', zh: '1 · 微辣', en: '1 · Mild' },
+            { value: '2', zh: '2 · 中辣', en: '2 · Medium' },
+            { value: '3', zh: '3 · 辣', en: '3 · Hot' },
+          ]}
+          selected={[String(filters.maxSpiceLevel)]}
+        />
+      </div>
+
+      <p className="filter-group-label">{t.groupIngredients}</p>
+      <div className="filter-grid">
+        <Dropdown
+          active={filters.mustIncludeIngredientIds.length > 0}
+          icon={IncludeIcon}
           id="include"
           labelText={t.include}
           locale={locale}
@@ -144,6 +187,8 @@ export function FilterWorkspace({
           selected={filters.mustIncludeIngredientIds}
         />
         <Dropdown
+          active={filters.excludedIngredientIds.length > 0}
+          icon={ExcludeIcon}
           id="exclude-ingredient"
           labelText={t.excludeIngredient}
           locale={locale}
@@ -160,6 +205,8 @@ export function FilterWorkspace({
           selected={filters.excludedIngredientIds}
         />
         <Dropdown
+          active={filters.dietTags.length > 0}
+          icon={DietIcon}
           id="diet"
           labelText={t.diet}
           locale={locale}
@@ -168,6 +215,8 @@ export function FilterWorkspace({
           selected={filters.dietTags}
         />
         <Dropdown
+          active={filters.excludedAllergens.length > 0}
+          icon={AllergenIcon}
           id="allergens"
           labelText={t.allergens}
           locale={locale}
@@ -175,7 +224,13 @@ export function FilterWorkspace({
           options={choice(facets.allergens)}
           selected={filters.excludedAllergens}
         />
+      </div>
+
+      <p className="filter-group-label">{t.groupConditions}</p>
+      <div className="filter-grid">
         <Dropdown
+          active={filters.availableEquipmentIds.length > 0}
+          icon={EquipmentIcon}
           id="equipment"
           labelText={t.equipment}
           locale={locale}
@@ -184,6 +239,8 @@ export function FilterWorkspace({
           selected={filters.availableEquipmentIds}
         />
         <Dropdown
+          active={filters.maxTotalMinutes !== null}
+          icon={TimeIcon}
           id="time"
           labelText={t.time}
           locale={locale}
@@ -202,21 +259,8 @@ export function FilterWorkspace({
           selected={[filters.maxTotalMinutes ? String(filters.maxTotalMinutes) : '']}
         />
         <Dropdown
-          id="spice"
-          labelText={t.spice}
-          locale={locale}
-          multiple={false}
-          onChange={(next) => onChange({ ...filters, maxSpiceLevel: Number(next[0] ?? 5) })}
-          options={[
-            { value: '5', zh: copy['zh-CN'].any, en: en.any },
-            { value: '0', zh: '0 · 不辣', en: '0 · No heat' },
-            { value: '1', zh: '1 · 微辣', en: '1 · Mild' },
-            { value: '2', zh: '2 · 中辣', en: '2 · Medium' },
-            { value: '3', zh: '3 · 辣', en: '3 · Hot' },
-          ]}
-          selected={[String(filters.maxSpiceLevel)]}
-        />
-        <Dropdown
+          active={filters.childFriendlyOnly}
+          icon={ChildIcon}
           id="child"
           labelText={t.child}
           locale={locale}

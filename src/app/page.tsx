@@ -61,12 +61,7 @@ function trim(recipe: PlannerRecipe): PlannerRecipe {
 }
 
 export default function HomePage() {
-  const menu = composeMenu(
-    launchRecipes,
-    defaultPlannerPreferences,
-    0,
-    defaultPlannerFilters,
-  );
+  const menu = composeMenu(launchRecipes, defaultPlannerPreferences, 0, defaultPlannerFilters);
   const initialRecipes = menu.recipes.map(trim);
   const initialIngredientIds = new Set(
     initialRecipes.flatMap((recipe) => recipe.ingredients.map((item) => item.ingredientId)),

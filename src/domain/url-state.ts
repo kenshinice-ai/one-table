@@ -46,7 +46,14 @@ function list(values: string[]) {
 
 function parseList(value: string | null) {
   if (!value) return [];
-  return [...new Set(value.split(',').map((item) => item.trim()).filter(Boolean))];
+  return [
+    ...new Set(
+      value
+        .split(',')
+        .map((item) => item.trim())
+        .filter(Boolean),
+    ),
+  ];
 }
 
 function parseInteger(value: string | null, fallback: number, min: number, max: number) {
@@ -188,12 +195,7 @@ export function parsePlannerState(query: string): PlannerState {
     maxTotalMinutes: params.get('time') ? parseInteger(params.get('time'), 60, 1, 240) : null,
     maxSpiceLevel: parseInteger(params.get('spice'), defaultPlannerFilters.maxSpiceLevel, 0, 5),
     childFriendlyOnly: params.get('child') === '1',
-    minHealthScore: parseInteger(
-      params.get('health'),
-      defaultPlannerFilters.minHealthScore,
-      1,
-      5,
-    ),
+    minHealthScore: parseInteger(params.get('health'), defaultPlannerFilters.minHealthScore, 1, 5),
   };
   return {
     locale: parseEnum(params.get('lang'), locales, 'zh-CN'),

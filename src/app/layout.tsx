@@ -7,7 +7,7 @@ import manifest from '@/generated/catalogue-manifest.json';
 import './globals.css';
 
 const description =
-  '为一桌人，配一桌好菜。选择人数、预算、菜单结构与健康目标，从 400 道双语菜谱中组合出可执行的一桌菜。 · Plan a whole table: set guests, budget, courses and an energy target, then compose a menu from 400 bilingual recipes.';
+  '为一桌人，配一桌好菜。选择人数、预算、菜单结构与健康目标，立即得到一桌可执行的双语菜单。 · Plan a whole table: set guests, budget, courses and an energy target, and get a menu you can actually cook.';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://menu-planning-companion.lee-liu-melbourne.workers.dev'),

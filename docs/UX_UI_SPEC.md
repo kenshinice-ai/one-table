@@ -58,17 +58,17 @@ Do not force the golden ratio into small components; it only governs the main la
 
 ## 5. Visual system
 
-| Token | Value | Use |
-|---|---|---|
-| Primary | `#9A3412` | Main actions and selected culinary accents |
-| Secondary | `#C2410C` | Secondary emphasis |
-| Positive | `#059669` | Valid, safe, in-budget status |
-| Background | `#FFFBEB` | Warm app canvas |
-| Card | `#FFFFFF` | Cards and popovers |
-| Foreground | `#0F172A` | Main text |
-| Muted | `#F8F2F0` | Secondary surfaces |
-| Border | `#F2E6E2` | Dividers and inactive controls |
-| Destructive | `#DC2626` | Reset confirmation and safety failures |
+| Token       | Value     | Use                                        |
+| ----------- | --------- | ------------------------------------------ |
+| Primary     | `#9A3412` | Main actions and selected culinary accents |
+| Secondary   | `#C2410C` | Secondary emphasis                         |
+| Positive    | `#059669` | Valid, safe, in-budget status              |
+| Background  | `#FFFBEB` | Warm app canvas                            |
+| Card        | `#FFFFFF` | Cards and popovers                         |
+| Foreground  | `#0F172A` | Main text                                  |
+| Muted       | `#F8F2F0` | Secondary surfaces                         |
+| Border      | `#F2E6E2` | Dividers and inactive controls             |
+| Destructive | `#DC2626` | Reset confirmation and safety failures     |
 
 Typography:
 
@@ -130,4 +130,3 @@ Every major surface needs:
 - Test iPad Safari landscape, iPhone Safari, Android Chrome, laptop keyboard/mouse and 1080p touch display.
 - Browser zoom must remain enabled.
 - Safe-area insets protect fixed mobile actions.
-

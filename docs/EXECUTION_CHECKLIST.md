@@ -244,4 +244,3 @@ Release criteria:
 6. Cuisine multi-select, selected chip strip, undo and reset.
 7. Static live-menu panel wired to deterministic fixture results.
 8. Automated tests for free-form filter persistence and hard allergen exclusion.
-

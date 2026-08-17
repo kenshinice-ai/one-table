@@ -42,10 +42,7 @@ export function ShoppingListPanel({
     };
   }, [onClose]);
 
-  function renderSection(
-    title: string,
-    items: typeof lines,
-  ) {
+  function renderSection(title: string, items: typeof lines) {
     if (!items.length) return null;
     return (
       <section>
@@ -79,7 +76,12 @@ export function ShoppingListPanel({
         ref={dialogRef}
         role="dialog"
       >
-        <button aria-label={t.close} className="icon-button close-detail" onClick={onClose} type="button">
+        <button
+          aria-label={t.close}
+          className="icon-button close-detail"
+          onClick={onClose}
+          type="button"
+        >
           <CloseIcon />
         </button>
         <h2 id="shopping-title">{t.shoppingList}</h2>

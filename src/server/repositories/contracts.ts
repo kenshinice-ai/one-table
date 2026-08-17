@@ -99,4 +99,3 @@ export interface ReviewRecord extends CreateReviewInput {
   id: string;
   reviewedAt: string;
 }
-

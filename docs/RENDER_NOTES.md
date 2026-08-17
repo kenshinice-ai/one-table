@@ -26,4 +26,3 @@ Prompt summary: portrait live-menu screen with a return-to-filters action, four 
 - Generated for this project on 2026-08-16.
 - These renders themselves should be labelled as concept illustrations when shared externally.
 - The discarded sequential-wizard exploration is intentionally not part of the project deliverables.
-

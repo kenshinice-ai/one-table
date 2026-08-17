@@ -1,10 +1,16 @@
 'use client';
 
 import type { EnergyTarget } from '@/domain/health';
-import { roleCountsFor, courseOrder, type PlannerPreferences, type PlannerServingStyle } from '@/domain/planner';
+import {
+  roleCountsFor,
+  courseOrder,
+  type PlannerPreferences,
+  type PlannerServingStyle,
+} from '@/domain/planner';
 import { copy, fill, roleLabel, type Locale } from '@/i18n/copy';
 
 import { Dropdown } from './dropdown';
+import { BudgetIcon, CoursesIcon, EnergyIcon, FocusIcon, GuestsIcon, ServingIcon } from './icons';
 import { MenuStructureEditor } from './menu-structure';
 
 const BUDGET_PRESETS = [60, 80, 100, 120, 150, 200];
@@ -21,10 +27,18 @@ export function TableSettings({
   const t = copy[locale];
   const en = copy['en-AU'];
   const counts = roleCountsFor(preferences);
-  const structureSummary = courseOrder
-    .filter((role) => counts[role] > 0)
-    .map((role) => `${roleLabel(role, locale)}${counts[role] > 1 ? ` ×${counts[role]}` : ''}`)
+  const present = courseOrder.filter((role) => counts[role] > 0);
+  const total = present.reduce((sum, role) => sum + counts[role], 0);
+  // The trigger states the shape in one line; the full breakdown lives in the
+  // panel, which is where a host goes to change it anyway.
+  const lead = present
+    .slice(0, 2)
+    .map((role) => `${roleLabel(role, locale)}${counts[role] > 1 ? `×${counts[role]}` : ''}`)
     .join(locale === 'zh-CN' ? '、' : ', ');
+  const structureSummary =
+    present.length > 2
+      ? `${fill(t.dishTotal, { count: total })} · ${lead}…`
+      : `${fill(t.dishTotal, { count: total })} · ${lead}`;
   const budgetSelection = BUDGET_PRESETS.includes(preferences.budgetCents / 100)
     ? String(preferences.budgetCents)
     : 'custom';
@@ -36,6 +50,7 @@ export function TableSettings({
         {t.settings}
       </div>
       <Dropdown
+        icon={GuestsIcon}
         id="guests"
         labelText={t.guests}
         locale={locale}
@@ -50,6 +65,8 @@ export function TableSettings({
       />
       <Dropdown
         emptyText={structureSummary}
+        active={preferences.roleOverrides !== null}
+        icon={CoursesIcon}
         id="dishes"
         labelText={t.dishes}
         locale={locale}
@@ -61,6 +78,7 @@ export function TableSettings({
         <MenuStructureEditor locale={locale} onChange={onChange} preferences={preferences} />
       </Dropdown>
       <Dropdown
+        icon={ServingIcon}
         id="style"
         labelText={t.style}
         locale={locale}
@@ -81,6 +99,7 @@ export function TableSettings({
           value: Math.round(preferences.budgetCents / 100),
           onChange: (value) => onChange({ ...preferences, budgetCents: Math.round(value * 100) }),
         }}
+        icon={BudgetIcon}
         id="budget"
         labelText={t.budget}
         locale={locale}
@@ -99,6 +118,8 @@ export function TableSettings({
         selected={[budgetSelection]}
       />
       <Dropdown
+        active={preferences.energyTarget !== 'any'}
+        icon={EnergyIcon}
         id="energy"
         labelText={t.energy}
         locale={locale}
@@ -115,6 +136,7 @@ export function TableSettings({
         selected={[preferences.energyTarget]}
       />
       <Dropdown
+        icon={FocusIcon}
         id="mode"
         labelText={t.mode}
         locale={locale}

@@ -43,7 +43,8 @@ export function buildShoppingList(recipes: PlannerRecipe[], guests: number): Sho
       };
       entry.recipeIds.push(recipe.id);
       entry.optional = entry.optional && ingredient.optional;
-      const canMerge = quantity !== null && ingredient.unit !== null && entry.unit === ingredient.unit;
+      const canMerge =
+        quantity !== null && ingredient.unit !== null && entry.unit === ingredient.unit;
       if (canMerge && entry.mergeable && entry.quantity !== null) {
         entry.quantity += quantity;
         if (!scaled) entry.fallbacks.push(ingredient.displayQuantity);

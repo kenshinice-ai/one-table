@@ -67,4 +67,3 @@ export class D1ReviewRepository implements ReviewRepository {
     return result.results.map(mapReview);
   }
 }
-
