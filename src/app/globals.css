@@ -1814,3 +1814,57 @@ h3 {
   color: var(--muted);
   font-size: 0.74rem;
 }
+
+/* Holds the menu panel's shape while the catalogue payload is in flight, so
+   the first paint reads as a page mid-load rather than an empty one. */
+.menu-skeleton {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+.skeleton-row {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 10px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.skeleton-thumb,
+.skeleton-lines > span {
+  background: linear-gradient(90deg, var(--surface-soft) 25%, #fff 50%, var(--surface-soft) 75%);
+  background-size: 220% 100%;
+  border-radius: 8px;
+  animation: skeleton-sweep 1.4s ease-in-out infinite;
+}
+.skeleton-thumb {
+  min-height: 84px;
+}
+.skeleton-lines {
+  display: grid;
+  align-content: center;
+  gap: 9px;
+}
+.skeleton-lines > span:first-child {
+  width: 55%;
+  height: 17px;
+}
+.skeleton-lines > span:last-child {
+  width: 85%;
+  height: 11px;
+}
+@keyframes skeleton-sweep {
+  from {
+    background-position: 120% 0;
+  }
+  to {
+    background-position: -20% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-thumb,
+  .skeleton-lines > span {
+    animation: none;
+  }
+}

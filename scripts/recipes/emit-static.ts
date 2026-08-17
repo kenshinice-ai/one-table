@@ -16,7 +16,10 @@ import type { RecipeImport } from '../../src/domain/batch-a';
  */
 const OUT_DIR = join(process.cwd(), 'public', 'data');
 
-type PlanningRecipe = Omit<RecipeImport, 'translations' | 'source' | 'substitutions' | 'media'> & {
+type PlanningRecipe = Omit<
+  RecipeImport,
+  'translations' | 'source' | 'substitutions' | 'media' | 'scalingNotes'
+> & {
   translations: {
     'zh-CN': { title: string; summary: string };
     'en-AU': { title: string; summary: string };
@@ -25,17 +28,15 @@ type PlanningRecipe = Omit<RecipeImport, 'translations' | 'source' | 'substituti
 };
 
 function toPlanning(recipe: RecipeImport): PlanningRecipe {
-  const {
-    translations,
-    source: _source,
-    substitutions: _substitutions,
-    media,
-    scalingNotes: _scalingNotes,
-    ...rest
-  } = recipe;
+  // Long-form editorial text, provenance and substitution notes are only read
+  // on a recipe page, so they travel in the detail payload instead.
+  const { translations, media, ...rest } = recipe;
+  const planning = rest as Omit<
+    RecipeImport,
+    'translations' | 'media' | 'source' | 'substitutions' | 'scalingNotes'
+  >;
   return {
-    ...rest,
-    scalingNotes: {},
+    ...planning,
     translations: {
       'zh-CN': {
         title: translations['zh-CN'].title,

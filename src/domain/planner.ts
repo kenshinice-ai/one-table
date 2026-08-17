@@ -853,6 +853,27 @@ function applySubstitutions(
 }
 
 /**
+ * Wraps an explicit list of dishes as a menu summary, without searching for
+ * candidates. The page uses this to render the default table straight from the
+ * server so a reader sees real food on the first paint, and the same shape is
+ * then replaced by the fully composed menu once the catalogue arrives.
+ */
+export function buildMenuFromRecipes(
+  recipes: PlannerRecipe[],
+  preferences: PlannerPreferences,
+  rawFilters: PlannerFilters = defaultPlannerFilters,
+): MenuSummary {
+  const filters = normalizePlannerFilters(rawFilters);
+  const candidate = buildCandidate(recipes, preferences, filters, 'prerendered-01');
+  return {
+    ...candidate,
+    conflicts: [],
+    isPartial: false,
+    candidateMenus: [],
+  };
+}
+
+/**
  * Alternatives for one course under the current conditions, ordered the same
  * way the composer ranks them and excluding what is already on the table.
  */

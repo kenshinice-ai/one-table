@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 
+import manifest from '@/generated/catalogue-manifest.json';
+
 import './globals.css';
 
 const description =
@@ -43,6 +45,16 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="zh-CN">
+      <head>
+        {/*
+          Both catalogue payloads start downloading alongside the JavaScript
+          rather than waiting for hydration, so every interaction the reader can
+          reach is already backed by local data. They are content-hashed and
+          cached indefinitely.
+        */}
+        <link as="fetch" crossOrigin="anonymous" href={manifest.planning} rel="preload" />
+        <link as="fetch" crossOrigin="anonymous" href={manifest.details} rel="preload" />
+      </head>
       <body>{children}</body>
     </html>
   );

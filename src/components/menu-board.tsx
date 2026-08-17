@@ -44,6 +44,7 @@ export function MenuBoard({
   shareLabel,
   imageLabel,
   disabled,
+  loading,
 }: {
   menu: MenuSummary;
   locale: Locale;
@@ -60,6 +61,8 @@ export function MenuBoard({
   shareLabel: string;
   imageLabel: string;
   disabled: boolean;
+  /** True until the catalogue payload lands, so the panel can hold its shape. */
+  loading: boolean;
 }) {
   const t = copy[locale];
   const [openSlot, setOpenSlot] = useState<number | null>(null);
@@ -78,11 +81,23 @@ export function MenuBoard({
           <h2 id="menu-title">{t.menu}</h2>
         </div>
         <span aria-live="polite" className="menu-status">
-          {t.fresh}
+          {loading ? t.loadingMenu : t.fresh}
         </span>
       </div>
 
-      {menu.recipes.length === 0 ? (
+      {loading ? (
+        <div aria-hidden="true" className="menu-skeleton">
+          {[0, 1, 2, 3].map((row) => (
+            <div className="skeleton-row" key={row}>
+              <span className="skeleton-thumb" />
+              <span className="skeleton-lines">
+                <span />
+                <span />
+              </span>
+            </div>
+          ))}
+        </div>
+      ) : menu.recipes.length === 0 ? (
         <div className="empty-state">
           <strong>0</strong>
           <p>{t.empty}</p>

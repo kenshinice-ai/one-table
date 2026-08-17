@@ -11,6 +11,7 @@ import {
   type RecipeDetailRecord,
 } from '@/domain/catalogue';
 import {
+  buildMenuFromRecipes,
   composeMenu,
   defaultPlannerFilters,
   defaultPlannerPreferences,
@@ -44,7 +45,6 @@ const defaultState: PlannerState = {
 };
 
 const EMPTY_RECIPES: PlannerRecipe[] = [];
-const EMPTY_INGREDIENTS: IngredientDefinition[] = [];
 
 function unique(values: string[]) {
   return [...new Set(values)].sort();
@@ -69,7 +69,14 @@ function readServerSearch() {
   return '';
 }
 
-export function PlannerApp() {
+export function PlannerApp({
+  initialRecipes,
+  initialIngredients,
+}: {
+  /** The default table, composed at build time so the first paint has food on it. */
+  initialRecipes: PlannerRecipe[];
+  initialIngredients: IngredientDefinition[];
+}) {
   const [catalogue, setCatalogue] = useState<{
     recipes: PlannerRecipe[];
     ingredients: IngredientDefinition[];
@@ -112,14 +119,17 @@ export function PlannerApp() {
     return () => controller.abort();
   }, []);
 
-  // Cooking text is only needed once a reader opens a recipe or prints, so it
-  // is fetched on that first interaction and then kept.
-  const ensureDetails = useCallback(() => {
-    if (details) return;
-    fetchRecipeDetails(manifest.details)
+  // Cooking text is fetched immediately alongside the catalogue rather than on
+  // first open. Waiting would trade a spinner for bytes nobody is short of.
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchRecipeDetails(manifest.details, controller.signal)
       .then(setDetails)
-      .catch((error) => console.error(error));
-  }, [details]);
+      .catch((error) => {
+        if (!controller.signal.aborted) console.error(error);
+      });
+    return () => controller.abort();
+  }, []);
 
   // A back navigation restores the link's own state, so local edits are dropped
   // rather than shadowing the entry the reader just returned to.
@@ -130,11 +140,27 @@ export function PlannerApp() {
   }, []);
 
   const recipes = catalogue?.recipes ?? EMPTY_RECIPES;
-  const ingredientCatalog = catalogue?.ingredients ?? EMPTY_INGREDIENTS;
+  const ingredientCatalog = catalogue?.ingredients ?? initialIngredients;
+
+  // Before the catalogue lands the prerendered table stands in for a composed
+  // one. A link that carries its own conditions describes a different table, so
+  // that case waits rather than showing a menu the link did not ask for.
+  const usePrerendered = catalogue === null && !search;
 
   const menu = useMemo(
-    () => composeMenu(recipes, preferences, variation, filters, substitutions),
-    [recipes, preferences, variation, filters, substitutions],
+    () =>
+      usePrerendered
+        ? buildMenuFromRecipes(initialRecipes, preferences, filters)
+        : composeMenu(recipes, preferences, variation, filters, substitutions),
+    [
+      usePrerendered,
+      initialRecipes,
+      recipes,
+      preferences,
+      variation,
+      filters,
+      substitutions,
+    ],
   );
   const eligible = useMemo(() => getEligibleRecipes(recipes, filters), [recipes, filters]);
   const eligibility = useMemo(
@@ -237,7 +263,6 @@ export function PlannerApp() {
   }
 
   function openRecipe(recipe: PlannerRecipe) {
-    ensureDetails();
     setDetailRecipe(recipe);
   }
 
@@ -344,14 +369,12 @@ export function PlannerApp() {
           alternativesFor={alternativesFor}
           currency={currency}
           disabled={eligible.length === 0}
+          loading={catalogue === null && !usePrerendered}
           guests={preferences.guests}
           locale={locale}
           menu={menu}
           onOpenRecipe={openRecipe}
-          onPrint={() => {
-            ensureDetails();
-            window.print();
-          }}
+          onPrint={() => window.print()}
           onRecompose={() =>
             setEdits({ ...state, variation: variation + 1, substitutions: {} })
           }
@@ -430,10 +453,7 @@ export function PlannerApp() {
           ingredientNames={ingredientNames}
           locale={locale}
           onClose={() => setShoppingOpen(false)}
-          onPrint={() => {
-            ensureDetails();
-            window.print();
-          }}
+          onPrint={() => window.print()}
           recipes={menu.recipes}
         />
       )}
