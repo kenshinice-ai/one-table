@@ -2,13 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import type { RecipeImport } from '@/domain/batch-a';
+import type { PlannerRecipe } from '@/domain/catalogue';
 import { copy, label, roleLabel, type Locale } from '@/i18n/copy';
 
 import { SearchIcon } from './icons';
 
 export type SearchHit =
-  | { kind: 'recipe'; id: string; title: string; detail: string; recipe: RecipeImport }
+  | { kind: 'recipe'; id: string; title: string; detail: string; recipe: PlannerRecipe }
   | { kind: 'ingredient'; id: string; title: string; detail: string }
   | { kind: 'cuisine'; id: string; title: string; detail: string };
 
@@ -23,7 +23,7 @@ function normalize(value: string) {
  * already in memory, so there is no request behind the search box.
  */
 function buildIndex(
-  recipes: RecipeImport[],
+  recipes: PlannerRecipe[],
   ingredients: IngredientDefinition[],
   locale: Locale,
 ) {
@@ -81,7 +81,7 @@ export function GlobalSearch({
   locale,
   onSelect,
 }: {
-  recipes: RecipeImport[];
+  recipes: PlannerRecipe[];
   ingredients: IngredientDefinition[];
   locale: Locale;
   onSelect: (hit: SearchHit) => void;

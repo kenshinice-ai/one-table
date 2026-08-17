@@ -1,4 +1,4 @@
-import type { RecipeImport } from './batch-a';
+import type { PlannerRecipe } from './catalogue';
 
 export type HealthScore = 1 | 2 | 3 | 4 | 5;
 export type EnergyTarget = 'any' | 'light' | 'medium' | 'hearty';
@@ -13,7 +13,7 @@ export type EnergyTarget = 'any' | 'light' | 'medium' | 'hearty';
  * sweet, and penalising every one of them would make the filter useless for
  * building a complete menu.
  */
-export function healthScore(recipe: RecipeImport): HealthScore {
+export function healthScore(recipe: PlannerRecipe): HealthScore {
   const { sodiumMg, fibreG, saturatedFatG, sugarsG } = recipe.nutrition;
   const sugarLimit = recipe.primaryRole === 'dessert' ? 30 : 20;
   let score = 3;

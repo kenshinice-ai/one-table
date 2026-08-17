@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import type { RecipeImport } from '@/domain/batch-a';
+import type { PlannerRecipe, RecipeDetailRecord } from '@/domain/catalogue';
 import { healthScore } from '@/domain/health';
 import { scaleRecipeIngredients } from '@/domain/scaling';
 import { copy, fill, roleLabel, type Locale } from '@/i18n/copy';
@@ -15,12 +15,15 @@ const FOCUSABLE =
 
 export function RecipeDetail({
   recipe,
+  detail,
   locale,
   guests,
   ingredientNames,
   onClose,
 }: {
-  recipe: RecipeImport;
+  recipe: PlannerRecipe;
+  /** Cooking text, fetched on demand; null while the payload is still loading. */
+  detail: RecipeDetailRecord | null;
   locale: Locale;
   guests: number;
   ingredientNames: Map<string, string>;
@@ -39,9 +42,10 @@ export function RecipeDetail({
   );
   const mainIngredients = ingredients.filter((item) => item.group === 'main');
   const seasoning = ingredients.filter((item) => item.group === 'seasoning');
-  const steps = translation.structuredInstructions?.length
-    ? translation.structuredInstructions
-    : translation.instructions.map((text) => ({
+  const detailText = detail?.translations[locale];
+  const steps = detailText?.structuredInstructions?.length
+    ? detailText.structuredInstructions
+    : (detailText?.instructions ?? []).map((text) => ({
         text,
         minutes: undefined,
         phase: undefined,
@@ -172,6 +176,7 @@ export function RecipeDetail({
           {recipe.advanceMinutes > 0 && (
             <p className="advance-note">{fill(t.advancePrep, { count: recipe.advanceMinutes })}</p>
           )}
+          {!detail && <p className="step-loading">{t.loadingSteps}</p>}
           <ol className="step-list">
             {steps.map((step, index) => (
               <li key={`${recipe.id}-step-${index}`}>
@@ -193,7 +198,7 @@ export function RecipeDetail({
               </li>
             ))}
           </ol>
-          {recipe.safetyNotes && <p className="safety-note">{recipe.safetyNotes}</p>}
+          {detail?.safetyNotes && <p className="safety-note">{detail.safetyNotes}</p>}
           <p className="estimate-note">{t.estimated}</p>
         </div>
       </article>

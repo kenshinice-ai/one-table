@@ -182,6 +182,7 @@ export const copy = {
     healthBest: '仅 5 分',
     healthScore: '健康指数 {score} / 5',
     comingSoon: '菜品图片准备中',
+    loadingSteps: '正在载入烹饪步骤…',
   },
   'en-AU': {
     brand: 'One Table',
@@ -301,6 +302,7 @@ export const copy = {
     healthBest: '5 only',
     healthScore: 'Health score {score} of 5',
     comingSoon: 'Dish photo coming soon',
+    loadingSteps: 'Loading the method…',
   },
 } as const;
 

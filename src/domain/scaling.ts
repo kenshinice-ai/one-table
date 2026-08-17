@@ -1,4 +1,4 @@
-import type { RecipeImport } from './batch-a';
+import type { PlannerRecipe } from './catalogue';
 
 export type ScaledIngredient = {
   ingredientId: string;
@@ -24,7 +24,7 @@ function roundTo(value: number, step: number) {
  * the editorial data says they do not scale with the table.
  */
 export function scaleQuantity(
-  ingredient: RecipeImport['ingredients'][number],
+  ingredient: PlannerRecipe['ingredients'][number],
   baseServings: number,
   guests: number,
 ): { quantity: number | null; scaled: boolean } {
@@ -65,7 +65,7 @@ function ingredientGroup(
 }
 
 export function scaleRecipeIngredients(
-  recipe: RecipeImport,
+  recipe: PlannerRecipe,
   guests: number,
   enabled = true,
 ): ScaledIngredient[] {

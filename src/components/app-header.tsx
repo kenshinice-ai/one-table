@@ -1,6 +1,6 @@
 'use client';
 
-import type { RecipeImport } from '@/domain/batch-a';
+import type { PlannerRecipe } from '@/domain/catalogue';
 import { copy, fill, type Locale } from '@/i18n/copy';
 
 import { GlobalSearch, type SearchHit } from './global-search';
@@ -14,7 +14,7 @@ export function AppHeader({
   onLocaleChange,
   onSearchSelect,
 }: {
-  recipes: RecipeImport[];
+  recipes: PlannerRecipe[];
   ingredients: Array<{ id: string; nameZh: string; nameEn: string }>;
   locale: Locale;
   seats: number;

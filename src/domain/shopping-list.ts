@@ -1,4 +1,4 @@
-import type { RecipeImport } from './batch-a';
+import type { PlannerRecipe } from './catalogue';
 import { formatAmount, scaleQuantity } from './scaling';
 
 export type ShoppingLine = {
@@ -27,7 +27,7 @@ type Accumulator = {
  * add up when every contribution scales and shares a unit; anything else is
  * listed as separate amounts so a cook is never handed an invented number.
  */
-export function buildShoppingList(recipes: RecipeImport[], guests: number): ShoppingLine[] {
+export function buildShoppingList(recipes: PlannerRecipe[], guests: number): ShoppingLine[] {
   const byIngredient = new Map<string, Accumulator>();
 
   recipes.forEach((recipe) => {

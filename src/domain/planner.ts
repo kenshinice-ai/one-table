@@ -1,10 +1,10 @@
-import type { RecipeImport } from './batch-a';
+import type { PlannerRecipe } from './catalogue';
 import { energyFit, healthScore, isEnergyOnTarget, type EnergyTarget } from './health';
 
 export type DishCount = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 export type PlannerServingStyle = 'family' | 'plated' | 'buffet';
 export type CompositionMode = 'balanced' | 'budget' | 'easy';
-export type PrimaryRole = RecipeImport['primaryRole'];
+export type PrimaryRole = PlannerRecipe['primaryRole'];
 
 export type PlannerFilters = {
   cuisines: string[];
@@ -89,7 +89,7 @@ export type ScoreBreakdown = {
 
 export type MenuCandidate = {
   candidateId: string;
-  recipes: RecipeImport[];
+  recipes: PlannerRecipe[];
   estimatedCostCents: number;
   energyKcalPerPerson: number;
   proteinGPerPerson: number;
@@ -176,7 +176,7 @@ export function normalizePlannerFilters(filters: PlannerFilters): PlannerFilters
   };
 }
 
-function hasRequiredData(recipe: RecipeImport) {
+function hasRequiredData(recipe: PlannerRecipe) {
   return Boolean(
     recipe.translations['zh-CN'].title &&
     recipe.translations['en-AU'].title &&
@@ -188,7 +188,7 @@ function hasRequiredData(recipe: RecipeImport) {
 }
 
 export function getRecipeExclusionReasons(
-  recipe: RecipeImport,
+  recipe: PlannerRecipe,
   rawFilters: PlannerFilters,
 ): ExclusionReasonCode[] {
   const filters = normalizePlannerFilters(rawFilters);
@@ -247,7 +247,7 @@ export function getRecipeExclusionReasons(
   return reasons;
 }
 
-export function getEligibleRecipes(recipes: RecipeImport[], filters: PlannerFilters) {
+export function getEligibleRecipes(recipes: PlannerRecipe[], filters: PlannerFilters) {
   return recipes.filter((recipe) => getRecipeExclusionReasons(recipe, filters).length === 0);
 }
 
@@ -334,7 +334,7 @@ function compatibleRoles(role: PrimaryRole): PrimaryRole[] {
   return [role];
 }
 
-function matchesRole(recipe: RecipeImport, role: PrimaryRole) {
+function matchesRole(recipe: PlannerRecipe, role: PrimaryRole) {
   return compatibleRoles(role).some(
     (candidateRole) =>
       recipe.primaryRole === candidateRole || recipe.secondaryRoles.includes(candidateRole),
@@ -345,11 +345,11 @@ export function getRoleTemplate(count: DishCount, style: PlannerServingStyle) {
   return roleTemplate(count, style);
 }
 
-function recipeCostForGuests(recipe: RecipeImport, guests: number) {
+function recipeCostForGuests(recipe: PlannerRecipe, guests: number) {
   return Math.round(recipe.cost.totalCents * (Math.max(1, guests) / recipe.baseServings));
 }
 
-function ingredientIds(recipe: RecipeImport) {
+function ingredientIds(recipe: PlannerRecipe) {
   return new Set(recipe.ingredients.map((ingredient) => ingredient.ingredientId));
 }
 
@@ -361,7 +361,7 @@ function ingredientIds(recipe: RecipeImport) {
  */
 const EQUIPMENT_WINDOW_MINUTES = 240;
 
-export function getMenuEquipmentCollisionIds(recipes: RecipeImport[]) {
+export function getMenuEquipmentCollisionIds(recipes: PlannerRecipe[]) {
   const occupied = new Map<string, number>();
   recipes.forEach((recipe) =>
     recipe.equipment
@@ -379,7 +379,7 @@ export function getMenuEquipmentCollisionIds(recipes: RecipeImport[]) {
     .sort();
 }
 
-function baseRecipeScore(recipe: RecipeImport, preferences: PlannerPreferences) {
+function baseRecipeScore(recipe: PlannerRecipe, preferences: PlannerPreferences) {
   const style = recipe.servingStyles[preferences.servingStyle];
   const time = 1 - Math.min(recipe.activeMinutes, 120) / 120;
   const prep = Math.min(recipe.advanceMinutes / 60, 1);
@@ -397,7 +397,7 @@ function baseRecipeScore(recipe: RecipeImport, preferences: PlannerPreferences) 
 }
 
 type PartialCandidate = {
-  recipes: RecipeImport[];
+  recipes: PlannerRecipe[];
   coveredMustIncludeIngredientIds: string[];
   cost: number;
 };
@@ -426,7 +426,7 @@ function normalizeDimension(value: number) {
 }
 
 function scoreCandidate(
-  recipes: RecipeImport[],
+  recipes: PlannerRecipe[],
   preferences: PlannerPreferences,
   filters: PlannerFilters,
 ): ScoreBreakdown {
@@ -564,7 +564,7 @@ function weightedScore(breakdown: ScoreBreakdown, mode: CompositionMode) {
 }
 
 function buildCandidate(
-  recipes: RecipeImport[],
+  recipes: PlannerRecipe[],
   preferences: PlannerPreferences,
   filters: PlannerFilters,
   candidateId: string,
@@ -625,7 +625,7 @@ function hasMenuHardConstraints(
 }
 
 export function summarizeEligibility(
-  recipes: RecipeImport[],
+  recipes: PlannerRecipe[],
   filters: PlannerFilters,
   preferences: PlannerPreferences = defaultPlannerPreferences,
 ): EligibilitySummary {
@@ -682,7 +682,7 @@ export function summarizeEligibility(
 }
 
 export function generateMenuCandidates(
-  recipes: RecipeImport[],
+  recipes: PlannerRecipe[],
   preferences: PlannerPreferences,
   rawFilters: PlannerFilters = defaultPlannerFilters,
 ): { candidates: MenuCandidate[]; partial: MenuCandidate | null; conflicts: MenuConflict[] } {
@@ -781,7 +781,7 @@ export function generateMenuCandidates(
 }
 
 export function composeMenu(
-  recipes: RecipeImport[],
+  recipes: PlannerRecipe[],
   preferences: PlannerPreferences,
   variation = 0,
   rawFilters: PlannerFilters = defaultPlannerFilters,
@@ -827,7 +827,7 @@ export function composeMenu(
  */
 function applySubstitutions(
   candidate: MenuCandidate,
-  recipes: RecipeImport[],
+  recipes: PlannerRecipe[],
   preferences: PlannerPreferences,
   filters: PlannerFilters,
   substitutions: Record<number, string>,
@@ -857,13 +857,13 @@ function applySubstitutions(
  * way the composer ranks them and excluding what is already on the table.
  */
 export function getRoleAlternatives(
-  recipes: RecipeImport[],
+  recipes: PlannerRecipe[],
   preferences: PlannerPreferences,
   rawFilters: PlannerFilters,
   role: PrimaryRole,
   excludeIds: string[],
   limit = 8,
-): RecipeImport[] {
+): PlannerRecipe[] {
   const filters = normalizePlannerFilters(rawFilters);
   const excluded = new Set(excludeIds);
   return getEligibleRecipes(recipes, filters)

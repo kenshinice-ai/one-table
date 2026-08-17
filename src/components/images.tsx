@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-import type { RecipeImport } from '@/domain/batch-a';
+import type { PlannerRecipe } from '@/domain/catalogue';
 import type { Locale } from '@/i18n/copy';
 
 /** Widths written to disk by scripts/media/generate-sizes.sh. */
@@ -36,7 +36,7 @@ export function RecipeImage({
   sizes = '(max-width: 900px) 100vw, 320px',
   preload = false,
 }: {
-  recipe: RecipeImport;
+  recipe: PlannerRecipe;
   locale: Locale;
   sizes?: string;
   preload?: boolean;

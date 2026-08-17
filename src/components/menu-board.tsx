@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import type { RecipeImport } from '@/domain/batch-a';
+import type { PlannerRecipe } from '@/domain/catalogue';
 import { healthScore } from '@/domain/health';
 import { courseOrder, type MenuSummary, type PrimaryRole } from '@/domain/planner';
 import { copy, fill, roleLabel, type Locale } from '@/i18n/copy';
@@ -10,7 +10,7 @@ import { copy, fill, roleLabel, type Locale } from '@/i18n/copy';
 import { BasketIcon, ImageIcon, LeafScore, LinkIcon, PrintIcon, RefreshIcon } from './icons';
 import { RecipeImage } from './images';
 
-export type CourseSlot = { slotIndex: number; role: PrimaryRole; recipe: RecipeImport };
+export type CourseSlot = { slotIndex: number; role: PrimaryRole; recipe: PlannerRecipe };
 
 /**
  * Groups the composed menu into the courses it was built from. The planner has
@@ -49,8 +49,8 @@ export function MenuBoard({
   locale: Locale;
   guests: number;
   currency: Intl.NumberFormat;
-  alternativesFor: (slot: CourseSlot) => RecipeImport[];
-  onOpenRecipe: (recipe: RecipeImport) => void;
+  alternativesFor: (slot: CourseSlot) => PlannerRecipe[];
+  onOpenRecipe: (recipe: PlannerRecipe) => void;
   onSubstitute: (slotIndex: number, recipeId: string) => void;
   onRecompose: () => void;
   onPrint: () => void;

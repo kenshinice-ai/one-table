@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 
-import type { RecipeImport } from '@/domain/batch-a';
+import type { PlannerRecipe } from '@/domain/catalogue';
 import { buildShoppingList } from '@/domain/shopping-list';
 import { copy, fill, type Locale } from '@/i18n/copy';
 
@@ -16,7 +16,7 @@ export function ShoppingListPanel({
   onClose,
   onPrint,
 }: {
-  recipes: RecipeImport[];
+  recipes: PlannerRecipe[];
   guests: number;
   locale: Locale;
   ingredientNames: Map<string, string>;

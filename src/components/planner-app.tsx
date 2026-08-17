@@ -2,8 +2,14 @@
 
 import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 
-import { ingredientCatalog } from '../../data/recipes';
-import type { RecipeImport } from '@/domain/batch-a';
+import manifest from '@/generated/catalogue-manifest.json';
+import {
+  fetchPlanningCatalogue,
+  fetchRecipeDetails,
+  type IngredientDefinition,
+  type PlannerRecipe,
+  type RecipeDetailRecord,
+} from '@/domain/catalogue';
 import {
   composeMenu,
   defaultPlannerFilters,
@@ -37,6 +43,9 @@ const defaultState: PlannerState = {
   substitutions: {},
 };
 
+const EMPTY_RECIPES: PlannerRecipe[] = [];
+const EMPTY_INGREDIENTS: IngredientDefinition[] = [];
+
 function unique(values: string[]) {
   return [...new Set(values)].sort();
 }
@@ -60,11 +69,16 @@ function readServerSearch() {
   return '';
 }
 
-export function PlannerApp({ recipes }: { recipes: RecipeImport[] }) {
+export function PlannerApp() {
+  const [catalogue, setCatalogue] = useState<{
+    recipes: PlannerRecipe[];
+    ingredients: IngredientDefinition[];
+  } | null>(null);
+  const [details, setDetails] = useState<Map<string, RecipeDetailRecord> | null>(null);
   const [edits, setEdits] = useState<PlannerState | null>(null);
   const [undoSnapshot, setUndoSnapshot] = useState<Snapshot | null>(null);
   const [resetOpen, setResetOpen] = useState(false);
-  const [detailRecipe, setDetailRecipe] = useState<RecipeImport | null>(null);
+  const [detailRecipe, setDetailRecipe] = useState<PlannerRecipe | null>(null);
   const [shoppingOpen, setShoppingOpen] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
   const [savingImage, setSavingImage] = useState(false);
@@ -83,6 +97,30 @@ export function PlannerApp({ recipes }: { recipes: RecipeImport[] }) {
     [linkedState],
   );
 
+  // The catalogue is a hashed static asset rather than part of the page payload:
+  // 400 complete records serialised into the document pushed the first load
+  // several times over its budget.
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchPlanningCatalogue(manifest.planning, controller.signal)
+      .then((payload) =>
+        setCatalogue({ recipes: payload.recipes, ingredients: payload.ingredients }),
+      )
+      .catch((error) => {
+        if (!controller.signal.aborted) console.error(error);
+      });
+    return () => controller.abort();
+  }, []);
+
+  // Cooking text is only needed once a reader opens a recipe or prints, so it
+  // is fetched on that first interaction and then kept.
+  const ensureDetails = useCallback(() => {
+    if (details) return;
+    fetchRecipeDetails(manifest.details)
+      .then(setDetails)
+      .catch((error) => console.error(error));
+  }, [details]);
+
   // A back navigation restores the link's own state, so local edits are dropped
   // rather than shadowing the entry the reader just returned to.
   useEffect(() => {
@@ -90,6 +128,9 @@ export function PlannerApp({ recipes }: { recipes: RecipeImport[] }) {
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
+
+  const recipes = catalogue?.recipes ?? EMPTY_RECIPES;
+  const ingredientCatalog = catalogue?.ingredients ?? EMPTY_INGREDIENTS;
 
   const menu = useMemo(
     () => composeMenu(recipes, preferences, variation, filters, substitutions),
@@ -119,7 +160,7 @@ export function PlannerApp({ recipes }: { recipes: RecipeImport[] }) {
           locale === 'zh-CN' ? ingredient.nameZh : ingredient.nameEn,
         ]),
       ),
-    [locale],
+    [locale, ingredientCatalog],
   );
 
   const facets = useMemo<FacetOptions>(() => {
@@ -143,7 +184,7 @@ export function PlannerApp({ recipes }: { recipes: RecipeImport[] }) {
       equipment: unique(recipes.flatMap((recipe) => recipe.equipment.map((item) => item.id))),
       ingredients,
     };
-  }, [recipes]);
+  }, [recipes, ingredientCatalog]);
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -195,9 +236,14 @@ export function PlannerApp({ recipes }: { recipes: RecipeImport[] }) {
     setResetOpen(false);
   }
 
+  function openRecipe(recipe: PlannerRecipe) {
+    ensureDetails();
+    setDetailRecipe(recipe);
+  }
+
   function onSearchSelect(hit: SearchHit) {
     if (hit.kind === 'recipe') {
-      setDetailRecipe(hit.recipe);
+      openRecipe(hit.recipe);
       return;
     }
     if (hit.kind === 'ingredient') {
@@ -301,8 +347,11 @@ export function PlannerApp({ recipes }: { recipes: RecipeImport[] }) {
           guests={preferences.guests}
           locale={locale}
           menu={menu}
-          onOpenRecipe={setDetailRecipe}
-          onPrint={() => window.print()}
+          onOpenRecipe={openRecipe}
+          onPrint={() => {
+            ensureDetails();
+            window.print();
+          }}
           onRecompose={() =>
             setEdits({ ...state, variation: variation + 1, substitutions: {} })
           }
@@ -366,6 +415,7 @@ export function PlannerApp({ recipes }: { recipes: RecipeImport[] }) {
 
       {detailRecipe && (
         <RecipeDetail
+          detail={details?.get(detailRecipe.id) ?? null}
           guests={preferences.guests}
           ingredientNames={ingredientNames}
           locale={locale}
@@ -380,13 +430,17 @@ export function PlannerApp({ recipes }: { recipes: RecipeImport[] }) {
           ingredientNames={ingredientNames}
           locale={locale}
           onClose={() => setShoppingOpen(false)}
-          onPrint={() => window.print()}
+          onPrint={() => {
+            ensureDetails();
+            window.print();
+          }}
           recipes={menu.recipes}
         />
       )}
 
       <PrintView
         currency={currency}
+        details={details}
         guests={preferences.guests}
         ingredientNames={ingredientNames}
         locale={locale}

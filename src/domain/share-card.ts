@@ -1,4 +1,4 @@
-import type { RecipeImport } from './batch-a';
+import type { PlannerRecipe } from './catalogue';
 
 export type ShareCardDish = {
   title: string;
@@ -235,7 +235,7 @@ export async function renderShareCard(input: ShareCardInput): Promise<Blob | nul
 }
 
 export function shareCardDishes(
-  recipes: RecipeImport[],
+  recipes: PlannerRecipe[],
   locale: 'zh-CN' | 'en-AU',
   roleLabelFor: (role: string) => string,
   currency: Intl.NumberFormat,

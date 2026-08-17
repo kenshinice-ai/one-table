@@ -1,5 +1,5 @@
 {
-  "name": "menu-planning-companion",
+  "name": "one-table",
   "version": "0.1.0",
   "private": true,
   "description": "Touch-first, bilingual menu planning for a single dinner or gathering. The product combines a curated local recipe catalogue, deterministic safety and feasibility rules, and AI-assisted menu composition and explanation.",
@@ -24,7 +24,10 @@
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build",
+    "recipes:emit": "node --import tsx scripts/recipes/emit-static.ts",
+    "prebuild": "npm run recipes:emit",
+    "media:sizes": "bash scripts/media/generate-sizes.sh"
   },
   "keywords": [],
   "author": "",

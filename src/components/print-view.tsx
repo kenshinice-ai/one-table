@@ -1,6 +1,6 @@
 'use client';
 
-import type { RecipeImport } from '@/domain/batch-a';
+import type { PlannerRecipe, RecipeDetailRecord } from '@/domain/catalogue';
 import type { MenuSummary } from '@/domain/planner';
 import { scaleRecipeIngredients } from '@/domain/scaling';
 import { buildShoppingList } from '@/domain/shopping-list';
@@ -14,12 +14,14 @@ import { copy, fill, roleLabel, type Locale } from '@/i18n/copy';
  */
 export function PrintView({
   menu,
+  details,
   locale,
   guests,
   currency,
   ingredientNames,
 }: {
   menu: MenuSummary;
+  details: Map<string, RecipeDetailRecord> | null;
   locale: Locale;
   guests: number;
   currency: Intl.NumberFormat;
@@ -63,6 +65,7 @@ export function PrintView({
 
       {menu.recipes.map((recipe) => (
         <RecipePrintPage
+          detail={details?.get(recipe.id) ?? null}
           guests={guests}
           ingredientNames={ingredientNames}
           key={recipe.id}
@@ -98,11 +101,13 @@ export function PrintView({
 
 function RecipePrintPage({
   recipe,
+  detail,
   locale,
   guests,
   ingredientNames,
 }: {
-  recipe: RecipeImport;
+  recipe: PlannerRecipe;
+  detail: RecipeDetailRecord | null;
   locale: Locale;
   guests: number;
   ingredientNames: Map<string, string>;
@@ -110,9 +115,10 @@ function RecipePrintPage({
   const t = copy[locale];
   const translation = recipe.translations[locale];
   const ingredients = scaleRecipeIngredients(recipe, guests, true);
-  const steps = translation.structuredInstructions?.length
-    ? translation.structuredInstructions.map((step) => step.text)
-    : translation.instructions;
+  const detailText = detail?.translations[locale];
+  const steps = detailText?.structuredInstructions?.length
+    ? detailText.structuredInstructions.map((step) => step.text)
+    : (detailText?.instructions ?? []);
 
   return (
     <section className="print-page">

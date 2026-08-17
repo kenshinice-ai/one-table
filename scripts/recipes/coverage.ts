@@ -29,47 +29,56 @@ const report = {
   generatedMedia: batch.recipes.filter((recipe) => recipe.media.generatedAt !== null).length,
   pendingMedia: batch.recipes.filter((recipe) => recipe.media.generatedAt === null).length,
   publicationStatus: countBy(batch.recipes.map((recipe) => recipe.status)),
+  totalUnder30Minutes: batch.recipes.filter((recipe) => recipe.totalMinutes <= 30).length,
+  withStructuredSteps: batch.recipes.filter(
+    (recipe) => (recipe.translations['zh-CN'].structuredInstructions?.length ?? 0) > 0,
+  ).length,
 };
 
+// Quotas for the 400-recipe catalogue. Batches E and F deliberately weight the
+// courses the launch set was thin in, so starters, soups and salads roughly
+// triple while mains grow by less than double.
 const expectedRoles = {
-  main: 65,
-  side: 23,
-  salad: 22,
-  starter: 12,
-  soup: 12,
-  snack: 11,
-  staple: 25,
-  dessert: 30,
+  main: 125,
+  side: 43,
+  salad: 47,
+  starter: 42,
+  soup: 37,
+  snack: 21,
+  staple: 40,
+  dessert: 45,
 };
 const expectedCuisines = {
-  chinese_northern: 14,
-  chinese_sichuan: 14,
-  chinese_cantonese: 14,
-  chinese_jiangnan: 13,
-  japanese: 12,
-  korean: 12,
-  southeast_asian: 14,
-  indian: 12,
-  mediterranean: 13,
-  italian: 13,
-  french: 14,
-  australian_modern: 15,
-  western_home: 15,
-  middle_eastern: 9,
-  latin_american: 9,
-  other: 7,
+  chinese_northern: 22,
+  chinese_sichuan: 23,
+  chinese_cantonese: 26,
+  chinese_jiangnan: 20,
+  japanese: 28,
+  korean: 24,
+  southeast_asian: 27,
+  indian: 29,
+  mediterranean: 29,
+  italian: 28,
+  french: 28,
+  australian_modern: 26,
+  western_home: 29,
+  middle_eastern: 21,
+  latin_american: 20,
+  other: 20,
 };
 const expectedMethods = {
-  braise: 23,
-  grill: 10,
-  stir_fry: 15,
-  roast: 26,
-  pan_fry: 14,
-  steam: 15,
-  bake: 31,
-  raw: 28,
-  boil: 32,
-  deep_fry: 6,
+  braise: 38,
+  grill: 17,
+  stir_fry: 27,
+  roast: 52,
+  pan_fry: 27,
+  steam: 20,
+  bake: 54,
+  raw: 62,
+  boil: 52,
+  deep_fry: 7,
+  chill: 7,
+  simmer: 37,
 };
 
 const mismatches = [
@@ -87,7 +96,7 @@ const mismatches = [
     })),
 );
 
-if (batch.recipes.length !== 200 || mismatches.length) {
+if (batch.recipes.length !== 400 || mismatches.length) {
   console.error({ recipeCount: batch.recipes.length, mismatches });
   process.exit(1);
 }

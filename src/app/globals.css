@@ -1808,3 +1808,9 @@ h3 {
     -webkit-print-color-adjust: exact;
   }
 }
+
+.step-loading {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.74rem;
+}

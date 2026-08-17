@@ -5,6 +5,9 @@ import { batchB, batchBIngredientCatalog } from './batch-b';
 import { expansionIngredientCatalog } from './expansion-shared';
 import { batchC } from './batch-c';
 import { batchD } from './batch-d';
+import { batchE } from './batch-e';
+import { batchF } from './batch-f';
+import { expansionV2IngredientCatalog } from './expansion-v2-shared';
 
 /**
  * The launch catalogue is deliberately assembled from the two editorial batches so
@@ -17,6 +20,7 @@ export const ingredientCatalog = [
   ...batchAIngredientCatalog,
   ...batchBIngredientCatalog,
   ...expansionIngredientCatalog,
+  ...expansionV2IngredientCatalog,
 ];
 
 const launchImage = (recipe: RecipeImport): RecipeImport['media'] => ({
@@ -1040,13 +1044,19 @@ const generatedMedia: Record<string, { objectKey: string; generatedAt: string; a
     },
   };
 
-export const launchRecipes: RecipeImport[] = [...batchA, ...batchB, ...batchC, ...batchD].map(
-  (recipe) => ({
+/**
+ * Batches A-D shipped with generated artwork. Batches E and F are the V2
+ * expansion: the records are complete and safe to plan with, but their photos
+ * have not been produced yet, so they keep their own media block and the UI
+ * shows a placeholder rather than a broken image.
+ */
+export const launchRecipes: RecipeImport[] = [
+  ...[...batchA, ...batchB, ...batchC, ...batchD].map((recipe) => ({
     ...recipe,
-    status: 'published',
+    status: 'published' as const,
     source: {
-      sourceType: 'original',
-      providerName: 'Menu Planning Companion editorial catalogue',
+      sourceType: 'original' as const,
+      providerName: 'One Table editorial catalogue',
       sourceUrl: null,
       licenseCode: 'internal-editorial',
       attributionRequired: false,
@@ -1058,12 +1068,17 @@ export const launchRecipes: RecipeImport[] = [...batchA, ...batchB, ...batchC, .
           ...generatedMedia[recipe.slug],
         }
       : launchImage(recipe),
-  }),
-);
+  })),
+  ...batchE,
+  ...batchF,
+];
+
+/** Slugs still waiting on artwork, consumed by the image-brief generator. */
+export const recipesAwaitingArtwork = [...batchE, ...batchF].map((recipe) => recipe.slug);
 
 export const launchCatalogFile = {
   batch: 'launch' as const,
-  version: '2026-08-launch-1',
+  version: '2026-08-launch-2',
   generatedAt: '2026-08-16T00:00:00.000Z',
   recipes: launchRecipes,
 };
