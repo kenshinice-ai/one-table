@@ -28,7 +28,10 @@ resize_one() {
   local widths=("$@")
   local slug png
   slug="$(basename "$source" .webp)"
-  case "$slug" in *-[0-9][0-9][0-9]|*-[0-9][0-9]) return 0 ;; esac
+  # Skip derived files: exactly the widths this script emits. The old glob
+  # (*-[0-9][0-9][0-9]) missed four-digit -1280, which made every -1280 file a
+  # "master" on the next run and compounded suffixes without end.
+  case "$slug" in *-320 | *-640 | *-1280 | *-64 | *-128) return 0 ;; esac
 
   png="$WORK/$slug.png"
   dwebp -quiet "$source" -o "$png" || return 0
