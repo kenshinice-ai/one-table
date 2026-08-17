@@ -1005,8 +1005,10 @@ h3 {
 }
 .recipe-detail {
   display: grid;
-  width: min(960px, 100%);
-  max-height: min(780px, calc(100dvh - 40px));
+  /* Grows with the screen: a 27" display should show a whole recipe, not a
+     960px box scrolling inside acres of backdrop. */
+  width: min(1280px, calc(100vw - 48px));
+  max-height: calc(100dvh - 40px);
   /* The photograph is the reason a recipe gets opened; give it the larger share. */
   grid-template-columns: 38.2fr 61.8fr;
   /*
@@ -1034,7 +1036,17 @@ h3 {
 .detail-copy {
   min-height: 0;
   overflow-y: auto;
-  padding: 28px 30px 26px;
+  padding: 22px 26px 18px;
+}
+/* Wide dialogs put ingredients beside the method so a typical recipe needs no
+   scrolling at all; below the breakpoint the sections stack as before. */
+@media (min-width: 1180px) {
+  .detail-columns {
+    display: grid;
+    grid-template-columns: 38fr 62fr;
+    gap: 4px 30px;
+    align-items: start;
+  }
 }
 .detail-copy h2 {
   margin-bottom: 7px;
@@ -1049,7 +1061,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin: 12px 0 20px;
+  margin: 10px 0 14px;
 }
 .detail-stats span {
   padding: 5px 8px;
@@ -1060,7 +1072,7 @@ h3 {
   font-weight: 800;
 }
 .detail-copy h3 {
-  margin: 18px 0 7px;
+  margin: 12px 0 6px;
   font-size: 1.15rem;
 }
 .ingredient-list,
@@ -1381,7 +1393,11 @@ h3 {
   .detail-copy {
     flex: 1 1 auto;
     min-height: 0;
-    padding: 20px 18px;
+    padding: 20px 18px 14px;
+  }
+  .detail-actions {
+    margin: 12px -18px 0;
+    padding: 10px 18px 12px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2037,10 +2053,15 @@ h3 {
 }
 
 .detail-actions {
+  /* Sticky at the scroll area's foot: however long the recipe, the save
+     action never has to be scrolled to. */
+  position: sticky;
+  bottom: 0;
   display: grid;
   gap: 6px;
-  margin-top: 20px;
-  padding-top: 16px;
+  margin: 14px -26px 0;
+  padding: 12px 26px 14px;
+  background: linear-gradient(to top, var(--surface) 82%, transparent);
   border-top: 1px solid var(--line);
 }
 .detail-actions-hint {

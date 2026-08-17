@@ -205,52 +205,62 @@ export function RecipeDetail({
             </span>
           </div>
 
-          <div className="section-head">
-            <h3>{t.ingredients}</h3>
-            <label className="scale-toggle">
-              <input
-                checked={scaled}
-                onChange={(event) => setScaled(event.target.checked)}
-                type="checkbox"
-              />
-              <span>{fill(t.scaleTo, { count: guests })}</span>
-            </label>
-          </div>
-          <p className="scale-note">{fill(t.baseServing, { count: recipe.baseServings })}</p>
-          {renderIngredients(mainIngredients, t.groupMain)}
-          {renderIngredients(seasoning, t.groupSeasoning)}
+          {/* On wide dialogs the two sections sit side by side so a typical
+              recipe fits without scrolling; narrow screens stack them. */}
+          <div className="detail-columns">
+            <section className="detail-ingredients">
+              <div className="section-head">
+                <h3>{t.ingredients}</h3>
+                <label className="scale-toggle">
+                  <input
+                    checked={scaled}
+                    onChange={(event) => setScaled(event.target.checked)}
+                    type="checkbox"
+                  />
+                  <span>{fill(t.scaleTo, { count: guests })}</span>
+                </label>
+              </div>
+              <p className="scale-note">{fill(t.baseServing, { count: recipe.baseServings })}</p>
+              {renderIngredients(mainIngredients, t.groupMain)}
+              {renderIngredients(seasoning, t.groupSeasoning)}
+            </section>
 
-          <div className="section-head">
-            <h3>{t.steps}</h3>
-            <span className="method-total">
-              {fill(t.activeTime, { active: recipe.activeMinutes, total: recipe.totalMinutes })}
-            </span>
-          </div>
-          {recipe.advanceMinutes > 0 && (
-            <p className="advance-note">{fill(t.advancePrep, { count: recipe.advanceMinutes })}</p>
-          )}
-          {!detail && <p className="step-loading">{t.loadingSteps}</p>}
-          <ol className="step-list">
-            {steps.map((step, index) => (
-              <li key={`${recipe.id}-step-${index}`}>
-                <span className="step-index">{String(index + 1).padStart(2, '0')}</span>
-                <div className="step-body">
-                  {(step.phase || step.minutes !== undefined) && (
-                    <p className="step-meta">
-                      {step.phase && <b>{phaseLabel[step.phase]}</b>}
-                      {step.minutes !== undefined && (
-                        <span>
-                          {step.minutes} {t.minutes}
-                        </span>
+            <section className="detail-method">
+              <div className="section-head">
+                <h3>{t.steps}</h3>
+                <span className="method-total">
+                  {fill(t.activeTime, { active: recipe.activeMinutes, total: recipe.totalMinutes })}
+                </span>
+              </div>
+              {recipe.advanceMinutes > 0 && (
+                <p className="advance-note">
+                  {fill(t.advancePrep, { count: recipe.advanceMinutes })}
+                </p>
+              )}
+              {!detail && <p className="step-loading">{t.loadingSteps}</p>}
+              <ol className="step-list">
+                {steps.map((step, index) => (
+                  <li key={`${recipe.id}-step-${index}`}>
+                    <span className="step-index">{String(index + 1).padStart(2, '0')}</span>
+                    <div className="step-body">
+                      {(step.phase || step.minutes !== undefined) && (
+                        <p className="step-meta">
+                          {step.phase && <b>{phaseLabel[step.phase]}</b>}
+                          {step.minutes !== undefined && (
+                            <span>
+                              {step.minutes} {t.minutes}
+                            </span>
+                          )}
+                        </p>
                       )}
-                    </p>
-                  )}
-                  <p>{step.text}</p>
-                  {step.tip && <p className="step-tip">{step.tip}</p>}
-                </div>
-              </li>
-            ))}
-          </ol>
+                      <p>{step.text}</p>
+                      {step.tip && <p className="step-tip">{step.tip}</p>}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          </div>
           <div className="detail-actions">
             <button className="primary-action" disabled={saving} onClick={saveCard} type="button">
               <ImageIcon />
