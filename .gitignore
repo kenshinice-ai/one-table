@@ -1,0 +1,23 @@
+node_modules
+.node_modules.backup-*
+.next
+.open-next
+.wrangler
+.generated
+coverage
+dist
+*.tsbuildinfo
+.dev.vars
+.env
+.env.local
+.env.*.local
+!.env.example
+!.dev.vars.example
+.DS_Store
+
+# iCloud Drive creates numbered duplicates when the same file syncs twice.
+*\ 2.*
+*\ 3.*
+
+# Personal UI reference photos, not product assets.
+ideas/

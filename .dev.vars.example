@@ -1,0 +1,4 @@
+# Copy to .dev.vars for local Worker-only secrets.
+# Do not commit .dev.vars.
+IMPORT_SIGNING_SECRET=replace-with-a-local-only-value
+

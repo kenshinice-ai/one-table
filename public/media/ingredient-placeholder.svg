@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Ingredient illustration placeholder">
+  <rect width="160" height="160" rx="28" fill="#edf5ef"/>
+  <circle cx="80" cy="82" r="46" fill="#fffdf9" stroke="#d96b45" stroke-width="5"/>
+  <path d="M80 42c0 30-23 37-23 67 0 12 10 21 23 21s23-9 23-21c0-30-23-37-23-67Z" fill="#f0c66b"/>
+  <path d="M80 43V27M80 31c-11-4-18 2-22 9m22-6c9-9 16-10 24-5" fill="none" stroke="#5a947e" stroke-linecap="round" stroke-width="5"/>
+</svg>

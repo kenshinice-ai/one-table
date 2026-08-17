@@ -1,0 +1,64 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "menu-planning-companion",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-08-16",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+  },
+  "observability": {
+    "enabled": true,
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "menu-planning-db",
+      "database_id": "00000000-0000-0000-0000-000000000001",
+      "migrations_dir": "migrations",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA_BUCKET",
+      "bucket_name": "menu-planning-media-local",
+    },
+  ],
+  "vars": {
+    "APP_ENV": "development",
+    "APP_BASE_URL": "http://localhost:3000",
+  },
+  "env": {
+    "staging": {
+      "name": "menu-planning-companion-staging",
+      "vars": {
+        "APP_ENV": "staging",
+        "APP_BASE_URL": "https://staging.example.com",
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "menu-planning-db-staging",
+          "database_id": "REPLACE_WITH_STAGING_D1_ID",
+          "migrations_dir": "migrations",
+        },
+      ],
+      "r2_buckets": [
+        {
+          "binding": "MEDIA_BUCKET",
+          "bucket_name": "menu-planning-media-staging",
+        },
+      ],
+    },
+    "production": {
+      "name": "menu-planning-companion",
+      "vars": {
+        "APP_ENV": "production",
+        "APP_BASE_URL": "https://menu-planning-companion.lee-liu-melbourne.workers.dev",
+      },
+      "d1_databases": [],
+      "r2_buckets": [],
+    },
+  },
+}

@@ -1,0 +1,52 @@
+{
+  "name": "menu-planning-companion",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Touch-first, bilingual menu planning for a single dinner or gathering. The product combines a curated local recipe catalogue, deterministic safety and feasibility rules, and AI-assisted menu composition and explanation.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy:staging": "opennextjs-cloudflare build && opennextjs-cloudflare deploy --env staging",
+    "deploy:production": "opennextjs-cloudflare build && opennextjs-cloudflare deploy --env production",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "db:migrate:local": "wrangler d1 migrations apply menu-planning-db --local",
+    "db:migrate:staging": "wrangler d1 migrations apply menu-planning-db --remote --env staging",
+    "db:migrate:production": "wrangler d1 migrations apply menu-planning-db --remote --env production",
+    "recipes:validate": "node --import tsx scripts/recipes/validate.ts",
+    "recipes:generate-sql": "node --import tsx scripts/recipes/generate-sql.ts",
+    "recipes:import:local": "npm run recipes:generate-sql && wrangler d1 execute menu-planning-db --local --file .generated/launch-recipes.sql",
+    "recipes:coverage": "node --import tsx scripts/recipes/coverage.ts",
+    "recipes:media:audit": "node --import tsx scripts/recipes/media-audit.ts",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "type": "module",
+  "dependencies": {
+    "@opennextjs/cloudflare": "^1.20.2",
+    "next": "^16.3.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "ulid": "^3.0.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "eslint": "9.39.5",
+    "eslint-config-next": "^16.3.1",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.12",
+    "typescript": "6.0.2",
+    "wrangler": "^4.123.0"
+  }
+}

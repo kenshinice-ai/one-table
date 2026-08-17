@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="932" viewBox="0 0 430 932" role="img" aria-labelledby="title desc">
+  <title id="title">手机自由筛选工作台线框图</title>
+  <desc id="desc">顶部显示聚餐摘要，中间为任意顺序展开的筛选折叠区，底部固定实时结果入口。</desc>
+  <style>
+    .bg{fill:#f7f7f5}.panel{fill:#fff;stroke:#222;stroke-width:1.5}.soft{fill:#fafafa;stroke:#777;stroke-width:1}.selected{fill:#e8e8e8;stroke:#111;stroke-width:1.5}.txt{font:20px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#111}.small{font:14px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#333}.label{font:17px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;font-weight:600;fill:#111}.muted{font:13px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#666}.button{fill:#222}.buttonText{font:16px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;font-weight:600;fill:#fff}
+  </style>
+  <rect class="bg" width="430" height="932"/>
+  <text class="txt" x="22" y="38" font-weight="700">聚餐菜单</text><text class="small" x="358" y="36">复位</text>
+  <g transform="translate(16 56)">
+    <rect class="panel" width="92" height="70" rx="10"/><text class="muted" x="14" y="25">人数</text><text class="label" x="14" y="52">6 人</text>
+    <rect class="panel" x="100" width="92" height="70" rx="10"/><text class="muted" x="114" y="25">菜数</text><text class="label" x="114" y="52">4 道</text>
+    <rect class="panel" x="200" width="104" height="70" rx="10"/><text class="muted" x="214" y="25">上菜</text><text class="label" x="214" y="52">分享</text>
+    <rect class="panel" x="312" width="86" height="70" rx="10"/><text class="muted" x="326" y="25">预算</text><text class="label" x="326" y="52">A$120</text>
+  </g>
+
+  <g transform="translate(16 142)">
+    <rect class="panel" width="398" height="288" rx="12"/>
+    <text class="label" x="18" y="34">菜系</text><text class="muted" x="292" y="34">已选 3 项　⌃</text>
+    <rect class="selected" x="16" y="55" width="366" height="48" rx="8"/><text class="label" x="34" y="86">☑　中餐</text>
+    <rect class="selected" x="16" y="113" width="366" height="48" rx="8"/><text class="label" x="34" y="144">☑　日本料理</text>
+    <rect class="selected" x="16" y="171" width="366" height="48" rx="8"/><text class="label" x="34" y="202">☑　地中海</text>
+    <rect class="soft" x="16" y="229" width="366" height="44" rx="8"/><text class="label" x="34" y="258">□　澳洲现代菜</text>
+  </g>
+  <g transform="translate(16 442)"><rect class="panel" width="398" height="66" rx="12"/><text class="label" x="18" y="29">烹饪方式</text><text class="muted" x="18" y="51">已选 2 项</text><text class="label" x="360" y="40">⌄</text></g>
+  <g transform="translate(16 520)"><rect class="panel" width="398" height="66" rx="12"/><text class="label" x="18" y="29">希望包含</text><text class="muted" x="18" y="51">已选 4 项</text><text class="label" x="360" y="40">⌄</text></g>
+  <g transform="translate(16 598)"><rect class="panel" width="398" height="66" rx="12"/><text class="label" x="18" y="29">不想出现</text><text class="muted" x="18" y="51">已选 1 项</text><text class="label" x="360" y="40">⌄</text></g>
+  <g transform="translate(16 676)"><rect class="panel" width="398" height="66" rx="12"/><text class="label" x="18" y="29">时间与设备</text><text class="muted" x="18" y="51">已选 2 项</text><text class="label" x="360" y="40">⌄</text></g>
+  <g transform="translate(16 754)"><rect class="panel" width="398" height="66" rx="12"/><text class="label" x="18" y="29">饮食与过敏</text><text class="muted" x="18" y="51">已选 3 项</text><text class="label" x="360" y="40">⌄</text></g>
+  <rect class="panel" x="0" y="840" width="430" height="92" rx="18"/>
+  <text class="txt" x="22" y="876" font-weight="700">128</text><text class="small" x="70" y="875">符合 128 道菜</text>
+  <rect class="button" x="210" y="854" width="202" height="58" rx="10"/><text class="buttonText" x="250" y="889">查看当前菜单</text>
+</svg>

@@ -1,0 +1,9 @@
+node_modules
+.node_modules.backup-*
+.next
+.open-next
+.wrangler
+.generated
+package-lock.json
+docs/renders
+ideas

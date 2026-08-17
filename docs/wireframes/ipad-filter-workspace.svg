@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">横向 iPad 自由筛选工作台线框图</title>
+  <desc id="desc">顶部为人数、菜数、上菜方式与预算，左侧为可自由展开的交叉筛选，右侧为实时菜单。</desc>
+  <style>
+    .bg{fill:#f7f7f5}.panel{fill:#fff;stroke:#202020;stroke-width:2}.soft{fill:#fafafa;stroke:#777;stroke-width:1.5}.chip{fill:#fff;stroke:#444;stroke-width:1.5}.selected{fill:#e8e8e8;stroke:#111;stroke-width:2}.line{stroke:#777;stroke-width:2}.txt{font:24px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#111}.small{font:18px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#333}.label{font:20px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;font-weight:600;fill:#111}.muted{font:17px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;fill:#666}.button{fill:#222}.buttonText{font:20px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;font-weight:600;fill:#fff}
+  </style>
+  <rect class="bg" width="1600" height="1000"/>
+  <text class="txt" x="36" y="55" font-weight="700">聚餐菜单</text>
+  <text class="small" x="1260" y="52">中文 / EN　公制 / US</text>
+
+  <g transform="translate(30 80)">
+    <rect class="panel" width="350" height="88" rx="12"/><text class="small" x="24" y="34">人数</text><text class="txt" x="24" y="68">6 人　⌄</text>
+  </g>
+  <g transform="translate(395 80)">
+    <rect class="panel" width="350" height="88" rx="12"/><text class="small" x="24" y="34">菜品数量</text><text class="txt" x="24" y="68">4 道菜　⌄</text>
+  </g>
+  <g transform="translate(760 80)">
+    <rect class="panel" width="350" height="88" rx="12"/><text class="small" x="24" y="34">上菜方式</text><text class="txt" x="24" y="68">家庭分享　⌄</text>
+  </g>
+  <g transform="translate(1125 80)">
+    <rect class="panel" width="445" height="88" rx="12"/><text class="small" x="24" y="34">总预算</text><text class="txt" x="24" y="68">A$120　⌄</text>
+  </g>
+
+  <rect class="panel" x="30" y="190" width="950" height="730" rx="16"/>
+  <text class="label" x="55" y="228">自由筛选工作台</text>
+  <text class="muted" x="758" y="228">任意顺序 · 自动交叉筛选</text>
+
+  <g transform="translate(50 250)">
+    <rect class="panel" width="440" height="338" rx="14"/>
+    <text class="label" x="22" y="38">菜系</text><text class="muted" x="320" y="38">已选 3 项　⌃</text>
+    <rect class="soft" x="18" y="58" width="404" height="52" rx="8"/><text class="muted" x="36" y="91">搜索菜系</text>
+    <rect class="selected" x="18" y="126" width="404" height="48" rx="8"/><text class="small" x="38" y="157">☑　中餐</text>
+    <rect class="selected" x="18" y="184" width="404" height="48" rx="8"/><text class="small" x="38" y="215">☑　日本料理</text>
+    <rect class="selected" x="18" y="242" width="404" height="48" rx="8"/><text class="small" x="38" y="273">☑　地中海</text>
+    <text class="small" x="40" y="320">清除</text><text class="small" x="320" y="320" font-weight="700">应用 (3)</text>
+  </g>
+
+  <g transform="translate(510 250)">
+    <rect class="soft" width="440" height="104" rx="12"/><text class="label" x="20" y="36">烹饪方式</text><text class="muted" x="322" y="36">已选 3 项　⌄</text>
+    <rect class="chip" x="20" y="52" width="95" height="36" rx="8"/><text class="small" x="38" y="77">蒸 ×</text>
+    <rect class="chip" x="126" y="52" width="95" height="36" rx="8"/><text class="small" x="144" y="77">烤 ×</text>
+    <rect class="chip" x="232" y="52" width="95" height="36" rx="8"/><text class="small" x="250" y="77">煎 ×</text>
+  </g>
+  <g transform="translate(510 370)">
+    <rect class="soft" width="440" height="104" rx="12"/><text class="label" x="20" y="36">希望包含</text><text class="muted" x="322" y="36">已选 4 项　⌄</text>
+    <text class="small" x="20" y="77">海鲜　时令蔬菜　豆制品　柑橘</text>
+  </g>
+  <g transform="translate(510 490)">
+    <rect class="soft" width="440" height="98" rx="12"/><text class="label" x="20" y="36">不想出现</text><text class="muted" x="322" y="36">已选 2 项　⌄</text>
+    <text class="small" x="20" y="73">花生　香菜</text>
+  </g>
+  <g transform="translate(50 610)">
+    <rect class="soft" width="440" height="100" rx="12"/><text class="label" x="20" y="36">时间与设备</text><text class="muted" x="322" y="36">已选 3 项　⌄</text>
+    <text class="small" x="20" y="74">60 分钟内　烤箱　炉灶</text>
+  </g>
+  <g transform="translate(510 610)">
+    <rect class="soft" width="440" height="100" rx="12"/><text class="label" x="20" y="36">饮食与过敏</text><text class="muted" x="322" y="36">已选 3 项　⌄</text>
+    <text class="small" x="20" y="74">无坚果　低乳糖　不吃牛肉</text>
+  </g>
+  <g transform="translate(50 730)">
+    <rect class="soft" width="900" height="66" rx="12"/><text class="small" x="20" y="40">✓ 条件已更新　　符合 128 道菜</text>
+    <text class="small" x="650" y="40">撤销</text><text class="small" x="760" y="40">复位</text>
+  </g>
+  <g transform="translate(50 815)">
+    <rect class="soft" width="900" height="82" rx="12"/><text class="muted" x="20" y="30">当前已选条件</text>
+    <text class="small" x="20" y="62">中餐 ×　日本料理 ×　蒸 ×　海鲜 ×　60 分钟内 ×　无坚果 ×</text>
+  </g>
+
+  <rect class="panel" x="1000" y="190" width="570" height="730" rx="16"/>
+  <text class="label" x="1028" y="232">当前菜单</text><text class="muted" x="1370" y="232">符合 128 道菜</text>
+  <text class="small" x="1028" y="274">预算 A$112 / A$120</text>
+  <line class="line" x1="1028" y1="292" x2="1518" y2="292"/>
+  <g transform="translate(1028 315)">
+    <rect class="soft" width="490" height="112" rx="12"/><rect class="selected" x="12" y="12" width="88" height="88" rx="8"/><text class="label" x="120" y="43">前菜</text><text class="small" x="120" y="78">菜名与价格摘要</text>
+  </g>
+  <g transform="translate(1028 441)">
+    <rect class="soft" width="490" height="112" rx="12"/><rect class="selected" x="12" y="12" width="88" height="88" rx="8"/><text class="label" x="120" y="43">主菜</text><text class="small" x="120" y="78">菜名与价格摘要</text>
+  </g>
+  <g transform="translate(1028 567)">
+    <rect class="soft" width="490" height="112" rx="12"/><rect class="selected" x="12" y="12" width="88" height="88" rx="8"/><text class="label" x="120" y="43">配菜</text><text class="small" x="120" y="78">菜名与价格摘要</text>
+  </g>
+  <g transform="translate(1028 693)">
+    <rect class="soft" width="490" height="112" rx="12"/><rect class="selected" x="12" y="12" width="88" height="88" rx="8"/><text class="label" x="120" y="43">甜品</text><text class="small" x="120" y="78">菜名与价格摘要</text>
+  </g>
+  <rect class="button" x="1218" y="830" width="300" height="64" rx="12"/><text class="buttonText" x="1318" y="871">重新组合</text>
+  <text class="muted" x="30" y="965">交互原则：筛选即时生效；规则结果实时更新；AI解释异步刷新；不要求线性“下一步”。</text>
+</svg>
