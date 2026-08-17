@@ -74,9 +74,7 @@ console.log(
     {
       adopted: candidates.length,
       reencoded,
-      skippedAsRejected: [...rejects].filter((slug) =>
-        existsSync(join(MEDIA, `${slug}.webp`)),
-      ),
+      skippedAsRejected: [...rejects].filter((slug) => existsSync(join(MEDIA, `${slug}.webp`))),
       registryTotal: Object.keys(registry).length,
       stillAwaitingArt: stillPending,
     },

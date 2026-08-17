@@ -490,10 +490,19 @@ export function recipeHasArtwork(objectKey: string) {
 export type RouteCardFloor = {
   nameShort: string;
   name: string;
-  planSrc: string;
+  planSrc: string | null;
   width: number;
   height: number;
   points: Array<{ index: number; x: number; y: number }>;
+};
+
+/** One cell of the grocer aisle strip — drawn instead of floor maps. */
+export type RouteCardAisle = {
+  index: number;
+  /** "通道 3" / "Aisle 3", or the counter's own name for the concierge stop. */
+  label: string;
+  name: string;
+  isConcierge: boolean;
 };
 
 export type RouteCardStop = {
@@ -510,9 +519,14 @@ export type RouteCardInput = {
   title: string;
   summary: string;
   floors: RouteCardFloor[];
+  /** When present the card draws a generated aisle strip instead of floor maps. */
+  aisles?: RouteCardAisle[];
   stops: RouteCardStop[];
   disclaimer: string;
 };
+
+const AISLES_PER_ROW = 4;
+const AISLE_ROW_HEIGHT = 158;
 
 /**
  * Renders the walking route as a portrait card for the camera roll: the
@@ -526,12 +540,17 @@ export async function renderRouteCard(input: RouteCardInput): Promise<Blob | nul
   const margin = 72;
   const contentWidth = width - margin * 2;
 
-  const floorsWithStops = input.floors.filter((floor) => floor.points.length > 0);
+  const aisles = input.aisles ?? [];
+  const floorsWithStops = aisles.length
+    ? []
+    : input.floors.filter((floor) => floor.points.length > 0);
   const mapWidth = floorsWithStops.length > 1 ? (contentWidth - 24) / 2 : contentWidth * 0.72;
-  const mapHeights = floorsWithStops.map(
-    (floor) => (floor.height / floor.width) * mapWidth,
-  );
-  const mapRowHeight = floorsWithStops.length ? Math.max(...mapHeights) + 56 : 0;
+  const mapHeights = floorsWithStops.map((floor) => (floor.height / floor.width) * mapWidth);
+  const mapRowHeight = aisles.length
+    ? Math.ceil(aisles.length / AISLES_PER_ROW) * AISLE_ROW_HEIGHT + 8
+    : floorsWithStops.length
+      ? Math.max(...mapHeights) + 56
+      : 0;
 
   const stopHeights = input.stops.map(
     (stop) => 46 + Math.ceil(stop.items.join(' · ').length / 52) * 30,
@@ -561,14 +580,59 @@ export async function renderRouteCard(input: RouteCardInput): Promise<Blob | nul
   context.font = `700 26px ${SANS}`;
   context.fillText(input.summary, margin, 172);
 
+  // --- aisle strip: the grocer's generated walk, no floor plan required ---
+  const mapY = 210;
+  if (aisles.length) {
+    const cellWidth = contentWidth / AISLES_PER_ROW;
+    for (let a = 0; a < aisles.length; a += 1) {
+      const aisle = aisles[a];
+      const row = Math.floor(a / AISLES_PER_ROW);
+      const column = a % AISLES_PER_ROW;
+      const cx = margin + column * cellWidth + cellWidth / 2;
+      const cy = mapY + row * AISLE_ROW_HEIGHT + 42;
+
+      if (column > 0) {
+        context.strokeStyle = PALETTE.terracotta;
+        context.lineWidth = 4;
+        context.setLineDash([9, 7]);
+        context.beginPath();
+        context.moveTo(cx - cellWidth + 26, cy);
+        context.lineTo(cx - 26, cy);
+        context.stroke();
+        context.setLineDash([]);
+      }
+
+      context.fillStyle = aisle.isConcierge ? PALETTE.muted : PALETTE.terracotta;
+      context.beginPath();
+      context.arc(cx, cy, 22, 0, Math.PI * 2);
+      context.fill();
+      context.strokeStyle = '#fff';
+      context.lineWidth = 3;
+      context.stroke();
+      context.fillStyle = '#fff';
+      context.font = `700 20px ${SANS}`;
+      context.textAlign = 'center';
+      context.fillText(String(aisle.index), cx, cy + 7);
+
+      context.fillStyle = PALETTE.ink;
+      context.font = `700 23px ${SANS}`;
+      context.fillText(truncate(context, aisle.label, cellWidth - 16), cx, cy + 58);
+      if (aisle.name) {
+        context.fillStyle = PALETTE.muted;
+        context.font = `400 19px ${SANS}`;
+        context.fillText(truncate(context, aisle.name, cellWidth - 16), cx, cy + 86);
+      }
+      context.textAlign = 'left';
+    }
+  }
+
   // --- schematic maps with the numbered path ---
   let mapX = margin;
-  const mapY = 210;
   for (let f = 0; f < floorsWithStops.length; f += 1) {
     const floor = floorsWithStops[f];
     const drawH = mapHeights[f];
     const scale = mapWidth / floor.width;
-    const image = await loadImage(floor.planSrc);
+    const image = floor.planSrc ? await loadImage(floor.planSrc) : null;
 
     context.fillStyle = PALETTE.muted;
     context.font = `700 20px ${SANS}`;

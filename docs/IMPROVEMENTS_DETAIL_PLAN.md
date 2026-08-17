@@ -10,11 +10,12 @@
 
 **设计**：Workers Analytics Engine（AE）数据集 `onetable_events`。前端在四个动作点 `navigator.sendBeacon('/api/v1/beacon', ...)`：`scan`（带 `?src=qr` 参数的首访）、`compose`（换一组/条件变更后的成菜）、`list`（购物清单打开）、`route`（路线卡保存）。Worker 端一个 30 行的 route：`writeDataPoint({ blobs: [event, tenantId, APP_ENV], doubles: [1] })`。
 **关键取舍**：
+
 - 不用 Cloudflare Web Analytics——它只有 pageview，给不出四事件；AE 免费额度完全够。
 - `/api/v1` 休眠红线的例外声明：beacon 是**无状态计数**，不读不写业务数据、不接 D1，写进红线文档作为已审批例外。
 - 客户端节流：同事件每会话最多 1 次（sessionStorage 标记），拒绝形成行为轨迹——我们卖给商场的是聚合数，不是用户画像。
-**报告管线**：`scripts/report/campaign-report.ts` 用 AE 的 SQL API 拉周聚合 → 生成信头 Markdown/HTML 报告（复用 letterhead 模板）——W5 结案报告从此一键出。
-**验收**：demo 域完成一次全流程后，AE 查询四事件各 ≥1；无 cookie、无 UA 存储；`/privacy` 页文案同步更新。
+  **报告管线**：`scripts/report/campaign-report.ts` 用 AE 的 SQL API 拉周聚合 → 生成信头 Markdown/HTML 报告（复用 letterhead 模板）——W5 结案报告从此一键出。
+  **验收**：demo 域完成一次全流程后，AE 查询四事件各 ≥1；无 cookie、无 UA 存储；`/privacy` 页文案同步更新。
 
 ### 2. Kiosk 模式（W3 遗留）
 
@@ -55,6 +56,7 @@
 **验收**：600/600 有结构化步骤；详情页时间轴全量生效。
 
 ### 8. 其余（顺序执行，不再展开）
+
 拼音首字母搜索（搜索索引加一列，无依赖，音表 vendored）→ PWA 更新提示（SW `updatefound` → toast「有新版本，点击刷新」，解决部署频繁时的旧版驻留）→ iOS 壳（B2C 推广启动时）。
 
 ## 新增深想项（本轮补充）
@@ -65,9 +67,9 @@
 
 ## 建议执行顺序
 
-| 批 | 内容 | 体量 |
-| --- | --- | --- |
-| 下一轮 | P0-1 埋点 + P0-3 Sample Grocer + 路线勾选 | 1 周 |
-| 随后 | P0-2 Kiosk + P1-5 场合 chips（互相独立可并行） | 1 周 |
-| 再后 | P1-4 菜谱静态页 + P1-6 浏览收藏 | 1 周 |
-| 空隙 | P2-7 步骤回填（半天）+ P2-8 顺序消化 | — |
+| 批     | 内容                                           | 体量 |
+| ------ | ---------------------------------------------- | ---- |
+| 下一轮 | P0-1 埋点 + P0-3 Sample Grocer + 路线勾选      | 1 周 |
+| 随后   | P0-2 Kiosk + P1-5 场合 chips（互相独立可并行） | 1 周 |
+| 再后   | P1-4 菜谱静态页 + P1-6 浏览收藏                | 1 周 |
+| 空隙   | P2-7 步骤回填（半天）+ P2-8 顺序消化           | —    |

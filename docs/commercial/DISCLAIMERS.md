@@ -14,7 +14,7 @@
 
 **中文**：排除某过敏原时，系统会以确定性规则同时拦截「含有、衍生自、可能含有、来源不明」四类关系。但食材数据为编辑估算，商品配方可能变更——**最终请以包装标签为准；严重过敏者请谨慎依赖任何规划工具**。
 
-**English**: When an allergen is excluded, deterministic rules block *contains, derived-from, may-contain and unknown* relations alike. Ingredient data is editorial, however, and product formulations change — **the packaged label is final. Those with severe allergies should not rely solely on any planning tool.**
+**English**: When an allergen is excluded, deterministic rules block _contains, derived-from, may-contain and unknown_ relations alike. Ingredient data is editorial, however, and product formulations change — **the packaged label is final. Those with severe allergies should not rely solely on any planning tool.**
 
 ## 3 · 店内路线 / 导航（路线卡底部、打印页脚 —— 新增，核心）
 

@@ -2133,6 +2133,96 @@ h3 {
   font-size: 0.7rem;
   font-weight: 700;
 }
+.route-progress {
+  color: var(--sage-dark, #3f7a63);
+}
+.route-stops li.is-done .stop-index {
+  background: var(--sage, #5a947e);
+}
+
+/* Grocer aisle strip: navigation generated from zone numbers, no floor plan. */
+.aisle-strip {
+  display: flex;
+  gap: 6px;
+  padding: 14px 10px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fcfaf5;
+}
+.aisle-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 86px;
+  padding: 4px 6px;
+  text-align: center;
+}
+.aisle-cell + .aisle-cell::before {
+  content: '';
+  position: absolute;
+  top: 17px;
+  left: calc(-50% + 20px);
+  width: calc(100% - 40px);
+  border-top: 3px dashed var(--terracotta);
+}
+.aisle-cell-index {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: #fff;
+  background: var(--terracotta);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--line);
+  font-size: 0.85rem;
+  font-weight: 850;
+}
+.aisle-cell.is-concierge .aisle-cell-index {
+  background: var(--muted);
+}
+.aisle-cell b {
+  font-size: 0.78rem;
+}
+.aisle-cell small {
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+
+/* Per-item check-off: ticked in the aisle, remembered for the session. */
+.stop-checklist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 5px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.stop-checklist label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  color: var(--ink);
+  font-size: 0.74rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.stop-checklist input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--sage, #5a947e);
+  cursor: pointer;
+}
+.stop-checklist label.is-done span {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--sage, #5a947e);
+}
 .secondary-action {
   display: flex;
   width: 100%;

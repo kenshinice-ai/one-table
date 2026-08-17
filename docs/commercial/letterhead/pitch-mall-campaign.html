@@ -1,150 +1,352 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<title>Paradise Production × One Table — Campaign Proposal</title>
-<style>
-  /* Paradise letterhead. Numbers follow the brand's φ/Fibonacci scales:
+  <head>
+    <meta charset="utf-8" />
+    <title>Paradise Production × One Table — Campaign Proposal</title>
+    <style>
+      /* Paradise letterhead. Numbers follow the brand's φ/Fibonacci scales:
      spacing 8/13/21/34/55, split 61.8/38.2, light-ground accent #A16207 only. */
-  :root {
-    --navy: #0E1729; --navy2: #16233D;
-    --amber-d: #A16207; --amber: #F5B335;
-    --paper: #F7F5F2; --white: #fff; --ink: #0C0A09;
-    --muted: #5C6470; --line: #E3DFD8;
-  }
-  * { box-sizing: border-box; margin: 0; }
-  body {
-    background: var(--paper); color: var(--ink);
-    font-family: Inter, -apple-system, 'PingFang SC', sans-serif;
-    font-size: 13px; line-height: 1.618;
-  }
-  .sheet {
-    width: 210mm; min-height: 296mm; margin: 0 auto; background: var(--white);
-    padding: 13mm 16mm 10mm; display: flex; flex-direction: column;
-  }
-  @media print {
-    body { background: var(--white); }
-    .sheet { width: auto; min-height: auto; margin: 0; padding: 8mm 10mm 6mm; }
-    .no-print { display: none; }
-  }
-  @page { size: A4; margin: 0; }
+      :root {
+        --navy: #0e1729;
+        --navy2: #16233d;
+        --amber-d: #a16207;
+        --amber: #f5b335;
+        --paper: #f7f5f2;
+        --white: #fff;
+        --ink: #0c0a09;
+        --muted: #5c6470;
+        --line: #e3dfd8;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family:
+          Inter,
+          -apple-system,
+          'PingFang SC',
+          sans-serif;
+        font-size: 13px;
+        line-height: 1.618;
+      }
+      .sheet {
+        width: 210mm;
+        min-height: 296mm;
+        margin: 0 auto;
+        background: var(--white);
+        padding: 13mm 16mm 10mm;
+        display: flex;
+        flex-direction: column;
+      }
+      @media print {
+        body {
+          background: var(--white);
+        }
+        .sheet {
+          width: auto;
+          min-height: auto;
+          margin: 0;
+          padding: 8mm 10mm 6mm;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+      @page {
+        size: A4;
+        margin: 0;
+      }
 
-  h1, h2, .brandname { font-family: 'Playfair Display', Georgia, 'Songti SC', serif; }
+      h1,
+      h2,
+      .brandname {
+        font-family: 'Playfair Display', Georgia, 'Songti SC', serif;
+      }
 
-  /* Letterhead */
-  .lh { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid var(--navy); padding-bottom: 8px; }
-  .brandname { font-size: 21px; letter-spacing: 3px; color: var(--navy); font-weight: 500; }
-  .brandname small { font-family: Inter, sans-serif; font-size: 9px; letter-spacing: 4px; color: var(--muted); font-weight: 400; }
-  .lh .meta { font-size: 9.5px; color: var(--muted); text-align: right; line-height: 1.6; }
+      /* Letterhead */
+      .lh {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--navy);
+        padding-bottom: 8px;
+      }
+      .brandname {
+        font-size: 21px;
+        letter-spacing: 3px;
+        color: var(--navy);
+        font-weight: 500;
+      }
+      .brandname small {
+        font-family: Inter, sans-serif;
+        font-size: 9px;
+        letter-spacing: 4px;
+        color: var(--muted);
+        font-weight: 400;
+      }
+      .lh .meta {
+        font-size: 9.5px;
+        color: var(--muted);
+        text-align: right;
+        line-height: 1.6;
+      }
 
-  .doctag { margin: 13px 0 3px; font-size: 9.5px; letter-spacing: 2.6px; text-transform: uppercase; color: var(--amber-d); font-weight: 600; }
-  h1 { font-size: 27px; line-height: 1.2; color: var(--navy); margin-bottom: 8px; max-width: 34ch; }
-  .lede { color: var(--muted); font-size: 12.5px; max-width: 61.8ch; margin-bottom: 13px; }
+      .doctag {
+        margin: 13px 0 3px;
+        font-size: 9.5px;
+        letter-spacing: 2.6px;
+        text-transform: uppercase;
+        color: var(--amber-d);
+        font-weight: 600;
+      }
+      h1 {
+        font-size: 27px;
+        line-height: 1.2;
+        color: var(--navy);
+        margin-bottom: 8px;
+        max-width: 34ch;
+      }
+      .lede {
+        color: var(--muted);
+        font-size: 12.5px;
+        max-width: 61.8ch;
+        margin-bottom: 13px;
+      }
 
-  .split { display: grid; grid-template-columns: 61.8fr 38.2fr; gap: 21px; margin-bottom: 13px; }
-  h2 { font-size: 14px; color: var(--navy); margin: 13px 0 5px; }
-  h2:first-child { margin-top: 0; }
-  p { margin-bottom: 8px; }
-  ol.journey { margin: 0 0 8px 17px; padding: 0; }
-  ol.journey li { margin-bottom: 4px; }
-  ol.journey b { color: var(--navy); }
+      .split {
+        display: grid;
+        grid-template-columns: 61.8fr 38.2fr;
+        gap: 21px;
+        margin-bottom: 13px;
+      }
+      h2 {
+        font-size: 14px;
+        color: var(--navy);
+        margin: 13px 0 5px;
+      }
+      h2:first-child {
+        margin-top: 0;
+      }
+      p {
+        margin-bottom: 8px;
+      }
+      ol.journey {
+        margin: 0 0 8px 17px;
+        padding: 0;
+      }
+      ol.journey li {
+        margin-bottom: 4px;
+      }
+      ol.journey b {
+        color: var(--navy);
+      }
 
-  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 3px; padding: 13px; }
-  .panel h2 { margin-top: 0; }
-  .tick { list-style: none; margin: 0; padding: 0; }
-  .tick li { padding-left: 16px; position: relative; margin-bottom: 6px; }
-  .tick li::before { content: '—'; position: absolute; left: 0; color: var(--amber-d); }
+      .panel {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        padding: 13px;
+      }
+      .panel h2 {
+        margin-top: 0;
+      }
+      .tick {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .tick li {
+        padding-left: 16px;
+        position: relative;
+        margin-bottom: 6px;
+      }
+      .tick li::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: var(--amber-d);
+      }
 
-  table.pkg { width: 100%; border-collapse: collapse; font-size: 12px; margin: 5px 0 8px; }
-  .pkg th, .pkg td { text-align: left; padding: 6px 8px; border-top: 1px solid var(--line); vertical-align: top; }
-  .pkg thead th { border-top: 0; font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
-  .pkg .price { white-space: nowrap; font-weight: 600; color: var(--navy); }
+      table.pkg {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+        margin: 5px 0 8px;
+      }
+      .pkg th,
+      .pkg td {
+        text-align: left;
+        padding: 6px 8px;
+        border-top: 1px solid var(--line);
+        vertical-align: top;
+      }
+      .pkg thead th {
+        border-top: 0;
+        font-size: 9.5px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .pkg .price {
+        white-space: nowrap;
+        font-weight: 600;
+        color: var(--navy);
+      }
 
-  .quote { border-left: 2px solid var(--amber-d); padding: 3px 0 3px 13px; margin: 13px 0; color: var(--navy); font-size: 12.5px; }
+      .quote {
+        border-left: 2px solid var(--amber-d);
+        padding: 3px 0 3px 13px;
+        margin: 13px 0;
+        color: var(--navy);
+        font-size: 12.5px;
+      }
 
-  .foot { margin-top: auto; border-top: 1px solid var(--line); padding-top: 8px; font-size: 9px; color: var(--muted); display: flex; justify-content: space-between; gap: 21px; }
-  .no-print { position: fixed; right: 13px; top: 13px; background: var(--navy); color: #fff; padding: 8px 13px; border-radius: 3px; font-size: 11px; }
-</style>
-</head>
-<body>
-<div class="no-print">打印 → 存储为 PDF（A4 · 背景图形开）</div>
-<div class="sheet">
-
-  <div class="lh">
-    <div class="brandname">PARADISE <small>PRODUCTION</small></div>
-    <div class="meta">
-      Create trust through clarity. · 用清晰创造信任。<br />
-      lee@pwestudio.site · 0488 885 850 · Melbourne VIC
-    </div>
-  </div>
-
-  <p class="doctag">Seasonal Campaign Proposal · Lunar New Year 2027</p>
-  <h1>From "what should we cook?" to footsteps through your centre</h1>
-  <p class="lede">A complete reunion-dinner campaign for your centre: an interactive bilingual menu planner as the centrepiece, surrounded by the campaign creative to carry it — produced end to end by one Melbourne team.</p>
-
-  <div class="split">
-    <div>
-      <h2>The gap we close</h2>
-      <p>Menu-planning kiosks exist in Australian centres — they answer <em>"what should we cook tonight?"</em> and hand the shopper a recipe QR. The journey ends exactly where your tenants' revenue should begin. Nobody shows the shopper <b>where inside your centre</b> to buy the 18 ingredients on that list, or which of your restaurants serves the same table.</p>
-
-      <h2>One Table: the menu becomes a route</h2>
-      <ol class="journey">
-        <li>Scan a QR — poster, kiosk or centre app. <b>No install.</b></li>
-        <li>Guests, budget, courses, dietary needs → a complete menu, instantly.</li>
-        <li>Every ingredient merges into one shopping list, scaled to the party.</li>
-        <li><b>The list becomes a walking route</b> — each ingredient mapped to a tenant, ordered level by level, saved to the phone. Works offline on basement levels.</li>
-        <li>Rather book a table? The same menu routes to your restaurants.</li>
-      </ol>
-
-      <h2>Built the trustworthy way</h2>
-      <ul class="tick">
-        <li>Curated, editorially reviewed recipes — no on-the-fly AI text under your brand</li>
-        <li>Allergen exclusions are rule-based and absolute: <em>contains, derived-from, may-contain, unknown</em> — all blocked</li>
-        <li>Fully bilingual English / 中文 across menus, lists and route cards</li>
-        <li>No accounts, no personal data — privacy by design, aggregate campaign metrics only</li>
-      </ul>
-
-      <div class="quote">Every route is a multi-tenant journey — measured in the campaign report, not hoped for.</div>
-    </div>
-
-    <div>
-      <div class="panel">
-        <h2>Campaign package</h2>
-        <table class="pkg">
-          <thead><tr><th>Option</th><th>Includes</th><th></th></tr></thead>
-          <tbody>
-            <tr>
-              <td><b>Digital pilot</b><br />6–8 weeks</td>
-              <td>White-label planner, up to 20 mapped routes, launch QR assets, end report</td>
-              <td class="price">from A$3,500</td>
-            </tr>
-            <tr>
-              <td><b>Full campaign</b><br />CNY 2027</td>
-              <td>Everything above + key visual, in-centre posters, 3 social clips, dish photography — one team, one deadline</td>
-              <td class="price">A$8k–15k</td>
-            </tr>
-            <tr>
-              <td><b>Annual licence</b></td>
-              <td>Quarterly menu refresh, route maintenance, seasonal editions, support</td>
-              <td class="price">from A$8k/yr</td>
-            </tr>
-          </tbody>
-        </table>
-        <p style="font-size:10.5px; color:var(--muted);">Report metrics: scans · menus composed · lists exported · route cards saved · tenants per route.</p>
+      .foot {
+        margin-top: auto;
+        border-top: 1px solid var(--line);
+        padding-top: 8px;
+        font-size: 9px;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        gap: 21px;
+      }
+      .no-print {
+        position: fixed;
+        right: 13px;
+        top: 13px;
+        background: var(--navy);
+        color: #fff;
+        padding: 8px 13px;
+        border-radius: 3px;
+        font-size: 11px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="no-print">打印 → 存储为 PDF（A4 · 背景图形开）</div>
+    <div class="sheet">
+      <div class="lh">
+        <div class="brandname">PARADISE <small>PRODUCTION</small></div>
+        <div class="meta">
+          Create trust through clarity. · 用清晰创造信任。<br />
+          lee@pwestudio.site · 0488 885 850 · Melbourne VIC
+        </div>
       </div>
 
-      <div class="panel" style="margin-top:13px;">
-        <h2>Who we are</h2>
-        <p style="font-size:11.5px;">A Melbourne production house, ten years in. We started in commercials, brand photography and aerial work — for clients including BMW, Mercedes-Benz, Porsche, Audi, HSBC, Ray White, PDG and Everland — contributed to <em>Running Man</em> (Melbourne) and CCTV documentary series, and took first prize in Sony's official video awards in 2015. One Table is our own product: we build it, install it, and maintain it.</p>
-        <p style="font-size:11.5px; margin-bottom:0;"><b>See it now:</b> onetable.pwestudio.site</p>
+      <p class="doctag">Seasonal Campaign Proposal · Lunar New Year 2027</p>
+      <h1>From "what should we cook?" to footsteps through your centre</h1>
+      <p class="lede">
+        A complete reunion-dinner campaign for your centre: an interactive bilingual menu planner as
+        the centrepiece, surrounded by the campaign creative to carry it — produced end to end by
+        one Melbourne team.
+      </p>
+
+      <div class="split">
+        <div>
+          <h2>The gap we close</h2>
+          <p>
+            Menu-planning kiosks exist in Australian centres — they answer
+            <em>"what should we cook tonight?"</em> and hand the shopper a recipe QR. The journey
+            ends exactly where your tenants' revenue should begin. Nobody shows the shopper
+            <b>where inside your centre</b> to buy the 18 ingredients on that list, or which of your
+            restaurants serves the same table.
+          </p>
+
+          <h2>One Table: the menu becomes a route</h2>
+          <ol class="journey">
+            <li>Scan a QR — poster, kiosk or centre app. <b>No install.</b></li>
+            <li>Guests, budget, courses, dietary needs → a complete menu, instantly.</li>
+            <li>Every ingredient merges into one shopping list, scaled to the party.</li>
+            <li>
+              <b>The list becomes a walking route</b> — each ingredient mapped to a tenant, ordered
+              level by level, saved to the phone. Works offline on basement levels.
+            </li>
+            <li>Rather book a table? The same menu routes to your restaurants.</li>
+          </ol>
+
+          <h2>Built the trustworthy way</h2>
+          <ul class="tick">
+            <li>Curated, editorially reviewed recipes — no on-the-fly AI text under your brand</li>
+            <li>
+              Allergen exclusions are rule-based and absolute:
+              <em>contains, derived-from, may-contain, unknown</em> — all blocked
+            </li>
+            <li>Fully bilingual English / 中文 across menus, lists and route cards</li>
+            <li>
+              No accounts, no personal data — privacy by design, aggregate campaign metrics only
+            </li>
+          </ul>
+
+          <div class="quote">
+            Every route is a multi-tenant journey — measured in the campaign report, not hoped for.
+          </div>
+        </div>
+
+        <div>
+          <div class="panel">
+            <h2>Campaign package</h2>
+            <table class="pkg">
+              <thead>
+                <tr>
+                  <th>Option</th>
+                  <th>Includes</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Digital pilot</b><br />6–8 weeks</td>
+                  <td>White-label planner, up to 20 mapped routes, launch QR assets, end report</td>
+                  <td class="price">from A$3,500</td>
+                </tr>
+                <tr>
+                  <td><b>Full campaign</b><br />CNY 2027</td>
+                  <td>
+                    Everything above + key visual, in-centre posters, 3 social clips, dish
+                    photography — one team, one deadline
+                  </td>
+                  <td class="price">A$8k–15k</td>
+                </tr>
+                <tr>
+                  <td><b>Annual licence</b></td>
+                  <td>Quarterly menu refresh, route maintenance, seasonal editions, support</td>
+                  <td class="price">from A$8k/yr</td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="font-size: 10.5px; color: var(--muted)">
+              Report metrics: scans · menus composed · lists exported · route cards saved · tenants
+              per route.
+            </p>
+          </div>
+
+          <div class="panel" style="margin-top: 13px">
+            <h2>Who we are</h2>
+            <p style="font-size: 11.5px">
+              A Melbourne production house, ten years in. We started in commercials, brand
+              photography and aerial work — for clients including BMW, Mercedes-Benz, Porsche, Audi,
+              HSBC, Ray White, PDG and Everland — contributed to <em>Running Man</em> (Melbourne)
+              and CCTV documentary series, and took first prize in Sony's official video awards in
+              2015. One Table is our own product: we build it, install it, and maintain it.
+            </p>
+            <p style="font-size: 11.5px; margin-bottom: 0">
+              <b>See it now:</b> onetable.pwestudio.site
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <span>A PARADISE PRODUCTION · 天域文创出品 — PWE Group Pty Ltd · ABN 55 606 664 546</span>
+        <span
+          >Nutrition, pricing and allergen data are planning estimates; guests are directed to
+          verify packaged labels. Full terms on request.</span
+        >
       </div>
     </div>
-  </div>
-
-  <div class="foot">
-    <span>A PARADISE PRODUCTION · 天域文创出品 — PWE Group Pty Ltd · ABN 55 606 664 546</span>
-    <span>Nutrition, pricing and allergen data are planning estimates; guests are directed to verify packaged labels. Full terms on request.</span>
-  </div>
-</div>
-</body>
+  </body>
 </html>

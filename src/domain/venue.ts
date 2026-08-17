@@ -14,9 +14,14 @@ export type VenueFloor = {
   level: string;
   nameZh: string;
   nameEn: string;
-  /** Public path of the schematic SVG, drawn in brand style (never the raw architectural plan). */
-  planSrc: string;
-  /** SVG viewBox size; POI coordinates share this space. */
+  /**
+   * Public path of the schematic SVG, drawn in brand style (never the raw
+   * architectural plan). `null` switches the floor to aisle mode: a grocer has
+   * no floor plan to draw, so the route renders as a numbered aisle strip
+   * generated from the POIs' zone numbers instead.
+   */
+  planSrc: string | null;
+  /** SVG viewBox size; POI coordinates share this space. Unused in aisle mode. */
   width: number;
   height: number;
 };
@@ -74,7 +79,8 @@ export function resolvePoi(
   category: string | undefined,
   venue: VenueConfig,
 ): VenuePoi | null {
-  const poiId = venue.ingredientMap[ingredientId] ?? (category ? venue.categoryFallback[category] : undefined);
+  const poiId =
+    venue.ingredientMap[ingredientId] ?? (category ? venue.categoryFallback[category] : undefined);
   if (!poiId) return null;
   return venue.pois.find((poi) => poi.poiId === poiId) ?? null;
 }
@@ -126,7 +132,10 @@ export function resolveStops(
 }
 
 /** Stops on one floor, in walking order — what a single schematic draws. */
-export function stopsForLevel(route: VenueRoute, level: string): Array<RouteStop & { index: number }> {
+export function stopsForLevel(
+  route: VenueRoute,
+  level: string,
+): Array<RouteStop & { index: number }> {
   return route.stops
     .map((stop, index) => ({ ...stop, index }))
     .filter((stop) => stop.poi.level === level);

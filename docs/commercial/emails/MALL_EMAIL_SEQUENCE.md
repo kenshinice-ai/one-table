@@ -9,6 +9,7 @@
 ## T1 · 开场（第 0 天）
 
 **Subject（三选一，A/B 用）**
+
 1. `A Lunar New Year campaign your food tenants can measure`
 2. `From "what should we cook" to footsteps through [Centre]`
 3. `Reunion dinner traffic, mapped to your tenants`
@@ -27,7 +28,7 @@
 >
 > Lee
 
-*（约 110 词。CTA 是「值不值得一通 15 分钟电话」——低承诺、可回一个字。demo 链接给的是产品主站；Sample Centre 路线 demo 上线后换成 demo 链接。）*
+_（约 110 词。CTA 是「值不值得一通 15 分钟电话」——低承诺、可回一个字。demo 链接给的是产品主站；Sample Centre 路线 demo 上线后换成 demo 链接。）_
 
 ## T2 · 跟进（第 5 个工作日）
 
@@ -44,7 +45,7 @@
 > Lee
 
 **附件**：`pitch-mall-campaign.html` 导出的 PDF（信头版一页纸）。
-*（「five stores across two levels」为 demo.pwestudio.site 实测值（默认 4 道与 8 道菜单均为 5 店；含海鲜/烘焙菜时更多）——已验证，可发。）*
+_（「five stores across two levels」为 demo.pwestudio.site 实测值（默认 4 道与 8 道菜单均为 5 店；含海鲜/烘焙菜时更多）——已验证，可发。）_
 
 ## T3 · 收尾（再 +7 个工作日）
 
@@ -61,16 +62,16 @@
 > Thanks for reading this far,
 > Lee
 
-*（breakup 邮件的回复率经常是全序列最高——「stop nudging」+ 真实截止日 + 转介绍请求，三个钩子都是诚实的。）*
+_（breakup 邮件的回复率经常是全序列最高——「stop nudging」+ 真实截止日 + 转介绍请求，三个钩子都是诚实的。）_
 
 ---
 
 ## 回复分支预案
 
-| 对方反应 | 动作 |
-| --- | --- |
-| 「发我材料」 | 信头 PDF + credentials 半页，**48 小时内**回，附一个具体下一步（15 分钟电话的两个时段） |
-| 「今年预算没了」 | 转 Mid-Autumn 2027 / Easter 档 + 询问预算周期时间点，进名单表 `next_cycle` 列 |
-| 「转给了 X」 | 24 小时内向 X 发 T1 变体（首句提及引荐人） |
+| 对方反应         | 动作                                                                                                                            |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| 「发我材料」     | 信头 PDF + credentials 半页，**48 小时内**回，附一个具体下一步（15 分钟电话的两个时段）                                         |
+| 「今年预算没了」 | 转 Mid-Autumn 2027 / Easter 档 + 询问预算周期时间点，进名单表 `next_cycle` 列                                                   |
+| 「转给了 X」     | 24 小时内向 X 发 T1 变体（首句提及引荐人）                                                                                      |
 | 「已有类似系统」 | 「That's exactly why I wrote — ours ends in a route through your tenants, not a recipe QR. 15 minutes to show the difference?」 |
-| 无回复走完三触 | 90 天后换钩子重启（新档期 / 新数据），同一联系人一年至多两轮 |
+| 无回复走完三触   | 90 天后换钩子重启（新档期 / 新数据），同一联系人一年至多两轮                                                                    |

@@ -27,6 +27,7 @@ import type { TenantConfig } from '@/domain/venue';
 import { renderShareCard, shareCardDishes } from '@/domain/share-card';
 import { copy, roleLabel, type Choice, type Locale } from '@/i18n/copy';
 
+import { track } from './analytics';
 import { AppHeader } from './app-header';
 import { FilterWorkspace, type FacetOptions } from './filter-workspace';
 import type { SearchHit } from './global-search';
@@ -136,6 +137,12 @@ export function PlannerApp({
     return () => controller.abort();
   }, []);
 
+  // A poster QR carries ?src=qr; counting it before the URL is rewritten with
+  // planner state is what turns printed material into a measurable channel.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('src') === 'qr') track('scan');
+  }, []);
+
   // A back navigation restores the link's own state, so local edits are dropped
   // rather than shadowing the entry the reader just returned to.
   useEffect(() => {
@@ -233,6 +240,7 @@ export function PlannerApp({
     (next: PlannerFilters) => {
       setUndoSnapshot({ filters, preferences });
       setEdits({ locale, filters: next, preferences, variation: 0, substitutions: {} });
+      track('compose');
     },
     [locale, filters, preferences],
   );
@@ -241,6 +249,7 @@ export function PlannerApp({
     (next: PlannerPreferences) => {
       setUndoSnapshot({ filters, preferences });
       setEdits({ locale, filters, preferences: next, variation: 0, substitutions: {} });
+      track('compose');
     },
     [locale, filters, preferences],
   );
@@ -346,7 +355,9 @@ export function PlannerApp({
         {locale === 'zh-CN' ? '跳到条件筛选' : 'Skip to filters'}
       </a>
       <AppHeader
-        coBrand={tenant ? (locale === 'zh-CN' ? tenant.brand.displayZh : tenant.brand.displayEn) : null}
+        coBrand={
+          tenant ? (locale === 'zh-CN' ? tenant.brand.displayZh : tenant.brand.displayEn) : null
+        }
         ingredients={ingredientCatalog}
         locale={locale}
         onLocaleChange={setLocale}
@@ -377,10 +388,16 @@ export function PlannerApp({
           menu={menu}
           onOpenRecipe={openRecipe}
           onPrint={() => window.print()}
-          onRecompose={() => setEdits({ ...state, variation: variation + 1, substitutions: {} })}
+          onRecompose={() => {
+            setEdits({ ...state, variation: variation + 1, substitutions: {} });
+            track('compose');
+          }}
           onShare={share}
           onSaveImage={saveImage}
-          onShoppingList={() => setShoppingOpen(true)}
+          onShoppingList={() => {
+            setShoppingOpen(true);
+            track('list');
+          }}
           onSubstitute={(slotIndex, recipeId) =>
             setEdits({
               ...state,
@@ -396,6 +413,7 @@ export function PlannerApp({
           <span>{t.local}</span>
           <span>{t.safety}</span>
           <span>{t.healthDisclaimer}</span>
+          <span>{t.analyticsNote}</span>
         </div>
         <div className="footer-credit">
           {tenant && (

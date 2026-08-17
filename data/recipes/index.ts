@@ -84,9 +84,7 @@ export const launchRecipes: RecipeImport[] = [
   })),
   ...[...batchE, ...batchF, ...batchG, ...batchH].map((recipe) => {
     const produced = generatedMedia[recipe.slug];
-    return produced
-      ? { ...recipe, media: { ...recipe.media, ...produced } }
-      : recipe;
+    return produced ? { ...recipe, media: { ...recipe.media, ...produced } } : recipe;
   }),
 ];
 

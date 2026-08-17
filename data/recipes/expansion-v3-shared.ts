@@ -11,20 +11,71 @@ import { expansionV2IngredientCatalog } from './expansion-v2-shared';
  * three step-text variants per method, and 5-7 ingredients per dish.
  */
 export const expansionV3IngredientCatalog = [
-  { id: 'lotus_root', nameEn: 'Lotus root', nameZh: '莲藕', category: 'vegetable', defaultUnit: 'g' as const },
+  {
+    id: 'lotus_root',
+    nameEn: 'Lotus root',
+    nameZh: '莲藕',
+    category: 'vegetable',
+    defaultUnit: 'g' as const,
+  },
   { id: 'bacon', nameEn: 'Bacon', nameZh: '培根', category: 'protein', defaultUnit: 'g' as const },
-  { id: 'scallops', nameEn: 'Scallops', nameZh: '扇贝', category: 'protein', defaultUnit: 'g' as const,
-    allergens: [{ code: 'mollusc', presence: 'contains' as const }] },
-  { id: 'chestnut', nameEn: 'Chestnuts', nameZh: '板栗', category: 'nut', defaultUnit: 'g' as const,
-    allergens: [{ code: 'tree_nut', presence: 'contains' as const }] },
-  { id: 'osmanthus', nameEn: 'Osmanthus', nameZh: '桂花', category: 'herb', defaultUnit: 'g' as const },
-  { id: 'lotus_seed_paste', nameEn: 'Lotus seed paste', nameZh: '莲蓉', category: 'pantry', defaultUnit: 'g' as const },
+  {
+    id: 'scallops',
+    nameEn: 'Scallops',
+    nameZh: '扇贝',
+    category: 'protein',
+    defaultUnit: 'g' as const,
+    allergens: [{ code: 'mollusc', presence: 'contains' as const }],
+  },
+  {
+    id: 'chestnut',
+    nameEn: 'Chestnuts',
+    nameZh: '板栗',
+    category: 'nut',
+    defaultUnit: 'g' as const,
+    allergens: [{ code: 'tree_nut', presence: 'contains' as const }],
+  },
+  {
+    id: 'osmanthus',
+    nameEn: 'Osmanthus',
+    nameZh: '桂花',
+    category: 'herb',
+    defaultUnit: 'g' as const,
+  },
+  {
+    id: 'lotus_seed_paste',
+    nameEn: 'Lotus seed paste',
+    nameZh: '莲蓉',
+    category: 'pantry',
+    defaultUnit: 'g' as const,
+  },
   { id: 'ham', nameEn: 'Ham', nameZh: '火腿', category: 'protein', defaultUnit: 'g' as const },
-  { id: 'ricotta_hotcake_mix', nameEn: 'Self-raising flour', nameZh: '自发粉', category: 'pantry', defaultUnit: 'g' as const,
-    allergens: [{ code: 'wheat', presence: 'contains' as const }] },
-  { id: 'granola', nameEn: 'Granola', nameZh: '烤麦片', category: 'staple', defaultUnit: 'g' as const,
-    allergens: [{ code: 'wheat', presence: 'may_contain' as const }, { code: 'tree_nut', presence: 'may_contain' as const }] },
-  { id: 'jam', nameEn: 'Berry jam', nameZh: '莓果酱', category: 'pantry', defaultUnit: 'g' as const },
+  {
+    id: 'ricotta_hotcake_mix',
+    nameEn: 'Self-raising flour',
+    nameZh: '自发粉',
+    category: 'pantry',
+    defaultUnit: 'g' as const,
+    allergens: [{ code: 'wheat', presence: 'contains' as const }],
+  },
+  {
+    id: 'granola',
+    nameEn: 'Granola',
+    nameZh: '烤麦片',
+    category: 'staple',
+    defaultUnit: 'g' as const,
+    allergens: [
+      { code: 'wheat', presence: 'may_contain' as const },
+      { code: 'tree_nut', presence: 'may_contain' as const },
+    ],
+  },
+  {
+    id: 'jam',
+    nameEn: 'Berry jam',
+    nameZh: '莓果酱',
+    category: 'pantry',
+    defaultUnit: 'g' as const,
+  },
 ];
 
 /** Health bands map onto the deterministic score in src/domain/health.ts. */
@@ -43,7 +94,15 @@ const HEALTH_PROFILE: Record<
 export type ExpansionV3Spec = {
   slug: string;
   occasions: Array<
-    'cny' | 'mid_autumn' | 'christmas' | 'easter' | 'brunch' | 'afternoon_tea' | 'bbq' | 'weeknight' | 'party'
+    | 'cny'
+    | 'mid_autumn'
+    | 'christmas'
+    | 'easter'
+    | 'brunch'
+    | 'afternoon_tea'
+    | 'bbq'
+    | 'weeknight'
+    | 'party'
   >;
   titleZh: string;
   titleEn: string;
@@ -253,9 +312,12 @@ const prepVariantsZh = [
   (title: string, lead: string) => `先从${lead}下手：处理成合适大小，其余食材按清单排开备用。`,
 ];
 const prepVariantsEn = [
-  (title: string, lead: string) => `Get everything for ${title} ready, starting with the ${lead}; portion the rest.`,
-  (title: string, lead: string) => `Prep the ${lead} first, then check quantities and labels for the remaining ingredients.`,
-  (title: string, lead: string) => `Start with the ${lead}: cut to size, then line up the rest of the list.`,
+  (title: string, lead: string) =>
+    `Get everything for ${title} ready, starting with the ${lead}; portion the rest.`,
+  (title: string, lead: string) =>
+    `Prep the ${lead} first, then check quantities and labels for the remaining ingredients.`,
+  (title: string, lead: string) =>
+    `Start with the ${lead}: cut to size, then line up the rest of the list.`,
 ];
 const seasonVariantsZh = [
   (focus: string) => `调味围绕${focus}展开，先少后多，边尝边调。`,

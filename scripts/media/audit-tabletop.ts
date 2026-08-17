@@ -28,7 +28,7 @@ function patchAverages(ppmPath: string) {
   let offset = 0;
   const readToken = () => {
     while (buffer[offset] === 0x20 || buffer[offset] === 0x0a || buffer[offset] === 0x0d) offset++;
-    let start = offset;
+    const start = offset;
     while (offset < buffer.length && ![0x20, 0x0a, 0x0d].includes(buffer[offset])) offset++;
     return buffer.subarray(start, offset).toString();
   };
@@ -41,7 +41,10 @@ function patchAverages(ppmPath: string) {
   const pixels = buffer.subarray(offset);
 
   const average = (x0: number, y0: number) => {
-    let r = 0, g = 0, b = 0, n = 0;
+    let r = 0,
+      g = 0,
+      b = 0,
+      n = 0;
     for (let y = y0; y < y0 + PATCH_H; y++) {
       for (let x = x0; x < x0 + PATCH_W; x++) {
         const index = (y * width + x) * 3;
@@ -77,14 +80,13 @@ function tabletop(webpPath: string) {
 
 const registered = launchRecipes.filter((recipe) => recipe.media.generatedAt !== null);
 const pendingWithArt = launchRecipes.filter(
-  (recipe) =>
-    recipe.media.generatedAt === null && existsSync(`public/media/${recipe.slug}.webp`),
+  (recipe) => recipe.media.generatedAt === null && existsSync(`public/media/${recipe.slug}.webp`),
 );
 
 // Reference band from the adopted, style-approved library.
 const referenceSample = registered.filter((_, index) => index % 10 === 0).slice(0, 20);
-const referenceWarmths = referenceSample.map((recipe) =>
-  tabletop(`public/media/${recipe.slug}.webp`).warmth,
+const referenceWarmths = referenceSample.map(
+  (recipe) => tabletop(`public/media/${recipe.slug}.webp`).warmth,
 );
 const mean = referenceWarmths.reduce((a, b) => a + b, 0) / referenceWarmths.length;
 const sd = Math.sqrt(
@@ -104,7 +106,12 @@ const pass = results.filter((entry) => entry.warmth <= limit);
 console.log(
   JSON.stringify(
     {
-      reference: { sampled: referenceWarmths.length, meanWarmth: Math.round(mean * 10) / 10, sd: Math.round(sd * 10) / 10, limit: Math.round(limit * 10) / 10 },
+      reference: {
+        sampled: referenceWarmths.length,
+        meanWarmth: Math.round(mean * 10) / 10,
+        sd: Math.round(sd * 10) / 10,
+        limit: Math.round(limit * 10) / 10,
+      },
       audited: results.length,
       pass: pass.length,
       fail: fail.map((entry) => entry),

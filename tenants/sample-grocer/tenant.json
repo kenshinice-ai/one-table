@@ -1,0 +1,13 @@
+{
+  "id": "sample-grocer",
+  "venueType": "grocer",
+  "brand": {
+    "displayZh": "示例亚洲超市",
+    "displayEn": "Sample Asian Grocer"
+  },
+  "defaultLocale": "zh-CN",
+  "features": {
+    "navigation": true,
+    "restaurants": false
+  }
+}

@@ -25,6 +25,12 @@
       "bucket_name": "menu-planning-media-local",
     },
   ],
+  "analytics_engine_datasets": [
+    {
+      "binding": "ONETABLE_EVENTS",
+      "dataset": "onetable_events",
+    },
+  ],
   "vars": {
     "APP_ENV": "development",
     "APP_BASE_URL": "http://localhost:3000",
@@ -37,6 +43,26 @@
         "APP_ENV": "demo",
         "APP_BASE_URL": "https://demo.pwestudio.site",
       },
+      "analytics_engine_datasets": [
+        {
+          "binding": "ONETABLE_EVENTS",
+          "dataset": "onetable_events",
+        },
+      ],
+    },
+    "demo-grocer": {
+      "name": "one-table-demo-grocer",
+      "routes": [{ "pattern": "demo-grocer.pwestudio.site", "custom_domain": true }],
+      "vars": {
+        "APP_ENV": "demo",
+        "APP_BASE_URL": "https://demo-grocer.pwestudio.site",
+      },
+      "analytics_engine_datasets": [
+        {
+          "binding": "ONETABLE_EVENTS",
+          "dataset": "onetable_events",
+        },
+      ],
     },
     "staging": {
       "name": "menu-planning-companion-staging",
@@ -68,6 +94,12 @@
       },
       "d1_databases": [],
       "r2_buckets": [],
+      "analytics_engine_datasets": [
+        {
+          "binding": "ONETABLE_EVENTS",
+          "dataset": "onetable_events",
+        },
+      ],
     },
   },
 }

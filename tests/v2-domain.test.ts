@@ -394,14 +394,64 @@ test('recipe share card content', async (t) => {
 test('venue routing', async (t) => {
   const venue = {
     floors: [
-      { level: 'G', nameZh: '地面', nameEn: 'Ground', planSrc: '/venue/x/g.svg', width: 800, height: 500 },
-      { level: '1', nameZh: '一层', nameEn: 'Level 1', planSrc: '/venue/x/1.svg', width: 800, height: 500 },
+      {
+        level: 'G',
+        nameZh: '地面',
+        nameEn: 'Ground',
+        planSrc: '/venue/x/g.svg',
+        width: 800,
+        height: 500,
+      },
+      {
+        level: '1',
+        nameZh: '一层',
+        nameEn: 'Level 1',
+        planSrc: '/venue/x/1.svg',
+        width: 800,
+        height: 500,
+      },
     ],
     pois: [
-      { poiId: 'concierge', nameZh: '服务台', nameEn: 'Concierge', level: 'G', zone: 0, kind: 'concierge' as const, x: 0, y: 0 },
-      { poiId: 'grocer', nameZh: '菜铺', nameEn: 'Grocer', level: 'G', zone: 1, kind: 'store' as const, x: 1, y: 1 },
-      { poiId: 'butcher', nameZh: '肉铺', nameEn: 'Butcher', level: 'G', zone: 2, kind: 'store' as const, x: 2, y: 2 },
-      { poiId: 'health', nameZh: '健康', nameEn: 'Health', level: '1', zone: 1, kind: 'store' as const, x: 3, y: 3 },
+      {
+        poiId: 'concierge',
+        nameZh: '服务台',
+        nameEn: 'Concierge',
+        level: 'G',
+        zone: 0,
+        kind: 'concierge' as const,
+        x: 0,
+        y: 0,
+      },
+      {
+        poiId: 'grocer',
+        nameZh: '菜铺',
+        nameEn: 'Grocer',
+        level: 'G',
+        zone: 1,
+        kind: 'store' as const,
+        x: 1,
+        y: 1,
+      },
+      {
+        poiId: 'butcher',
+        nameZh: '肉铺',
+        nameEn: 'Butcher',
+        level: 'G',
+        zone: 2,
+        kind: 'store' as const,
+        x: 2,
+        y: 2,
+      },
+      {
+        poiId: 'health',
+        nameZh: '健康',
+        nameEn: 'Health',
+        level: '1',
+        zone: 1,
+        kind: 'store' as const,
+        x: 3,
+        y: 3,
+      },
     ],
     ingredientMap: { salmon: 'butcher' },
     categoryFallback: { vegetable: 'grocer', nut: 'health' },
@@ -455,9 +505,7 @@ test('venue routing', async (t) => {
   });
 
   await t.test('the full Sample Centre mapping covers the whole catalogue', () => {
-    const venueJson = JSON.parse(
-      readFileSync('tenants/sample-centre/venue.json', 'utf8'),
-    );
+    const venueJson = JSON.parse(readFileSync('tenants/sample-centre/venue.json', 'utf8'));
     const menu = composeMenu(launchRecipes, defaultPlannerPreferences, 0, defaultPlannerFilters);
     const list = buildShoppingList(menu.recipes, 6);
     const route = resolveStops(list, ingredientCatalog, venueJson);

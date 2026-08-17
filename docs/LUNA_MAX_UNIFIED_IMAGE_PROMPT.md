@@ -25,12 +25,12 @@ npm run recipes:briefs   # 生成 .generated/image-briefs.json
 
 ### 2. 四张重出（先做，单独一批）
 
-| slug | 退回原因 |
-| --- | --- |
-| sichuan-mapo-style-tofu | 台面桃色偏移（warmth 78，全批极值） |
-| french-green-bean-dijon-salad | 台面桃色偏移（64） |
-| chinese-five-spice-nuts | 台面桃色偏移（59） |
-| other-quinoa-roast-vegetable-bowl | 台面桃色偏移（57） |
+| slug                              | 退回原因                            |
+| --------------------------------- | ----------------------------------- |
+| sichuan-mapo-style-tofu           | 台面桃色偏移（warmth 78，全批极值） |
+| french-green-bean-dijon-salad     | 台面桃色偏移（64）                  |
+| chinese-five-spice-nuts           | 台面桃色偏移（59）                  |
+| other-quinoa-roast-vegetable-bowl | 台面桃色偏移（57）                  |
 
 重出时只修台面色，构图与食物状态本身是合格的。
 
@@ -39,6 +39,7 @@ npm run recipes:briefs   # 生成 .generated/image-briefs.json
 沿用条款（与既有 280 张一致）：4:3 · 1600×1200；45° 俯拍为主（汤类可更俯）；单侧柔和窗光；素色哑光陶瓷器皿；构图留 15–25% 呼吸空间；1–2 件极简道具；家常可食的真实状态；份量按 `role`。
 
 **新增硬规格 · 台面颜色**：
+
 - 台面必须是**中性暖白/米白**（visual reference：`sichuan-cold-noodle-cups.webp`、`french-onion-thyme-soup.webp`、`cantonese-winter-melon-soup.webp`——对照这三张的台面色）。
 - **禁止桃色/蜜桃色/陶土色调的台面**（本次 4 张退回全部因此）。经验判据：台面区域红蓝通道差应与参考图相当；如果台面看起来「像加了橙色滤镜」即为超标。
 - 主线每批会用色度脚本抽检（`npm run art:audit`），超标即退回——在你这端先卡住比退回重做省三倍时间。

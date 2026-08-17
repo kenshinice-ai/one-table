@@ -4,13 +4,13 @@
 
 ## 原则：两层，永不混色
 
-| | Paradise 层（框架） | One Table 层（作品） |
-| --- | --- | --- |
-| 出现在 | 信头、封面、页脚、合同、邮件、报价单、结案报告 | 产品截图、界面演示、路线卡、分享卡 |
-| 色板 | navy `#0E1729` / paper `#F7F5F2` / 浅底强调 **`#A16207`** / 深底强调 `#F5B335` | 暖米白 `#fffaf2` / 陶土红 `#d96b45` / 鼠尾草绿 `#5a947e` |
-| 字体 | Playfair Display + Inter（中文回退宋体/苹方） | Source Serif 4 + Inter（产品自带） |
-| 标识 | **Lockup A 横版**（日常默认，品牌标准 §3） | 圆桌 mark（只出现在产品截图内） |
-| 比例 | φ 数列字号、斐波那契间距、61.8/38.2 分栏 | 同为 φ 体系（V3 已对齐） |
+|        | Paradise 层（框架）                                                            | One Table 层（作品）                                     |
+| ------ | ------------------------------------------------------------------------------ | -------------------------------------------------------- |
+| 出现在 | 信头、封面、页脚、合同、邮件、报价单、结案报告                                 | 产品截图、界面演示、路线卡、分享卡                       |
+| 色板   | navy `#0E1729` / paper `#F7F5F2` / 浅底强调 **`#A16207`** / 深底强调 `#F5B335` | 暖米白 `#fffaf2` / 陶土红 `#d96b45` / 鼠尾草绿 `#5a947e` |
+| 字体   | Playfair Display + Inter（中文回退宋体/苹方）                                  | Source Serif 4 + Inter（产品自带）                       |
+| 标识   | **Lockup A 横版**（日常默认，品牌标准 §3）                                     | 圆桌 mark（只出现在产品截图内）                          |
+| 比例   | φ 数列字号、斐波那契间距、61.8/38.2 分栏                                       | 同为 φ 体系（V3 已对齐）                                 |
 
 关系类比：**出版社与书封**。Paradise 是社标与函套，One Table 是书的封面——函套永远不染书封的颜色，书封也不借函套的 navy。产品截图放进信头文档时按「装裱」处理：白/纸色留边，不加 navy 边框叠色。
 
@@ -33,14 +33,14 @@
 
 ## 物料清单与所在
 
-| 物料 | 文件 | 状态 |
-| --- | --- | --- |
+| 物料                                      | 文件                                  | 状态     |
+| ----------------------------------------- | ------------------------------------- | -------- |
 | 信头版商场全案 pitch（EN，A4 打印即 PDF） | `letterhead/pitch-mall-campaign.html` | 本轮交付 |
-| 信头版亚超说明（ZH，双面 A4） | `letterhead/grocer-sheet.html` | 本轮交付 |
-| Credentials 半页（双语） | `letterhead/credentials.html` | 本轮交付 |
-| 邮件签名 | `emails/EMAIL_SIGNATURE.html` | 本轮交付 |
-| 邮件序列 T1–T3 | `emails/MALL_EMAIL_SEQUENCE.md` | 本轮交付 |
-| 亚超话术 | `emails/GROCER_OUTREACH_SCRIPTS.md` | 本轮交付 |
-| Logo 资产（从品牌库复制） | `letterhead/assets/` | 已就位 |
+| 信头版亚超说明（ZH，双面 A4）             | `letterhead/grocer-sheet.html`        | 本轮交付 |
+| Credentials 半页（双语）                  | `letterhead/credentials.html`         | 本轮交付 |
+| 邮件签名                                  | `emails/EMAIL_SIGNATURE.html`         | 本轮交付 |
+| 邮件序列 T1–T3                            | `emails/MALL_EMAIL_SEQUENCE.md`       | 本轮交付 |
+| 亚超话术                                  | `emails/GROCER_OUTREACH_SCRIPTS.md`   | 本轮交付 |
+| Logo 资产（从品牌库复制）                 | `letterhead/assets/`                  | 已就位   |
 
 导出 PDF 方法：浏览器打开 HTML → 打印 → 存储为 PDF（A4、无页眉页脚、背景图形开）。

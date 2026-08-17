@@ -1398,5 +1398,290 @@
     "objectKey": "media/western-oat-berry-crumble.webp",
     "generatedAt": "2026-08-17T10:47:31.463Z",
     "aiModel": "imagegen-editorial-v2"
+  },
+  "french-lentil-walnut-salad": {
+    "objectKey": "media/french-lentil-walnut-salad.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "western-potato-dill-salad": {
+    "objectKey": "media/western-potato-dill-salad.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "australian-roasted-pumpkin-quinoa": {
+    "objectKey": "media/australian-roasted-pumpkin-quinoa.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "australian-avocado-corn-summer-salad": {
+    "objectKey": "media/australian-avocado-corn-summer-salad.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "latin-black-bean-capsicum-salad": {
+    "objectKey": "media/latin-black-bean-capsicum-salad.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-cucumber-yogurt-salad": {
+    "objectKey": "media/indian-cucumber-yogurt-salad.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-carrot-coconut-salad": {
+    "objectKey": "media/indian-carrot-coconut-salad.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "chinese-cantonese-chicken-shred-salad": {
+    "objectKey": "media/chinese-cantonese-chicken-shred-salad.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "sichuan-chilli-oil-noodle-salad": {
+    "objectKey": "media/sichuan-chilli-oil-noodle-salad.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "jiangnan-lotus-cucumber-salad": {
+    "objectKey": "media/jiangnan-lotus-cucumber-salad.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "other-roasted-beetroot-orange-salad": {
+    "objectKey": "media/other-roasted-beetroot-orange-salad.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "other-halloumi-watermelon-mint": {
+    "objectKey": "media/other-halloumi-watermelon-mint.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "japanese-sesame-rice-crackers": {
+    "objectKey": "media/japanese-sesame-rice-crackers.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "korean-seaweed-sesame-snack": {
+    "objectKey": "media/korean-seaweed-sesame-snack.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "mediterranean-crispy-chickpeas": {
+    "objectKey": "media/mediterranean-crispy-chickpeas.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "middle-eastern-spiced-pita-chips": {
+    "objectKey": "media/middle-eastern-spiced-pita-chips.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "latin-lime-plantain-crisps": {
+    "objectKey": "media/latin-lime-plantain-crisps.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "western-cheese-thyme-straws": {
+    "objectKey": "media/western-cheese-thyme-straws.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-spiced-popcorn-turmeric": {
+    "objectKey": "media/indian-spiced-popcorn-turmeric.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "other-herbed-yogurt-crudites": {
+    "objectKey": "media/other-herbed-yogurt-crudites.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "middle-eastern-herbed-couscous": {
+    "objectKey": "media/middle-eastern-herbed-couscous.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-parmesan-polenta": {
+    "objectKey": "media/italian-parmesan-polenta.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "mediterranean-lemon-herb-quinoa": {
+    "objectKey": "media/mediterranean-lemon-herb-quinoa.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-turmeric-rice-peas": {
+    "objectKey": "media/indian-turmeric-rice-peas.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "korean-multigrain-rice": {
+    "objectKey": "media/korean-multigrain-rice.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "western-garlic-herb-bread": {
+    "objectKey": "media/western-garlic-herb-bread.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "latin-coriander-lime-rice": {
+    "objectKey": "media/latin-coriander-lime-rice.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "other-buttered-barley-thyme": {
+    "objectKey": "media/other-buttered-barley-thyme.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "sichuan-dry-fried-beans-mince": {
+    "objectKey": "media/sichuan-dry-fried-beans-mince.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "sichuan-poached-fish-chilli": {
+    "objectKey": "media/sichuan-poached-fish-chilli.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "sichuan-gongbao-chicken": {
+    "objectKey": "media/sichuan-gongbao-chicken.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cantonese-steamed-fish-ginger": {
+    "objectKey": "media/cantonese-steamed-fish-ginger.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cantonese-char-siu-style-pork": {
+    "objectKey": "media/cantonese-char-siu-style-pork.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cantonese-beef-broccolini-oyster": {
+    "objectKey": "media/cantonese-beef-broccolini-oyster.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "northern-braised-pork-cabbage": {
+    "objectKey": "media/northern-braised-pork-cabbage.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "northern-cumin-lamb-skillet": {
+    "objectKey": "media/northern-cumin-lamb-skillet.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "jiangnan-red-braised-pork": {
+    "objectKey": "media/jiangnan-red-braised-pork.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "jiangnan-braised-fish-scallion": {
+    "objectKey": "media/jiangnan-braised-fish-scallion.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "japanese-chicken-katsu-style": {
+    "objectKey": "media/japanese-chicken-katsu-style.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "japanese-miso-eggplant-bake": {
+    "objectKey": "media/japanese-miso-eggplant-bake.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "korean-bulgogi-style-beef": {
+    "objectKey": "media/korean-bulgogi-style-beef.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "korean-gochujang-chicken-tray": {
+    "objectKey": "media/korean-gochujang-chicken-tray.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "korean-tofu-vegetable-bibimbap": {
+    "objectKey": "media/korean-tofu-vegetable-bibimbap.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "thai-green-curry-chicken": {
+    "objectKey": "media/thai-green-curry-chicken.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "thai-basil-pork-stir-fry": {
+    "objectKey": "media/thai-basil-pork-stir-fry.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "vietnamese-lemongrass-chicken": {
+    "objectKey": "media/vietnamese-lemongrass-chicken.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "malaysian-coconut-fish-curry": {
+    "objectKey": "media/malaysian-coconut-fish-curry.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-butter-chickpea-masala": {
+    "objectKey": "media/indian-butter-chickpea-masala.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-saag-style-paneer-tofu": {
+    "objectKey": "media/indian-saag-style-paneer-tofu.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-lamb-rogan-style": {
+    "objectKey": "media/indian-lamb-rogan-style.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "mediterranean-baked-fish-tomato": {
+    "objectKey": "media/mediterranean-baked-fish-tomato.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "mediterranean-stuffed-capsicum-rice": {
+    "objectKey": "media/mediterranean-stuffed-capsicum-rice.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "mediterranean-lemon-oregano-chicken": {
+    "objectKey": "media/mediterranean-lemon-oregano-chicken.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-tomato-basil-pasta": {
+    "objectKey": "media/italian-tomato-basil-pasta.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-mushroom-barley-risotto": {
+    "objectKey": "media/italian-mushroom-barley-risotto.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-eggplant-parmigiana": {
+    "objectKey": "media/italian-eggplant-parmigiana.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "french-chicken-thyme-braise": {
+    "objectKey": "media/french-chicken-thyme-braise.webp",
+    "generatedAt": "2026-08-17T12:20:57.780Z",
+    "aiModel": "imagegen-editorial-v2"
   }
 }

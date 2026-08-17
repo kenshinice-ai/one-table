@@ -8,7 +8,7 @@
 
 ### ONE TABLE — From "what should we cook?" to footsteps through your centre
 
-**The gap.** Menu-planning kiosks already exist in Australian centres — they answer *"what should we cook tonight?"* and hand the shopper a recipe QR. Then the journey ends, exactly where your tenants' revenue was supposed to begin. Nobody tells the shopper **where inside your centre** to buy the 18 ingredients on that list, or which of your restaurants serves the same table if they'd rather not cook at all.
+**The gap.** Menu-planning kiosks already exist in Australian centres — they answer _"what should we cook tonight?"_ and hand the shopper a recipe QR. Then the journey ends, exactly where your tenants' revenue was supposed to begin. Nobody tells the shopper **where inside your centre** to buy the 18 ingredients on that list, or which of your restaurants serves the same table if they'd rather not cook at all.
 
 **One Table closes that gap.** It is the only menu planner whose output is not a recipe — it is a **walking route through your centre**.
 
@@ -24,7 +24,7 @@
 
 - **Navigation is the product.** Every menu ends in an in-centre route past 5–8 tenants. Measured, not hoped for.
 - **Curated, not generated.** Every recipe on the platform is editorially reviewed — no on-the-fly AI text reaching your customers under your brand.
-- **Allergen handling is rule-based and absolute.** An excluded allergen blocks *contains, derived-from, may-contain and unknown* relations. Not "the AI usually remembers".
+- **Allergen handling is rule-based and absolute.** An excluded allergen blocks _contains, derived-from, may-contain and unknown_ relations. Not "the AI usually remembers".
 - **Fully bilingual English / 中文** — interface, recipes, shopping lists and route cards.
 - **Instant and offline-capable.** No per-use AI latency or cost; runs on kiosks, phones and low-signal basement levels alike.
 - **Content guests keep:** printable menu + shopping list PDF, shareable menu cards — your brand travels to the family group chat.
@@ -40,13 +40,14 @@
 
 **Pilot offer — one seasonal campaign, 6–8 weeks:** centre branding, up to 20 mapped ingredient/restaurant routes, launch assets, end-of-campaign report (scans, menus composed, lists exported, route cards saved). **From A$3,500.** Annual licence incl. quarterly menu refresh, route maintenance and support from A$8,000/yr.
 
-*One Table · a PWE Studio product — © PWE Group Pty Ltd, Melbourne. Nutrition, pricing and allergen data are planning estimates; guests are directed to verify packaged labels. Full terms on request.*
+_One Table · a PWE Studio product — © PWE Group Pty Ltd, Melbourne. Nutrition, pricing and allergen data are planning estimates; guests are directed to verify packaged labels. Full terms on request._
 
 ---
 
 ## 中文使用说明（内部，不外发）
 
 **投递对象与顺序**
+
 1. **首选非 Chadstone 的集团**：Scentre（Westfield Doncaster/Glen 华人客群重）、QIC（Eastland）、GPT。话术核心：「菜单规划 kiosk 这个品类已经被顶级中心验证了，我们是唯一把它接到『店内导航 + 租户客流』的版本」。
 2. **对 Vicinity（Chadstone 母公司）**：不挖对方现有系统的墙角，改讲「把这个概念铺到集团其他中心，并补上从菜单到租户的最后一公里」。Box Hill Central 也是 Vicinity 的——华人客群 + 双语是现成弹药。
 3. **书面材料永远不点名** The Market Pavilion / Chadstone；对比只用「existing AI kiosks」这类品类说法（上面英文版已如此措辞）。口头拜访时可以自然聊到。

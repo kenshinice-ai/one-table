@@ -195,6 +195,9 @@ export const copy = {
     conciergeStop: '请到服务台询问以下食材',
     saveRouteCard: '保存路线卡',
     routeDisclaimer: '路线与店铺位置为指引性示意，以场内标识与店铺现状为准。',
+    aisle: '通道',
+    routeProgress: '已购 {done} / {total} 项',
+    analyticsNote: '仅统计匿名聚合次数：无 Cookie、无个人数据、无行为轨迹。',
   },
   'en-AU': {
     brand: 'One Table',
@@ -327,6 +330,9 @@ export const copy = {
     conciergeStop: 'Ask the concierge about these items',
     saveRouteCard: 'Save route card',
     routeDisclaimer: 'Routes and store locations are indicative; in-centre signage prevails.',
+    aisle: 'Aisle',
+    routeProgress: '{done} of {total} items picked up',
+    analyticsNote: 'Anonymous aggregate counts only — no cookies, no personal data, no tracking.',
   },
 } as const;
 

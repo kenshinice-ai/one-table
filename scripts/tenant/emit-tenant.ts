@@ -30,7 +30,7 @@ const venueSchema = z.object({
         level: z.string().min(1),
         nameZh: z.string().min(1),
         nameEn: z.string().min(1),
-        planSrc: z.string().startsWith('/venue/'),
+        planSrc: z.string().startsWith('/venue/').nullable(),
         width: z.number().positive(),
         height: z.number().positive(),
       }),
@@ -89,7 +89,8 @@ const levels = new Set(venue.floors.map((floor) => floor.level));
 for (const poi of venue.pois) {
   if (!levels.has(poi.level)) errors.push(`poi ${poi.poiId} references unknown level ${poi.level}`);
 }
-if (!poiIds.has(venue.conciergePoiId)) errors.push(`conciergePoiId ${venue.conciergePoiId} not found`);
+if (!poiIds.has(venue.conciergePoiId))
+  errors.push(`conciergePoiId ${venue.conciergePoiId} not found`);
 for (const [key, poiId] of Object.entries({ ...venue.ingredientMap, ...venue.categoryFallback })) {
   if (!poiIds.has(poiId)) errors.push(`${key} maps to unknown poi ${poiId}`);
 }
@@ -114,6 +115,7 @@ if (unreachable.length) {
 }
 
 for (const floor of venue.floors) {
+  if (!floor.planSrc) continue; // aisle mode: no schematic to check or copy
   const svg = join(dir, basename(floor.planSrc));
   if (!existsSync(svg)) errors.push(`floor ${floor.level} plan missing: ${svg}`);
 }
@@ -128,6 +130,7 @@ rmSync(PUBLIC_VENUE, { recursive: true, force: true });
 const assetDir = join(PUBLIC_VENUE, tenantId);
 mkdirSync(assetDir, { recursive: true });
 for (const floor of venue.floors) {
+  if (!floor.planSrc) continue;
   copyFileSync(join(dir, basename(floor.planSrc)), join(assetDir, basename(floor.planSrc)));
 }
 

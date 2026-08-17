@@ -32,6 +32,8 @@
     "clean:icloud": "find . -path ./node_modules -prune -o -name '* [0-9].*' -print -delete 2>/dev/null; true",
     "tenant:emit": "node --import tsx scripts/tenant/emit-tenant.ts",
     "deploy:demo": "TENANT=sample-centre opennextjs-cloudflare build && opennextjs-cloudflare deploy --env demo",
+    "deploy:demo-grocer": "TENANT=sample-grocer opennextjs-cloudflare build && opennextjs-cloudflare deploy --env demo-grocer",
+    "report:campaign": "node --import tsx scripts/report/campaign-report.ts",
     "art:adopt": "node --import tsx scripts/media/adopt-art.ts",
     "art:audit": "node --import tsx scripts/media/audit-tabletop.ts"
   },
