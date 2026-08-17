@@ -1,16 +1,4 @@
 {
   "note": "Slugs rejected at QC and awaiting regeneration. adopt-art skips these; the image prompt lists them for redo. Remove a slug once its replacement passes audit-tabletop.",
-  "rejects": [
-    {
-      "slug": "sichuan-mapo-style-tofu",
-      "reason": "tabletop peach drift (warmth 78 vs batch mean 30)"
-    },
-    { "slug": "french-green-bean-dijon-salad", "reason": "tabletop peach drift (warmth 64)" },
-    { "slug": "chinese-five-spice-nuts", "reason": "tabletop peach drift (warmth 59)" },
-    { "slug": "other-quinoa-roast-vegetable-bowl", "reason": "tabletop peach drift (warmth 57)" },
-    {
-      "slug": "italian-lemon-prawn-linguine",
-      "reason": "wrong pasta shape: shells (conchiglie) instead of linguine — dish must match its title"
-    }
-  ]
+  "rejects": []
 }

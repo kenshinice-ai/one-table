@@ -1683,5 +1683,70 @@
     "objectKey": "media/french-chicken-thyme-braise.webp",
     "generatedAt": "2026-08-17T12:20:57.780Z",
     "aiModel": "imagegen-editorial-v2"
+  },
+  "french-green-bean-dijon-salad": {
+    "objectKey": "media/french-green-bean-dijon-salad.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "chinese-five-spice-nuts": {
+    "objectKey": "media/chinese-five-spice-nuts.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "sichuan-mapo-style-tofu": {
+    "objectKey": "media/sichuan-mapo-style-tofu.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-lemon-prawn-linguine": {
+    "objectKey": "media/italian-lemon-prawn-linguine.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "french-salmon-dill-bake": {
+    "objectKey": "media/french-salmon-dill-bake.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "french-ratatouille-herb": {
+    "objectKey": "media/french-ratatouille-herb.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "french-duck-orange-glaze": {
+    "objectKey": "media/french-duck-orange-glaze.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "middle-eastern-harissa-cauliflower": {
+    "objectKey": "media/middle-eastern-harissa-cauliflower.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "other-quinoa-roast-vegetable-bowl": {
+    "objectKey": "media/other-quinoa-roast-vegetable-bowl.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-scallop-glass-noodle-garlic": {
+    "objectKey": "media/cny-scallop-glass-noodle-garlic.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-lotus-root-pork-soup": {
+    "objectKey": "media/cny-lotus-root-pork-soup.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-eight-treasure-sticky-rice": {
+    "objectKey": "media/cny-eight-treasure-sticky-rice.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-tangyuan-black-sesame": {
+    "objectKey": "media/cny-tangyuan-black-sesame.webp",
+    "generatedAt": "2026-08-17T13:00:20.367Z",
+    "aiModel": "imagegen-editorial-v2"
   }
 }
