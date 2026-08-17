@@ -30,6 +30,7 @@ const report = {
   pendingMedia: batch.recipes.filter((recipe) => recipe.media.generatedAt === null).length,
   publicationStatus: countBy(batch.recipes.map((recipe) => recipe.status)),
   totalUnder30Minutes: batch.recipes.filter((recipe) => recipe.totalMinutes <= 30).length,
+  byOccasion: countBy(batch.recipes.flatMap((recipe) => recipe.occasions ?? [])),
   withStructuredSteps: batch.recipes.filter(
     (recipe) => (recipe.translations['zh-CN'].structuredInstructions?.length ?? 0) > 0,
   ).length,
@@ -38,47 +39,48 @@ const report = {
 // Quotas for the 400-recipe catalogue. Batches E and F deliberately weight the
 // courses the launch set was thin in, so starters, soups and salads roughly
 // triple while mains grow by less than double.
+// Wave three follows the commercial calendar; roles shift accordingly.
 const expectedRoles = {
-  main: 125,
-  side: 43,
-  salad: 47,
-  starter: 42,
-  soup: 37,
-  snack: 21,
-  staple: 40,
-  dessert: 45,
+  main: 216,
+  side: 55,
+  salad: 50,
+  starter: 50,
+  soup: 49,
+  snack: 53,
+  staple: 45,
+  dessert: 82,
 };
 const expectedCuisines = {
-  chinese_northern: 22,
-  chinese_sichuan: 23,
-  chinese_cantonese: 26,
-  chinese_jiangnan: 20,
-  japanese: 28,
-  korean: 24,
-  southeast_asian: 27,
+  chinese_northern: 46,
+  chinese_sichuan: 27,
+  chinese_cantonese: 72,
+  chinese_jiangnan: 30,
+  japanese: 37,
+  korean: 30,
+  southeast_asian: 34,
   indian: 29,
-  mediterranean: 29,
-  italian: 28,
-  french: 28,
-  australian_modern: 26,
-  western_home: 29,
-  middle_eastern: 21,
-  latin_american: 20,
-  other: 20,
+  mediterranean: 39,
+  italian: 40,
+  french: 37,
+  australian_modern: 45,
+  western_home: 51,
+  middle_eastern: 27,
+  latin_american: 24,
+  other: 32,
 };
 const expectedMethods = {
-  braise: 38,
-  grill: 17,
-  stir_fry: 27,
-  roast: 52,
-  pan_fry: 27,
-  steam: 20,
-  bake: 54,
-  raw: 62,
-  boil: 52,
-  deep_fry: 7,
-  chill: 7,
-  simmer: 37,
+  braise: 52,
+  grill: 28,
+  stir_fry: 43,
+  roast: 65,
+  pan_fry: 55,
+  steam: 26,
+  bake: 86,
+  raw: 71,
+  boil: 69,
+  deep_fry: 15,
+  chill: 21,
+  simmer: 69,
 };
 
 const mismatches = [
@@ -96,7 +98,7 @@ const mismatches = [
     })),
 );
 
-if (batch.recipes.length !== 400 || mismatches.length) {
+if (batch.recipes.length !== 600 || mismatches.length) {
   console.error({ recipeCount: batch.recipes.length, mismatches });
   process.exit(1);
 }

@@ -23,6 +23,18 @@ export const structuredStepSchema = z.object({
   tip: z.string().optional(),
 });
 
+export const occasionSchema = z.enum([
+  'cny',
+  'mid_autumn',
+  'christmas',
+  'easter',
+  'brunch',
+  'afternoon_tea',
+  'bbq',
+  'weeknight',
+  'party',
+]);
+
 export const recipeSchema = z.object({
   id,
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
@@ -32,6 +44,8 @@ export const recipeSchema = z.object({
     z.enum(['snack', 'starter', 'soup', 'main', 'side', 'staple', 'salad', 'dessert']),
   ),
   cuisines: z.array(id).min(1),
+  /** Commercial-calendar tags; optional so earlier batches keep validating. */
+  occasions: z.array(occasionSchema).optional(),
   methods: z.array(id).min(1),
   equipment: z.array(
     z.object({

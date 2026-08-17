@@ -15,6 +15,9 @@ import { batchC } from './batch-c';
 import { batchD } from './batch-d';
 import { batchE } from './batch-e';
 import { batchF } from './batch-f';
+import { batchG } from './batch-g';
+import { batchH } from './batch-h';
+import { expansionV3IngredientCatalog } from './expansion-v3-shared';
 import { expansionV2IngredientCatalog } from './expansion-v2-shared';
 
 /**
@@ -29,6 +32,7 @@ export const ingredientCatalog = [
   ...batchBIngredientCatalog,
   ...expansionIngredientCatalog,
   ...expansionV2IngredientCatalog,
+  ...expansionV3IngredientCatalog,
 ];
 
 const launchImage = (recipe: RecipeImport): RecipeImport['media'] => ({
@@ -78,7 +82,7 @@ export const launchRecipes: RecipeImport[] = [
         }
       : launchImage(recipe),
   })),
-  ...[...batchE, ...batchF].map((recipe) => {
+  ...[...batchE, ...batchF, ...batchG, ...batchH].map((recipe) => {
     const produced = generatedMedia[recipe.slug];
     return produced
       ? { ...recipe, media: { ...recipe.media, ...produced } }
@@ -91,7 +95,7 @@ export const recipesAwaitingArtwork = [...batchE, ...batchF].map((recipe) => rec
 
 export const launchCatalogFile = {
   batch: 'launch' as const,
-  version: '2026-08-launch-2',
+  version: '2026-08-launch-3',
   generatedAt: '2026-08-16T00:00:00.000Z',
   recipes: launchRecipes,
 };
