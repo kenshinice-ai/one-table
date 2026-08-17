@@ -1,7 +1,16 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { readFileSync } from 'node:fs';
+
 import { ingredientCatalog, launchRecipes } from '../../data/recipes';
+
+const rejects = new Map<string, string>(
+  (
+    JSON.parse(readFileSync(join(process.cwd(), 'scripts/media/art-rejects.json'), 'utf8'))
+      .rejects as Array<{ slug: string; reason: string }>
+  ).map((entry) => [entry.slug, entry.reason]),
+);
 
 /**
  * Writes the artwork brief for every recipe whose photo has not been produced.
@@ -18,6 +27,9 @@ const pending = launchRecipes.filter((recipe) => recipe.media.generatedAt === nu
 
 const briefs = pending.map((recipe) => ({
   slug: recipe.slug,
+  /** 'redo' = a previous file exists but failed QC; overwrite it. */
+  status: rejects.has(recipe.slug) ? ('redo' as const) : ('new' as const),
+  redoReason: rejects.get(recipe.slug) ?? null,
   outputFile: `public/media/${recipe.slug}.webp`,
   titleEn: recipe.translations['en-AU'].title,
   titleZh: recipe.translations['zh-CN'].title,
