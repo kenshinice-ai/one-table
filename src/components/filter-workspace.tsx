@@ -83,6 +83,10 @@ export function FilterWorkspace({
     ...filters.excludedAllergens,
     ...filters.availableEquipmentIds,
   ].map((value) => ({ value, text: label(value, locale) }));
+  // With nothing selected the eligible count would simply be the size of the
+  // catalogue, which is not a number the product needs to publish. It appears
+  // once a condition makes it mean something.
+  const narrowing = activeFilterCount(filters) > 0;
   const reasonEntries = Object.entries(eligibility.excludedByReason)
     .filter(([, count]) => count)
     .sort((a, b) => (b[1] ?? 0) - (a[1] ?? 0))
@@ -274,10 +278,12 @@ export function FilterWorkspace({
         />
       </div>
       <div aria-live="polite" className="selection-strip">
-        <div className="eligible-count">
-          <strong>{eligibleCount}</strong>
-          <span>{t.eligible}</span>
-        </div>
+        {narrowing && (
+          <div className="eligible-count">
+            <strong>{eligibleCount}</strong>
+            <span>{t.eligible}</span>
+          </div>
+        )}
         <div className="chips">
           {selectedChips.length ? (
             selectedChips.slice(0, 10).map((chip) => (

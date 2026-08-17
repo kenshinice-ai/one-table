@@ -671,8 +671,8 @@ h3 {
 }
 
 .selection-strip {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 13px;
   align-items: center;
   min-height: 59px;
@@ -696,6 +696,9 @@ h3 {
 .eligible-count span {
   font-size: 0.66rem;
   font-weight: 750;
+}
+.selection-strip .chips {
+  flex: 1 1 200px;
 }
 .chips {
   display: flex;
