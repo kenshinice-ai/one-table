@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>一桌 · 门店版 — 亚超产品说明</title>
+<style>
+  :root {
+    --navy: #0E1729; --amber-d: #A16207;
+    --paper: #F7F5F2; --white: #fff; --ink: #0C0A09;
+    --muted: #5C6470; --line: #E3DFD8;
+    --terracotta: #d96b45; --sage: #5a947e;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: Inter, -apple-system, 'PingFang SC', 'Noto Sans SC', sans-serif; font-size: 13px; line-height: 1.75; }
+  .sheet { width: 210mm; min-height: 296mm; margin: 0 auto; background: var(--white); padding: 13mm 16mm 10mm; display: flex; flex-direction: column; }
+  @media print {
+    body { background: var(--white); }
+    .sheet { width: auto; min-height: auto; margin: 0; padding: 8mm 10mm 6mm; }
+    .no-print { display: none; }
+    .pagebreak { break-before: page; padding-top: 8mm; }
+  }
+  @page { size: A4; margin: 0; }
+  h1, h2, .brandname { font-family: 'Playfair Display', Georgia, 'Songti SC', STSong, serif; }
+  .lh { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid var(--navy); padding-bottom: 8px; }
+  .brandname { font-size: 21px; letter-spacing: 3px; color: var(--navy); font-weight: 500; }
+  .brandname small { font-family: Inter, sans-serif; font-size: 9px; letter-spacing: 4px; color: var(--muted); font-weight: 400; }
+  .lh .meta { font-size: 9.5px; color: var(--muted); text-align: right; line-height: 1.6; }
+  .doctag { margin: 13px 0 3px; font-size: 10px; letter-spacing: 2.6px; color: var(--amber-d); font-weight: 600; }
+  h1 { font-size: 26px; color: var(--navy); margin-bottom: 5px; }
+  .lede { color: var(--muted); margin-bottom: 13px; max-width: 61.8ch; }
+  h2 { font-size: 15px; color: var(--navy); margin: 13px 0 5px; }
+  ol.steps { margin: 0 0 8px 19px; }
+  ol.steps li { margin-bottom: 5px; }
+  ol.steps b { color: var(--terracotta); }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 5px 0 8px; }
+  th, td { text-align: left; padding: 7px 9px; border-top: 1px solid var(--line); vertical-align: top; }
+  thead th { border-top: 0; font-size: 10px; letter-spacing: 1.5px; color: var(--muted); }
+  td.k { width: 21%; font-weight: 600; color: var(--navy); white-space: nowrap; }
+  .price { font-weight: 700; color: var(--navy); white-space: nowrap; }
+  .punch { border-left: 2px solid var(--amber-d); padding: 5px 0 5px 13px; margin: 13px 0; color: var(--navy); font-size: 14.5px; font-weight: 600; }
+  .foot { margin-top: auto; border-top: 1px solid var(--line); padding-top: 8px; font-size: 9px; color: var(--muted); }
+  .no-print { position: fixed; right: 13px; top: 13px; background: var(--navy); color: #fff; padding: 8px 13px; border-radius: 3px; font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="no-print">打印 → 存储为 PDF（A4 双面 · 背景图形开）</div>
+<div class="sheet">
+  <div class="lh">
+    <div class="brandname">PARADISE <small>PRODUCTION</small></div>
+    <div class="meta">用清晰创造信任。· Create trust through clarity.<br />lee@pwestudio.site · 0488 885 850 · Melbourne VIC</div>
+  </div>
+
+  <p class="doctag">一桌 · 门店版 ONE TABLE FOR GROCERS</p>
+  <h1>扫一个码，买齐一桌菜</h1>
+  <p class="lede">顾客在你店里扫码配好一桌菜，购物清单按你门店的通道顺序排好——顺着走一圈，全部拿齐。微信可直接打开，无需安装任何 App。</p>
+
+  <h2>顾客的一分钟</h2>
+  <ol class="steps">
+    <li>门口海报 / 收银台立牌 / 购物车贴纸上<b>扫码</b>。</li>
+    <li>选人数、预算、想吃什么 → <b>一秒配出一桌菜</b>（前菜到甜品，中英双语）。</li>
+    <li>一键生成<b>购物清单</b>：食材自动合并、按人数换算好分量。</li>
+    <li><b>清单按你门店通道排序</b>：「3 号通道酱料 → 冷柜 2 → 蔬果区」，可存成图片离线用。</li>
+  </ol>
+
+  <h2>对门店的价值</h2>
+  <table>
+    <tbody>
+      <tr><td class="k">客单价</td><td>一桌 6–8 道菜 ≈ 15–20 种食材，顾客从「买一样」变成「照单买齐」。</td></tr>
+      <tr><td class="k">双语服务</td><td>界面、菜谱、清单全部中英对照——老一辈用中文，子女和本地客用英文，同一个码。</td></tr>
+      <tr><td class="k">减少问询</td><td>「XX 在哪个通道」直接写在清单上。</td></tr>
+      <tr><td class="k">节庆生意</td><td>年夜饭、中秋家宴专题挂你的店名——顾客按整桌采购，不是零买。<b>中秋档（9 月 25 日）现在接入正好赶上。</b></td></tr>
+      <tr><td class="k">备货参考</td><td>每周匿名汇总：本店顾客最常配的菜系与食材榜。不采集任何个人信息。</td></tr>
+      <tr><td class="k">过敏原安心</td><td>顾客排除的过敏原被规则硬性拦截（含「可能含有」与来源不明），并始终提示核对包装标签。</td></tr>
+    </tbody>
+  </table>
+
+  <h2>接入流程（一周内上线）与价格</h2>
+  <table>
+    <thead><tr><th>项</th><th>内容</th><th>价格（AUD）</th></tr></thead>
+    <tbody>
+      <tr><td class="k">一次性接入</td><td>专属版界面（你的 logo 与配色）+ 半天到店录通道映射 + 二维码物料设计</td><td class="price">$1,500 起</td></tr>
+      <tr><td class="k">固定维护</td><td>菜单季度换新 · 通道变更同步 · 节庆专题 · 技术支持</td><td class="price">$200–400 / 月</td></tr>
+      <tr><td class="k">连锁多店</td><td>第二家店起接入费 6 折（映射复用模板）</td><td class="price">—</td></tr>
+      <tr><td class="k">中秋试点</td><td>首店 8 周试用价，以扫码量与清单生成量作为续约依据，数据每周发你</td><td class="price">面议</td></tr>
+    </tbody>
+  </table>
+
+  <p class="punch">别的系统告诉顾客「今晚吃什么」；一桌带着顾客在你的店里把它买齐。</p>
+
+  <p style="font-size:11.5px; color:var(--muted);">现在就可以体验：<b style="color:var(--navy);">onetable.pwestudio.site</b>（手机打开即用）。我们是墨尔本本地十年制作公司，产品自研自维护——出问题找得到人。</p>
+
+  <div class="foot">
+    A PARADISE PRODUCTION · 天域文创出品 — PWE Group Pty Ltd · ABN 55 606 664 546 · lee@pwestudio.site · 0488 885 850<br />
+    价格、营养与过敏原信息为规划估算，下厨前请核对商品包装标签；通道信息以店内实际陈列为准。完整条款见合同附件。
+  </div>
+</div>
+</body>
+</html>

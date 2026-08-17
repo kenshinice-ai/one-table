@@ -10,7 +10,7 @@ const description =
   '为一桌人，配一桌好菜。选择人数、预算、菜单结构与健康目标，立即得到一桌可执行的双语菜单。 · Plan a whole table: set guests, budget, courses and an energy target, and get a menu you can actually cook.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://menu-planning-companion.lee-liu-melbourne.workers.dev'),
+  metadataBase: new URL('https://onetable.pwestudio.site'),
   title: '一桌 · One Table',
   description,
   applicationName: 'One Table',

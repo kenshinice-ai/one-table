@@ -53,9 +53,10 @@
     },
     "production": {
       "name": "menu-planning-companion",
+      "routes": [{ "pattern": "onetable.pwestudio.site", "custom_domain": true }],
       "vars": {
         "APP_ENV": "production",
-        "APP_BASE_URL": "https://menu-planning-companion.lee-liu-melbourne.workers.dev",
+        "APP_BASE_URL": "https://onetable.pwestudio.site",
       },
       "d1_databases": [],
       "r2_buckets": [],
