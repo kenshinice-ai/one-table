@@ -360,6 +360,18 @@ h3 {
 .filter-workspace {
   padding: 20px;
 }
+/*
+  The filter column keeps pace with a scrolling menu, so adding a condition
+  never means scrolling back up. No internal overflow — the dropdown panels
+  are absolute overlays and would be clipped — so this only engages where the
+  whole panel fits the viewport.
+*/
+@media (min-width: 901px) and (min-height: 760px) {
+  .filter-workspace {
+    position: sticky;
+    top: 14px;
+  }
+}
 .menu-panel {
   position: sticky;
   top: 14px;
@@ -906,8 +918,10 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  margin: 16px 0 12px;
-  padding-top: 14px;
+  /* The footer never scrolls away, so every pixel it keeps is a dish the
+     reader cannot see; it stays as short as legibility allows. */
+  margin: 10px 0 8px;
+  padding-top: 10px;
   border-top: 1px solid var(--line);
 }
 .menu-summary > div {
@@ -920,7 +934,7 @@ h3 {
 .menu-summary dd {
   margin: 2px 0;
   font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 1.34rem;
+  font-size: 1.18rem;
   font-variant-numeric: tabular-nums;
   font-weight: 700;
   line-height: 1.1;
@@ -1558,6 +1572,25 @@ h3 {
   background: var(--terracotta);
   border-radius: 50%;
 }
+/* Wide screens: dishes flow in two columns, so an eight-dish table is seen
+   nearly whole instead of three rows at a time. (Must follow the base
+   .menu-courses rule — same specificity, source order decides.) */
+@media (min-width: 1500px) {
+  .menu-courses {
+    display: block;
+    margin-top: 12px;
+    columns: 2;
+    column-gap: 18px;
+  }
+  .course-group {
+    margin-bottom: 14px;
+    break-inside: avoid;
+  }
+  .course-heading {
+    /* sticky misbehaves inside CSS columns */
+    position: static;
+  }
+}
 .dish-row {
   position: relative;
 }
@@ -1647,7 +1680,19 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin-top: 8px;
+  margin-top: 6px;
+}
+/* Both warnings can fire at once; side by side they cost one row, not two. */
+.menu-warnings {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.menu-warnings .budget-warning {
+  flex: 1;
+  margin: 0;
+  padding: 5px 8px;
+  font-size: 0.68rem;
 }
 .menu-actions button {
   display: flex;

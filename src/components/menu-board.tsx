@@ -242,8 +242,12 @@ export function MenuBoard({
             </small>
           </div>
         </dl>
-        {menu.isOverBudget && <p className="budget-warning">{t.overBudget}</p>}
-        {offTarget && <p className="budget-warning">{t.kcalOutOfTarget}</p>}
+        {(menu.isOverBudget || offTarget) && (
+          <div className="menu-warnings">
+            {menu.isOverBudget && <p className="budget-warning">{t.overBudget}</p>}
+            {offTarget && <p className="budget-warning">{t.kcalOutOfTarget}</p>}
+          </div>
+        )}
 
         <button className="primary-action" disabled={disabled} onClick={onRecompose} type="button">
           <RefreshIcon />
