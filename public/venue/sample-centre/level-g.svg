@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Inter, 'PingFang SC', sans-serif">
+  <!-- Sample Centre · Ground floor. Fictional venue, brand-style schematic:
+       stores as outlined blocks, the central walkway left clear for the route. -->
+  <rect width="800" height="500" fill="#fcfaf5"/>
+  <rect x="12" y="12" width="776" height="476" rx="18" fill="none" stroke="#e8ded1" stroke-width="2"/>
+
+  <!-- central walkway -->
+  <rect x="40" y="205" width="720" height="90" rx="12" fill="#f7f4ed"/>
+  <text x="400" y="255" text-anchor="middle" fill="#b9ad9c" font-size="13" letter-spacing="4">WALKWAY</text>
+
+  <!-- entrance + concierge -->
+  <path d="M40 250 L14 250" stroke="#77746d" stroke-width="3"/>
+  <text x="26" y="238" text-anchor="middle" fill="#77746d" font-size="10">IN</text>
+  <rect x="46" y="216" width="70" height="68" rx="10" fill="#fff" stroke="#77746d" stroke-width="1.6"/>
+  <text x="81" y="248" text-anchor="middle" fill="#4f4b45" font-size="11">Concierge</text>
+  <text x="81" y="264" text-anchor="middle" fill="#8d8578" font-size="10">服务台</text>
+
+  <!-- top row: fresh -->
+  <g stroke-width="1.8">
+    <rect x="150" y="60" width="200" height="130" rx="12" fill="#eef4ef" stroke="#5a947e"/>
+    <text x="250" y="120" text-anchor="middle" fill="#33745e" font-size="15" font-weight="600">The Greengrocer</text>
+    <text x="250" y="140" text-anchor="middle" fill="#5a947e" font-size="11">果蔬铺</text>
+
+    <rect x="360" y="60" width="180" height="130" rx="12" fill="#fdf1ea" stroke="#d96b45"/>
+    <text x="450" y="120" text-anchor="middle" fill="#b94d2c" font-size="15" font-weight="600">Market Butcher</text>
+    <text x="450" y="140" text-anchor="middle" fill="#d96b45" font-size="11">肉铺</text>
+
+    <rect x="550" y="60" width="190" height="130" rx="12" fill="#edf3f5" stroke="#6d94a3"/>
+    <text x="645" y="120" text-anchor="middle" fill="#48707f" font-size="15" font-weight="600">Bay Seafood</text>
+    <text x="645" y="140" text-anchor="middle" fill="#6d94a3" font-size="11">海鲜档</text>
+  </g>
+
+  <!-- bottom row -->
+  <g stroke-width="1.8">
+    <rect x="130" y="310" width="190" height="130" rx="12" fill="#f8f1e4" stroke="#c39951"/>
+    <text x="225" y="370" text-anchor="middle" fill="#96742f" font-size="15" font-weight="600">Stone Oven Bakery</text>
+    <text x="225" y="390" text-anchor="middle" fill="#c39951" font-size="11">面包房</text>
+
+    <rect x="330" y="310" width="200" height="130" rx="12" fill="#f5efe9" stroke="#a08469"/>
+    <text x="430" y="370" text-anchor="middle" fill="#7c6449" font-size="15" font-weight="600">Deli &amp; Dairy</text>
+    <text x="430" y="390" text-anchor="middle" fill="#a08469" font-size="11">熟食奶酪</text>
+
+    <rect x="540" y="310" width="210" height="130" rx="12" fill="#fdf1ea" stroke="#d96b45"/>
+    <text x="645" y="370" text-anchor="middle" fill="#b94d2c" font-size="15" font-weight="600">Lucky Asian Grocer</text>
+    <text x="645" y="390" text-anchor="middle" fill="#d96b45" font-size="11">亚洲超市</text>
+  </g>
+
+  <text x="770" y="480" text-anchor="end" fill="#b9ad9c" font-size="10" letter-spacing="2">SAMPLE CENTRE · GROUND</text>
+</svg>
