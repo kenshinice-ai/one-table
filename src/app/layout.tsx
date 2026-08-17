@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 
+import { ServiceWorkerRegistration } from '@/components/service-worker';
 import manifest from '@/generated/catalogue-manifest.json';
 
 import './globals.css';
@@ -32,6 +33,11 @@ export const metadata: Metadata = {
     description,
     images: ['/og-image.png'],
   },
+  appleWebApp: {
+    capable: true,
+    title: '一桌',
+    statusBarStyle: 'default',
+  },
   icons: {
     icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
@@ -55,7 +61,10 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <link as="fetch" crossOrigin="anonymous" href={manifest.planning} rel="preload" />
         <link as="fetch" crossOrigin="anonymous" href={manifest.details} rel="preload" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <ServiceWorkerRegistration />
+      </body>
     </html>
   );
 }

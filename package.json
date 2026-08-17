@@ -27,7 +27,8 @@
     "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build",
     "recipes:emit": "node --import tsx scripts/recipes/emit-static.ts",
     "prebuild": "npm run recipes:emit",
-    "media:sizes": "bash scripts/media/generate-sizes.sh"
+    "media:sizes": "bash scripts/media/generate-sizes.sh",
+    "recipes:briefs": "node --import tsx scripts/recipes/image-briefs.ts"
   },
   "keywords": [],
   "author": "",
