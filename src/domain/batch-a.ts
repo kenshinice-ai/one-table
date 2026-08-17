@@ -15,6 +15,14 @@ export const recipeIngredientSchema = z.object({
   substitutionGroup: z.string().nullable().default(null),
 });
 
+export const structuredStepSchema = z.object({
+  text: z.string().min(1),
+  /** Estimated hands-on minutes for this step, used by the method timeline. */
+  minutes: z.number().int().nonnegative().optional(),
+  phase: z.enum(['prep', 'cook', 'plate']).optional(),
+  tip: z.string().optional(),
+});
+
 export const recipeSchema = z.object({
   id,
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
@@ -53,6 +61,11 @@ export const recipeSchema = z.object({
       summary: z.string().min(1),
       servingNote: z.string().nullable().default(null),
       instructions: z.array(z.string().min(1)).min(2),
+      /**
+       * Timed, phased steps. Optional so records written before the structured
+       * format keep validating; the UI falls back to `instructions`.
+       */
+      structuredInstructions: z.array(structuredStepSchema).optional(),
       aiAssisted: z.boolean().default(false),
     }),
     'en-AU': z.object({
@@ -60,6 +73,11 @@ export const recipeSchema = z.object({
       summary: z.string().min(1),
       servingNote: z.string().nullable().default(null),
       instructions: z.array(z.string().min(1)).min(2),
+      /**
+       * Timed, phased steps. Optional so records written before the structured
+       * format keep validating; the UI falls back to `instructions`.
+       */
+      structuredInstructions: z.array(structuredStepSchema).optional(),
       aiAssisted: z.boolean().default(false),
     }),
   }),

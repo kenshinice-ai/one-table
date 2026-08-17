@@ -1,4 +1,5 @@
 import type { RecipeImport } from './batch-a';
+import { energyFit, healthScore, isEnergyOnTarget, type EnergyTarget } from './health';
 
 export type DishCount = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 export type PlannerServingStyle = 'family' | 'plated' | 'buffet';
@@ -16,6 +17,8 @@ export type PlannerFilters = {
   availableEquipmentIds: string[];
   maxSpiceLevel: number;
   childFriendlyOnly: boolean;
+  /** Lowest acceptable deterministic health score; 1 accepts every recipe. */
+  minHealthScore: number;
 };
 
 export type PlannerPreferences = {
@@ -24,6 +27,13 @@ export type PlannerPreferences = {
   servingStyle: PlannerServingStyle;
   budgetCents: number;
   compositionMode: CompositionMode;
+  /** Energy band for the whole table; scored, never used as a hard filter. */
+  energyTarget: EnergyTarget;
+  /**
+   * Explicit course counts. `null` keeps the suggested template derived from
+   * dish count and serving style.
+   */
+  roleOverrides: Partial<Record<PrimaryRole, number>> | null;
 };
 
 export type ExclusionReasonCode =
@@ -39,6 +49,7 @@ export type ExclusionReasonCode =
   | 'equipment_unavailable'
   | 'spice_exceeded'
   | 'not_child_friendly'
+  | 'health_below_min'
   | 'serving_style_unsuitable';
 
 export type MenuConflictCode =
@@ -47,6 +58,7 @@ export type MenuConflictCode =
   | 'equipment_collision'
   | 'scaling_requires_review'
   | 'over_budget'
+  | 'kcal_out_of_target'
   | 'insufficient_safe_recipes';
 
 export type MenuConflict = {
@@ -72,6 +84,7 @@ export type ScoreBreakdown = {
   budgetFit: number;
   nutritionDataCompleteness: number;
   menuVariety: number;
+  kcalFit: number;
 };
 
 export type MenuCandidate = {
@@ -107,6 +120,7 @@ export const defaultPlannerFilters: PlannerFilters = {
   availableEquipmentIds: [],
   maxSpiceLevel: 5,
   childFriendlyOnly: false,
+  minHealthScore: 1,
 };
 
 export const defaultPlannerPreferences: PlannerPreferences = {
@@ -115,6 +129,8 @@ export const defaultPlannerPreferences: PlannerPreferences = {
   servingStyle: 'family',
   budgetCents: 12000,
   compositionMode: 'balanced',
+  energyTarget: 'any',
+  roleOverrides: null,
 };
 
 const roles: PrimaryRole[] = [
@@ -156,6 +172,7 @@ export function normalizePlannerFilters(filters: PlannerFilters): PlannerFilters
         : Math.max(1, Math.min(240, Math.round(filters.maxTotalMinutes))),
     maxSpiceLevel: Math.max(0, Math.min(5, Math.round(filters.maxSpiceLevel))),
     childFriendlyOnly: Boolean(filters.childFriendlyOnly),
+    minHealthScore: Math.max(1, Math.min(5, Math.round(filters.minHealthScore ?? 1))),
   };
 }
 
@@ -226,6 +243,7 @@ export function getRecipeExclusionReasons(
   }
   if (recipe.spiceLevel > filters.maxSpiceLevel) reasons.push('spice_exceeded');
   if (filters.childFriendlyOnly && !recipe.childFriendly) reasons.push('not_child_friendly');
+  if (healthScore(recipe) < filters.minHealthScore) reasons.push('health_below_min');
   return reasons;
 }
 
@@ -274,6 +292,40 @@ function roleTemplate(count: DishCount, style: PlannerServingStyle): PrimaryRole
     index += 1;
   }
   return result;
+}
+
+/** Course order used whenever a menu is laid out for a reader or a cook. */
+export const courseOrder: PrimaryRole[] = [
+  'snack',
+  'starter',
+  'soup',
+  'salad',
+  'main',
+  'side',
+  'staple',
+  'dessert',
+];
+
+/**
+ * The course list a menu is built from. Explicit overrides win; otherwise the
+ * suggested template for the requested dish count and serving style applies.
+ */
+export function resolveRoleTemplate(preferences: PlannerPreferences): PrimaryRole[] {
+  const overrides = preferences.roleOverrides;
+  if (!overrides) return roleTemplate(preferences.dishCount, preferences.servingStyle);
+  const expanded = courseOrder.flatMap((role) =>
+    Array.from({ length: Math.max(0, Math.min(4, overrides[role] ?? 0)) }, () => role),
+  );
+  return expanded.length ? expanded : roleTemplate(preferences.dishCount, preferences.servingStyle);
+}
+
+/** Counts per course for a preference set, used to seed the structure editor. */
+export function roleCountsFor(preferences: PlannerPreferences): Record<PrimaryRole, number> {
+  const counts = countByRole();
+  resolveRoleTemplate(preferences).forEach((role) => {
+    counts[role] += 1;
+  });
+  return counts;
 }
 
 function compatibleRoles(role: PrimaryRole): PrimaryRole[] {
@@ -482,12 +534,14 @@ function scoreCandidate(
   const menuVariety = normalizeDimension(
     cuisineVariety * 0.35 + methodVariety * 0.3 + ingredientVariety * 0.25 + 0.1,
   );
+  const energyPerPerson = recipes.reduce((sum, recipe) => sum + recipe.nutrition.energyKcal, 0);
   return {
     preferenceMatch,
     operationalFeasibility,
     budgetFit,
     nutritionDataCompleteness: nutritionCompleteness,
     menuVariety,
+    kcalFit: normalizeDimension(energyFit(energyPerPerson, preferences.energyTarget)),
   };
 }
 
@@ -502,7 +556,10 @@ function weightedScore(breakdown: ScoreBreakdown, mode: CompositionMode) {
       breakdown.operationalFeasibility * weights[1] +
       breakdown.budgetFit * weights[2] +
       breakdown.nutritionDataCompleteness * weights[3] +
-      breakdown.menuVariety * weights[4],
+      breakdown.menuVariety * weights[4] +
+      // The energy target is additive so it can reorder candidates without
+      // diluting the weights a composition mode was tuned with.
+      breakdown.kcalFit * 20,
   );
 }
 
@@ -555,7 +612,7 @@ function hasMenuHardConstraints(
   preferences: PlannerPreferences,
   filters: PlannerFilters,
 ) {
-  const template = roleTemplate(preferences.dishCount, preferences.servingStyle);
+  const template = resolveRoleTemplate(preferences);
   if (
     new Set(filters.mustIncludeIngredientIds).size !==
     new Set(candidate.coveredMustIncludeIngredientIds).size
@@ -589,7 +646,7 @@ export function summarizeEligibility(
   );
   const covered = normalized.mustIncludeIngredientIds.filter((id) => found.has(id));
   const uncovered = normalized.mustIncludeIngredientIds.filter((id) => !found.has(id));
-  const template = roleTemplate(preferences.dishCount, preferences.servingStyle);
+  const template = resolveRoleTemplate(preferences);
   const canRoleBuild = template.every((role) =>
     eligible.some((recipe) => matchesRole(recipe, role)),
   );
@@ -631,7 +688,7 @@ export function generateMenuCandidates(
 ): { candidates: MenuCandidate[]; partial: MenuCandidate | null; conflicts: MenuConflict[] } {
   const filters = normalizePlannerFilters(rawFilters);
   const eligible = getEligibleRecipes(recipes, filters);
-  const template = roleTemplate(preferences.dishCount, preferences.servingStyle);
+  const template = resolveRoleTemplate(preferences);
   const buckets = template.map((role) =>
     eligible
       .filter(
@@ -728,13 +785,15 @@ export function composeMenu(
   preferences: PlannerPreferences,
   variation = 0,
   rawFilters: PlannerFilters = defaultPlannerFilters,
+  substitutions: Record<number, string> = {},
 ): MenuSummary {
   const filters = normalizePlannerFilters(rawFilters);
   const { candidates, partial, conflicts } = generateMenuCandidates(recipes, preferences, filters);
   const choicePool = candidates.length ? candidates : partial ? [partial] : [];
-  const chosen = choicePool.length
+  const base = choicePool.length
     ? choicePool[variation % choicePool.length]
     : buildCandidate([], preferences, filters, 'empty-01');
+  const chosen = applySubstitutions(base, recipes, preferences, filters, substitutions);
   const eligibility = summarizeEligibility(recipes, filters, preferences);
   const mergedConflicts = [
     ...conflicts,
@@ -742,13 +801,84 @@ export function composeMenu(
       (item) => !conflicts.some((existing) => existing.code === item.code),
     ),
   ];
+  if (
+    chosen.recipes.length &&
+    !isEnergyOnTarget(chosen.energyKcalPerPerson, preferences.energyTarget)
+  ) {
+    mergedConflicts.push({
+      code: 'kcal_out_of_target',
+      message: 'Energy per person sits outside the requested target band.',
+    });
+  }
+  const template = resolveRoleTemplate(preferences);
   return {
     ...chosen,
     conflicts: mergedConflicts,
-    isPartial: chosen.recipes.length < preferences.dishCount,
+    isPartial: chosen.recipes.length < template.length,
     candidateMenus: candidates.slice(0, 12),
     eligibility,
   };
+}
+
+/**
+ * Replaces individual courses in a composed menu. Substitutions come from the
+ * course-level swap control and are re-scored as a whole menu, so totals and
+ * budget warnings always describe what the reader actually sees.
+ */
+function applySubstitutions(
+  candidate: MenuCandidate,
+  recipes: RecipeImport[],
+  preferences: PlannerPreferences,
+  filters: PlannerFilters,
+  substitutions: Record<number, string>,
+): MenuCandidate {
+  const entries = Object.entries(substitutions);
+  if (!entries.length || !candidate.recipes.length) return candidate;
+  const byId = new Map(recipes.map((recipe) => [recipe.id, recipe]));
+  let changed = false;
+  const next = candidate.recipes.map((recipe, index) => {
+    const replacementId = substitutions[index];
+    if (!replacementId) return recipe;
+    const replacement = byId.get(replacementId);
+    if (!replacement || replacement.id === recipe.id) return recipe;
+    // A substitution that duplicates another course would silently shorten the
+    // menu, so it is ignored rather than applied.
+    if (candidate.recipes.some((item, position) => position !== index && item.id === replacementId))
+      return recipe;
+    changed = true;
+    return replacement;
+  });
+  if (!changed) return candidate;
+  return buildCandidate(next, preferences, filters, `${candidate.candidateId}-swap`);
+}
+
+/**
+ * Alternatives for one course under the current conditions, ordered the same
+ * way the composer ranks them and excluding what is already on the table.
+ */
+export function getRoleAlternatives(
+  recipes: RecipeImport[],
+  preferences: PlannerPreferences,
+  rawFilters: PlannerFilters,
+  role: PrimaryRole,
+  excludeIds: string[],
+  limit = 8,
+): RecipeImport[] {
+  const filters = normalizePlannerFilters(rawFilters);
+  const excluded = new Set(excludeIds);
+  return getEligibleRecipes(recipes, filters)
+    .filter(
+      (recipe) =>
+        !excluded.has(recipe.id) &&
+        matchesRole(recipe, role) &&
+        recipe.servingStyles[preferences.servingStyle] >= 40,
+    )
+    .sort(
+      (a, b) =>
+        baseRecipeScore(b, preferences) - baseRecipeScore(a, preferences) ||
+        a.id.localeCompare(b.id),
+    )
+    .slice(0, limit);
 }
 
 export function activeFilterCount(filters: PlannerFilters) {
@@ -762,7 +892,8 @@ export function activeFilterCount(filters: PlannerFilters) {
     filters.availableEquipmentIds.length +
     (filters.maxTotalMinutes === null ? 0 : 1) +
     (filters.maxSpiceLevel === 5 ? 0 : 1) +
-    (filters.childFriendlyOnly ? 1 : 0)
+    (filters.childFriendlyOnly ? 1 : 0) +
+    (filters.minHealthScore > 1 ? 1 : 0)
   );
 }
 
