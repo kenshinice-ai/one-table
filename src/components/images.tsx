@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import type { PlannerRecipe } from '@/domain/catalogue';
 import type { Locale } from '@/i18n/copy';
@@ -89,6 +89,16 @@ export function ProgressiveRecipeImage({
   const [sharp, setSharp] = useState(false);
   const alt = locale === 'zh-CN' ? recipe.media.altZh : recipe.media.altEn;
 
+  /*
+   * A warmed photo is often decoded before React attaches onLoad, and that
+   * event never fires for an image that is already complete — which would leave
+   * the blurred stand-in on screen for good. Checking on mount covers it, and
+   * is the common case precisely because the hover warm-up worked.
+   */
+  const markReadyIfLoaded = useCallback((node: HTMLImageElement | null) => {
+    if (node?.complete && node.naturalWidth > 0) setSharp(true);
+  }, []);
+
   if (failed) return <ComingSoon label={alt} />;
 
   return (
@@ -110,6 +120,7 @@ export function ProgressiveRecipeImage({
         onError={() => setFailed(true)}
         onLoad={() => setSharp(true)}
         preload
+        ref={markReadyIfLoaded}
         sizes={sizes}
         src={`/media/${recipe.slug}.webp`}
       />
