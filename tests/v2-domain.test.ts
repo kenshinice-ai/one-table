@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
-import { launchRecipes } from '../data/recipes';
+import { ingredientCatalog, launchRecipes } from '../data/recipes';
 import type { RecipeImport } from '../src/domain/batch-a';
 import { energyFit, healthScore, isEnergyOnTarget } from '../src/domain/health';
 import {
@@ -22,6 +23,7 @@ import {
   RECIPE_CARD_STEP_LIMIT,
 } from '../src/domain/share-card';
 import { parsePlannerState, serializePlannerState } from '../src/domain/url-state';
+import { resolveStops } from '../src/domain/venue';
 
 const sample = launchRecipes[0];
 
@@ -386,5 +388,80 @@ test('recipe share card content', async (t) => {
   await t.test('only treats produced artwork as available', () => {
     assert.equal(recipeHasArtwork('media/honey-soy-chicken.webp'), true);
     assert.equal(recipeHasArtwork('recipes/v2/some-dish/hero-1600x1200.webp'), false);
+  });
+});
+
+test('venue routing', async (t) => {
+  const venue = {
+    floors: [
+      { level: 'G', nameZh: '地面', nameEn: 'Ground', planSrc: '/venue/x/g.svg', width: 800, height: 500 },
+      { level: '1', nameZh: '一层', nameEn: 'Level 1', planSrc: '/venue/x/1.svg', width: 800, height: 500 },
+    ],
+    pois: [
+      { poiId: 'concierge', nameZh: '服务台', nameEn: 'Concierge', level: 'G', zone: 0, kind: 'concierge' as const, x: 0, y: 0 },
+      { poiId: 'grocer', nameZh: '菜铺', nameEn: 'Grocer', level: 'G', zone: 1, kind: 'store' as const, x: 1, y: 1 },
+      { poiId: 'butcher', nameZh: '肉铺', nameEn: 'Butcher', level: 'G', zone: 2, kind: 'store' as const, x: 2, y: 2 },
+      { poiId: 'health', nameZh: '健康', nameEn: 'Health', level: '1', zone: 1, kind: 'store' as const, x: 3, y: 3 },
+    ],
+    ingredientMap: { salmon: 'butcher' },
+    categoryFallback: { vegetable: 'grocer', nut: 'health' },
+    conciergePoiId: 'concierge',
+  };
+  const defs = [
+    { id: 'carrot', nameEn: 'Carrot', nameZh: '胡萝卜', category: 'vegetable' },
+    { id: 'salmon', nameEn: 'Salmon', nameZh: '三文鱼', category: 'protein' },
+    { id: 'almonds', nameEn: 'Almonds', nameZh: '杏仁', category: 'nut' },
+    { id: 'mystery', nameEn: 'Mystery', nameZh: '神秘物', category: 'unknown_cat' },
+  ];
+  const line = (ingredientId: string) => ({
+    ingredientId,
+    quantity: 100,
+    unit: 'g' as const,
+    display: '100 g',
+    recipeIds: ['r1'],
+    optional: false,
+    group: 'main' as const,
+  });
+
+  await t.test('orders stops by floor then zone and groups items per store', () => {
+    const route = resolveStops([line('almonds'), line('salmon'), line('carrot')], defs, venue);
+    assert.deepEqual(
+      route.stops.map((stop) => stop.poi.poiId),
+      ['grocer', 'butcher', 'health'],
+    );
+    assert.equal(route.storeCount, 3);
+    assert.equal(route.unmapped.length, 0);
+  });
+
+  await t.test('direct mapping beats category fallback', () => {
+    const route = resolveStops([line('salmon')], defs, venue);
+    assert.equal(route.stops[0].poi.poiId, 'butcher', 'salmon maps directly, not via protein');
+  });
+
+  await t.test('unmapped items surface at the concierge instead of vanishing', () => {
+    const route = resolveStops([line('mystery'), line('carrot')], defs, venue);
+    const last = route.stops[route.stops.length - 1];
+    assert.equal(last.poi.kind, 'concierge');
+    assert.equal(route.unmapped.length, 1);
+    assert.equal(route.storeCount, 1, 'concierge does not count as a store');
+    const totalItems = route.stops.reduce((sum, stop) => sum + stop.items.length, 0);
+    assert.equal(totalItems, 2, 'no item is dropped');
+  });
+
+  await t.test('handles an empty list', () => {
+    const route = resolveStops([], defs, venue);
+    assert.deepEqual(route.stops, []);
+    assert.equal(route.storeCount, 0);
+  });
+
+  await t.test('the full Sample Centre mapping covers the whole catalogue', () => {
+    const venueJson = JSON.parse(
+      readFileSync('tenants/sample-centre/venue.json', 'utf8'),
+    );
+    const menu = composeMenu(launchRecipes, defaultPlannerPreferences, 0, defaultPlannerFilters);
+    const list = buildShoppingList(menu.recipes, 6);
+    const route = resolveStops(list, ingredientCatalog, venueJson);
+    assert.equal(route.unmapped.length, 0, 'default menu resolves without concierge items');
+    assert.ok(route.storeCount >= 3);
   });
 });

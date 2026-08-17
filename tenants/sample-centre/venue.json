@@ -1,0 +1,75 @@
+{
+  "floors": [
+    {
+      "level": "G",
+      "nameZh": "地面层 · 生鲜市集",
+      "nameEn": "Ground · Fresh Market",
+      "planSrc": "/venue/sample-centre/level-g.svg",
+      "width": 800,
+      "height": 500
+    },
+    {
+      "level": "1",
+      "nameZh": "一层 · 餐饮与生活",
+      "nameEn": "Level 1 · Dining & Living",
+      "planSrc": "/venue/sample-centre/level-1.svg",
+      "width": 800,
+      "height": 500
+    }
+  ],
+  "pois": [
+    { "poiId": "concierge", "nameZh": "服务台", "nameEn": "Concierge", "level": "G", "zone": 0, "kind": "concierge", "x": 80, "y": 250 },
+    { "poiId": "greengrocer", "nameZh": "果蔬铺", "nameEn": "The Greengrocer", "level": "G", "zone": 1, "kind": "store", "x": 250, "y": 135 },
+    { "poiId": "butcher", "nameZh": "肉铺", "nameEn": "Market Butcher", "level": "G", "zone": 2, "kind": "store", "x": 450, "y": 135 },
+    { "poiId": "seafood", "nameZh": "海鲜档", "nameEn": "Bay Seafood", "level": "G", "zone": 3, "kind": "store", "x": 645, "y": 135 },
+    { "poiId": "asian-grocer", "nameZh": "亚洲超市", "nameEn": "Lucky Asian Grocer", "level": "G", "zone": 4, "kind": "store", "x": 645, "y": 375 },
+    { "poiId": "deli", "nameZh": "熟食奶酪", "nameEn": "Deli & Dairy", "level": "G", "zone": 5, "kind": "store", "x": 430, "y": 375 },
+    { "poiId": "bakery", "nameZh": "面包房", "nameEn": "Stone Oven Bakery", "level": "G", "zone": 6, "kind": "store", "x": 225, "y": 375 },
+    { "poiId": "health", "nameZh": "健康食品", "nameEn": "Wholegrain Health", "level": "1", "zone": 1, "kind": "store", "x": 200, "y": 140 },
+    { "poiId": "liquor", "nameZh": "酒商", "nameEn": "Cellar Door Liquor", "level": "1", "zone": 2, "kind": "store", "x": 450, "y": 140 },
+    { "poiId": "kitchenware", "nameZh": "厨具店", "nameEn": "The Kitchen Shop", "level": "1", "zone": 3, "kind": "store", "x": 660, "y": 140 },
+    { "poiId": "rest-wok", "nameZh": "金镬中餐厅", "nameEn": "Golden Wok", "level": "1", "zone": 4, "kind": "restaurant", "x": 220, "y": 380 },
+    { "poiId": "rest-sole", "nameZh": "阳光意面馆", "nameEn": "Trattoria Sole", "level": "1", "zone": 5, "kind": "restaurant", "x": 450, "y": 380 },
+    { "poiId": "rest-hana", "nameZh": "花居酒屋", "nameEn": "Izakaya Hana", "level": "1", "zone": 6, "kind": "restaurant", "x": 665, "y": 380 }
+  ],
+  "ingredientMap": {
+    "salmon_fillet": "seafood",
+    "white_fish_fillet": "seafood",
+    "prawns": "seafood",
+    "bread": "bakery",
+    "sourdough": "bakery",
+    "red_wine": "liquor",
+    "white_wine": "liquor",
+    "tofu_firm": "asian-grocer",
+    "tempeh": "asian-grocer",
+    "miso_paste": "asian-grocer",
+    "kimchi": "asian-grocer",
+    "gochujang": "asian-grocer",
+    "oats": "health",
+    "quinoa": "health",
+    "couscous": "health",
+    "barley": "health",
+    "polenta": "health",
+    "nutritional_yeast": "health",
+    "olive_oil": "deli",
+    "balsamic_vinegar": "deli",
+    "dijon_mustard": "deli",
+    "honey": "health",
+    "maple_syrup": "health",
+    "eggs": "deli"
+  },
+  "categoryFallback": {
+    "protein": "butcher",
+    "vegetable": "greengrocer",
+    "fruit": "greengrocer",
+    "herb": "greengrocer",
+    "aromatic": "greengrocer",
+    "dairy": "deli",
+    "pantry": "asian-grocer",
+    "staple": "asian-grocer",
+    "spice": "asian-grocer",
+    "nut": "health",
+    "legume": "health"
+  },
+  "conciergePoiId": "concierge"
+}

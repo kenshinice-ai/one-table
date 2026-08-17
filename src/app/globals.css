@@ -2035,3 +2035,118 @@ h3 {
   color: var(--muted);
   font-size: 0.66rem;
 }
+
+/* ---- White-label co-brand ---- */
+.cobrand-sep {
+  margin: 0 2px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ---- Venue route panel ---- */
+.route-panel {
+  position: relative;
+  width: min(640px, 100%);
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  padding: 26px 24px;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+}
+.route-panel h2 {
+  margin: 0 0 2px;
+  font-size: 1.5rem;
+}
+.route-summary {
+  margin: 0 0 14px;
+  color: var(--terracotta-dark);
+  font-size: 0.82rem;
+  font-weight: 750;
+}
+.route-map {
+  margin: 0 0 12px;
+}
+.route-map figcaption {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.route-map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fcfaf5;
+}
+.route-stops {
+  display: grid;
+  gap: 8px;
+  margin: 6px 0 14px;
+  padding: 0;
+  list-style: none;
+}
+.route-stops li {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 10px;
+  padding: 9px 11px;
+  background: var(--surface-soft);
+  border-radius: 10px;
+}
+.route-stops li.is-concierge {
+  background: #fff7dc;
+}
+.route-stops .stop-index {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  color: #fff;
+  background: var(--terracotta);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 850;
+}
+.route-stops li.is-concierge .stop-index {
+  background: var(--muted);
+}
+.route-stops b {
+  font-size: 0.86rem;
+}
+.route-stops b small {
+  color: var(--muted);
+  font-weight: 400;
+}
+.stop-items {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+.stop-note {
+  margin: 3px 0 0;
+  color: #825b19;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.secondary-action {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  font-weight: 750;
+}
+.secondary-action:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta-dark);
+}

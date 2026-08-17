@@ -11,6 +11,7 @@ export function AppHeader({
   ingredients,
   locale,
   seats,
+  coBrand,
   onLocaleChange,
   onSearchSelect,
 }: {
@@ -18,6 +19,8 @@ export function AppHeader({
   ingredients: Array<{ id: string; nameZh: string; nameEn: string }>;
   locale: Locale;
   seats: number;
+  /** Venue name on white-label builds; the venue leads, One Table follows. */
+  coBrand?: string | null;
   onLocaleChange: (locale: Locale) => void;
   onSearchSelect: (hit: SearchHit) => void;
 }) {
@@ -29,7 +32,15 @@ export function AppHeader({
           <TableMark seats={seats} />
         </span>
         <span className="brand-text">
-          <b>{t.brand}</b>
+          <b>
+            {coBrand ? (
+              <>
+                {coBrand} <span className="cobrand-sep">×</span> {t.brand}
+              </>
+            ) : (
+              t.brand
+            )}
+          </b>
           <small>{t.eyebrow}</small>
         </span>
       </div>

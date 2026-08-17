@@ -368,3 +368,12 @@ export const ChildIcon = glyph(
     <path d="M9.3 9.8v.6M14.7 9.8v.6" />
   </>,
 );
+
+/** A path between two map pins — the in-venue route. */
+export const RouteIcon = glyph(
+  <>
+    <circle cx="6" cy="19" r="2.5" />
+    <circle cx="18" cy="5" r="2.5" />
+    <path d="M8.5 19H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" />
+  </>,
+);

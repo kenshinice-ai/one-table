@@ -189,6 +189,12 @@ export const copy = {
     saveRecipe: '保存食谱',
     saveRecipeHint: 'iPhone 上如需存入相册，长按生成的图片选择「存储到照片」。',
     moreIngredients: '另有 {count} 种食材',
+    route: '店内路线',
+    createRoute: '生成路线',
+    routeSummary: '共 {stops} 站 · 途经 {stores} 家店',
+    conciergeStop: '请到服务台询问以下食材',
+    saveRouteCard: '保存路线卡',
+    routeDisclaimer: '路线与店铺位置为指引性示意，以场内标识与店铺现状为准。',
   },
   'en-AU': {
     brand: 'One Table',
@@ -315,6 +321,12 @@ export const copy = {
     saveRecipe: 'Save recipe',
     saveRecipeHint: 'On iPhone, long-press the saved image to add it to Photos.',
     moreIngredients: '{count} more ingredients',
+    route: 'In-centre route',
+    createRoute: 'Create route',
+    routeSummary: '{stops} stops · {stores} stores on the way',
+    conciergeStop: 'Ask the concierge about these items',
+    saveRouteCard: 'Save route card',
+    routeDisclaimer: 'Routes and store locations are indicative; in-centre signage prevails.',
   },
 } as const;
 

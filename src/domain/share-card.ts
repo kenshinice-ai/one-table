@@ -482,3 +482,187 @@ export function buildRecipeCardInput({
 export function recipeHasArtwork(objectKey: string) {
   return objectKey.startsWith('media/');
 }
+
+/* ------------------------------------------------------------------ *
+ * Venue route card
+ * ------------------------------------------------------------------ */
+
+export type RouteCardFloor = {
+  nameShort: string;
+  name: string;
+  planSrc: string;
+  width: number;
+  height: number;
+  points: Array<{ index: number; x: number; y: number }>;
+};
+
+export type RouteCardStop = {
+  index: number;
+  level: string;
+  name: string;
+  isConcierge: boolean;
+  items: string[];
+};
+
+export type RouteCardInput = {
+  venueName: string;
+  brand: string;
+  title: string;
+  summary: string;
+  floors: RouteCardFloor[];
+  stops: RouteCardStop[];
+  disclaimer: string;
+};
+
+/**
+ * Renders the walking route as a portrait card for the camera roll: the
+ * schematic floor plans with the numbered path drawn over them, then the stop
+ * list with what to buy at each store. Drawn entirely on a canvas from
+ * same-origin assets, so it works offline on a basement level — which is
+ * exactly where it gets used.
+ */
+export async function renderRouteCard(input: RouteCardInput): Promise<Blob | null> {
+  const width = 1080;
+  const margin = 72;
+  const contentWidth = width - margin * 2;
+
+  const floorsWithStops = input.floors.filter((floor) => floor.points.length > 0);
+  const mapWidth = floorsWithStops.length > 1 ? (contentWidth - 24) / 2 : contentWidth * 0.72;
+  const mapHeights = floorsWithStops.map(
+    (floor) => (floor.height / floor.width) * mapWidth,
+  );
+  const mapRowHeight = floorsWithStops.length ? Math.max(...mapHeights) + 56 : 0;
+
+  const stopHeights = input.stops.map(
+    (stop) => 46 + Math.ceil(stop.items.join(' · ').length / 52) * 30,
+  );
+  const listHeight = stopHeights.reduce((sum, h) => sum + h, 0);
+  const height = 210 + mapRowHeight + 40 + listHeight + 150;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const context = canvas.getContext('2d');
+  if (!context) return null;
+
+  context.fillStyle = PALETTE.paper;
+  context.fillRect(0, 0, width, height);
+
+  drawTableMark(context, margin + 26, 92, 26);
+  context.textBaseline = 'alphabetic';
+  context.fillStyle = PALETTE.ink;
+  context.font = `700 40px ${SERIF}`;
+  context.fillText(input.venueName, margin + 68, 84);
+  context.fillStyle = PALETTE.muted;
+  context.font = `400 22px ${SANS}`;
+  context.fillText(`${input.brand} · ${input.title}`, margin + 70, 116);
+
+  context.fillStyle = PALETTE.terracotta;
+  context.font = `700 26px ${SANS}`;
+  context.fillText(input.summary, margin, 172);
+
+  // --- schematic maps with the numbered path ---
+  let mapX = margin;
+  const mapY = 210;
+  for (let f = 0; f < floorsWithStops.length; f += 1) {
+    const floor = floorsWithStops[f];
+    const drawH = mapHeights[f];
+    const scale = mapWidth / floor.width;
+    const image = await loadImage(floor.planSrc);
+
+    context.fillStyle = PALETTE.muted;
+    context.font = `700 20px ${SANS}`;
+    context.fillText(floor.name, mapX, mapY + 4);
+
+    if (image) {
+      context.drawImage(image, mapX, mapY + 16, mapWidth, drawH);
+    } else {
+      context.fillStyle = '#f1ece3';
+      context.fillRect(mapX, mapY + 16, mapWidth, drawH);
+    }
+    context.strokeStyle = PALETTE.line;
+    context.lineWidth = 2;
+    context.strokeRect(mapX, mapY + 16, mapWidth, drawH);
+
+    const px = (x: number) => mapX + x * scale;
+    const py = (y: number) => mapY + 16 + y * scale;
+    if (floor.points.length > 1) {
+      context.strokeStyle = PALETTE.terracotta;
+      context.lineWidth = 4;
+      context.setLineDash([9, 7]);
+      context.beginPath();
+      floor.points.forEach((point, index) => {
+        if (index === 0) context.moveTo(px(point.x), py(point.y));
+        else context.lineTo(px(point.x), py(point.y));
+      });
+      context.stroke();
+      context.setLineDash([]);
+    }
+    for (const point of floor.points) {
+      context.fillStyle = PALETTE.terracotta;
+      context.beginPath();
+      context.arc(px(point.x), py(point.y), 15, 0, Math.PI * 2);
+      context.fill();
+      context.strokeStyle = '#fff';
+      context.lineWidth = 3;
+      context.stroke();
+      context.fillStyle = '#fff';
+      context.font = `700 16px ${SANS}`;
+      context.textAlign = 'center';
+      context.fillText(String(point.index), px(point.x), py(point.y) + 6);
+      context.textAlign = 'left';
+    }
+    mapX += mapWidth + 24;
+  }
+
+  // --- stop list ---
+  let y = mapY + mapRowHeight + 30;
+  for (let s = 0; s < input.stops.length; s += 1) {
+    const stop = input.stops[s];
+    context.fillStyle = stop.isConcierge ? PALETTE.muted : PALETTE.terracotta;
+    context.beginPath();
+    context.arc(margin + 15, y - 8, 15, 0, Math.PI * 2);
+    context.fill();
+    context.fillStyle = '#fff';
+    context.font = `700 16px ${SANS}`;
+    context.textAlign = 'center';
+    context.fillText(String(stop.index), margin + 15, y - 2);
+    context.textAlign = 'left';
+
+    context.fillStyle = PALETTE.ink;
+    context.font = `700 27px ${SANS}`;
+    context.fillText(`${stop.name}`, margin + 44, y);
+    context.fillStyle = PALETTE.muted;
+    context.font = `400 20px ${SANS}`;
+    context.fillText(`L${stop.level}`, margin + 44 + context.measureText(stop.name).width + 60, y);
+
+    context.fillStyle = PALETTE.muted;
+    context.font = `400 21px ${SANS}`;
+    const words = stop.items.join(' · ');
+    let line = '';
+    let lineY = y + 30;
+    for (const part of words.split(' · ')) {
+      const candidate = line ? `${line} · ${part}` : part;
+      if (context.measureText(candidate).width > contentWidth - 44) {
+        context.fillText(line, margin + 44, lineY);
+        lineY += 30;
+        line = part;
+      } else {
+        line = candidate;
+      }
+    }
+    if (line) context.fillText(line, margin + 44, lineY);
+    y += stopHeights[s];
+  }
+
+  // --- footer ---
+  drawTableMark(context, margin + 18, height - 72, 18);
+  context.fillStyle = PALETTE.ink;
+  context.font = `700 24px ${SERIF}`;
+  context.fillText(input.brand, margin + 48, height - 66);
+  context.fillStyle = PALETTE.muted;
+  context.font = `400 17px ${SANS}`;
+  context.fillText(input.disclaimer, margin, height - 34);
+
+  return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), 'image/png', 0.95));
+}

@@ -35,7 +35,7 @@
 
 > Hi [Name],
 >
-> One number since my last note: in our venue demo, an average dinner-party route passes **six tenants** — fresh food, grocery and dining — before checkout.
+> One number since my last note: in our venue demo, a dinner-party menu routes the shopper through **five stores across two levels** — greengrocer, butcher, grocer, deli and health foods — before checkout. Add seafood or a dessert course and it grows from there.
 >
 > I've attached a one-page outline of the Lunar New Year package (interactive planner + key visual + social clips, one team end to end). The campaign report gives you scans, menus composed, and route cards saved — numbers your tenants can see.
 >
@@ -44,7 +44,7 @@
 > Lee
 
 **附件**：`pitch-mall-campaign.html` 导出的 PDF（信头版一页纸）。
-*（「six tenants」数字须待 Sample Centre demo 实测后回填真实值——不发未验证的数字。）*
+*（「five stores across two levels」为 demo.pwestudio.site 实测值（默认 4 道与 8 道菜单均为 5 店；含海鲜/烘焙菜时更多）——已验证，可发。）*
 
 ## T3 · 收尾（再 +7 个工作日）
 

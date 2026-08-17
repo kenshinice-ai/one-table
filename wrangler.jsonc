@@ -30,6 +30,14 @@
     "APP_BASE_URL": "http://localhost:3000",
   },
   "env": {
+    "demo": {
+      "name": "one-table-demo",
+      "routes": [{ "pattern": "demo.pwestudio.site", "custom_domain": true }],
+      "vars": {
+        "APP_ENV": "demo",
+        "APP_BASE_URL": "https://demo.pwestudio.site",
+      },
+    },
     "staging": {
       "name": "menu-planning-companion-staging",
       "vars": {

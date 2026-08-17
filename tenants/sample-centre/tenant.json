@@ -1,0 +1,13 @@
+{
+  "id": "sample-centre",
+  "venueType": "mall",
+  "brand": {
+    "displayZh": "示例中心",
+    "displayEn": "Sample Centre"
+  },
+  "defaultLocale": "en-AU",
+  "features": {
+    "navigation": true,
+    "restaurants": true
+  }
+}

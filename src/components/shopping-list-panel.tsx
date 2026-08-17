@@ -6,7 +6,7 @@ import type { PlannerRecipe } from '@/domain/catalogue';
 import { buildShoppingList } from '@/domain/shopping-list';
 import { copy, fill, type Locale } from '@/i18n/copy';
 
-import { CloseIcon, PrintIcon } from './icons';
+import { CloseIcon, PrintIcon, RouteIcon } from './icons';
 
 export function ShoppingListPanel({
   recipes,
@@ -15,6 +15,7 @@ export function ShoppingListPanel({
   ingredientNames,
   onClose,
   onPrint,
+  onRoute,
 }: {
   recipes: PlannerRecipe[];
   guests: number;
@@ -22,6 +23,8 @@ export function ShoppingListPanel({
   ingredientNames: Map<string, string>;
   onClose: () => void;
   onPrint: () => void;
+  /** Present only on white-label builds with a mapped venue. */
+  onRoute?: () => void;
 }) {
   const t = copy[locale];
   const lines = buildShoppingList(recipes, guests);
@@ -88,7 +91,13 @@ export function ShoppingListPanel({
         <p className="shopping-hint">{fill(t.shoppingHint, { count: guests })}</p>
         {renderSection(t.groupMain, main)}
         {renderSection(t.groupSeasoning, seasoning)}
-        <button className="primary-action" onClick={onPrint} type="button">
+        {onRoute && (
+          <button className="primary-action" onClick={onRoute} type="button">
+            <RouteIcon />
+            <span>{t.createRoute}</span>
+          </button>
+        )}
+        <button className="secondary-action" onClick={onPrint} type="button">
           <PrintIcon />
           <span>{t.printMenu}</span>
         </button>

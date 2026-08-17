@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 
 import manifest from '@/generated/catalogue-manifest.json';
+import tenantConfig from '@/generated/tenant-config.json';
 import {
   fetchPlanningCatalogue,
   fetchRecipeDetails,
@@ -22,6 +23,7 @@ import {
   type PlannerPreferences,
 } from '@/domain/planner';
 import { parsePlannerState, serializePlannerState, type PlannerState } from '@/domain/url-state';
+import type { TenantConfig } from '@/domain/venue';
 import { renderShareCard, shareCardDishes } from '@/domain/share-card';
 import { copy, roleLabel, type Choice, type Locale } from '@/i18n/copy';
 
@@ -31,14 +33,18 @@ import type { SearchHit } from './global-search';
 import { MenuBoard, type CourseSlot } from './menu-board';
 import { PrintView } from './print-view';
 import { RecipeDetail } from './recipe-detail';
+import { RoutePanel } from './route-panel';
 import { ShoppingListPanel } from './shopping-list-panel';
 import { TableSettings } from './table-settings';
 import { warmMenuMedia } from './warm-images';
 
 type Snapshot = { filters: PlannerFilters; preferences: PlannerPreferences };
 
+// Compiled in at build time; null on the public site.
+const tenant = tenantConfig as TenantConfig | null;
+
 const defaultState: PlannerState = {
-  locale: 'zh-CN',
+  locale: tenant?.defaultLocale ?? 'zh-CN',
   filters: defaultPlannerFilters,
   preferences: defaultPlannerPreferences,
   variation: 0,
@@ -88,6 +94,7 @@ export function PlannerApp({
   const [resetOpen, setResetOpen] = useState(false);
   const [detailRecipe, setDetailRecipe] = useState<PlannerRecipe | null>(null);
   const [shoppingOpen, setShoppingOpen] = useState(false);
+  const [routeOpen, setRouteOpen] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
   const [savingImage, setSavingImage] = useState(false);
 
@@ -339,6 +346,7 @@ export function PlannerApp({
         {locale === 'zh-CN' ? '跳到条件筛选' : 'Skip to filters'}
       </a>
       <AppHeader
+        coBrand={tenant ? (locale === 'zh-CN' ? tenant.brand.displayZh : tenant.brand.displayEn) : null}
         ingredients={ingredientCatalog}
         locale={locale}
         onLocaleChange={setLocale}
@@ -390,6 +398,11 @@ export function PlannerApp({
           <span>{t.healthDisclaimer}</span>
         </div>
         <div className="footer-credit">
+          {tenant && (
+            <span>
+              {locale === 'zh-CN' ? tenant.brand.displayZh : tenant.brand.displayEn} × {t.brand}
+            </span>
+          )}
           <span>
             © 2026 PWE Group Pty Ltd ·{' '}
             <a href="https://pwestudio.online/" rel="noopener" target="_blank">
@@ -446,7 +459,27 @@ export function PlannerApp({
           locale={locale}
           onClose={() => setShoppingOpen(false)}
           onPrint={() => window.print()}
+          onRoute={
+            tenant?.features.navigation
+              ? () => {
+                  setShoppingOpen(false);
+                  setRouteOpen(true);
+                }
+              : undefined
+          }
           recipes={menu.recipes}
+        />
+      )}
+
+      {routeOpen && tenant && (
+        <RoutePanel
+          guests={preferences.guests}
+          ingredientNames={ingredientNames}
+          ingredients={ingredientCatalog}
+          locale={locale}
+          onClose={() => setRouteOpen(false)}
+          recipes={menu.recipes}
+          tenant={tenant}
         />
       )}
 
