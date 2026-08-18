@@ -1463,25 +1463,33 @@ h3 {
     Nesting a scrolling panel inside a scrolling page is a bad touch experience,
     so on narrow screens the panel grows naturally and only the summary follows
     the reader down the page.
+
+    It also leads. Side by side the table and its conditions are both in view;
+    stacked, source order put a full screen of dropdowns in front of the food,
+    which is the opposite of what this product promises. The reader sees the
+    table first and adjusts it afterwards — the skip link goes to the filters.
   */
   .menu-panel {
     position: static;
     display: block;
+    order: -1;
     max-height: none;
   }
   .menu-scroll {
     overflow: visible;
     mask-image: none;
   }
+  /*
+    Not pinned here. Stacked, the panel starts near the bottom of the screen,
+    and a bar pinned to the viewport covered every dish the reorder above was
+    meant to reveal. In one column the totals and the compose button read as
+    the end of the menu, which is where a thumb goes looking for them anyway.
+  */
   .menu-footer {
-    position: sticky;
-    z-index: 20;
-    bottom: 0;
     margin: 0 -14px -14px;
-    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
     background: rgb(255 253 249 / 96%);
     border-top: 1px solid var(--line);
-    backdrop-filter: blur(8px);
   }
   .menu-footer .estimate-note {
     display: none;
@@ -1494,14 +1502,16 @@ h3 {
   .course-heading {
     top: 0;
   }
-  .settings-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
   .section-kicker {
     grid-column: 1 / -1;
   }
   .seasonal-row {
     grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 760px) {
+  .settings-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @media (max-width: 620px) {
@@ -1520,8 +1530,19 @@ h3 {
   .search-field kbd {
     display: none;
   }
+  /*
+    Two across, not one. Six stacked settings pushed the table itself past the
+    fold on a phone — the reader arrived at a screen of controls and had to
+    scroll to find out there was any food.
+  */
   .settings-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    padding: 8px;
+  }
+  .dropdown-trigger {
+    padding-right: 6px;
+    padding-left: 8px;
   }
   .filter-workspace,
   .menu-panel {
