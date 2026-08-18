@@ -1806,8 +1806,13 @@ h3 {
   Touch devices cannot hover, so the swap control is always visible there. As a
   labelled pill it covered the dish title, so on touch it becomes a round
   icon button and the copy reserves its corner.
+
+  `any-pointer: coarse` rather than `hover: none` alone: an iPad with a
+  trackpad and a touchscreen laptop both report a hover-capable primary
+  pointer while still being poked with a finger, and they were left with a
+  23px target.
 */
-@media (hover: none) {
+@media (hover: none), (any-pointer: coarse) {
   .swap-button {
     display: grid;
     width: 44px;
