@@ -2428,5 +2428,380 @@
     "objectKey": "media/brunch-prawn-avocado-rice-paper.webp",
     "generatedAt": "2026-08-18T01:02:56.252Z",
     "aiModel": "imagegen-editorial-v2"
+  },
+  "brunch-apple-cinnamon-porridge": {
+    "objectKey": "media/brunch-apple-cinnamon-porridge.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "brunch-green-goddess-bowl": {
+    "objectKey": "media/brunch-green-goddess-bowl.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "brunch-crumpet-free-honey-butter-bao": {
+    "objectKey": "media/brunch-crumpet-free-honey-butter-bao.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "brunch-frittata-leek-potato": {
+    "objectKey": "media/brunch-frittata-leek-potato.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "brunch-matcha-free-sesame-latte-pudding": {
+    "objectKey": "media/brunch-matcha-free-sesame-latte-pudding.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-classic-scones-jam-cream": {
+    "objectKey": "media/tea-classic-scones-jam-cream.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-egg-tarts-flaky": {
+    "objectKey": "media/tea-egg-tarts-flaky.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-cucumber-ribbon-sandwiches": {
+    "objectKey": "media/tea-cucumber-ribbon-sandwiches.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-lemon-drizzle-loaf": {
+    "objectKey": "media/tea-lemon-drizzle-loaf.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-matcha-free-osmanthus-cookies": {
+    "objectKey": "media/tea-matcha-free-osmanthus-cookies.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-banana-walnut-bread": {
+    "objectKey": "media/tea-banana-walnut-bread.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-red-bean-mochi-bites": {
+    "objectKey": "media/tea-red-bean-mochi-bites.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-ham-cheese-finger-rolls": {
+    "objectKey": "media/tea-ham-cheese-finger-rolls.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-berry-friands-almond": {
+    "objectKey": "media/tea-berry-friands-almond.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-chocolate-dipped-strawberry-free-orange": {
+    "objectKey": "media/tea-chocolate-dipped-strawberry-free-orange.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-scallion-pancake-crisps": {
+    "objectKey": "media/tea-scallion-pancake-crisps.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-coconut-mango-slice": {
+    "objectKey": "media/tea-coconut-mango-slice.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-pistachio-honey-bites": {
+    "objectKey": "media/tea-pistachio-honey-bites.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-earl-grey-free-osmanthus-madeleine": {
+    "objectKey": "media/tea-earl-grey-free-osmanthus-madeleine.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-savory-corn-muffins": {
+    "objectKey": "media/tea-savory-corn-muffins.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-sesame-peanut-brittle": {
+    "objectKey": "media/tea-sesame-peanut-brittle.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-apple-rose-tartlets": {
+    "objectKey": "media/tea-apple-rose-tartlets.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-milk-tea-free-jelly-osmanthus": {
+    "objectKey": "media/tea-milk-tea-free-jelly-osmanthus.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-parmesan-thyme-shortbread": {
+    "objectKey": "media/tea-parmesan-thyme-shortbread.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-mini-pavlova-nests": {
+    "objectKey": "media/tea-mini-pavlova-nests.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-garlic-butter-prawn-pasta": {
+    "objectKey": "media/wk-garlic-butter-prawn-pasta.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-teriyaki-chicken-rice-bowl": {
+    "objectKey": "media/wk-teriyaki-chicken-rice-bowl.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-mapo-inspired-tofu-mince": {
+    "objectKey": "media/wk-mapo-inspired-tofu-mince.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-egg-tomato-stirfry": {
+    "objectKey": "media/wk-egg-tomato-stirfry.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-pesto-free-basil-gnocchi-style": {
+    "objectKey": "media/wk-pesto-free-basil-gnocchi-style.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-black-pepper-beef-stirfry": {
+    "objectKey": "media/wk-black-pepper-beef-stirfry.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-salmon-tray-lemon-asparagus": {
+    "objectKey": "media/wk-salmon-tray-lemon-asparagus.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-kimchi-fried-rice-egg": {
+    "objectKey": "media/wk-kimchi-fried-rice-egg.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-chickpea-spinach-fifteen": {
+    "objectKey": "media/wk-chickpea-spinach-fifteen.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-honey-soy-drumstick-tray": {
+    "objectKey": "media/wk-honey-soy-drumstick-tray.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-tuna-free-salmon-soba-cold": {
+    "objectKey": "media/wk-tuna-free-salmon-soba-cold.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-loaded-sweet-potato-beans": {
+    "objectKey": "media/wk-loaded-sweet-potato-beans.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-ginger-scallion-fish-steam": {
+    "objectKey": "media/wk-ginger-scallion-fish-steam.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-halloumi-couscous-plate": {
+    "objectKey": "media/wk-halloumi-couscous-plate.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-beef-broccoli-oyster": {
+    "objectKey": "media/wk-beef-broccoli-oyster.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-caprese-gnudi-free-orzo": {
+    "objectKey": "media/wk-caprese-gnudi-free-orzo.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-pork-cabbage-stirfry-quick": {
+    "objectKey": "media/wk-pork-cabbage-stirfry-quick.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-corn-egg-drop-noodles": {
+    "objectKey": "media/wk-corn-egg-drop-noodles.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-lemon-herb-fish-parcels": {
+    "objectKey": "media/wk-lemon-herb-fish-parcels.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-gochujang-noodles-quick": {
+    "objectKey": "media/wk-gochujang-noodles-quick.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-mushroom-spinach-omelette-dinner": {
+    "objectKey": "media/wk-mushroom-spinach-omelette-dinner.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-sichuan-cucumber-chicken-shred": {
+    "objectKey": "media/wk-sichuan-cucumber-chicken-shred.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-bacon-pea-carbonara-style": {
+    "objectKey": "media/wk-bacon-pea-carbonara-style.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-thai-basil-mince-rice": {
+    "objectKey": "media/wk-thai-basil-mince-rice.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-white-bean-tuna-free-lemon-salad": {
+    "objectKey": "media/wk-white-bean-tuna-free-lemon-salad.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-miso-glazed-eggplant-fast": {
+    "objectKey": "media/wk-miso-glazed-eggplant-fast.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-prawn-avocado-rice-bowl": {
+    "objectKey": "media/wk-prawn-avocado-rice-bowl.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-tomato-egg-noodle-soup": {
+    "objectKey": "media/wk-tomato-egg-noodle-soup.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-crispy-tofu-sweet-chilli": {
+    "objectKey": "media/wk-crispy-tofu-sweet-chilli.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-pork-miso-udon-style": {
+    "objectKey": "media/wk-pork-miso-udon-style.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-crispy-wonton-cups": {
+    "objectKey": "media/party-crispy-wonton-cups.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-devilled-eggs-sriracha-free": {
+    "objectKey": "media/party-devilled-eggs-sriracha-free.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-caramelised-onion-tartlets": {
+    "objectKey": "media/party-caramelised-onion-tartlets.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-korean-fried-cauliflower": {
+    "objectKey": "media/party-korean-fried-cauliflower.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-prosciutto-free-ham-melon-free-pear-bites": {
+    "objectKey": "media/party-prosciutto-free-ham-melon-free-pear-bites.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-spinach-feta-triangles": {
+    "objectKey": "media/party-spinach-feta-triangles.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-sticky-soy-chicken-wings": {
+    "objectKey": "media/party-sticky-soy-chicken-wings.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-rainbow-rice-paper-platter": {
+    "objectKey": "media/party-rainbow-rice-paper-platter.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-loaded-potato-skins": {
+    "objectKey": "media/party-loaded-potato-skins.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-tofu-lettuce-sang-choy": {
+    "objectKey": "media/party-tofu-lettuce-sang-choy.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-honey-chilli-nut-mix": {
+    "objectKey": "media/party-honey-chilli-nut-mix.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-mini-corn-cheese-toasts": {
+    "objectKey": "media/party-mini-corn-cheese-toasts.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-smoky-eggplant-dip-platter": {
+    "objectKey": "media/party-smoky-eggplant-dip-platter.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-cranberry-free-jam-brie-free-ricotta-cups": {
+    "objectKey": "media/party-cranberry-free-jam-brie-free-ricotta-cups.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-salt-pepper-tofu-popcorn": {
+    "objectKey": "media/party-salt-pepper-tofu-popcorn.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-pumpkin-arancini-style": {
+    "objectKey": "media/party-pumpkin-arancini-style.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-lime-fish-ceviche-style-cups": {
+    "objectKey": "media/party-lime-fish-ceviche-style-cups.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-sesame-prawn-toast-baked": {
+    "objectKey": "media/party-sesame-prawn-toast-baked.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-veggie-dumpling-potstickers": {
+    "objectKey": "media/party-veggie-dumpling-potstickers.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-chocolate-dipped-shortbread-sticks": {
+    "objectKey": "media/party-chocolate-dipped-shortbread-sticks.webp",
+    "generatedAt": "2026-08-18T05:06:43.724Z",
+    "aiModel": "imagegen-editorial-v2"
   }
 }
