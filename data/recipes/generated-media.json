@@ -2973,5 +2973,30 @@
     "objectKey": "media/winter-corn-butter-rice-pot.webp",
     "generatedAt": "2026-08-18T10:03:27.504Z",
     "aiModel": "imagegen-editorial-v2"
+  },
+  "sichuan-pepper-sweet-potato-bites": {
+    "objectKey": "media/sichuan-pepper-sweet-potato-bites.webp",
+    "generatedAt": "2026-08-18T12:16:27.810Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indonesian-peanut-sweet-potatoes": {
+    "objectKey": "media/indonesian-peanut-sweet-potatoes.webp",
+    "generatedAt": "2026-08-18T12:16:27.810Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "indian-lentil-coconut-soup": {
+    "objectKey": "media/indian-lentil-coconut-soup.webp",
+    "generatedAt": "2026-08-18T12:16:27.810Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "french-coconut-chocolate-free-pots": {
+    "objectKey": "media/french-coconut-chocolate-free-pots.webp",
+    "generatedAt": "2026-08-18T12:16:27.810Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "japanese-mushroom-clear-soup": {
+    "objectKey": "media/japanese-mushroom-clear-soup.webp",
+    "generatedAt": "2026-08-18T12:16:27.810Z",
+    "aiModel": "imagegen-editorial-v2"
   }
 }
