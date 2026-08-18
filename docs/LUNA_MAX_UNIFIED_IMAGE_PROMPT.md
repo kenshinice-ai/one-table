@@ -39,6 +39,12 @@ npm run recipes:briefs   # 清单里这 5 条带 status: "redo" 与 redoReason
 
 **绝对禁止**（不变）：文字、logo、水印、人物、手、包装、`ingredients` 之外的任何可辨识食材。
 
+### 2b. 边界提醒（这次踩到了）
+
+上一批重出时，注册表 `data/recipes/generated-media.json` 被你那边直接写了。这次图是好的，但这一步**必须留给主线**——它是「照片上线」的开关，写进去就等于跳过质检直接发布。主线已在 `art:adopt` 加了检测：注册表出现非本脚本写入的条目会直接中止并列出 slug。
+
+**你要做的仍然只有一件事：把 `public/media/<slug>.webp` 提交上来。** 不跑 `art:adopt`、不跑 `media:sizes`、不动注册表。
+
 ### 3. 交付协议（每批，严格执行）
 
 - **每批 25 张**，完成即提交，不攒。
