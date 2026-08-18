@@ -1,6 +1,6 @@
 import type { PlannerRecipe } from '@/domain/catalogue';
 
-import { ingredientImageUrl, recipeImageUrl } from './images';
+import { hasIngredientArt, ingredientImageUrl, recipeImageUrl } from './images';
 
 /** Files already requested this session, so a warm-up never asks twice. */
 const requested = new Set<string>();
@@ -23,7 +23,10 @@ function warm(url: string) {
 export function warmRecipeMedia(recipe: PlannerRecipe, heroWidth = 640) {
   warm(recipeImageUrl(recipe.slug, heroWidth));
   recipe.ingredients.forEach((ingredient) => {
-    warm(ingredientImageUrl(ingredient.ingredientId));
+    // Warming a file that was never produced is a guaranteed 404, and the
+    // dialog draws a monogram for those anyway.
+    if (hasIngredientArt(ingredient.ingredientId))
+      warm(ingredientImageUrl(ingredient.ingredientId));
   });
 }
 

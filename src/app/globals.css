@@ -384,8 +384,8 @@ h3 {
 }
 .seasonal-chip[aria-pressed='true'] {
   color: #fff;
-  background: linear-gradient(135deg, var(--terracotta) 0, var(--terracotta-dark) 100%);
-  border-color: var(--terracotta-dark);
+  background: linear-gradient(135deg, var(--terracotta-dark) 0, #a23f22 100%);
+  border-color: #a23f22;
   box-shadow: var(--shadow-small);
 }
 .seasonal-chip-label {
@@ -406,7 +406,8 @@ h3 {
   white-space: nowrap;
 }
 .seasonal-chip[aria-pressed='true'] .seasonal-chip-note {
-  color: rgb(255 255 255 / 82%);
+  /* Full white, not a tint: at 12px the transparent version sat at 3.4:1. */
+  color: #fff;
 }
 /* Butter, not terracotta: the season is a quiet marker, the selection is the
    loud one, and two accents shouting at once would flatten both. */
@@ -1277,9 +1278,20 @@ h3 {
 .ingredient-thumb img {
   object-fit: cover;
 }
+/*
+  Around a third of the ingredient list has no photograph yet. A faint letter
+  on white reads as a broken tile, so the stand-in is drawn as a deliberate
+  monogram: warm ground, hairline ring, the ingredient's own first character.
+*/
 .ingredient-fallback {
-  color: var(--muted);
-  font-size: 0.72rem;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  color: #5f5b53;
+  background: var(--surface-soft);
+  box-shadow: inset 0 0 0 1px var(--line);
+  font-size: 0.82rem;
   font-weight: 800;
 }
 .ingredient-name {
@@ -1407,8 +1419,8 @@ h3 {
   top: 12px;
   right: 12px;
   display: grid;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   place-items: center;
   color: var(--ink);
   background: rgb(255 253 249 / 92%);
@@ -1910,11 +1922,19 @@ h3 {
 }
 .scale-toggle {
   display: flex;
+  min-height: 44px;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   color: var(--muted);
   font-size: 0.73rem;
   font-weight: 700;
+}
+.scale-toggle input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--terracotta);
+  cursor: pointer;
 }
 .scale-note {
   margin: 0 0 8px;
@@ -1979,18 +1999,35 @@ h3 {
 }
 .shopping-lines li {
   display: flex;
+  min-height: 44px;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 7px 10px;
+  padding: 2px 10px;
   background: var(--surface-soft);
   border-radius: 9px;
 }
+/*
+  The whole name side is the tick target. This list is read one-handed in a
+  supermarket aisle with a basket in the other hand; a 13px box beside the
+  words is a coin flip there.
+*/
 .shopping-lines label {
   display: flex;
+  min-height: 44px;
+  flex: 1 1 auto;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 0.82rem;
+  cursor: pointer;
+}
+.shopping-lines input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  flex: 0 0 auto;
+  accent-color: var(--terracotta);
+  cursor: pointer;
 }
 .shopping-lines b {
   font-size: 0.8rem;
@@ -2464,16 +2501,16 @@ h3 {
 .stop-checklist label {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  min-height: 30px;
+  gap: 8px;
+  min-height: 44px;
   color: var(--ink);
   font-size: 0.74rem;
   white-space: nowrap;
   cursor: pointer;
 }
 .stop-checklist input {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   margin: 0;
   accent-color: var(--sage, #5a947e);
   cursor: pointer;

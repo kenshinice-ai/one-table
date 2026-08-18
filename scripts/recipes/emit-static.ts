@@ -97,6 +97,23 @@ const planning = writeHashed(
 );
 const details = writeHashed('details', JSON.stringify({ recipes: launchRecipes.map(toDetail) }));
 
+/*
+ * Which ingredients have a photograph.
+ *
+ * Around a third of them do not yet, and asking for a file that is not there
+ * cost a failed request per ingredient per screen — plus a flash of nothing
+ * before the stand-in appeared. Reading the directory at build time lets the
+ * client draw the stand-in immediately and ask for nothing.
+ */
+const ingredientArt = readdirSync(join(process.cwd(), 'public', 'media', 'ingredients'))
+  .filter((file) => file.endsWith('-64.webp'))
+  .map((file) => file.replace('-64.webp', ''))
+  .sort();
+writeFileSync(
+  join(process.cwd(), 'src', 'generated', 'ingredient-art.json'),
+  `${JSON.stringify(ingredientArt)}\n`,
+);
+
 const manifest = {
   planning: `/data/${planning.name}`,
   details: `/data/${details.name}`,
@@ -111,6 +128,7 @@ console.log(
   JSON.stringify(
     {
       ...manifest,
+      ingredientArt: `${ingredientArt.length} of ${ingredientCatalog.length} ingredients photographed`,
       planningKB: Math.round(planning.bytes / 1024),
       detailsKB: Math.round(details.bytes / 1024),
     },

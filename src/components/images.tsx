@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
 
+import ingredientArt from '@/generated/ingredient-art.json';
 import type { PlannerRecipe } from '@/domain/catalogue';
 import type { Locale } from '@/i18n/copy';
 
@@ -128,9 +129,22 @@ export function ProgressiveRecipeImage({
   );
 }
 
+/** Ingredients with a photograph on disk, listed at build time. */
+const photographed = new Set(ingredientArt as string[]);
+
+/**
+ * Whether an ingredient has artwork. Around a third do not yet, and both the
+ * thumbnail and the warm-up need to know so neither asks for a missing file.
+ */
+export function hasIngredientArt(ingredientId: string) {
+  return photographed.has(ingredientId);
+}
+
 export function IngredientImage({ ingredientId, name }: { ingredientId: string; name: string }) {
   const [failed, setFailed] = useState(false);
-  if (failed) {
+  // Asking for a file the build knows is absent costs a failed request and a
+  // frame of empty tile before the stand-in appears.
+  if (failed || !photographed.has(ingredientId)) {
     return (
       <span aria-hidden="true" className="ingredient-fallback">
         {name.slice(0, 1)}
