@@ -22,9 +22,11 @@ if (!ACCOUNT || !TOKEN) {
 
 const EVENT_LABELS: Record<string, { zh: string; en: string }> = {
   scan: { zh: '扫码进入', en: 'QR scans' },
+  kiosk: { zh: '橱窗屏开始使用', en: 'Kiosk sessions started' },
   compose: { zh: '配出一桌菜', en: 'Menus composed' },
   list: { zh: '打开购物清单', en: 'Shopping lists opened' },
   route: { zh: '保存店内路线', en: 'Routes saved' },
+  handoff: { zh: '扫码带走这桌菜', en: 'Handoff codes shown' },
 };
 
 const sql = `
@@ -78,10 +80,19 @@ for (const tenant of tenants) {
   }
   const scans = countFor(tenant, 'scan');
   const routes = countFor(tenant, 'route');
+  const kiosks = countFor(tenant, 'kiosk');
+  const handoffs = countFor(tenant, 'handoff');
   if (scans > 0)
     md.push(
       ``,
       `扫码 → 路线转化 Scan → route conversion: **${Math.round((routes / scans) * 100)}%**`,
+    );
+  // The number a centre is actually buying: of the people who stopped at the
+  // window and started, how many walked away with the table on their phone.
+  if (kiosks > 0)
+    md.push(
+      ``,
+      `橱窗 → 手机转化 Kiosk → phone conversion: **${Math.round((handoffs / kiosks) * 100)}%** （${handoffs} / ${kiosks}）`,
     );
   md.push(``);
 }
@@ -96,7 +107,11 @@ const tenantSections = tenants
           `<tr><td>${label.zh}<small>${label.en}</small></td><td class="n">${countFor(tenant, event)}</td></tr>`,
       )
       .join('');
-    return `<section><h2>${tenant}</h2><table>${rowsHtml}</table></section>`;
+    const kiosks = countFor(tenant, 'kiosk');
+    const conversion = kiosks
+      ? `<p class="conversion">橱窗 → 手机转化 Kiosk → phone conversion <b>${Math.round((countFor(tenant, 'handoff') / kiosks) * 100)}%</b></p>`
+      : '';
+    return `<section><h2>${tenant}</h2><table>${rowsHtml}</table>${conversion}</section>`;
   })
   .join('');
 
@@ -119,6 +134,8 @@ const html = `<!doctype html>
   td { padding: 9px 4px; border-bottom: 1px solid #e6e2d9; }
   td small { display: block; color: #5a5f6b; font-size: 12px; }
   td.n { text-align: right; font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .conversion { margin-top: 10px; color: #5a5f6b; font-size: 13px; }
+  .conversion b { color: #0e1729; font-size: 18px; font-variant-numeric: tabular-nums; }
   .note { color: #5a5f6b; font-size: 12px; margin-top: 32px; border-top: 1px solid #e6e2d9; padding-top: 12px; }
 </style></head><body><div class="page">
   <div class="head"><b>PARADISE PRODUCTION</b><span>PWE STUDIO · 天域文创出品</span></div>

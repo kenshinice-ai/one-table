@@ -50,7 +50,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="zh-CN">
+    // The kiosk flag below is stamped on this element before React loads, which
+    // React would otherwise report as markup that changed under it.
+    <html lang="zh-CN" suppressHydrationWarning>
       <head>
         {/*
           Both catalogue payloads start downloading alongside the JavaScript
@@ -60,6 +62,17 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         */}
         <link as="fetch" crossOrigin="anonymous" href={manifest.planning} rel="preload" />
         <link as="fetch" crossOrigin="anonymous" href={manifest.details} rel="preload" />
+        {/*
+          Kiosk chrome is pure CSS hanging off this attribute, so it has to be
+          set before the first paint: a shop window that rearranged itself a
+          second after waking would look broken to the person standing at it.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(new URLSearchParams(location.search).get('kiosk')==='1'){document.documentElement.dataset.kiosk='1'}}catch(e){}",
+          }}
+        />
       </head>
       <body>
         {children}

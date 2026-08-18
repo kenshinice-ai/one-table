@@ -377,3 +377,22 @@ export const RouteIcon = glyph(
     <path d="M8.5 19H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" />
   </>,
 );
+
+/** A calendar leaf — the occasion a table is being laid for. */
+export const OccasionIcon = glyph(
+  <>
+    <rect height="15" rx="2.5" width="17" x="3.5" y="5" />
+    <path d="M3.5 10h17M8.5 3v4M15.5 3v4" />
+    <path d="M12 13.2c1.6 0 2.8 1 2.8 2.4S13.6 18 12 18s-2.8-1-2.8-2.4S10.4 13.2 12 13.2Z" />
+  </>,
+);
+
+/** A QR square — the handoff from the screen to a phone. */
+export const QrIcon = glyph(
+  <>
+    <rect height="6" rx="1.5" width="6" x="3.5" y="3.5" />
+    <rect height="6" rx="1.5" width="6" x="14.5" y="3.5" />
+    <rect height="6" rx="1.5" width="6" x="3.5" y="14.5" />
+    <path d="M14.5 14.5h2.5v2.5h-2.5zM20.5 14.5v2M14.5 20.5h6M20.5 18.5v.01" />
+  </>,
+);

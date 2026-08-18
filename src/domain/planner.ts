@@ -9,6 +9,12 @@ export type PrimaryRole = PlannerRecipe['primaryRole'];
 export type PlannerFilters = {
   cuisines: string[];
   methods: string[];
+  /**
+   * Commercial-calendar tags. A recipe qualifies by carrying any one of the
+   * selected occasions, so picking two reads as "either", the way a host
+   * planning both a reunion dinner and a party would expect.
+   */
+  occasions: string[];
   mustIncludeIngredientIds: string[];
   excludedIngredientIds: string[];
   dietTags: string[];
@@ -48,6 +54,7 @@ export type ExclusionReasonCode =
   | 'excluded_ingredient'
   | 'diet_mismatch'
   | 'cuisine_mismatch'
+  | 'occasion_mismatch'
   | 'method_mismatch'
   | 'time_exceeded'
   | 'equipment_unavailable'
@@ -116,6 +123,7 @@ export type MenuSummary = MenuCandidate & {
 export const defaultPlannerFilters: PlannerFilters = {
   cuisines: [],
   methods: [],
+  occasions: [],
   mustIncludeIngredientIds: [],
   excludedIngredientIds: [],
   dietTags: [],
@@ -168,6 +176,7 @@ export function normalizePlannerFilters(filters: PlannerFilters): PlannerFilters
     ...filters,
     cuisines: uniqueSorted(filters.cuisines),
     methods: uniqueSorted(filters.methods),
+    occasions: uniqueSorted(filters.occasions ?? []),
     mustIncludeIngredientIds: included,
     excludedIngredientIds: excluded,
     dietTags: uniqueSorted(filters.dietTags),
@@ -230,6 +239,12 @@ export function getRecipeExclusionReasons(
     !recipe.cuisines.some((cuisine) => filters.cuisines.includes(cuisine))
   ) {
     reasons.push('cuisine_mismatch');
+  }
+  if (
+    filters.occasions.length &&
+    !(recipe.occasions ?? []).some((occasion) => filters.occasions.includes(occasion))
+  ) {
+    reasons.push('occasion_mismatch');
   }
   if (
     filters.methods.length &&
@@ -920,6 +935,7 @@ export function activeFilterCount(filters: PlannerFilters) {
   return (
     filters.cuisines.length +
     filters.methods.length +
+    filters.occasions.length +
     filters.mustIncludeIngredientIds.length +
     filters.excludedIngredientIds.length +
     filters.dietTags.length +

@@ -6,7 +6,21 @@
  * saved a route), never to trace a path through the app. The throttle lives in
  * sessionStorage so the guarantee holds across re-renders without any state.
  */
-export type BeaconEvent = 'scan' | 'compose' | 'list' | 'route';
+export type BeaconEvent = 'scan' | 'compose' | 'list' | 'route' | 'kiosk' | 'handoff';
+
+/**
+ * A kiosk serves one customer after another from a single browser session, so
+ * the attract screen clears the throttle: the next person's compose is their
+ * own, not a repeat of the last person's.
+ */
+export function resetSession() {
+  try {
+    for (const event of ['scan', 'compose', 'list', 'route', 'kiosk', 'handoff'])
+      sessionStorage.removeItem(`onetable.beacon.${event}`);
+  } catch {
+    // Private browsing; the counts were never being recorded anyway.
+  }
+}
 
 export function track(event: BeaconEvent) {
   try {

@@ -21,6 +21,7 @@ const requestSchema = z.object({
   filters: z
     .object({
       cuisines: z.array(z.string()).default([]),
+      occasions: z.array(z.string()).default([]),
       methods: z.array(z.string()).default([]),
       mustIncludeIngredientIds: z.array(z.string()).default([]),
       excludedIngredientIds: z.array(z.string()).default([]),

@@ -5,6 +5,13 @@ import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 
 import manifest from '@/generated/catalogue-manifest.json';
 import tenantConfig from '@/generated/tenant-config.json';
 import {
+  applyOccasion,
+  clearOccasion,
+  currentChips,
+  type Occasion,
+  type SeasonalChip,
+} from '@/config/seasonal';
+import {
   fetchPlanningCatalogue,
   fetchRecipeDetails,
   type IngredientDefinition,
@@ -18,20 +25,28 @@ import {
   defaultPlannerPreferences,
   getEligibleRecipes,
   getRoleAlternatives,
+  resolveRoleTemplate,
   summarizeEligibility,
   type PlannerFilters,
   type PlannerPreferences,
 } from '@/domain/planner';
-import { parsePlannerState, serializePlannerState, type PlannerState } from '@/domain/url-state';
+import {
+  parsePlannerState,
+  serializePlannerState,
+  withPreservedParams,
+  type PlannerState,
+} from '@/domain/url-state';
 import type { TenantConfig } from '@/domain/venue';
 import { renderShareCard, shareCardDishes } from '@/domain/share-card';
 import { copy, roleLabel, type Choice, type Locale } from '@/i18n/copy';
 
-import { track } from './analytics';
+import { resetSession, track } from './analytics';
 import { AppHeader } from './app-header';
+import { AttractScreen, HandoffDialog, useIdleTimer, useKioskMode } from './kiosk';
 import { FilterWorkspace, type FacetOptions } from './filter-workspace';
 import type { SearchHit } from './global-search';
 import { MenuBoard, type CourseSlot } from './menu-board';
+import { OccasionChips } from './occasion-chips';
 import { PrintView } from './print-view';
 import { RecipeDetail } from './recipe-detail';
 import { RoutePanel } from './route-panel';
@@ -77,13 +92,30 @@ function readServerSearch() {
   return '';
 }
 
+const CHIP_RECHECK_MS = 3_600_000;
+
+function subscribeToClock(onChange: () => void) {
+  const timer = window.setInterval(onChange, CHIP_RECHECK_MS);
+  return () => window.clearInterval(timer);
+}
+
 export function PlannerApp({
   initialRecipes,
   initialIngredients,
+  initialChips,
+  servedOccasions,
 }: {
   /** The default table, composed at build time so the first paint has food on it. */
   initialRecipes: PlannerRecipe[];
   initialIngredients: IngredientDefinition[];
+  /**
+   * The chip row for the build date. Computing it on the server and again on
+   * the client is what keeps the first paint identical to the hydrated markup;
+   * an effect below re-reads the reader's own date and corrects the row if the
+   * deployment has outlived the season it was built in.
+   */
+  initialChips: SeasonalChip[];
+  servedOccasions: Occasion[];
 }) {
   const [catalogue, setCatalogue] = useState<{
     recipes: PlannerRecipe[];
@@ -98,7 +130,25 @@ export function PlannerApp({
   const [routeOpen, setRouteOpen] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
   const [savingImage, setSavingImage] = useState(false);
+  const [attracting, setAttracting] = useState(false);
+  const [handoffUrl, setHandoffUrl] = useState<string | null>(null);
+  /** The table the host had before a chip took it over, restored on cancel. */
+  const [occasionSnapshot, setOccasionSnapshot] = useState<Snapshot | null>(null);
 
+  const kiosk = useKioskMode();
+  /*
+   * The chip row is a reading of the calendar, and the calendar is outside
+   * React: a build made in September would still be offering Mid-Autumn the
+   * following June, and a kiosk screen stays open for weeks at a time. The
+   * prerendered row comes from the build date so the first paint matches the
+   * markup; from hydration on, the reader's own clock decides, re-checked
+   * hourly so a screen left running crosses into the new season by itself.
+   */
+  const chips = useSyncExternalStore(
+    subscribeToClock,
+    () => currentChips({ available: servedOccasions, featured: tenant?.seasonal }),
+    () => initialChips,
+  );
   const search = useSyncExternalStore(subscribeToHistory, readSearch, readServerSearch);
   const linkedState = useMemo(() => (search ? parsePlannerState(search) : defaultState), [search]);
   const state = edits ?? linkedState;
@@ -136,6 +186,10 @@ export function PlannerApp({
       });
     return () => controller.abort();
   }, []);
+
+  // Ninety seconds untouched and the screen goes back to inviting the next
+  // person. Never while the invitation is already up.
+  useIdleTimer(kiosk && !attracting, enterAttract);
 
   // A poster QR carries ?src=qr; counting it before the URL is rewritten with
   // planner state is what turns printed material into a measurable channel.
@@ -208,6 +262,8 @@ export function PlannerApp({
     });
     return {
       cuisines: unique(recipes.flatMap((recipe) => recipe.cuisines)),
+      // Derived, not listed: an occasion with no dish behind it never appears.
+      occasions: unique(recipes.flatMap((recipe) => recipe.occasions ?? [])),
       methods: unique(recipes.flatMap((recipe) => recipe.methods)),
       diets: unique(recipes.flatMap((recipe) => recipe.dietTags.map((tag) => tag.code))),
       allergens: unique(recipes.flatMap((recipe) => recipe.allergens.map((a) => a.allergenCode))),
@@ -228,7 +284,7 @@ export function PlannerApp({
   // and the copy-link action in step without adding a navigation.
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      const query = serializePlannerState(state);
+      const query = withPreservedParams(serializePlannerState(state), window.location.search);
       window.history.replaceState(null, '', `${window.location.pathname}?${query}`);
     }, 300);
     return () => window.clearTimeout(timer);
@@ -253,6 +309,66 @@ export function PlannerApp({
     },
     [locale, filters, preferences],
   );
+
+  /**
+   * A chip is one gesture in both directions: it lays the occasion's table, and
+   * pressing it again hands back the table the host had before it.
+   */
+  function toggleOccasion(occasion: Occasion) {
+    const active = filters.occasions.length === 1 && filters.occasions[0] === occasion;
+    const next = active
+      ? clearOccasion(filters, preferences, occasionSnapshot ?? undefined)
+      : applyOccasion(occasion, filters, preferences);
+    if (active) setOccasionSnapshot(null);
+    else if (!occasionSnapshot) setOccasionSnapshot({ filters, preferences });
+    setUndoSnapshot({ filters, preferences });
+    setEdits({
+      locale,
+      filters: next.filters,
+      preferences: next.preferences,
+      variation: 0,
+      substitutions: {},
+    });
+    track('compose');
+  }
+
+  /**
+   * Back to the invitation. A kiosk shares one browser session with everyone
+   * who walks past, so the next customer must not inherit the last one's
+   * filters — or be counted as the same visit.
+   */
+  function enterAttract() {
+    resetSession();
+    setEdits({ ...defaultState });
+    setUndoSnapshot(null);
+    setOccasionSnapshot(null);
+    setDetailRecipe(null);
+    setShoppingOpen(false);
+    setRouteOpen(false);
+    setResetOpen(false);
+    setHandoffUrl(null);
+    setAttracting(true);
+  }
+
+  /** From one photograph to the whole table it belongs to. */
+  function startFromDish(recipe: PlannerRecipe, occasion: Occasion) {
+    const applied = applyOccasion(occasion, defaultPlannerFilters, defaultPlannerPreferences);
+    const slot = resolveRoleTemplate(applied.preferences).indexOf(recipe.primaryRole);
+    setEdits({
+      locale,
+      filters: applied.filters,
+      preferences: applied.preferences,
+      variation: 0,
+      substitutions: slot >= 0 ? { [slot]: recipe.id } : {},
+    });
+    setAttracting(false);
+    track('kiosk');
+  }
+
+  function openHandoff() {
+    setHandoffUrl(shareUrl({ src: 'qr' }));
+    track('handoff');
+  }
 
   function undo() {
     if (!undoSnapshot) return;
@@ -336,6 +452,17 @@ export function PlannerApp({
     }
   }
 
+  /**
+   * The link that reproduces this exact table. It never carries `kiosk`: the
+   * phone that scans the code should get the website, not a shop-window screen
+   * that hides its own controls.
+   */
+  function shareUrl(extra?: Record<string, string>) {
+    const params = new URLSearchParams(serializePlannerState(state));
+    for (const [key, value] of Object.entries(extra ?? {})) params.set(key, value);
+    return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+  }
+
   async function share() {
     const query = serializePlannerState(state);
     const url = `${window.location.origin}${window.location.pathname}?${query}`;
@@ -366,6 +493,12 @@ export function PlannerApp({
         seats={preferences.guests}
       />
       <TableSettings locale={locale} onChange={updatePreferences} preferences={preferences} />
+      <OccasionChips
+        active={filters.occasions.length === 1 ? (filters.occasions[0] as Occasion) : null}
+        chips={chips}
+        locale={locale}
+        onToggle={toggleOccasion}
+      />
       <div className="planner-grid">
         <FilterWorkspace
           canUndo={Boolean(undoSnapshot)}
@@ -393,6 +526,7 @@ export function PlannerApp({
             track('compose');
           }}
           onShare={share}
+          onHandoff={kiosk ? openHandoff : undefined}
           onSaveImage={saveImage}
           onShoppingList={() => {
             setShoppingOpen(true);
@@ -498,6 +632,19 @@ export function PlannerApp({
           onClose={() => setRouteOpen(false)}
           recipes={menu.recipes}
           tenant={tenant}
+        />
+      )}
+
+      {handoffUrl && (
+        <HandoffDialog locale={locale} onClose={() => setHandoffUrl(null)} url={handoffUrl} />
+      )}
+
+      {attracting && (
+        <AttractScreen
+          chips={chips}
+          locale={locale}
+          onPick={startFromDish}
+          recipes={recipes.length ? recipes : initialRecipes}
         />
       )}
 

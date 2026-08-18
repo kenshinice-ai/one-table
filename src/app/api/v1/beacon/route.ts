@@ -14,7 +14,7 @@ export const runtime = 'nodejs';
  * which is what a campaign closing report aggregates. The event vocabulary is a
  * closed set so the endpoint cannot be repurposed as a data channel.
  */
-const EVENTS = new Set(['scan', 'compose', 'list', 'route']);
+const EVENTS = new Set(['scan', 'compose', 'list', 'route', 'kiosk', 'handoff']);
 
 const tenantId = (tenantConfig as { id?: string } | null)?.id ?? 'public';
 

@@ -16,12 +16,15 @@ import {
   HealthIcon,
   IncludeIcon,
   MethodIcon,
+  OccasionIcon,
   SpiceIcon,
   TimeIcon,
 } from './icons';
 
 export type FacetOptions = {
   cuisines: string[];
+  /** Only the occasions the catalogue can actually serve reach this list. */
+  occasions: string[];
   methods: string[];
   diets: string[];
   allergens: string[];
@@ -34,6 +37,7 @@ const reasonLabel: Record<string, { zh: string; en: string }> = {
   excluded_ingredient: { zh: '排除食材', en: 'excluded ingredient' },
   diet_mismatch: { zh: '饮食标签不符', en: 'diet mismatch' },
   cuisine_mismatch: { zh: '菜系不符', en: 'cuisine mismatch' },
+  occasion_mismatch: { zh: '场合不符', en: 'occasion mismatch' },
   method_mismatch: { zh: '烹饪方式不符', en: 'method mismatch' },
   time_exceeded: { zh: '超出时间', en: 'time exceeded' },
   equipment_unavailable: { zh: '设备不可用', en: 'equipment unavailable' },
@@ -75,6 +79,7 @@ export function FilterWorkspace({
   const en = copy['en-AU'];
   const languageKey = locale === 'zh-CN' ? 'zh' : 'en';
   const selectedChips = [
+    ...filters.occasions,
     ...filters.cuisines,
     ...filters.methods,
     ...filters.mustIncludeIngredientIds,
@@ -113,6 +118,16 @@ export function FilterWorkspace({
       </div>
       <p className="filter-group-label">{t.groupFlavour}</p>
       <div className="filter-grid">
+        <Dropdown
+          active={filters.occasions.length > 0}
+          icon={OccasionIcon}
+          id="occasion"
+          labelText={t.occasion}
+          locale={locale}
+          onChange={(next) => onChange({ ...filters, occasions: next })}
+          options={choice(facets.occasions)}
+          selected={filters.occasions}
+        />
         <Dropdown
           icon={CuisineIcon}
           active={filters.cuisines.length > 0}

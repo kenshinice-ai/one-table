@@ -1,3 +1,5 @@
+import { presetForOccasions } from '../config/seasonal';
+
 import type { EnergyTarget } from './health';
 import {
   defaultPlannerFilters,
@@ -128,6 +130,7 @@ export function serializePlannerState(state: PlannerState) {
     set('kcal', preferences.energyTarget);
   set('roles', serializeRoles(preferences.roleOverrides));
   set('cuisine', list(filters.cuisines));
+  set('occasion', list(filters.occasions));
   set('method', list(filters.methods));
   set('inc', list(filters.mustIncludeIngredientIds));
   set('exc', list(filters.excludedIngredientIds));
@@ -146,17 +149,44 @@ export function serializePlannerState(state: PlannerState) {
 }
 
 /**
+ * Query keys the planner does not own and must not drop when it rewrites the
+ * address bar. `kiosk` is the mode itself: lose it and the shop-window screen
+ * quietly turns back into a website the first time the state is saved. `src`
+ * deliberately is not on this list — it marks how one visit arrived, it has
+ * already been counted by then, and carrying it into a re-shared link would
+ * credit the wrong channel.
+ */
+const PRESERVED_KEYS = ['kiosk'];
+
+export function withPreservedParams(query: string, currentSearch: string) {
+  const current = new URLSearchParams(currentSearch);
+  const next = new URLSearchParams(query);
+  for (const key of PRESERVED_KEYS) {
+    const value = current.get(key);
+    if (value) next.set(key, value);
+  }
+  return next.toString();
+}
+
+/**
  * Reads a planner state back from a query string. Every field falls back to its
  * default when missing or malformed, so a hand-edited link can never leave the
  * planner in an impossible state.
  */
 export function parsePlannerState(query: string): PlannerState {
   const params = new URLSearchParams(query);
+  const occasions = parseList(params.get('occasion'));
+  // A poster link names an occasion and nothing else; the occasion's own table
+  // shape stands in for the course counts it never carried.
+  const impliedRoles =
+    occasions.length && !params.get('roles') ? presetForOccasions(occasions) : null;
   const preferences: PlannerPreferences = {
     guests: parseInteger(params.get('g'), defaultPlannerPreferences.guests, 1, 30),
     dishCount: parseInteger(
       params.get('d'),
-      defaultPlannerPreferences.dishCount,
+      impliedRoles
+        ? (Object.values(impliedRoles).reduce((sum, count) => sum + (count ?? 0), 0) as DishCount)
+        : defaultPlannerPreferences.dishCount,
       1,
       10,
     ) as DishCount,
@@ -177,10 +207,11 @@ export function parsePlannerState(query: string): PlannerState {
       energyTargets,
       defaultPlannerPreferences.energyTarget,
     ),
-    roleOverrides: parseRoles(params.get('roles')),
+    roleOverrides: parseRoles(params.get('roles')) ?? impliedRoles,
   };
   const filters: PlannerFilters = {
     cuisines: parseList(params.get('cuisine')),
+    occasions,
     methods: parseList(params.get('method')),
     mustIncludeIngredientIds: parseList(params.get('inc')),
     excludedIngredientIds: parseList(params.get('exc')),

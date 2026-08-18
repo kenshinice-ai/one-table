@@ -21,6 +21,22 @@ const tenantSchema = z.object({
   brand: z.object({ displayZh: z.string().min(1), displayEn: z.string().min(1) }),
   defaultLocale: z.enum(['zh-CN', 'en-AU']),
   features: z.object({ navigation: z.boolean(), restaurants: z.boolean() }),
+  // Optional: absent means the shared seasonal calendar decides the chip row.
+  seasonal: z
+    .array(
+      z.enum([
+        'cny',
+        'mid_autumn',
+        'christmas',
+        'easter',
+        'brunch',
+        'afternoon_tea',
+        'bbq',
+        'weeknight',
+        'party',
+      ]),
+    )
+    .optional(),
 });
 
 const venueSchema = z.object({

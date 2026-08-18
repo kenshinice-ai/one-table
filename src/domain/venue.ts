@@ -53,6 +53,22 @@ export type TenantConfig = {
   brand: { displayZh: string; displayEn: string };
   defaultLocale: 'zh-CN' | 'en-AU';
   features: { navigation: boolean; restaurants: boolean };
+  /**
+   * Occasions this tenant leads with, overriding the calendar. A centre running
+   * a festival campaign pins its own line-up here — a JSON edit and a landing
+   * link, no code.
+   */
+  seasonal?: Array<
+    | 'cny'
+    | 'mid_autumn'
+    | 'christmas'
+    | 'easter'
+    | 'brunch'
+    | 'afternoon_tea'
+    | 'bbq'
+    | 'weeknight'
+    | 'party'
+  >;
   venue: VenueConfig;
 };
 

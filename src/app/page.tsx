@@ -1,7 +1,10 @@
 import { ingredientCatalog, launchRecipes } from '../../data/recipes';
 import { PlannerApp } from '@/components/planner-app';
+import { OCCASIONS, seasonalChips, type Occasion } from '@/config/seasonal';
+import tenantConfig from '@/generated/tenant-config.json';
 import type { PlannerRecipe } from '@/domain/catalogue';
 import { composeMenu, defaultPlannerFilters, defaultPlannerPreferences } from '@/domain/planner';
+import type { TenantConfig } from '@/domain/venue';
 
 /**
  * The default table is composed here, at build time, and rendered into the
@@ -66,10 +69,21 @@ export default function HomePage() {
   const initialIngredientIds = new Set(
     initialRecipes.flatMap((recipe) => recipe.ingredients.map((item) => item.ingredientId)),
   );
+  const tenant = tenantConfig as TenantConfig | null;
+  // Only occasions with dishes behind them; Easter is in the schema and not yet
+  // in the catalogue, and an empty chip would be a promise the data cannot keep.
+  const servedOccasions = OCCASIONS.filter((occasion) =>
+    launchRecipes.some((recipe) => recipe.occasions?.includes(occasion)),
+  ) as Occasion[];
   return (
     <PlannerApp
+      initialChips={seasonalChips(new Date(), {
+        available: servedOccasions,
+        featured: tenant?.seasonal,
+      })}
       initialIngredients={ingredientCatalog.filter((item) => initialIngredientIds.has(item.id))}
       initialRecipes={initialRecipes}
+      servedOccasions={servedOccasions}
     />
   );
 }

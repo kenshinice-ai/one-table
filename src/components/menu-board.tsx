@@ -7,7 +7,15 @@ import { healthScore } from '@/domain/health';
 import { courseOrder, type MenuSummary, type PrimaryRole } from '@/domain/planner';
 import { copy, fill, roleLabel, type Locale } from '@/i18n/copy';
 
-import { BasketIcon, ImageIcon, LeafScore, LinkIcon, PrintIcon, RefreshIcon } from './icons';
+import {
+  BasketIcon,
+  ImageIcon,
+  LeafScore,
+  LinkIcon,
+  PrintIcon,
+  QrIcon,
+  RefreshIcon,
+} from './icons';
 import { RecipeImage } from './images';
 import { warmRecipeMedia } from './warm-images';
 
@@ -42,6 +50,7 @@ export function MenuBoard({
   onShare,
   onShoppingList,
   onSaveImage,
+  onHandoff,
   shareLabel,
   imageLabel,
   disabled,
@@ -59,6 +68,12 @@ export function MenuBoard({
   onShare: () => void;
   onShoppingList: () => void;
   onSaveImage: () => void;
+  /**
+   * Only a kiosk passes this. A shop-window screen has no printer, no photo
+   * library and no clipboard worth anything, so the one way off it is a code a
+   * phone can read.
+   */
+  onHandoff?: () => void;
   shareLabel: string;
   imageLabel: string;
   disabled: boolean;
@@ -253,6 +268,17 @@ export function MenuBoard({
           </div>
         )}
 
+        {onHandoff && (
+          <button
+            className="handoff-action"
+            disabled={!menu.recipes.length}
+            onClick={onHandoff}
+            type="button"
+          >
+            <QrIcon />
+            <span>{t.kioskTake}</span>
+          </button>
+        )}
         <button className="primary-action" disabled={disabled} onClick={onRecompose} type="button">
           <RefreshIcon />
           <span>{t.recompose}</span>

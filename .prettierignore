@@ -13,3 +13,6 @@ cloudflare-env.d.ts
 # inflates the download for no reader benefit.
 public/data
 src/generated
+
+# Rewritten by `next build` on every run; Next owns its formatting.
+next-env.d.ts
