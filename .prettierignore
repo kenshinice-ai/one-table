@@ -8,3 +8,8 @@ package-lock.json
 docs/renders
 ideas
 cloudflare-env.d.ts
+
+# Build output: these payloads ship to every visitor, and pretty-printing them
+# inflates the download for no reader benefit.
+public/data
+src/generated
