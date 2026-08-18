@@ -2858,5 +2858,145 @@
     "objectKey": "media/wk-cumin-potato-wedges-dinner.webp",
     "generatedAt": "2026-08-18T07:05:23.171Z",
     "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-lemongrass-free-chicken-skewers": {
+    "objectKey": "media/bbq-lemongrass-free-chicken-skewers.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-prawn-lime-butter": {
+    "objectKey": "media/bbq-prawn-lime-butter.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-corn-chilli-parmesan": {
+    "objectKey": "media/bbq-corn-chilli-parmesan.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-lamb-chops-rosemary": {
+    "objectKey": "media/bbq-lamb-chops-rosemary.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-halloumi-vegetable-skewers": {
+    "objectKey": "media/bbq-halloumi-vegetable-skewers.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-watermelon-free-peach-salad": {
+    "objectKey": "media/bbq-watermelon-free-peach-salad.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-garlic-flatbread-charred": {
+    "objectKey": "media/bbq-garlic-flatbread-charred.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-sesame-slaw-crunch": {
+    "objectKey": "media/bbq-sesame-slaw-crunch.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-beef-onion-sliders": {
+    "objectKey": "media/bbq-beef-onion-sliders.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-pineapple-free-grilled-banana": {
+    "objectKey": "media/bbq-pineapple-free-grilled-banana.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-paprika-fish-tacos-fast": {
+    "objectKey": "media/wk-paprika-fish-tacos-fast.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-creamy-mushroom-polenta-fast": {
+    "objectKey": "media/wk-creamy-mushroom-polenta-fast.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-soy-butter-corn-chicken-rice": {
+    "objectKey": "media/wk-soy-butter-corn-chicken-rice.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-chicken-corn-congee": {
+    "objectKey": "media/winter-chicken-corn-congee.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-french-beef-red-wine-stew": {
+    "objectKey": "media/winter-french-beef-red-wine-stew.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-kimchi-pork-stew-hearty": {
+    "objectKey": "media/winter-kimchi-pork-stew-hearty.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-roast-tomato-lentil-soup": {
+    "objectKey": "media/winter-roast-tomato-lentil-soup.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-ginger-duck-hotpot-style": {
+    "objectKey": "media/winter-ginger-duck-hotpot-style.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-cauliflower-cheese-soup": {
+    "objectKey": "media/winter-cauliflower-cheese-soup.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-star-anise-pork-noodle-soup": {
+    "objectKey": "media/winter-star-anise-pork-noodle-soup.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-sweet-potato-coconut-soup": {
+    "objectKey": "media/winter-sweet-potato-coconut-soup.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-mushroom-chestnut-soup": {
+    "objectKey": "media/winter-mushroom-chestnut-soup.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-tofu-vegetable-hotpot-base": {
+    "objectKey": "media/winter-tofu-vegetable-hotpot-base.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-apple-parsnip-free-carrot-soup": {
+    "objectKey": "media/winter-apple-parsnip-free-carrot-soup.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-braised-daikon-scallop-sauce": {
+    "objectKey": "media/winter-braised-daikon-scallop-sauce.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "wk-spring-onion-oil-chicken-rice": {
+    "objectKey": "media/wk-spring-onion-oil-chicken-rice.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-ginger-pear-dessert-soup": {
+    "objectKey": "media/winter-ginger-pear-dessert-soup.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "winter-corn-butter-rice-pot": {
+    "objectKey": "media/winter-corn-butter-rice-pot.webp",
+    "generatedAt": "2026-08-18T10:03:27.504Z",
+    "aiModel": "imagegen-editorial-v2"
   }
 }
