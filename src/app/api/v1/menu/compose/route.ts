@@ -37,7 +37,7 @@ const requestSchema = z.object({
       guests: z.number().int().min(1).max(30).default(6),
       dishCount: z.number().int().min(1).max(10).default(4),
       servingStyle: z.enum(['family', 'plated', 'buffet']).default('family'),
-      budgetCents: z.number().int().min(2000).max(100000).default(12000),
+      budgetCents: z.number().int().min(2000).max(100000).nullable().default(null),
       compositionMode: z.enum(['balanced', 'budget', 'easy']).default('balanced'),
     })
     .default(defaultPlannerPreferences),

@@ -40,14 +40,16 @@ const report = {
 // courses the launch set was thin in, so starters, soups and salads roughly
 // triple while mains grow by less than double.
 // Wave three follows the commercial calendar; roles shift accordingly.
+// Seven dishes were filed under the wrong course (a cauliflower bake as a
+// soup, a tomato soup as a salad); the counts follow the corrected roles.
 const expectedRoles = {
-  main: 216,
+  main: 218,
   side: 55,
-  salad: 50,
+  salad: 49,
   starter: 50,
-  soup: 49,
-  snack: 53,
-  staple: 45,
+  soup: 48,
+  snack: 54,
+  staple: 44,
   dessert: 82,
 };
 const expectedCuisines = {

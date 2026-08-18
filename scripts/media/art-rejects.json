@@ -1,4 +1,25 @@
 {
   "note": "Slugs rejected at QC and awaiting regeneration. adopt-art skips these; the image prompt lists them for redo. Remove a slug once its replacement passes audit-tabletop.",
-  "rejects": []
+  "rejects": [
+    {
+      "slug": "japanese-mushroom-clear-soup",
+      "reason": "image shows an avocado and corn salad, not a clear mushroom soup"
+    },
+    {
+      "slug": "indonesian-peanut-sweet-potatoes",
+      "reason": "image shows chicken pieces, not peanut-sauce sweet potatoes"
+    },
+    {
+      "slug": "indian-lentil-coconut-soup",
+      "reason": "image shows mango yogurt parfait glasses, not a lentil soup"
+    },
+    {
+      "slug": "french-coconut-chocolate-free-pots",
+      "reason": "image shows sauteed mushrooms, not set coconut cream pots"
+    },
+    {
+      "slug": "sichuan-pepper-sweet-potato-bites",
+      "reason": "image shows beef strips with chilli, not sweet potato bites"
+    }
+  ]
 }

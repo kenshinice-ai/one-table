@@ -439,11 +439,6 @@
     "generatedAt": "2026-08-17T00:00:00.000Z",
     "aiModel": "imagegen-editorial-v1"
   },
-  "sichuan-pepper-sweet-potato-bites": {
-    "objectKey": "media/sichuan-pepper-sweet-potato-bites.webp",
-    "generatedAt": "2026-08-17T00:00:00.000Z",
-    "aiModel": "imagegen-editorial-v1"
-  },
   "sichuan-sesame-rice-cakes": {
     "objectKey": "media/sichuan-sesame-rice-cakes.webp",
     "generatedAt": "2026-08-17T00:00:00.000Z",
@@ -544,18 +539,8 @@
     "generatedAt": "2026-08-17T00:00:00.000Z",
     "aiModel": "imagegen-editorial-v1"
   },
-  "indonesian-peanut-sweet-potatoes": {
-    "objectKey": "media/indonesian-peanut-sweet-potatoes.webp",
-    "generatedAt": "2026-08-17T00:00:00.000Z",
-    "aiModel": "imagegen-editorial-v1"
-  },
   "indian-tandoori-cauliflower-style": {
     "objectKey": "media/indian-tandoori-cauliflower-style.webp",
-    "generatedAt": "2026-08-17T00:00:00.000Z",
-    "aiModel": "imagegen-editorial-v1"
-  },
-  "indian-lentil-coconut-soup": {
-    "objectKey": "media/indian-lentil-coconut-soup.webp",
     "generatedAt": "2026-08-17T00:00:00.000Z",
     "aiModel": "imagegen-editorial-v1"
   },
@@ -909,11 +894,6 @@
     "generatedAt": "2026-08-17T00:00:00.000Z",
     "aiModel": "imagegen-editorial-v1"
   },
-  "french-coconut-chocolate-free-pots": {
-    "objectKey": "media/french-coconut-chocolate-free-pots.webp",
-    "generatedAt": "2026-08-17T00:00:00.000Z",
-    "aiModel": "imagegen-editorial-v1"
-  },
   "french-green-bean-almond-salad": {
     "objectKey": "media/french-green-bean-almond-salad.webp",
     "generatedAt": "2026-08-17T00:00:00.000Z",
@@ -1176,11 +1156,6 @@
   },
   "japanese-miso-tofu-wakame": {
     "objectKey": "media/japanese-miso-tofu-wakame.webp",
-    "generatedAt": "2026-08-17T10:47:31.463Z",
-    "aiModel": "imagegen-editorial-v2"
-  },
-  "japanese-mushroom-clear-soup": {
-    "objectKey": "media/japanese-mushroom-clear-soup.webp",
     "generatedAt": "2026-08-17T10:47:31.463Z",
     "aiModel": "imagegen-editorial-v2"
   },

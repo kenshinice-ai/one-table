@@ -81,13 +81,13 @@ describe('planner rules', () => {
       return result;
     }, {});
     assert.deepEqual(counts, {
-      main: 216,
+      main: 218,
       side: 55,
-      salad: 50,
+      salad: 49,
       starter: 50,
-      soup: 49,
-      snack: 53,
-      staple: 45,
+      soup: 48,
+      snack: 54,
+      staple: 44,
       dessert: 82,
     });
   });

@@ -121,8 +121,7 @@ export function serializePlannerState(state: PlannerState) {
     set('d', String(preferences.dishCount));
   if (preferences.servingStyle !== defaultPlannerPreferences.servingStyle)
     set('style', preferences.servingStyle);
-  if (preferences.budgetCents !== defaultPlannerPreferences.budgetCents)
-    set('b', String(preferences.budgetCents));
+  if (preferences.budgetCents !== null) set('b', String(preferences.budgetCents));
   if (preferences.compositionMode !== defaultPlannerPreferences.compositionMode)
     set('m', preferences.compositionMode);
   if (preferences.energyTarget !== defaultPlannerPreferences.energyTarget)
@@ -166,12 +165,8 @@ export function parsePlannerState(query: string): PlannerState {
       servingStyles,
       defaultPlannerPreferences.servingStyle,
     ),
-    budgetCents: parseInteger(
-      params.get('b'),
-      defaultPlannerPreferences.budgetCents,
-      2000,
-      1000000,
-    ),
+    // Absent means no ceiling, which is also the default.
+    budgetCents: params.get('b') ? parseInteger(params.get('b'), 12000, 2000, 1000000) : null,
     compositionMode: parseEnum(
       params.get('m'),
       compositionModes,

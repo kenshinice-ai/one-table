@@ -25,7 +25,11 @@ export type PlannerPreferences = {
   guests: number;
   dishCount: DishCount;
   servingStyle: PlannerServingStyle;
-  budgetCents: number;
+  /**
+   * Total spend ceiling, or `null` for no ceiling. A default ceiling quietly
+   * pushed every premium dish out of the running, so a host now opts into one.
+   */
+  budgetCents: number | null;
   compositionMode: CompositionMode;
   /** Energy band for the whole table; scored, never used as a hard filter. */
   energyTarget: EnergyTarget;
@@ -127,11 +131,14 @@ export const defaultPlannerPreferences: PlannerPreferences = {
   guests: 6,
   dishCount: 4,
   servingStyle: 'family',
-  budgetCents: 12000,
+  budgetCents: null,
   compositionMode: 'balanced',
   energyTarget: 'any',
   roleOverrides: null,
 };
+
+/** Price scale used to rank dishes when the host has set no ceiling. */
+const NOMINAL_COST_SCALE_CENTS = 12000;
 
 const roles: PrimaryRole[] = [
   'snack',
@@ -383,10 +390,10 @@ function baseRecipeScore(recipe: PlannerRecipe, preferences: PlannerPreferences)
   const style = recipe.servingStyles[preferences.servingStyle];
   const time = 1 - Math.min(recipe.activeMinutes, 120) / 120;
   const prep = Math.min(recipe.advanceMinutes / 60, 1);
-  const cost =
-    1 -
-    Math.min(recipeCostForGuests(recipe, preferences.guests), preferences.budgetCents) /
-      Math.max(preferences.budgetCents, 1);
+  // Budget-first mode ranks by price whether or not a ceiling is set, so an
+  // unset ceiling falls back to a nominal scale that ranks but never excludes.
+  const costScale = Math.max(preferences.budgetCents ?? NOMINAL_COST_SCALE_CENTS, 1);
+  const cost = 1 - Math.min(recipeCostForGuests(recipe, preferences.guests), costScale) / costScale;
   const modeFactor =
     preferences.compositionMode === 'budget'
       ? cost
@@ -498,13 +505,18 @@ function scoreCandidate(
     (sum, recipe) => sum + recipeCostForGuests(recipe, preferences.guests),
     0,
   );
-  const budgetRatio = estimatedCost / Math.max(preferences.budgetCents, 1);
+  // With no ceiling every candidate scores the same here, so the dimension
+  // drops out of the comparison instead of favouring the cheapest table.
+  const budgetRatio =
+    preferences.budgetCents === null ? null : estimatedCost / Math.max(preferences.budgetCents, 1);
   const budgetFit = normalizeDimension(
-    budgetRatio <= 1
-      ? 0.75 + (1 - budgetRatio) * 0.25
-      : budgetRatio <= 1.1
-        ? 0.75 - (budgetRatio - 1) * 2.5
-        : 0,
+    budgetRatio === null
+      ? 0.8
+      : budgetRatio <= 1
+        ? 0.75 + (1 - budgetRatio) * 0.25
+        : budgetRatio <= 1.1
+          ? 0.75 - (budgetRatio - 1) * 2.5
+          : 0,
   );
   const nutritionCompleteness = normalizeDimension(
     (recipes.reduce((sum, recipe) => sum + recipe.nutrition.confidence / 100, 0) /
@@ -595,7 +607,9 @@ function buildCandidate(
     scoreBreakdown,
     hardChecksPassed: true,
     coveredMustIncludeIngredientIds: covered,
-    isOverBudget: estimatedCostCents > Math.round(preferences.budgetCents * 1.1),
+    isOverBudget:
+      preferences.budgetCents !== null &&
+      estimatedCostCents > Math.round(preferences.budgetCents * 1.1),
   };
 }
 

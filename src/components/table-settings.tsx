@@ -39,9 +39,12 @@ export function TableSettings({
     present.length > 2
       ? `${fill(t.dishTotal, { count: total })} · ${lead}…`
       : `${fill(t.dishTotal, { count: total })} · ${lead}`;
-  const budgetSelection = BUDGET_PRESETS.includes(preferences.budgetCents / 100)
-    ? String(preferences.budgetCents)
-    : 'custom';
+  const budgetSelection =
+    preferences.budgetCents === null
+      ? 'any'
+      : BUDGET_PRESETS.includes(preferences.budgetCents / 100)
+        ? String(preferences.budgetCents)
+        : 'custom';
 
   return (
     <section aria-label={t.settings} className="settings-row">
@@ -94,11 +97,18 @@ export function TableSettings({
         selected={[preferences.servingStyle]}
       />
       <Dropdown
-        customInput={{
-          label: locale === 'zh-CN' ? '自定义预算（A$）' : 'Custom budget (A$)',
-          value: Math.round(preferences.budgetCents / 100),
-          onChange: (value) => onChange({ ...preferences, budgetCents: Math.round(value * 100) }),
-        }}
+        active={preferences.budgetCents !== null}
+        customInput={
+          // The amount field only belongs on screen once a ceiling exists.
+          preferences.budgetCents === null
+            ? undefined
+            : {
+                label: locale === 'zh-CN' ? '自定义预算（A$）' : 'Custom budget (A$)',
+                value: Math.round(preferences.budgetCents / 100),
+                onChange: (value) =>
+                  onChange({ ...preferences, budgetCents: Math.round(value * 100) }),
+              }
+        }
         icon={BudgetIcon}
         id="budget"
         labelText={t.budget}
@@ -107,14 +117,23 @@ export function TableSettings({
         onChange={(next) =>
           onChange({
             ...preferences,
-            budgetCents: next[0] === 'custom' ? preferences.budgetCents : Number(next[0] ?? 12000),
+            budgetCents:
+              next[0] === 'any'
+                ? null
+                : next[0] === 'custom'
+                  ? (preferences.budgetCents ?? 12000)
+                  : Number(next[0] ?? 12000),
           })
         }
-        options={BUDGET_PRESETS.map((amount) => ({
-          value: String(amount * 100),
-          zh: `A$${amount}`,
-          en: `A$${amount}`,
-        })).concat([{ value: 'custom', zh: '自定义金额', en: 'Custom amount' }])}
+        options={[
+          { value: 'any', zh: copy['zh-CN'].budgetAny, en: en.budgetAny },
+          ...BUDGET_PRESETS.map((amount) => ({
+            value: String(amount * 100),
+            zh: `A$${amount}`,
+            en: `A$${amount}`,
+          })),
+          { value: 'custom', zh: '自定义金额', en: 'Custom amount' },
+        ]}
         selected={[budgetSelection]}
       />
       <Dropdown
