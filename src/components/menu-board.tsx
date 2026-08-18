@@ -149,7 +149,11 @@ export function MenuBoard({
                         </button>
                         <button
                           aria-expanded={openSlot === slot.slotIndex}
+                          /* Touch layouts show this icon-only, so the name has
+                             to live on the element itself. */
+                          aria-label={t.swapCourse}
                           className="swap-button"
+                          title={t.swapCourse}
                           onClick={() =>
                             setOpenSlot(openSlot === slot.slotIndex ? null : slot.slotIndex)
                           }

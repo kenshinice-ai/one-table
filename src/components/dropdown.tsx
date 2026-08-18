@@ -7,6 +7,11 @@ import { toggleArrayValue } from '@/domain/planner';
 
 import { Chevron } from './icons';
 
+/** Mirrors the panel's CSS max-width and typical height; used to choose a side. */
+const PANEL_WIDTH = 360;
+const PANEL_HEIGHT = 380;
+const EDGE_GAP = 8;
+
 export function Dropdown({
   id,
   labelText,
@@ -45,6 +50,10 @@ export function Dropdown({
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [placement, setPlacement] = useState<{ align: 'left' | 'right'; flip: boolean }>({
+    align: 'left',
+    flip: false,
+  });
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const optionPrefix = useId();
@@ -57,7 +66,12 @@ export function Dropdown({
   useEffect(() => {
     if (!open) return;
     const onPointer = (event: PointerEvent) => {
-      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+      const root = rootRef.current;
+      if (!root) return;
+      // On phones the dimmed backdrop is painted as this root's own ::before,
+      // so a press that lands on the root element itself came from the
+      // backdrop rather than from the control — dismiss like any outside tap.
+      if (!root.contains(event.target as Node) || event.target === root) setOpen(false);
     };
     document.addEventListener('pointerdown', onPointer);
     return () => document.removeEventListener('pointerdown', onPointer);
@@ -84,6 +98,28 @@ export function Dropdown({
     setOpen(false);
     setActiveIndex(-1);
     triggerRef.current?.focus();
+  }
+
+  /**
+   * Decides which corner the panel hangs from before it renders.
+   *
+   * The panel is wider and taller than its trigger, so a fixed corner clips it
+   * against the window: right-anchored panels used to be cut off by the left
+   * edge for every control in a left-hand grid column. Measuring the trigger
+   * once per open picks the side and direction that fit. Narrow and short
+   * viewports ignore this entirely — there the panel is a bottom sheet.
+   */
+  function openPanel() {
+    const rect = triggerRef.current?.getBoundingClientRect();
+    if (rect) {
+      const spaceBelow = window.innerHeight - rect.bottom;
+      setPlacement({
+        align: rect.left + PANEL_WIDTH <= window.innerWidth - EDGE_GAP ? 'left' : 'right',
+        flip: spaceBelow < PANEL_HEIGHT && rect.top > spaceBelow,
+      });
+    }
+    setActiveIndex(-1);
+    setOpen((value) => !value);
   }
 
   function onPanelKeyDown(event: React.KeyboardEvent) {
@@ -116,10 +152,7 @@ export function Dropdown({
         aria-controls={`${id}-panel`}
         aria-expanded={open}
         className={`dropdown-trigger ${active ? 'is-active' : ''}`.trim()}
-        onClick={() => {
-          setActiveIndex(-1);
-          setOpen((value) => !value);
-        }}
+        onClick={openPanel}
         ref={triggerRef}
         type="button"
       >
@@ -141,6 +174,8 @@ export function Dropdown({
           aria-label={labelText}
           aria-multiselectable={multiple}
           className="dropdown-panel"
+          data-align={placement.align}
+          data-flip={placement.flip ? 'up' : undefined}
           id={`${id}-panel`}
           onKeyDown={onPanelKeyDown}
           role="listbox"
