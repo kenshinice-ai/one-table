@@ -34,6 +34,7 @@ const tenantSchema = z.object({
         'bbq',
         'weeknight',
         'party',
+        'feast',
       ]),
     )
     .optional(),

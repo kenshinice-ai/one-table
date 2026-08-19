@@ -36,53 +36,51 @@ const report = {
   ).length,
 };
 
-// Quotas for the 400-recipe catalogue. Batches E and F deliberately weight the
-// courses the launch set was thin in, so starters, soups and salads roughly
-// triple while mains grow by less than double.
-// Wave three follows the commercial calendar; roles shift accordingly.
-// Seven dishes were filed under the wrong course (a cauliflower bake as a
-// soup, a tomato soup as a salad); the counts follow the corrected roles.
+// Quotas for the 700-recipe catalogue. Batches E and F weighted the courses the
+// launch set was thin in; wave three follows the commercial calendar; batch I
+// adds the celebration tier, which is why Cantonese and French move most — a
+// festive table leans on banquet Cantonese and on classical French technique.
 const expectedRoles = {
-  main: 218,
-  side: 55,
-  salad: 49,
-  starter: 50,
-  soup: 48,
-  snack: 54,
-  staple: 44,
-  dessert: 82,
+  main: 249,
+  side: 62,
+  salad: 55,
+  starter: 64,
+  soup: 57,
+  snack: 69,
+  staple: 51,
+  dessert: 93,
 };
 const expectedCuisines = {
-  chinese_northern: 46,
+  chinese_northern: 49,
   chinese_sichuan: 27,
-  chinese_cantonese: 72,
-  chinese_jiangnan: 30,
-  japanese: 37,
+  chinese_cantonese: 90,
+  chinese_jiangnan: 38,
+  japanese: 39,
   korean: 30,
-  southeast_asian: 34,
+  southeast_asian: 35,
   indian: 29,
-  mediterranean: 39,
-  italian: 40,
-  french: 37,
-  australian_modern: 45,
-  western_home: 51,
-  middle_eastern: 27,
-  latin_american: 24,
-  other: 32,
+  mediterranean: 43,
+  italian: 43,
+  french: 60,
+  australian_modern: 55,
+  western_home: 72,
+  middle_eastern: 30,
+  latin_american: 25,
+  other: 35,
 };
 const expectedMethods = {
-  braise: 52,
-  grill: 28,
+  bake: 102,
+  boil: 75,
+  braise: 59,
+  chill: 26,
+  deep_fry: 19,
+  grill: 39,
+  pan_fry: 61,
+  raw: 86,
+  roast: 74,
+  simmer: 78,
+  steam: 38,
   stir_fry: 43,
-  roast: 65,
-  pan_fry: 55,
-  steam: 26,
-  bake: 86,
-  raw: 71,
-  boil: 69,
-  deep_fry: 15,
-  chill: 21,
-  simmer: 69,
 };
 
 const mismatches = [
@@ -100,7 +98,7 @@ const mismatches = [
     })),
 );
 
-if (batch.recipes.length !== 600 || mismatches.length) {
+if (batch.recipes.length !== 700 || mismatches.length) {
   console.error({ recipeCount: batch.recipes.length, mismatches });
   process.exit(1);
 }

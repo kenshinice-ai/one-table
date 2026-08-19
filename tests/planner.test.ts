@@ -74,21 +74,21 @@ describe('planner rules', () => {
     );
   });
 
-  it('exposes the complete 600-recipe catalogue with exact role quotas', () => {
-    assert.equal(launchRecipes.length, 600);
+  it('exposes the complete 700-recipe catalogue with exact role quotas', () => {
+    assert.equal(launchRecipes.length, 700);
     const counts = launchRecipes.reduce<Record<string, number>>((result, recipe) => {
       result[recipe.primaryRole] = (result[recipe.primaryRole] ?? 0) + 1;
       return result;
     }, {});
     assert.deepEqual(counts, {
-      main: 218,
-      side: 55,
-      salad: 49,
-      starter: 50,
-      soup: 48,
-      snack: 54,
-      staple: 44,
-      dessert: 82,
+      main: 249,
+      side: 62,
+      salad: 55,
+      starter: 64,
+      soup: 57,
+      snack: 69,
+      staple: 51,
+      dessert: 93,
     });
   });
 

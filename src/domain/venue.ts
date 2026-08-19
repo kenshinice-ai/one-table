@@ -68,6 +68,7 @@ export type TenantConfig = {
     | 'bbq'
     | 'weeknight'
     | 'party'
+    | 'feast'
   >;
   venue: VenueConfig;
 };

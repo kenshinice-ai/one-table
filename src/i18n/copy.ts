@@ -62,6 +62,8 @@ export const names: Record<string, { zh: string; en: string }> = {
   bbq: { zh: '户外烧烤', en: 'Barbecue' },
   weeknight: { zh: '快手周中', en: 'Weeknight' },
   party: { zh: '派对小食', en: 'Party' },
+  feast: { zh: '宴请大菜', en: 'Feast' },
+  equip_spit: { zh: '炭火转炉', en: 'Spit roaster' },
 };
 
 export const roleNames: Record<string, { zh: string; en: string }> = {

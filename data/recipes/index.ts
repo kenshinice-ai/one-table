@@ -17,8 +17,10 @@ import { batchE } from './batch-e';
 import { batchF } from './batch-f';
 import { batchG } from './batch-g';
 import { batchH } from './batch-h';
+import { batchI } from './batch-i';
 import { expansionV3IngredientCatalog } from './expansion-v3-shared';
 import { expansionV2IngredientCatalog } from './expansion-v2-shared';
+import { expansionV4IngredientCatalog } from './expansion-v4-shared';
 
 /**
  * The launch catalogue is deliberately assembled from the two editorial batches so
@@ -33,6 +35,7 @@ export const ingredientCatalog = [
   ...expansionIngredientCatalog,
   ...expansionV2IngredientCatalog,
   ...expansionV3IngredientCatalog,
+  ...expansionV4IngredientCatalog,
 ];
 
 const launchImage = (recipe: RecipeImport): RecipeImport['media'] => ({
@@ -82,7 +85,7 @@ export const launchRecipes: RecipeImport[] = [
         }
       : launchImage(recipe),
   })),
-  ...[...batchE, ...batchF, ...batchG, ...batchH].map((recipe) => {
+  ...[...batchE, ...batchF, ...batchG, ...batchH, ...batchI].map((recipe) => {
     const produced = generatedMedia[recipe.slug];
     return produced ? { ...recipe, media: { ...recipe.media, ...produced } } : recipe;
   }),

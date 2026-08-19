@@ -4,6 +4,7 @@ import { ingredientCatalog as batchAIngredientCatalog } from './batch-a';
 import { batchBIngredientCatalog } from './batch-b';
 import { expansionIngredientCatalog } from './expansion-shared';
 import { expansionV2IngredientCatalog } from './expansion-v2-shared';
+import { expansionV4IngredientCatalog } from './expansion-v4-shared';
 
 /**
  * Wave-3 generator: occasion-tagged recipes with varied step voice.
@@ -103,6 +104,7 @@ export type ExpansionV3Spec = {
     | 'bbq'
     | 'weeknight'
     | 'party'
+    | 'feast'
   >;
   titleZh: string;
   titleEn: string;
@@ -122,6 +124,16 @@ export type ExpansionV3Spec = {
   equipment?: string[];
   servings?: number;
   kcal?: number;
+  /**
+   * Ingredient cost for the recipe as written, in cents.
+   *
+   * Everything else on this type is derived; this cannot be. The fallback
+   * prices by course — around A$16 for a main — which is fine for a tray of
+   * roast chicken and nonsense for a lobster. A dish whose ingredients carry
+   * real money states its own price, or the budget filter and the estimated
+   * total quietly lie about it.
+   */
+  costCents?: number;
 };
 
 const allIngredients = [
@@ -130,10 +142,46 @@ const allIngredients = [
   ...expansionIngredientCatalog,
   ...expansionV2IngredientCatalog,
   ...expansionV3IngredientCatalog,
+  ...expansionV4IngredientCatalog,
 ];
 const ingredientById = new Map(allIngredients.map((ingredient) => [ingredient.id, ingredient]));
 
 const amounts: Record<string, [number, 'g' | 'ml' | 'count']> = {
+  // Wave-4 celebration tier. The generic 180–330g default is meaningless for a
+  // shaving of truffle and absurd for a whole lamb, so these are stated.
+  lobster: [800, 'g'],
+  king_crab: [900, 'g'],
+  crab_meat: [300, 'g'],
+  abalone: [400, 'g'],
+  oyster: [12, 'count'],
+  dried_scallop: [40, 'g'],
+  sea_cucumber: [300, 'g'],
+  whole_fish: [700, 'g'],
+  caviar: [30, 'g'],
+  wagyu_beef: [400, 'g'],
+  dry_aged_beef: [700, 'g'],
+  beef_short_rib: [1200, 'g'],
+  lamb_rack: [800, 'g'],
+  lamb_shoulder: [1400, 'g'],
+  lamb_whole: [12000, 'g'],
+  turkey: [900, 'g'],
+  ham_leg: [2500, 'g'],
+  pork_belly: [800, 'g'],
+  pork_hock: [1000, 'g'],
+  foie_gras: [200, 'g'],
+  tofu_soft: [400, 'g'],
+  truffle: [8, 'g'],
+  saffron: [1, 'g'],
+  winter_melon: [600, 'g'],
+  taro: [400, 'g'],
+  brussels_sprouts: [500, 'g'],
+  peach: [4, 'count'],
+  melon: [600, 'g'],
+  lemongrass: [20, 'g'],
+  vermicelli: [100, 'g'],
+  dried_fruit: [200, 'g'],
+  mixed_spice: [8, 'g'],
+  caster_sugar: [120, 'g'],
   eggs: [3, 'count'],
   pear: [4, 'count'],
   apple: [4, 'count'],
@@ -340,7 +388,7 @@ const plateVariantsEn = [
   'Keep the plating simple; give temperature and portions a final check before serving.',
 ];
 
-function makeRecipe(spec: ExpansionV3Spec, index: number, batchKey: 'g' | 'h'): RecipeImport {
+function makeRecipe(spec: ExpansionV3Spec, index: number, batchKey: 'g' | 'h' | 'i'): RecipeImport {
   const dietCodes = new Set(spec.dietTags ?? []);
   if (dietCodes.has('vegan')) dietCodes.add('vegetarian');
 
@@ -378,6 +426,7 @@ function makeRecipe(spec: ExpansionV3Spec, index: number, batchKey: 'g' | 'h'): 
     }[spec.role] +
       (index % 5) * 12;
   const totalCents =
+    spec.costCents ??
     (spec.role === 'main' ? 1600 : spec.role === 'staple' ? 900 : 1050) + (index % 12) * 45;
   const equipment = spec.equipment ?? methodEquipment[spec.method] ?? [];
   const times = stepMinutes(spec);
@@ -564,6 +613,9 @@ function makeRecipe(spec: ExpansionV3Spec, index: number, batchKey: 'g' | 'h'): 
   };
 }
 
-export function createV3Recipes(specs: ExpansionV3Spec[], batchKey: 'g' | 'h'): RecipeImport[] {
+export function createV3Recipes(
+  specs: ExpansionV3Spec[],
+  batchKey: 'g' | 'h' | 'i',
+): RecipeImport[] {
   return specs.map((spec, index) => makeRecipe(spec, index, batchKey));
 }

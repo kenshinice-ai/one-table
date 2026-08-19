@@ -84,7 +84,7 @@ describe('occasion filter', () => {
     const state = parsePlannerState('?occasion=mid_autumn,cny');
     assert.deepEqual(state.preferences.roleOverrides, occasionPresets.mid_autumn.roleOverrides);
     const menu = composeMenu(launchRecipes, state.preferences, 0, state.filters);
-    assert.equal(menu.recipes.length, 3);
+    assert.equal(menu.recipes.length, resolveRoleTemplate(state.preferences).length);
     assert.equal(menu.isPartial, false);
   });
 
@@ -226,13 +226,18 @@ describe('seasonal chips', () => {
   });
 
   it('never offers an occasion the catalogue cannot serve', () => {
-    assert.equal(served.includes('easter'), false);
+    // Every occasion in the schema now has dishes behind it, so this exercises
+    // the mechanism rather than a gap: an occasion withheld from `available`
+    // must not reach the row on any day of the year, whatever the calendar says.
     for (let day = 0; day < 366; day += 1) {
-      const chips = seasonalChips(new Date(2026, 0, 1 + day), { available: served });
+      const chips = seasonalChips(new Date(2026, 0, 1 + day), {
+        available: served.filter((occasion) => occasion !== 'cny'),
+      });
       assert.equal(
-        chips.some((chip) => chip.occasion === 'easter'),
+        chips.some((chip) => chip.occasion === 'cny'),
         false,
       );
+      assert.equal(chips.length, SEASONAL_CHIP_COUNT);
     }
   });
 

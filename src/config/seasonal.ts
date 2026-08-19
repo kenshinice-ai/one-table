@@ -19,6 +19,7 @@ export const OCCASIONS = [
   'bbq',
   'weeknight',
   'party',
+  'feast',
 ] as const;
 
 export type Occasion = (typeof OCCASIONS)[number];
@@ -48,9 +49,9 @@ export const occasionPresets: Record<Occasion, OccasionPreset> = {
     noteEn: 'Six courses, soup and sweet included',
   },
   mid_autumn: {
-    roleOverrides: { main: 2, dessert: 1 },
-    noteZh: '两菜一甜，赏月刚好',
-    noteEn: 'Two dishes and a sweet for the moon',
+    roleOverrides: { snack: 1, soup: 1, main: 2, dessert: 1 },
+    noteZh: '一汤两菜，配月饼赏月',
+    noteEn: 'Soup, two dishes and something sweet for the moon',
   },
   christmas: {
     roleOverrides: { starter: 1, main: 2, side: 1, dessert: 1 },
@@ -87,6 +88,11 @@ export const occasionPresets: Record<Occasion, OccasionPreset> = {
     noteZh: '手拿为主，站着吃',
     noteEn: 'Mostly finger food, eaten standing',
   },
+  feast: {
+    roleOverrides: { starter: 1, soup: 1, main: 2, dessert: 1 },
+    noteZh: '前菜到甜品的五道大菜',
+    noteEn: 'Five courses, starter through to dessert',
+  },
 };
 
 export type SeasonalChip = {
@@ -115,7 +121,7 @@ const windows: Array<{ occasion: Occasion; from: [number, number]; to: [number, 
 ];
 
 /** Filler order once the season's own chips are placed. */
-const evergreen: Occasion[] = ['weeknight', 'party', 'brunch', 'afternoon_tea'];
+const evergreen: Occasion[] = ['weeknight', 'feast', 'party', 'brunch', 'afternoon_tea'];
 
 export const SEASONAL_CHIP_COUNT = 3;
 

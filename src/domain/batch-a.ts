@@ -33,6 +33,7 @@ export const occasionSchema = z.enum([
   'bbq',
   'weeknight',
   'party',
+  'feast',
 ]);
 
 export const recipeSchema = z.object({

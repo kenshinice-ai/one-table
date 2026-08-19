@@ -6,7 +6,7 @@ export const launchCatalogFileSchema = z.object({
   batch: z.literal('launch'),
   version: z.string().min(1),
   generatedAt: z.string().datetime(),
-  recipes: z.array(recipeSchema).length(600),
+  recipes: z.array(recipeSchema).length(700),
 });
 
 export type LaunchCatalogFile = z.infer<typeof launchCatalogFileSchema>;
