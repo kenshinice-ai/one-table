@@ -313,17 +313,25 @@ h3 {
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
-.settings-row {
-  display: grid;
-  grid-template-columns: auto repeat(6, minmax(0, 1fr));
-  gap: 9px;
-  align-items: stretch;
+/*
+  Everything that answers "what kind of table is this" lives in one card: the
+  six settings, then the occasion chips under a hairline. They were two bands
+  and only one of them was in a card, which made the chip row read as something
+  that had landed on the page rather than something belonging to it.
+*/
+.table-setup {
   margin: 16px 0;
   padding: 10px;
   background: rgb(255 253 249 / 80%);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   box-shadow: var(--shadow-small);
+}
+.settings-row {
+  display: grid;
+  grid-template-columns: auto repeat(6, minmax(0, 1fr));
+  gap: 9px;
+  align-items: stretch;
 }
 .section-kicker {
   display: flex;
@@ -348,82 +356,106 @@ h3 {
   kicker column as the settings above it, so the two read as one control block
   rather than two competing bands.
 */
+/*
+  The same seven-column grid as the settings above, each chip spanning two, so
+  their edges land on the dropdown boundaries rather than floating free.
+*/
 .seasonal-row {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: auto repeat(6, minmax(0, 1fr));
   gap: 9px;
-  align-items: center;
-  margin: 0 0 16px;
+  align-items: stretch;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
 }
 .seasonal-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
+  display: contents;
 }
+/*
+  A chip is a control in the same family as the dropdowns beside it: same
+  height, same corner, same border, same icon-and-two-lines anatomy. The order
+  of the two lines is reversed because the name is the identity here, where a
+  dropdown's identity is its label and its value is the changing part.
+*/
 .seasonal-chip {
-  display: grid;
-  /* Sized by its own words rather than by the column: three pills stretched
-     across a wide desk read as tabs, and these are choices, not sections. */
-  flex: 0 1 auto;
-  gap: 2px;
-  min-height: 52px;
-  /* 10 : 16 ≈ 1 : φ, the same vertical-to-horizontal rhythm the cards use. */
-  padding: 10px 16px;
+  display: flex;
+  min-width: 0;
+  grid-column: span 2;
+  align-items: center;
+  gap: 9px;
+  height: 64px;
+  padding: 8px 13px;
   color: var(--ink);
   text-align: left;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: var(--r-sm);
   transition:
     border-color var(--motion),
     background var(--motion),
+    box-shadow var(--motion),
     color var(--motion);
 }
 .seasonal-chip:hover {
-  border-color: var(--terracotta);
+  background: #fff8f1;
+  border-color: #dfa88d;
+  box-shadow: 0 0 0 3px rgb(217 107 69 / 10%);
 }
+/*
+  Selected reads as engaged, not as a second primary button. A solid terracotta
+  slab here competed with "another set", which is the one thing on the page that
+  should shout; the soft fill and the accent ring say the same thing quietly.
+*/
 .seasonal-chip[aria-pressed='true'] {
-  color: #fff;
-  background: linear-gradient(135deg, var(--terracotta-dark) 0, #a23f22 100%);
-  border-color: #a23f22;
-  box-shadow: var(--shadow-small);
+  color: #a23f22;
+  background: var(--terracotta-soft);
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 3px rgb(217 107 69 / 12%);
+}
+.seasonal-chip[aria-pressed='true'] .control-icon {
+  color: var(--terracotta);
+}
+.seasonal-chip-text {
+  display: grid;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: 2px;
 }
 .seasonal-chip-label {
   display: flex;
+  overflow: hidden;
   align-items: center;
-  gap: 7px;
-  font-size: 0.92rem;
+  gap: 6px;
+  font-size: 0.86rem;
   font-weight: 750;
-  line-height: 1.2;
+  line-height: 1.22;
+  white-space: nowrap;
 }
 .seasonal-chip-note {
   overflow: hidden;
   color: var(--muted);
-  /* Above the 12px floor: this line is the difference between a label and an
-     explanation of what one tap is about to do to the table. */
-  font-size: 0.76rem;
+  font-size: 0.69rem;
+  font-weight: 750;
+  line-height: 1.25;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .seasonal-chip[aria-pressed='true'] .seasonal-chip-note {
-  /* Full white, not a tint: at 12px the transparent version sat at 3.4:1. */
-  color: #fff;
+  color: #8a5b45;
 }
-/* Butter, not terracotta: the season is a quiet marker, the selection is the
-   loud one, and two accents shouting at once would flatten both. */
+/* Butter, not terracotta: the season is a quiet marker and the selection is the
+   loud one, so the two accents never shout together. */
 .seasonal-flag {
-  padding: 1px 7px;
-  color: #7a5a12;
-  background: var(--butter);
+  flex: 0 0 auto;
+  padding: 1px 6px;
+  color: #6f5211;
+  background: #f7e3b4;
   border-radius: 999px;
-  font-size: 0.66rem;
+  font-size: 0.62rem;
   font-weight: 850;
   letter-spacing: 0.06em;
   white-space: nowrap;
-}
-.seasonal-chip[aria-pressed='true'] .seasonal-flag {
-  color: var(--terracotta-dark);
-  background: #fff;
 }
 
 .planner-grid {
@@ -1432,8 +1464,12 @@ h3 {
 }
 
 @media (max-width: 1279px) {
-  .settings-row {
+  .settings-row,
+  .seasonal-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .seasonal-chip {
+    grid-column: span 1;
   }
   .section-kicker {
     grid-column: 1 / -1;
@@ -1505,12 +1541,10 @@ h3 {
   .section-kicker {
     grid-column: 1 / -1;
   }
-  .seasonal-row {
-    grid-template-columns: 1fr;
-  }
 }
 @media (max-width: 760px) {
-  .settings-row {
+  .settings-row,
+  .seasonal-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1535,9 +1569,12 @@ h3 {
     fold on a phone — the reader arrived at a screen of controls and had to
     scroll to find out there was any food.
   */
-  .settings-row {
+  .settings-row,
+  .seasonal-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 7px;
+  }
+  .table-setup {
     padding: 8px;
   }
   .dropdown-trigger {

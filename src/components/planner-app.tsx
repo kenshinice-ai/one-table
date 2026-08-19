@@ -492,13 +492,20 @@ export function PlannerApp({
         recipes={recipes}
         seats={preferences.guests}
       />
-      <TableSettings locale={locale} onChange={updatePreferences} preferences={preferences} />
-      <OccasionChips
-        active={filters.occasions.length === 1 ? (filters.occasions[0] as Occasion) : null}
-        chips={chips}
-        locale={locale}
-        onToggle={toggleOccasion}
-      />
+      {/*
+        One card, two bands. Both answer the same question — what kind of table
+        is this — and the chips write into the very preferences the settings
+        above them expose, so a hairline between them says more than a gap.
+      */}
+      <div className="table-setup">
+        <TableSettings locale={locale} onChange={updatePreferences} preferences={preferences} />
+        <OccasionChips
+          active={filters.occasions.length === 1 ? (filters.occasions[0] as Occasion) : null}
+          chips={chips}
+          locale={locale}
+          onToggle={toggleOccasion}
+        />
+      </div>
       <div className="planner-grid">
         <FilterWorkspace
           canUndo={Boolean(undoSnapshot)}

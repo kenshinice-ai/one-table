@@ -3,6 +3,8 @@
 import { occasionPresets, type Occasion, type SeasonalChip } from '@/config/seasonal';
 import { copy, label, type Locale } from '@/i18n/copy';
 
+import { OccasionIcon } from './icons';
+
 /**
  * The fastest path to a finished table.
  *
@@ -48,12 +50,15 @@ export function OccasionChips({
               onClick={() => onToggle(chip.occasion)}
               type="button"
             >
-              <span className="seasonal-chip-label">
-                {label(chip.occasion, locale)}
-                {chip.inSeason && <span className="seasonal-flag">{t.inSeason}</span>}
-              </span>
-              <span className="seasonal-chip-note">
-                {locale === 'zh-CN' ? preset.noteZh : preset.noteEn}
+              <OccasionIcon className="control-icon" />
+              <span className="seasonal-chip-text">
+                <span className="seasonal-chip-label">
+                  {label(chip.occasion, locale)}
+                  {chip.inSeason && <span className="seasonal-flag">{t.inSeason}</span>}
+                </span>
+                <span className="seasonal-chip-note">
+                  {locale === 'zh-CN' ? preset.noteZh : preset.noteEn}
+                </span>
               </span>
             </button>
           );
