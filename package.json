@@ -35,7 +35,8 @@
     "deploy:demo-grocer": "TENANT=sample-grocer opennextjs-cloudflare build && opennextjs-cloudflare deploy --env demo-grocer",
     "report:campaign": "node --import tsx scripts/report/campaign-report.ts",
     "art:adopt": "node --import tsx scripts/media/adopt-art.ts",
-    "art:audit": "node --import tsx scripts/media/audit-tabletop.ts"
+    "art:audit": "node --import tsx scripts/media/audit-tabletop.ts",
+    "demo:shots": "node --import tsx scripts/demo/capture.ts"
   },
   "keywords": [],
   "author": "",
