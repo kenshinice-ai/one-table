@@ -42,7 +42,13 @@ import { copy, roleLabel, type Choice, type Locale } from '@/i18n/copy';
 
 import { resetSession, track } from './analytics';
 import { AppHeader } from './app-header';
-import { AttractScreen, HandoffDialog, useIdleTimer, useKioskMode } from './kiosk';
+import {
+  AttractScreen,
+  HandoffDialog,
+  useIdleTimer,
+  useKioskMode,
+  useScreenWakeLock,
+} from './kiosk';
 import { FilterWorkspace, type FacetOptions } from './filter-workspace';
 import type { SearchHit } from './global-search';
 import { MenuBoard, type CourseSlot } from './menu-board';
@@ -190,6 +196,7 @@ export function PlannerApp({
   // Ninety seconds untouched and the screen goes back to inviting the next
   // person. Never while the invitation is already up.
   useIdleTimer(kiosk && !attracting, enterAttract);
+  useScreenWakeLock(kiosk);
 
   // A poster QR carries ?src=qr; counting it before the URL is rewritten with
   // planner state is what turns printed material into a measurable channel.

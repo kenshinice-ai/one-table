@@ -18,6 +18,18 @@ function nearestWidth(available: number[], requested: number) {
   return available.find((width) => width >= requested) ?? available[available.length - 1];
 }
 
+/**
+ * Whether a dish has produced artwork rather than the placeholder.
+ *
+ * The adoption script rewrites `objectKey` to `media/<slug>.webp` when a photo
+ * passes quality control; anything still pointing at the editorial path has no
+ * file behind it. A card can show the placeholder honestly, but a full-screen
+ * attract frame cannot — it would be a black rectangle in a shop window.
+ */
+export function hasRecipeArt(recipe: Pick<PlannerRecipe, 'media'>) {
+  return recipe.media.objectKey.startsWith('media/');
+}
+
 export function recipeImageUrl(slug: string, width: number) {
   return `/media/${slug}-${nearestWidth(RECIPE_WIDTHS, width)}.webp`;
 }

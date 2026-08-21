@@ -8,7 +8,7 @@ import type { PlannerRecipe } from '@/domain/catalogue';
 import { copy, label, type Locale } from '@/i18n/copy';
 import { encodeQr, qrPath } from '@/vendor/qr';
 
-import { recipeImageUrl } from './images';
+import { hasRecipeArt, recipeImageUrl } from './images';
 
 /** Idle time before the screen goes back to inviting the next customer. */
 const ATTRACT_AFTER_MS = 90_000;
@@ -67,6 +67,42 @@ export function useIdleTimer(enabled: boolean, onIdle: () => void) {
 }
 
 /**
+ * Keeps the display awake while the kiosk is on screen.
+ *
+ * A shop window that has dimmed itself is not a demonstration of anything, and
+ * the attract screen is deliberately motionless for eight seconds at a time,
+ * which is exactly what a screen saver waits for. The lock is dropped and
+ * retaken when the tab is hidden and shown again, because the browser releases
+ * it on its own and never restores it.
+ */
+export function useScreenWakeLock(enabled: boolean) {
+  useEffect(() => {
+    if (!enabled || !('wakeLock' in navigator)) return;
+    let lock: WakeLockSentinel | null = null;
+    let cancelled = false;
+    const acquire = async () => {
+      if (cancelled || document.visibilityState !== 'visible') return;
+      try {
+        lock = await navigator.wakeLock.request('screen');
+      } catch {
+        // Refused on battery saver, or unsupported. The screen may dim; the
+        // kiosk still works, so this is never worth an error on the glass.
+      }
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') void acquire();
+    };
+    void acquire();
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      cancelled = true;
+      document.removeEventListener('visibilitychange', onVisibility);
+      void lock?.release().catch(() => undefined);
+    };
+  }, [enabled]);
+}
+
+/**
  * The invitation. One dish fills the screen at a time, drawn from whatever the
  * chip row is currently offering, and touching it starts a table built around
  * that dish — a customer walks up to a photograph and walks away with the menu
@@ -86,7 +122,11 @@ export function AttractScreen({
   const t = copy[locale];
   const featured = useMemo(() => {
     const wanted = chips.map((chip) => chip.occasion);
-    const pool = recipes.filter((recipe) =>
+    // Photographed only. A dish whose artwork has not been produced yet shows
+    // an honest placeholder on a card; filling the whole window with one would
+    // just look like a screen that failed to load.
+    const photographed = recipes.filter(hasRecipeArt);
+    const pool = photographed.filter((recipe) =>
       (recipe.occasions ?? []).some((occasion) => wanted.includes(occasion as Occasion)),
     );
     // Round-robin by occasion so the reel keeps showing all three, and stable
@@ -108,7 +148,13 @@ export function AttractScreen({
         seen.add(recipe.slug);
         reel.push({ recipe, occasion });
       });
-    return reel.slice(0, REEL_LENGTH);
+    // An occasion whose photographs are still being produced contributes
+    // nothing rather than blanks; if that leaves the reel empty, the screen
+    // falls back to the catalogue at large rather than showing nothing at all.
+    if (reel.length) return reel.slice(0, REEL_LENGTH);
+    return photographed
+      .slice(0, REEL_LENGTH)
+      .map((recipe) => ({ recipe, occasion: (recipe.occasions?.[0] ?? 'weeknight') as Occasion }));
   }, [recipes, chips]);
 
   const [slide, setSlide] = useState(0);
