@@ -2,9 +2,9 @@
   "floors": [
     {
       "level": "1",
-      "nameZh": "店内通道",
-      "nameEn": "In-store aisles",
-      "planSrc": null,
+      "nameZh": "店内平面图",
+      "nameEn": "Store plan",
+      "planSrc": "/venue/sample-grocer/floor.svg",
       "width": 800,
       "height": 500
     }
@@ -12,93 +12,93 @@
   "pois": [
     {
       "poiId": "counter",
-      "nameZh": "服务台 · 收银",
-      "nameEn": "Service Counter",
+      "nameZh": "收银 · 服务台",
+      "nameEn": "Checkout & Service",
       "level": "1",
       "zone": 0,
       "kind": "concierge",
-      "x": 0,
-      "y": 0
-    },
-    {
-      "poiId": "aisle-1",
-      "nameZh": "干货与酱料",
-      "nameEn": "Dry Goods & Sauces",
-      "level": "1",
-      "zone": 1,
-      "kind": "store",
-      "x": 0,
-      "y": 0
-    },
-    {
-      "poiId": "aisle-2",
-      "nameZh": "米面粮油",
-      "nameEn": "Rice, Noodles & Oil",
-      "level": "1",
-      "zone": 2,
-      "kind": "store",
-      "x": 0,
-      "y": 0
-    },
-    {
-      "poiId": "aisle-3",
-      "nameZh": "零食与饮品",
-      "nameEn": "Snacks & Drinks",
-      "level": "1",
-      "zone": 3,
-      "kind": "store",
-      "x": 0,
-      "y": 0
-    },
-    {
-      "poiId": "aisle-4",
-      "nameZh": "冷冻食品",
-      "nameEn": "Frozen",
-      "level": "1",
-      "zone": 4,
-      "kind": "store",
-      "x": 0,
-      "y": 0
+      "x": 142,
+      "y": 434
     },
     {
       "poiId": "aisle-5",
-      "nameZh": "蔬果生鲜",
-      "nameEn": "Fresh Produce",
+      "nameZh": "A1 · 蔬果生鲜",
+      "nameEn": "A1 · Fresh Produce",
       "level": "1",
-      "zone": 5,
+      "zone": 1,
       "kind": "store",
-      "x": 0,
-      "y": 0
+      "x": 172,
+      "y": 300
     },
     {
       "poiId": "aisle-6",
-      "nameZh": "肉档",
-      "nameEn": "Meat",
+      "nameZh": "A2 · 肉档",
+      "nameEn": "A2 · Meat",
       "level": "1",
-      "zone": 6,
+      "zone": 2,
       "kind": "store",
-      "x": 0,
-      "y": 0
+      "x": 300,
+      "y": 128
     },
     {
       "poiId": "aisle-7",
-      "nameZh": "海鲜档",
-      "nameEn": "Seafood",
+      "nameZh": "A3 · 海鲜档",
+      "nameEn": "A3 · Seafood",
       "level": "1",
-      "zone": 7,
+      "zone": 3,
       "kind": "store",
-      "x": 0,
-      "y": 0
+      "x": 540,
+      "y": 128
     },
     {
       "poiId": "aisle-8",
-      "nameZh": "乳品蛋品与烘焙",
-      "nameEn": "Dairy, Eggs & Bakery",
+      "nameZh": "A4 · 乳品蛋品与烘焙",
+      "nameEn": "A4 · Dairy, Eggs & Bakery",
+      "level": "1",
+      "zone": 4,
+      "kind": "store",
+      "x": 632,
+      "y": 300
+    },
+    {
+      "poiId": "aisle-4",
+      "nameZh": "C1 · 冷冻食品",
+      "nameEn": "C1 · Frozen",
+      "level": "1",
+      "zone": 5,
+      "kind": "store",
+      "x": 640,
+      "y": 386
+    },
+    {
+      "poiId": "aisle-3",
+      "nameZh": "B3 · 零食与饮品",
+      "nameEn": "B3 · Snacks & Drinks",
+      "level": "1",
+      "zone": 6,
+      "kind": "store",
+      "x": 530,
+      "y": 386
+    },
+    {
+      "poiId": "aisle-1",
+      "nameZh": "B2 · 干货与酱料",
+      "nameEn": "B2 · Dry Goods & Sauces",
+      "level": "1",
+      "zone": 7,
+      "kind": "store",
+      "x": 390,
+      "y": 386
+    },
+    {
+      "poiId": "aisle-2",
+      "nameZh": "B1 · 米面粮油",
+      "nameEn": "B1 · Rice, Noodles & Oil",
       "level": "1",
       "zone": 8,
       "kind": "store",
-      "x": 0,
-      "y": 0
+      "x": 250,
+      "y": 386
     }
   ],
   "ingredientMap": {

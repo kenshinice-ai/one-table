@@ -2450,7 +2450,7 @@ h3 {
   padding: 0;
   list-style: none;
 }
-.route-stops li {
+.route-stops > li {
   display: grid;
   grid-template-columns: 30px minmax(0, 1fr);
   gap: 10px;
@@ -2458,7 +2458,7 @@ h3 {
   background: var(--surface-soft);
   border-radius: 10px;
 }
-.route-stops li.is-concierge {
+.route-stops > li.is-concierge {
   background: #fff7dc;
 }
 .route-stops .stop-index {
@@ -2472,7 +2472,7 @@ h3 {
   font-size: 0.75rem;
   font-weight: 850;
 }
-.route-stops li.is-concierge .stop-index {
+.route-stops > li.is-concierge .stop-index {
   background: var(--muted);
 }
 .route-stops b {
@@ -2496,7 +2496,7 @@ h3 {
 .route-progress {
   color: var(--sage-dark, #3f7a63);
 }
-.route-stops li.is-done .stop-index {
+.route-stops > li.is-done .stop-index {
   background: var(--sage, #5a947e);
 }
 
@@ -2552,29 +2552,40 @@ h3 {
   font-size: 0.66rem;
 }
 
-/* Per-item check-off: ticked in the aisle, remembered for the session. */
+/*
+  Per-item check-off: ticked in the aisle, remembered for the session.
+
+  One item per row, like the shopping list it came from. As a wrapping cloud of
+  chips each row shrank to the width of its checkbox and the words spilled over
+  the neighbour — "大蒜 50 g" read as "大蒜 5" — and a cloud is harder to work
+  down one-handed than a list anyway.
+*/
 .stop-checklist {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 10px;
+  display: grid;
+  gap: 2px;
   margin: 5px 0 0;
   padding: 0;
   list-style: none;
 }
 .stop-checklist label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: flex;
   min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px;
+  border-radius: 8px;
   color: var(--ink);
-  font-size: 0.74rem;
-  white-space: nowrap;
+  font-size: 0.78rem;
   cursor: pointer;
+}
+.stop-checklist label:hover {
+  background: rgb(255 253 249 / 70%);
 }
 .stop-checklist input {
   width: 20px;
   height: 20px;
   margin: 0;
+  flex: 0 0 auto;
   accent-color: var(--sage, #5a947e);
   cursor: pointer;
 }

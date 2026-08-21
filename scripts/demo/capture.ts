@@ -66,6 +66,16 @@ const shots: Shot[] = [
     settle: 900,
   },
   {
+    name: '10-kiosk-route-map',
+    path: '/?kiosk=1',
+    width: 1080,
+    height: 1920,
+    prepare: `(async()=>{[...document.querySelectorAll('.menu-actions button')][0]?.click();
+      await new Promise(r=>setTimeout(r,600));
+      [...document.querySelectorAll('button')].find(b=>/路线|route/i.test(b.textContent||''))?.click()})()`,
+    settle: 1600,
+  },
+  {
     name: '09-phone-route',
     path: '/?src=qr',
     width: 390,
