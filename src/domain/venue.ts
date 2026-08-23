@@ -80,6 +80,21 @@ export type TenantConfig = {
     | 'party'
     | 'feast'
   >;
+  /**
+   * A standing line across the top of every screen.
+   *
+   * A build that names a real venue we have no agreement with has to say so
+   * where it is read, not in a footer — the person who most needs to see it is
+   * whoever the link gets forwarded to.
+   */
+  notice?: { zh: string; en: string };
+  /**
+   * Keep this build out of search results.
+   *
+   * Separate from `notice` on purpose: a pilot that is live for its customers
+   * still wants a banner, and an unlisted demo may carry no banner at all.
+   */
+  unlisted?: boolean;
   venue: VenueConfig;
 };
 

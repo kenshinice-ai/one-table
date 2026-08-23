@@ -488,6 +488,14 @@ export function PlannerApp({
       <a className="skip-link" href="#planner-filters">
         {locale === 'zh-CN' ? '跳到条件筛选' : 'Skip to filters'}
       </a>
+      {tenant?.notice && (
+        // Above the masthead, not in the footer: a link gets forwarded, and
+        // whoever opens it next has to read this before they read the brand.
+        <p className="tenant-notice" role="note">
+          <span className="tenant-notice-tag">DEMO</span>
+          {locale === 'zh-CN' ? tenant.notice.zh : tenant.notice.en}
+        </p>
+      )}
       <AppHeader
         coBrand={
           tenant ? (locale === 'zh-CN' ? tenant.brand.displayZh : tenant.brand.displayEn) : null

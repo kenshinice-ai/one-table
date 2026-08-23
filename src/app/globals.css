@@ -119,6 +119,35 @@ h3 {
   margin: 0 auto;
   padding: 0 30px 36px;
 }
+/*
+  The standing disclaimer on a white-label build that names a venue we have no
+  agreement with. It reads before the masthead because that is the order the
+  claim needs to arrive in, and it stays quiet: sand ground, 5.5:1 text, one
+  terracotta tag doing the work a red banner would do too loudly.
+*/
+.tenant-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 0;
+  padding: 7px 14px;
+  border: 1px solid #e4d8c6;
+  border-radius: 10px;
+  background: #f3ece1;
+  color: #6b5c48;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+.tenant-notice-tag {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  border-radius: 5px;
+  background: #b0472a;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
 .app-header {
   display: flex;
   min-height: 64px;
@@ -2797,6 +2826,14 @@ html[data-kiosk='1'] .primary-action {
 }
 html[data-kiosk='1'] .dish-title {
   font-size: 1.12rem;
+}
+/* Read from a metre away, so it does not shrink with the rest of the chrome. */
+html[data-kiosk='1'] .tenant-notice {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+}
+html[data-kiosk='1'] .tenant-notice-tag {
+  font-size: 0.8rem;
 }
 html[data-kiosk='1'] .app-footer {
   font-size: 0.72rem;

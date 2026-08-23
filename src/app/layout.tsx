@@ -2,15 +2,23 @@ import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 
 import { ServiceWorkerRegistration } from '@/components/service-worker';
+import type { TenantConfig } from '@/domain/venue';
 import manifest from '@/generated/catalogue-manifest.json';
+import tenantConfig from '@/generated/tenant-config.json';
 
 import './globals.css';
 
 const description =
   '为一桌人，配一桌好菜。选择人数、预算、菜单结构与健康目标，立即得到一桌可执行的双语菜单。 · Plan a whole table: set guests, budget, courses and an energy target, and get a menu you can actually cook.';
 
+/** Compiled in at build time, so the tag is right on the very first byte. */
+const unlisted = (tenantConfig as TenantConfig | null)?.unlisted === true;
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://onetable.pwestudio.site'),
+  // An unlisted build carries a venue's name without their agreement; it is
+  // for the person holding the link, not for a search result.
+  robots: unlisted ? { index: false, follow: false, nocache: true } : undefined,
   title: '一桌 · One Table',
   description,
   applicationName: 'One Table',

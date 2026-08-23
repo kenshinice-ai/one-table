@@ -9,5 +9,10 @@
   "features": {
     "navigation": true,
     "restaurants": true
-  }
+  },
+  "notice": {
+    "zh": "独立概念演示 · 与 Chadstone 无隶属关系，店名与位置取自其公开导览，平面图为示意图",
+    "en": "An independent concept demo. Not affiliated with Chadstone; trading names and positions come from its public directory and the plan is schematic."
+  },
+  "unlisted": true
 }

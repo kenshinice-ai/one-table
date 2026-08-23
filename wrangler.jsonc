@@ -64,6 +64,20 @@
         },
       ],
     },
+    "demo-pavilion": {
+      "name": "one-table-demo-pavilion",
+      "routes": [{ "pattern": "demo-pavilion.pwestudio.site", "custom_domain": true }],
+      "vars": {
+        "APP_ENV": "demo",
+        "APP_BASE_URL": "https://demo-pavilion.pwestudio.site",
+      },
+      "analytics_engine_datasets": [
+        {
+          "binding": "ONETABLE_EVENTS",
+          "dataset": "onetable_events",
+        },
+      ],
+    },
     "staging": {
       "name": "menu-planning-companion-staging",
       "vars": {

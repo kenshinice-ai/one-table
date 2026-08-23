@@ -38,6 +38,9 @@ const tenantSchema = z.object({
       ]),
     )
     .optional(),
+  // Shown at the top of every screen; see TenantConfig.notice.
+  notice: z.object({ zh: z.string().min(1), en: z.string().min(1) }).optional(),
+  unlisted: z.boolean().optional(),
 });
 
 const venueSchema = z.object({
