@@ -1,0 +1,13 @@
+{
+  "id": "market-pavilion",
+  "venueType": "mall",
+  "brand": {
+    "displayZh": "市集馆 · 概念演示",
+    "displayEn": "The Market Pavilion · Concept Demo"
+  },
+  "defaultLocale": "en-AU",
+  "features": {
+    "navigation": true,
+    "restaurants": true
+  }
+}

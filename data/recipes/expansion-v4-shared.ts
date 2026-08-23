@@ -250,4 +250,23 @@ export const expansionV4IngredientCatalog = [
     category: 'pantry',
     defaultUnit: 'g' as const,
   },
+
+  // --- Named on the plate, so named on the list ---
+  // A shopping list is read at a counter. "Rice" in front of a risotto and
+  // "Ham" in front of a prosciutto both send someone home with the wrong thing
+  // and the dish fails in their kitchen, not in ours.
+  {
+    id: 'arborio_rice',
+    nameEn: 'Arborio rice',
+    nameZh: '意式烩饭米',
+    category: 'staple',
+    defaultUnit: 'g' as const,
+  },
+  {
+    id: 'prosciutto',
+    nameEn: 'Prosciutto',
+    nameZh: '意式生火腿',
+    category: 'protein',
+    defaultUnit: 'g' as const,
+  },
 ];

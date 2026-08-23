@@ -70,6 +70,8 @@ const venueSchema = z.object({
   ingredientMap: z.record(z.string(), z.string()),
   categoryFallback: z.record(z.string(), z.string()),
   conciergePoiId: z.string(),
+  // Set by venues that hold shopping for you, so the walk ends at the desk.
+  conciergeFinish: z.boolean().optional(),
 });
 
 const ROOT = process.cwd();

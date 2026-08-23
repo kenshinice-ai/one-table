@@ -1105,7 +1105,7 @@ const specs: RecipeSpec[] = [
     equipment: ['equip_stovetop'],
     focus: '蘑菇鲜味与米粒弹性',
     ingredients: [
-      i('rice_long_grain', 360, 'g', '360 g'),
+      i('arborio_rice', 360, 'g', '360 g'),
       i('button_mushrooms', 350, 'g', '350 g', '切片', 'sliced'),
       i('stock', 1000, 'ml', '1 L'),
       i('red_onion', 120, 'g', '120 g'),

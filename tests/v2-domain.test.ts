@@ -512,4 +512,34 @@ test('venue routing', async (t) => {
     assert.equal(route.unmapped.length, 0, 'default menu resolves without concierge items');
     assert.ok(route.storeCount >= 3);
   });
+
+  await t.test('a venue that holds your shopping always ends at its desk', () => {
+    const route = resolveStops([line('carrot')], defs, { ...venue, conciergeFinish: true });
+    const last = route.stops.at(-1)!;
+    assert.equal(last.poi.poiId, 'concierge');
+    assert.deepEqual(last.items, [], 'the desk is a service stop, not a shopping one');
+    assert.equal(route.stops.length, 2, 'the grocer, then the desk');
+    assert.equal(route.storeCount, 1, 'the desk is not a shop');
+  });
+
+  await t.test('the desk is listed once even when something maps to it', () => {
+    const route = resolveStops([line('carrot')], defs, {
+      ...venue,
+      conciergeFinish: true,
+      ingredientMap: { carrot: 'concierge' },
+    });
+    assert.equal(route.stops.filter((stop) => stop.poi.poiId === 'concierge').length, 1);
+  });
+
+  await t.test('the Market Pavilion mapping covers the whole catalogue', () => {
+    const venueJson = JSON.parse(readFileSync('tenants/market-pavilion/venue.json', 'utf8'));
+    const menu = composeMenu(launchRecipes, defaultPlannerPreferences, 0, defaultPlannerFilters);
+    const list = buildShoppingList(menu.recipes, 6);
+    const route = resolveStops(list, ingredientCatalog, venueJson);
+    assert.equal(route.unmapped.length, 0, 'every ingredient reaches a real shop');
+    // The pitch is that a table sends a shopper to several specialists rather
+    // than one supermarket; if that stops being true the demo has lost its point.
+    assert.ok(route.storeCount >= 4, `expected several shops, got ${route.storeCount}`);
+    assert.equal(route.stops.at(-1)!.poi.poiId, 'concierge');
+  });
 });

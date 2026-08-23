@@ -290,7 +290,14 @@ export function RoutePanel({
                       {aisleMode ? aisleLabel(stop) : `${zh ? '楼层' : 'Level'} ${stop.poi.level}`}
                     </small>
                   </b>
-                  {stop.poi.kind === 'concierge' && <p className="stop-note">{t.conciergeStop}</p>}
+                  {stop.poi.kind === 'concierge' && (
+                    // The same desk does two jobs. With items it is a question
+                    // to ask; empty it is the end of the walk, and telling a
+                    // shopper to ask about nothing reads as a broken screen.
+                    <p className="stop-note">
+                      {stop.items.length ? t.conciergeStop : t.conciergeFinishStop}
+                    </p>
+                  )}
                   <ul className="stop-checklist">
                     {stop.items.map((item) => {
                       const done = checked.includes(item.ingredientId);

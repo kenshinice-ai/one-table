@@ -47,6 +47,36 @@ export const expansionIngredientCatalog = [
     category: 'vegetable',
     defaultUnit: 'g' as const,
   },
+
+  // Pasta shapes. Ten dishes shared one — conchiglie — while their own titles
+  // said linguine, macaroni, orzo and carbonara. At a fresh-pasta counter the
+  // shape is the order, so the shape has to be on the list. They live here
+  // rather than with the later waves because batch-f and batch-h both need
+  // them and the wave-2 catalogue cannot import a later one without a cycle.
+  {
+    id: 'pasta_long',
+    nameEn: 'Long pasta (spaghetti or linguine)',
+    nameZh: '长意面（细面 / 扁面）',
+    category: 'staple',
+    defaultUnit: 'g' as const,
+    allergens: [{ code: 'wheat', presence: 'contains' as const }],
+  },
+  {
+    id: 'pasta_short',
+    nameEn: 'Short pasta (penne or macaroni)',
+    nameZh: '短意面（笔管 / 通心粉）',
+    category: 'staple',
+    defaultUnit: 'g' as const,
+    allergens: [{ code: 'wheat', presence: 'contains' as const }],
+  },
+  {
+    id: 'orzo',
+    nameEn: 'Orzo',
+    nameZh: '米形意面',
+    category: 'staple',
+    defaultUnit: 'g' as const,
+    allergens: [{ code: 'wheat', presence: 'contains' as const }],
+  },
 ];
 
 export type ExpansionSpec = {
@@ -117,6 +147,11 @@ const amounts: Record<string, [number, 'g' | 'ml' | 'count']> = {
   rice_noodle: [400, 'g'],
   soba_noodle: [350, 'g'],
   pasta_shells: [400, 'g'],
+  pasta_long: [400, 'g'],
+  pasta_short: [400, 'g'],
+  orzo: [350, 'g'],
+  arborio_rice: [360, 'g'],
+  prosciutto: [180, 'g'],
   rice_vermicelli: [350, 'g'],
   bulgur: [300, 'g'],
   bread: [300, 'g'],

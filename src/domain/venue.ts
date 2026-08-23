@@ -45,6 +45,16 @@ export type VenueConfig = {
   ingredientMap: Record<string, string>;
   categoryFallback: Record<string, string>;
   conciergePoiId: string;
+  /**
+   * Whether the walk always ends at the concierge.
+   *
+   * A venue that will hold your shopping — a refrigerated bag drop, a
+   * click-and-collect desk — turns the last stop into a service rather than a
+   * checkout, and that only works if the route says so before you set off
+   * carrying everything. Venues without one leave this off, and the concierge
+   * appears only when something could not be placed.
+   */
+  conciergeFinish?: boolean;
 };
 
 export type TenantConfig = {
@@ -136,9 +146,12 @@ export function resolveStops(
       a.poi.poiId.localeCompare(b.poi.poiId),
   );
 
-  if (unmapped.length) {
+  if (unmapped.length || venue.conciergeFinish) {
     const concierge = venue.pois.find((poi) => poi.poiId === venue.conciergePoiId);
-    if (concierge) stops.push({ poi: concierge, items: unmapped });
+    // Carries the unplaced items when there are any, and stands alone when the
+    // venue finishes there regardless — an empty final stop is still a stop.
+    // Skipped when the desk is already in the walk, so it is never listed twice.
+    if (concierge && !byPoi.has(concierge.poiId)) stops.push({ poi: concierge, items: unmapped });
   }
 
   return {
