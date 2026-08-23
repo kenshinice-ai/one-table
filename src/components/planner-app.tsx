@@ -156,7 +156,10 @@ export function PlannerApp({
     () => initialChips,
   );
   const search = useSyncExternalStore(subscribeToHistory, readSearch, readServerSearch);
-  const linkedState = useMemo(() => (search ? parsePlannerState(search) : defaultState), [search]);
+  const linkedState = useMemo(
+    () => (search ? parsePlannerState(search, defaultState.locale) : defaultState),
+    [search],
+  );
   const state = edits ?? linkedState;
   const { locale, filters, preferences, variation, substitutions } = state;
   const t = copy[locale];

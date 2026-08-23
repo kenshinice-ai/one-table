@@ -173,7 +173,18 @@ export function withPreservedParams(query: string, currentSearch: string) {
  * default when missing or malformed, so a hand-edited link can never leave the
  * planner in an impossible state.
  */
-export function parsePlannerState(query: string): PlannerState {
+/**
+ * Reads a shared link back into planner state.
+ *
+ * `fallbackLocale` is the language to use when the link does not name one —
+ * the tenant's own default, not the product's. Without it any query string at
+ * all, including a bare `?kiosk=1`, silently reset an Australian centre's
+ * screen to Chinese one frame after the server had rendered it in English.
+ */
+export function parsePlannerState(
+  query: string,
+  fallbackLocale: PlannerState['locale'] = 'zh-CN',
+): PlannerState {
   const params = new URLSearchParams(query);
   const occasions = parseList(params.get('occasion'));
   // A poster link names an occasion and nothing else; the occasion's own table
@@ -224,7 +235,7 @@ export function parsePlannerState(query: string): PlannerState {
     minHealthScore: parseInteger(params.get('health'), defaultPlannerFilters.minHealthScore, 1, 5),
   };
   return {
-    locale: parseEnum(params.get('lang'), locales, 'zh-CN'),
+    locale: parseEnum(params.get('lang'), locales, fallbackLocale),
     filters,
     preferences,
     variation: parseInteger(params.get('n'), 0, 0, 999),

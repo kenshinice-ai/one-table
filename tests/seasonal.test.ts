@@ -252,3 +252,18 @@ describe('seasonal chips', () => {
     );
   });
 });
+
+describe("a venue's own language", () => {
+  it('survives a link that names no language', () => {
+    // A kiosk URL is a query string with no `lang` in it. Before this, that
+    // was enough to reset an Australian centre's screen to Chinese one frame
+    // after the server had rendered it in English.
+    assert.equal(parsePlannerState('?kiosk=1').locale, 'zh-CN', 'product default stands alone');
+    assert.equal(parsePlannerState('?kiosk=1', 'en-AU').locale, 'en-AU', 'venue default wins');
+    assert.equal(parsePlannerState('?v=1&src=qr', 'en-AU').locale, 'en-AU', 'and survives a scan');
+  });
+
+  it('still yields to a language the link states outright', () => {
+    assert.equal(parsePlannerState('?lang=zh-CN', 'en-AU').locale, 'zh-CN');
+  });
+});
