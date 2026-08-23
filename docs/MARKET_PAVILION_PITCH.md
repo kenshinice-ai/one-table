@@ -135,9 +135,13 @@ Vic's 的熟成牛肉与羊腿。**意式一桌**会把第一站换成 **Amalfi 
 
 **你来准备：**
 
-1. **对接人。** Chadstone 属于 Vicinity Centres。要找的是 Centre Management
-   里管 Market Pavilion 的人，或 Vicinity 的 Retail Media / Customer
-   Experience / Innovation 条线。领英或中心管理处前台都能问到。
+1. **对接人。** Chadstone 是 **Vicinity Centres 与 Gandel Group 的 50/50 合资**，
+   由 **Vicinity 运营** —— 而且 **Vicinity 的总部就设在 Chadstone 内**。
+   决策的人就在楼里，这是个便宜。要找的是 Centre Management 里管
+   Market Pavilion 的人，或 Vicinity 的 Retail Media / Customer Experience /
+   Innovation 条线。领英或中心管理处前台都能问到。
+   （来源：[Vicinity Centres](https://en.wikipedia.org/wiki/Vicinity_Centres)、
+   [Chadstone Shopping Centre](https://en.wikipedia.org/wiki/Chadstone_Shopping_Centre)）
 2. **公司主体与保险。** 提案会问：谁签合同、有没有 public liability、
    屏幕是谁的资产、谁维护。先想好一句话答案。
 3. **演示硬件的决定。** 是我们带一台竖屏去，还是用他们现有的屏。
