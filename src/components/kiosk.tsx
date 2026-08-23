@@ -18,6 +18,18 @@ const REEL_LENGTH = 15;
 const SLIDE_MS = 8_000;
 
 /**
+ * Dishes that keep their photograph but stay out of the shop window.
+ *
+ * The reel plays two metres tall facing a public walkway, where a picture is
+ * seen by everyone who passes rather than by someone who chose to look at it.
+ * A whole spit-roast lamb, head and all, is an honest photograph of that dish
+ * and belongs on its card; leading a family shopping centre's window with it
+ * is a different decision. Nothing is hidden — the dish is still in the
+ * catalogue, still searchable, still fully illustrated. It just does not open.
+ */
+const NOT_FOR_THE_WINDOW = new Set(['feast-whole-spit-roast-lamb']);
+
+/**
  * Whether this page is running as a shop-window kiosk.
  *
  * The flag is stamped on `<html>` by a one-line script in the document head, so
@@ -125,7 +137,9 @@ export function AttractScreen({
     // Photographed only. A dish whose artwork has not been produced yet shows
     // an honest placeholder on a card; filling the whole window with one would
     // just look like a screen that failed to load.
-    const photographed = recipes.filter(hasRecipeArt);
+    const photographed = recipes.filter(
+      (recipe) => hasRecipeArt(recipe) && !NOT_FOR_THE_WINDOW.has(recipe.slug),
+    );
     const pool = photographed.filter((recipe) =>
       (recipe.occasions ?? []).some((occasion) => wanted.includes(occasion as Occasion)),
     );

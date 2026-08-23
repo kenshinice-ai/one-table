@@ -35,7 +35,7 @@ export type OccasionPreset = {
 /**
  * Table shapes, sized to the catalogue rather than to an ideal.
  *
- * The occasion tags cover 200 of the 600 dishes and are far from evenly spread
+ * The occasion tags cover 300 of the 700 dishes and are far from evenly spread
  * — afternoon tea is nearly all sweets, a weeknight is nearly all mains — so a
  * generic four-course template would ask for courses that occasion cannot
  * serve and hand the reader a half-empty table. Each shape below is asserted

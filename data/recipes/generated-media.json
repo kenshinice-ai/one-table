@@ -2998,5 +2998,505 @@
     "objectKey": "media/japanese-mushroom-clear-soup.webp",
     "generatedAt": "2026-08-18T12:16:27.810Z",
     "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-dry-aged-ribeye-red-wine": {
+    "objectKey": "media/feast-dry-aged-ribeye-red-wine.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-grilled-wagyu-sirloin": {
+    "objectKey": "media/feast-grilled-wagyu-sirloin.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-butter-garlic-lobster": {
+    "objectKey": "media/feast-butter-garlic-lobster.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-baked-lobster-cheese": {
+    "objectKey": "media/feast-baked-lobster-cheese.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-slow-roast-lamb-leg": {
+    "objectKey": "media/feast-slow-roast-lamb-leg.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-herb-crusted-lamb-rack": {
+    "objectKey": "media/feast-herb-crusted-lamb-rack.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-whole-spit-roast-lamb": {
+    "objectKey": "media/feast-whole-spit-roast-lamb.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-red-wine-short-ribs": {
+    "objectKey": "media/feast-red-wine-short-ribs.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-king-crab-lemon-butter": {
+    "objectKey": "media/feast-king-crab-lemon-butter.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-truffle-mushroom-risotto": {
+    "objectKey": "media/feast-truffle-mushroom-risotto.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-oysters-shallot-vinegar": {
+    "objectKey": "media/feast-oysters-shallot-vinegar.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-wagyu-tartare": {
+    "objectKey": "media/feast-wagyu-tartare.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-caviar-blini": {
+    "objectKey": "media/feast-caviar-blini.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-scallops-garlic-butter": {
+    "objectKey": "media/feast-scallops-garlic-butter.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-braised-abalone-oyster-sauce": {
+    "objectKey": "media/feast-braised-abalone-oyster-sauce.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-dry-aged-beef-carpaccio": {
+    "objectKey": "media/feast-dry-aged-beef-carpaccio.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-winter-melon-scallop-soup": {
+    "objectKey": "media/feast-winter-melon-scallop-soup.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-sea-cucumber-chicken-soup": {
+    "objectKey": "media/feast-sea-cucumber-chicken-soup.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-lobster-bisque": {
+    "objectKey": "media/feast-lobster-bisque.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-truffle-mashed-potato": {
+    "objectKey": "media/feast-truffle-mashed-potato.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-saffron-seafood-rice": {
+    "objectKey": "media/feast-saffron-seafood-rice.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-pomegranate-orange-salad": {
+    "objectKey": "media/feast-pomegranate-orange-salad.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-dark-chocolate-mousse": {
+    "objectKey": "media/feast-dark-chocolate-mousse.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "feast-creme-brulee-tart": {
+    "objectKey": "media/feast-creme-brulee-tart.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-honey-glazed-lamb-shoulder": {
+    "objectKey": "media/easter-honey-glazed-lamb-shoulder.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-lamb-cutlets-mint-sauce": {
+    "objectKey": "media/easter-lamb-cutlets-mint-sauce.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-lemon-herb-roast-chicken": {
+    "objectKey": "media/easter-lemon-herb-roast-chicken.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-smoked-salmon-platter": {
+    "objectKey": "media/easter-smoked-salmon-platter.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-hot-cross-buns": {
+    "objectKey": "media/easter-hot-cross-buns.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-chocolate-nest-mousse": {
+    "objectKey": "media/easter-chocolate-nest-mousse.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-sugar-cookies": {
+    "objectKey": "media/easter-sugar-cookies.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-spring-pea-soup": {
+    "objectKey": "media/easter-spring-pea-soup.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-roast-root-vegetables": {
+    "objectKey": "media/easter-roast-root-vegetables.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-asparagus-hollandaise": {
+    "objectKey": "media/easter-asparagus-hollandaise.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-apple-walnut-salad": {
+    "objectKey": "media/easter-apple-walnut-salad.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-rosemary-roast-potatoes": {
+    "objectKey": "media/easter-rosemary-roast-potatoes.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-lemon-curd-tart": {
+    "objectKey": "media/easter-lemon-curd-tart.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "easter-ham-mustard-rolls": {
+    "objectKey": "media/easter-ham-mustard-rolls.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-osmanthus-lotus-root": {
+    "objectKey": "media/midautumn-osmanthus-lotus-root.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-lotus-paste-mooncake": {
+    "objectKey": "media/midautumn-lotus-paste-mooncake.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-salted-yolk-pumpkin": {
+    "objectKey": "media/midautumn-salted-yolk-pumpkin.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-osmanthus-rice-ball-soup": {
+    "objectKey": "media/midautumn-osmanthus-rice-ball-soup.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-winter-melon-ham-soup": {
+    "objectKey": "media/midautumn-winter-melon-ham-soup.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-crab-silken-tofu": {
+    "objectKey": "media/midautumn-crab-silken-tofu.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-steamed-crab-ginger": {
+    "objectKey": "media/midautumn-steamed-crab-ginger.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-chestnut-braised-chicken": {
+    "objectKey": "media/midautumn-chestnut-braised-chicken.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-taro-pork-belly": {
+    "objectKey": "media/midautumn-taro-pork-belly.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-scallops-garlic-vermicelli": {
+    "objectKey": "media/midautumn-scallops-garlic-vermicelli.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-pomelo-honey-jelly": {
+    "objectKey": "media/midautumn-pomelo-honey-jelly.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-black-sesame-tangyuan": {
+    "objectKey": "media/midautumn-black-sesame-tangyuan.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-osmanthus-sticky-rice": {
+    "objectKey": "media/midautumn-osmanthus-sticky-rice.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "midautumn-pomelo-chicken-salad": {
+    "objectKey": "media/midautumn-pomelo-chicken-salad.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-roast-turkey-breast": {
+    "objectKey": "media/christmas-roast-turkey-breast.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-glazed-ham": {
+    "objectKey": "media/christmas-glazed-ham.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-prawn-cocktail-platter": {
+    "objectKey": "media/christmas-prawn-cocktail-platter.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-seafood-platter-ice": {
+    "objectKey": "media/christmas-seafood-platter-ice.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-duck-breast-berries": {
+    "objectKey": "media/christmas-duck-breast-berries.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-chestnut-ham-soup": {
+    "objectKey": "media/christmas-chestnut-ham-soup.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-pomegranate-salad": {
+    "objectKey": "media/christmas-pomegranate-salad.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-mango-avocado-salad": {
+    "objectKey": "media/christmas-mango-avocado-salad.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-garlic-pull-apart-bread": {
+    "objectKey": "media/christmas-garlic-pull-apart-bread.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-herb-butter-mash": {
+    "objectKey": "media/christmas-herb-butter-mash.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-honey-mustard-carrots": {
+    "objectKey": "media/christmas-honey-mustard-carrots.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-brussels-sprouts-bacon": {
+    "objectKey": "media/christmas-brussels-sprouts-bacon.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-pavlova-summer-berries": {
+    "objectKey": "media/christmas-pavlova-summer-berries.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-steamed-pudding": {
+    "objectKey": "media/christmas-steamed-pudding.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-gingerbread-people": {
+    "objectKey": "media/christmas-gingerbread-people.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "christmas-berry-cheese-tartlets": {
+    "objectKey": "media/christmas-berry-cheese-tartlets.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-braised-abalone-greens": {
+    "objectKey": "media/cny-braised-abalone-greens.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-steamed-coral-trout-whole": {
+    "objectKey": "media/cny-steamed-coral-trout-whole.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-garlic-lobster-split": {
+    "objectKey": "media/cny-garlic-lobster-split.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-braised-sea-cucumber": {
+    "objectKey": "media/cny-braised-sea-cucumber.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-steamed-egg-dried-scallop": {
+    "objectKey": "media/cny-steamed-egg-dried-scallop.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-seafood-treasure-soup": {
+    "objectKey": "media/cny-seafood-treasure-soup.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-claypot-cured-meat-rice": {
+    "objectKey": "media/cny-claypot-cured-meat-rice.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-pork-hock-dried-oyster": {
+    "objectKey": "media/cny-pork-hock-dried-oyster.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-sweet-sour-whole-fish": {
+    "objectKey": "media/cny-sweet-sour-whole-fish.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-golden-prawn-balls": {
+    "objectKey": "media/cny-golden-prawn-balls.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-eight-treasure-rice": {
+    "objectKey": "media/cny-eight-treasure-rice.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "cny-prosperity-yusheng-salad": {
+    "objectKey": "media/cny-prosperity-yusheng-salad.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-wagyu-skewers": {
+    "objectKey": "media/bbq-wagyu-skewers.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-lemongrass-lamb-cutlets": {
+    "objectKey": "media/bbq-lemongrass-lamb-cutlets.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-garlic-butter-prawn-skewers": {
+    "objectKey": "media/bbq-garlic-butter-prawn-skewers.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-grilled-corn-herb-butter": {
+    "objectKey": "media/bbq-grilled-corn-herb-butter.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-grilled-vegetable-couscous": {
+    "objectKey": "media/bbq-grilled-vegetable-couscous.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-gazpacho-chilled-soup": {
+    "objectKey": "media/bbq-gazpacho-chilled-soup.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-smoky-chilli-chicken-wings": {
+    "objectKey": "media/bbq-smoky-chilli-chicken-wings.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "bbq-grilled-peaches-cream": {
+    "objectKey": "media/bbq-grilled-peaches-cream.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-mini-wagyu-sliders": {
+    "objectKey": "media/party-mini-wagyu-sliders.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-lobster-rolls": {
+    "objectKey": "media/party-lobster-rolls.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-seared-foie-gras-apple": {
+    "objectKey": "media/party-seared-foie-gras-apple.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-prosciutto-melon": {
+    "objectKey": "media/party-prosciutto-melon.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-truffle-fries": {
+    "objectKey": "media/party-truffle-fries.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-caviar-potato-bites": {
+    "objectKey": "media/party-caviar-potato-bites.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "party-crab-meat-tartlets": {
+    "objectKey": "media/party-crab-meat-tartlets.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-smoked-salmon-fingers": {
+    "objectKey": "media/tea-smoked-salmon-fingers.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-scones-cream-jam": {
+    "objectKey": "media/tea-scones-cream-jam.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-cucumber-sandwiches": {
+    "objectKey": "media/tea-cucumber-sandwiches.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-cheese-gougeres-savoury": {
+    "objectKey": "media/tea-cheese-gougeres-savoury.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "tea-earl-grey-chocolate-tart": {
+    "objectKey": "media/tea-earl-grey-chocolate-tart.webp",
+    "generatedAt": "2026-08-23T02:33:02.382Z",
+    "aiModel": "imagegen-editorial-v2"
   }
 }

@@ -9,6 +9,5 @@
   "features": {
     "navigation": true,
     "restaurants": true
-  },
-  "seasonal": ["weeknight", "party", "brunch"]
+  }
 }

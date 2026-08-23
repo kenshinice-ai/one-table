@@ -100,10 +100,11 @@ const details = writeHashed('details', JSON.stringify({ recipes: launchRecipes.m
 /*
  * Which ingredients have a photograph.
  *
- * Around a third of them do not yet, and asking for a file that is not there
- * cost a failed request per ingredient per screen — plus a flash of nothing
- * before the stand-in appeared. Reading the directory at build time lets the
- * client draw the stand-in immediately and ask for nothing.
+ * All of them do today, but asking for a file that is not there cost a failed
+ * request per ingredient per screen — plus a flash of nothing before the
+ * stand-in appeared. Reading the directory at build time lets the client draw
+ * the stand-in immediately and ask for nothing, and keeps the next unphotographed
+ * ingredient from reintroducing the flash.
  */
 const ingredientArt = readdirSync(join(process.cwd(), 'public', 'media', 'ingredients'))
   .filter((file) => file.endsWith('-64.webp'))

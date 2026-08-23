@@ -70,8 +70,9 @@ export default function HomePage() {
     initialRecipes.flatMap((recipe) => recipe.ingredients.map((item) => item.ingredientId)),
   );
   const tenant = tenantConfig as TenantConfig | null;
-  // Only occasions with dishes behind them; Easter is in the schema and not yet
-  // in the catalogue, and an empty chip would be a promise the data cannot keep.
+  // Only occasions with dishes behind them. All ten are served now, but the
+  // guard stays: a chip with nothing behind it is a promise the data cannot
+  // keep, and the next occasion added to the schema starts out empty.
   const servedOccasions = OCCASIONS.filter((occasion) =>
     launchRecipes.some((recipe) => recipe.occasions?.includes(occasion)),
   ) as Occasion[];

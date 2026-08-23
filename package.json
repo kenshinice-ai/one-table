@@ -29,7 +29,7 @@
     "prebuild": "npm run clean:icloud && npm run recipes:emit && npm run tenant:emit",
     "media:sizes": "bash scripts/media/generate-sizes.sh",
     "recipes:briefs": "node --import tsx scripts/recipes/image-briefs.ts",
-    "clean:icloud": "find . -path ./node_modules -prune -o -name '* [0-9].*' -print -delete 2>/dev/null; true",
+    "clean:icloud": "find . -path ./node_modules -prune -o \\( -name '* [0-9].*' -o -name '* [0-9]-[0-9]*.*' \\) -print -delete 2>/dev/null; true",
     "tenant:emit": "node --import tsx scripts/tenant/emit-tenant.ts",
     "deploy:demo": "TENANT=sample-centre opennextjs-cloudflare build && opennextjs-cloudflare deploy --env demo",
     "deploy:demo-grocer": "TENANT=sample-grocer opennextjs-cloudflare build && opennextjs-cloudflare deploy --env demo-grocer",

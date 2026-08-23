@@ -32,6 +32,10 @@ resize_one() {
   # (*-[0-9][0-9][0-9]) missed four-digit -1280, which made every -1280 file a
   # "master" on the next run and compounded suffixes without end.
   case "$slug" in *-320 | *-640 | *-1280 | *-64 | *-128) return 0 ;; esac
+  # Skip iCloud conflict copies ("<slug> 2.webp"). No slug or ingredient id
+  # contains a space, and laddering one leaves derived files whose master is
+  # then cleaned away, so they survive as orphans nothing can ever request.
+  case "$slug" in *\ *) return 0 ;; esac
 
   png="$WORK/$slug.png"
   dwebp -quiet "$source" -o "$png" || return 0

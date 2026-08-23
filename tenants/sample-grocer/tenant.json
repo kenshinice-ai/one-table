@@ -9,6 +9,5 @@
   "features": {
     "navigation": true,
     "restaurants": false
-  },
-  "seasonal": ["cny", "weeknight", "party"]
+  }
 }
