@@ -173,7 +173,10 @@ Vic's 的熟成牛肉与羊腿。**意式一桌**会把第一站换成 **Amalfi 
 - **`X-Robots-Tag: noindex, nofollow, noarchive` 响应头** —— 真正起作用的那道。
   （Cloudflare 会在我们的 `robots.txt` 前面插一段它自己托管的内容，里面带一条
   `User-agent: * / Allow: /`，和我们的 `Disallow: /` 合并后可能被判成放行 ——
-  所以不能只靠 robots.txt。响应头没有这个问题，而且对非 HTML 的响应同样生效。）
+  所以不能只靠 robots.txt。响应头没有这个问题。）
+  已验证：只有 demo-pavilion 带这个头，另外三个域名干净。
+  注意：静态图片由 Workers 直接返回、不经过应用，所以图片本身没有这个头 ——
+  实际影响很小，图片和公开站是同一批，唯一 Chadstone 相关的只有那张平面图 SVG。
 - **`<meta name="robots" content="noindex, nofollow, nocache">`** —— 双保险
 - **`robots.txt` 里的 `Disallow: /`** —— 留着，属于礼貌性声明，不作为依赖
 - **页面最顶上一条常驻横幅**（不是 footer，中英双语跟着界面语言走）：
