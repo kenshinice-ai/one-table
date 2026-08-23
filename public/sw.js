@@ -86,5 +86,15 @@ self.addEventListener('fetch', (event) => {
   // every navigation can be answered by the one cached document.
   if (request.mode === 'navigate') {
     event.respondWith(networkFirst(new Request('/', { headers: request.headers })));
+    return;
+  }
+
+  // Venue floor plans. Network-first rather than cache-first because, unlike
+  // everything above, their filenames are not content-hashed — a redrawn plan
+  // has to be able to replace the one already cached. Falling back to the cache
+  // is what keeps the route drawable in a centre's basement, or on a laptop
+  // demonstrating the thing with no connection at all.
+  if (url.pathname.startsWith('/venue/')) {
+    event.respondWith(networkFirst(request));
   }
 });
