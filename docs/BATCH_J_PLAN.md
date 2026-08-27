@@ -28,13 +28,13 @@ abalone、turkey、lemongrass、ginger、ricotta、prosciutto、melon)。这 9 �
 
 另外还有一类更直接的错误 —— **标题写了,清单里没有**:
 
-| 菜 | 标题承诺 | 清单里实际 |
-|---|---|---|
-| Lotus Paste Mooncake **with Salted Yolk** | 咸蛋黄 | 无(图里明明有蛋黄) |
-| midautumn-salted-yolk-pumpkin | 咸蛋黄 | 无 |
-| 腊味煲仔饭 cny-claypot-cured-meat-rice | 腊肠 | ham + bacon |
-| 麻婆豆腐 mapo-tofu | 豆瓣酱 | 无 |
-| midautumn-pomelo-honey-jelly | 柚子 | orange |
+| 菜                                        | 标题承诺 | 清单里实际         |
+| ----------------------------------------- | -------- | ------------------ |
+| Lotus Paste Mooncake **with Salted Yolk** | 咸蛋黄   | 无(图里明明有蛋黄) |
+| midautumn-salted-yolk-pumpkin             | 咸蛋黄   | 无                 |
+| 腊味煲仔饭 cny-claypot-cured-meat-rice    | 腊肠     | ham + bacon        |
+| 麻婆豆腐 mapo-tofu                        | 豆瓣酱   | 无                 |
+| midautumn-pomelo-honey-jelly              | 柚子     | orange             |
 
 和之前的"烩饭用长粒米"是同一类问题。补上食材就能一起修掉。
 
@@ -44,35 +44,35 @@ abalone、turkey、lemongrass、ginger、ricotta、prosciutto、melon)。这 9 �
 
 ### 2.1 修复类(27)—— 补上就能解锁已有菜品
 
-| id | 中文 | 类别 | 解锁 |
-|---|---|---|---|
-| `tuna` | 金枪鱼 | protein | 3 道 |
-| `matcha` | 抹茶 | pantry | 3 道 |
-| `pineapple` | 菠萝 | fruit | 2 道 |
-| `brie` | 布里奶酪 | dairy | 2 道 |
-| `cardamom` | 小豆蔻 | spice | 1 |
-| `squid` | 鱿鱼 | protein | 1 |
-| `pomelo` | 柚子 | fruit | 2 |
-| `duck_fat` | 鸭油 | pantry | 1 |
-| `cherry` | 樱桃 | fruit | 1 |
-| `watermelon` | 西瓜 | fruit | 1 |
-| `mixed_nuts` | 五仁 / 混合坚果 | nut | 1 |
-| `plum` | 李子 | fruit | 1 |
-| `century_egg` | 皮蛋 | protein | 1 |
-| `smoked_salmon` | 烟熏三文鱼 | protein | 1 |
-| `chia_seed` | 奇亚籽 | staple | 1 |
-| `turkish_bread` | 土耳其面包 | staple | 1 |
-| `crumpet` | 英式煎饼 | staple | 1 |
-| `strawberry` | 草莓 | fruit | 1 |
-| `earl_grey_tea` | 伯爵红茶 | pantry | 2 |
-| `pesto` | 香蒜酱 | pantry | 1 |
-| `zaatar` | 扎塔香料 | spice | 1 |
-| `sriracha` | 是拉差辣酱 | pantry | 1 |
-| `cranberry` | 蔓越莓 | fruit | 1 |
-| `parsnip` | 欧防风 | vegetable | 1 |
-| `salted_egg_yolk` | 咸蛋黄 | protein | 2 |
-| `chinese_sausage` | 腊肠 | protein | 2 |
-| `doubanjiang` | 郫县豆瓣酱 | pantry | 1+ |
+| id                | 中文            | 类别      | 解锁 |
+| ----------------- | --------------- | --------- | ---- |
+| `tuna`            | 金枪鱼          | protein   | 3 道 |
+| `matcha`          | 抹茶            | pantry    | 3 道 |
+| `pineapple`       | 菠萝            | fruit     | 2 道 |
+| `brie`            | 布里奶酪        | dairy     | 2 道 |
+| `cardamom`        | 小豆蔻          | spice     | 1    |
+| `squid`           | 鱿鱼            | protein   | 1    |
+| `pomelo`          | 柚子            | fruit     | 2    |
+| `duck_fat`        | 鸭油            | pantry    | 1    |
+| `cherry`          | 樱桃            | fruit     | 1    |
+| `watermelon`      | 西瓜            | fruit     | 1    |
+| `mixed_nuts`      | 五仁 / 混合坚果 | nut       | 1    |
+| `plum`            | 李子            | fruit     | 1    |
+| `century_egg`     | 皮蛋            | protein   | 1    |
+| `smoked_salmon`   | 烟熏三文鱼      | protein   | 1    |
+| `chia_seed`       | 奇亚籽          | staple    | 1    |
+| `turkish_bread`   | 土耳其面包      | staple    | 1    |
+| `crumpet`         | 英式煎饼        | staple    | 1    |
+| `strawberry`      | 草莓            | fruit     | 1    |
+| `earl_grey_tea`   | 伯爵红茶        | pantry    | 2    |
+| `pesto`           | 香蒜酱          | pantry    | 1    |
+| `zaatar`          | 扎塔香料        | spice     | 1    |
+| `sriracha`        | 是拉差辣酱      | pantry    | 1    |
+| `cranberry`       | 蔓越莓          | fruit     | 1    |
+| `parsnip`         | 欧防风          | vegetable | 1    |
+| `salted_egg_yolk` | 咸蛋黄          | protein   | 2    |
+| `chinese_sausage` | 腊肠            | protein   | 2    |
+| `doubanjiang`     | 郫县豆瓣酱      | pantry    | 1+   |
 
 ### 2.2 Market Pavilion 租户覆盖(14)—— 让路线经过更多专门店
 
@@ -116,12 +116,12 @@ abalone、turkey、lemongrass、ginger、ricotta、prosciutto、melon)。这 9 �
 现状:`mid_autumn 26` · `easter 17` · `bbq 28` · `christmas 50` · `cny 74` ·
 `feast 43` · `party 61` · `weeknight 71` · `afternoon_tea 43` · `brunch 39`
 
-| 场合 | 现有 | 新增 | 之后 | 理由 |
-|---|---|---|---|---|
-| **mid_autumn** | 26 | **+20** | 46 | 9/25 就到,且只有 **7 道主菜**,两主菜的桌子马上重复 |
-| **bbq** | 28 | **+16** | 44 | 南半球 11 月开季,现在做正好 |
-| **easter** | 17 | **+14** | 31 | 全场最薄,但 4 月才用,排最后 |
-| **意式 / Amalfi** | — | **+10** | — | 跨标 weeknight/feast/party,直接服务 Amalfi 这一站 |
+| 场合              | 现有 | 新增    | 之后 | 理由                                               |
+| ----------------- | ---- | ------- | ---- | -------------------------------------------------- |
+| **mid_autumn**    | 26   | **+20** | 46   | 9/25 就到,且只有 **7 道主菜**,两主菜的桌子马上重复 |
+| **bbq**           | 28   | **+16** | 44   | 南半球 11 月开季,现在做正好                        |
+| **easter**        | 17   | **+14** | 31   | 全场最薄,但 4 月才用,排最后                        |
+| **意式 / Amalfi** | —    | **+10** | —    | 跨标 weeknight/feast/party,直接服务 Amalfi 这一站  |
 
 **mid_autumn +20**(重点补主菜):蟹粉狮子头 · 桂花糖藕 · 荷叶粉蒸肉 · 板栗烧鸡 ·
 八宝鸭 · 芋头扣肉煲 · 干贝冬瓜盅 · 蟹黄豆腐 · 秋梨炖排骨 · 五仁月饼 ·

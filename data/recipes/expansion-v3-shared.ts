@@ -147,6 +147,72 @@ const allIngredients = [
 const ingredientById = new Map(allIngredients.map((ingredient) => [ingredient.id, ingredient]));
 
 const amounts: Record<string, [number, 'g' | 'ml' | 'count']> = {
+  // Wave-5. Same reasoning as the wave-4 block below: the 180–330g default is
+  // nonsense for a spoon of matcha and for a garnish of goji, and a shopping
+  // list that asks a counter for 300g of za'atar is worse than no list.
+  water_chestnut: [250, 'g'],
+  beef_brisket: [1400, 'g'],
+  sausage: [600, 'g'],
+  gelatine: [20, 'g'],
+  spring_onion: [60, 'g'],
+  matcha: [20, 'g'],
+  cardamom: [6, 'g'],
+  zaatar: [25, 'g'],
+  earl_grey_tea: [12, 'g'],
+  goji: [25, 'g'],
+  dried_shrimp: [30, 'g'],
+  wood_ear: [25, 'g'],
+  lily_bulb: [80, 'g'],
+  pine_nut: [50, 'g'],
+  hazelnut: [80, 'g'],
+  mixed_nuts: [180, 'g'],
+  capers: [30, 'g'],
+  anchovy: [40, 'g'],
+  olives: [120, 'g'],
+  pesto: [120, 'g'],
+  doubanjiang: [45, 'g'],
+  chilli_oil: [30, 'ml'],
+  sriracha: [30, 'ml'],
+  black_vinegar: [30, 'ml'],
+  shaoxing_wine: [60, 'ml'],
+  sparkling_wine: [400, 'ml'],
+  duck_fat: [60, 'g'],
+  salted_egg_yolk: [6, 'count'],
+  century_egg: [4, 'count'],
+  crumpet: [6, 'count'],
+  chinese_sausage: [150, 'g'],
+  pancetta: [120, 'g'],
+  salami: [120, 'g'],
+  smoked_salmon: [220, 'g'],
+  mascarpone: [250, 'g'],
+  burrata: [250, 'g'],
+  brie: [200, 'g'],
+  preserved_mustard: [60, 'g'],
+  currants: [60, 'g'],
+  cranberry: [100, 'g'],
+  tofu_skin: [80, 'g'],
+  chinese_chives: [150, 'g'],
+  rocket: [100, 'g'],
+  witlof: [200, 'g'],
+  pasta_fresh_ribbon: [400, 'g'],
+  pasta_filled: [400, 'g'],
+  gnocchi: [500, 'g'],
+  lasagne_sheet: [250, 'g'],
+  puff_pastry: [320, 'g'],
+  filo_pastry: [200, 'g'],
+  turkish_bread: [300, 'g'],
+  chia_seed: [60, 'g'],
+  mussels: [900, 'g'],
+  clams: [700, 'g'],
+  squid: [500, 'g'],
+  tuna: [450, 'g'],
+  barramundi: [600, 'g'],
+  pomelo: [500, 'g'],
+  watermelon: [700, 'g'],
+  pineapple: [500, 'g'],
+  artichoke: [300, 'g'],
+  parsnip: [400, 'g'],
+
   // Wave-4 celebration tier. The generic 180–330g default is meaningless for a
   // shaving of truffle and absurd for a whole lamb, so these are stated.
   lobster: [800, 'g'],
@@ -388,7 +454,11 @@ const plateVariantsEn = [
   'Keep the plating simple; give temperature and portions a final check before serving.',
 ];
 
-function makeRecipe(spec: ExpansionV3Spec, index: number, batchKey: 'g' | 'h' | 'i'): RecipeImport {
+function makeRecipe(
+  spec: ExpansionV3Spec,
+  index: number,
+  batchKey: 'g' | 'h' | 'i' | 'j',
+): RecipeImport {
   const dietCodes = new Set(spec.dietTags ?? []);
   if (dietCodes.has('vegan')) dietCodes.add('vegetarian');
 
@@ -615,7 +685,7 @@ function makeRecipe(spec: ExpansionV3Spec, index: number, batchKey: 'g' | 'h' | 
 
 export function createV3Recipes(
   specs: ExpansionV3Spec[],
-  batchKey: 'g' | 'h' | 'i',
+  batchKey: 'g' | 'h' | 'i' | 'j',
 ): RecipeImport[] {
   return specs.map((spec, index) => makeRecipe(spec, index, batchKey));
 }

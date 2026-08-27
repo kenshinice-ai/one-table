@@ -819,9 +819,12 @@ const specs: RecipeSpec[] = [
     ingredients: [
       ['tofu_firm', 600, 'g', '600 g', 'protein'],
       ['beef_mince', 150, 'g', '150 g'],
+      // The focus line above names doubanjiang and Sichuan pepper; for a long
+      // time neither was on the list, which is the one thing a shopper needs.
+      ['doubanjiang', 45, 'g', '2 tbsp'],
+      ['sichuan_pepper', 4, 'g', '1 tsp'],
       ['soy_sauce', 30, 'ml', '2 tbsp'],
       ['spring_onion', 40, 'g', '40 g'],
-      ['chilli', 8, 'g', '1 tbsp'],
     ],
     dietTags: ['gluten_free_adaptable'],
     active: 20,

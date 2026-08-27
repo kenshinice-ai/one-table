@@ -666,7 +666,7 @@ const specs: ExpansionSpec[] = [
     role: 'dessert',
     cuisine: 'french',
     method: 'boil',
-    ingredients: ['coconut_cream', 'cream', 'gelatine', 'honey', 'vanilla'],
+    ingredients: ['dark_chocolate', 'coconut_cream', 'cream', 'honey', 'vanilla'],
     focusZh: '椰香柔滑与香草甜味',
     focusEn: 'silky coconut cream and vanilla',
     dietTags: ['vegetarian', 'gluten_free_adaptable'],

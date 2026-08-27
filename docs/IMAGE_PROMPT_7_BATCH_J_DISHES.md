@@ -24,26 +24,26 @@
 
 这些菜的食材清单被修正,成品外观随之改变。**沿用原 slug 覆盖同名文件。**
 
-| # | slug | 中文 | 这次必须画对的地方 |
-|---|---|---|---|
-| 1 | `midautumn-lotus-paste-mooncake` | 莲蓉蛋黄月饼 | **切开一只,露出完整橙红咸蛋黄** |
-| 2 | `midautumn-salted-yolk-pumpkin` | 咸蛋黄焗南瓜 | 南瓜条裹金沙咸蛋黄,颗粒感明显 |
-| 3 | `cny-claypot-cured-meat-rice` | 腊味煲仔饭 | **腊肠斜切片**铺面,不是火腿片;砂锅边有锅巴 |
-| 4 | `mapo-tofu` | 麻婆豆腐 | 红油厚重、见豆瓣酱碎,撒花椒粉与葱花 |
-| 5 | `midautumn-pomelo-honey-jelly` | 柚子蜂蜜冻 | **柚子粗粒果肉**悬在琥珀冻里,不是橙瓣 |
-| 6 | `japanese-tuna-free-avocado-tartare` | 金枪鱼牛油果挞挞 | 生金枪鱼丁与牛油果丁分层堆叠 |
-| 7 | `japanese-matcha-free-sesame-pudding` | 抹茶黑芝麻布丁 | 抹茶绿与芝麻灰双层 |
-| 8 | `cny-pineapple-free-sweet-sour-pork` | 菠萝咕咾肉 | 见菠萝块,糖醋芡亮不糊 |
-| 9 | `xmas-cherry-free-berry-trifle` | 樱桃浆果乳脂松糕 | 玻璃杯分层,顶部整颗樱桃 |
-| 10 | `bbq-watermelon-free-peach-salad` | 西瓜蜜桃沙拉 | 西瓜块 + 烤桃 + 羊乳酪 + 薄荷 |
-| 11 | `midautumn-five-kernel-free-nut-tart` | 五仁挞 | 表面五种坚果仁清晰可辨 |
-| 12 | `xmas-brie-free-baked-ricotta` | 布里烤奶酪 | 整轮布里烤至中心流心 |
-| 13 | `indian-cardamom-free-rice-pudding` | 小豆蔻米布丁 | 表面点缀绿豆蔻荚与开心果碎 |
-| 14 | `century-egg-congee`(如已存在则沿用) | 皮蛋瘦肉粥 | 皮蛋切瓣墨绿溏心清晰 |
-| 15 | `smoked-salmon-toast`(沿用现 slug) | 烟熏三文鱼吐司 | 橙红鱼片卷褶,配酸奶油与莳萝 |
-| 16 | `xmas-roast-potatoes-duck-fat-free` | 鸭油烤土豆 | 表皮极脆起壳,边角焦金 |
-| 17 | `french-coconut-chocolate-free-pots` | 椰香巧克力盅 | 小陶盅装深色慕斯,顶部椰丝 |
-| 18 | `cny-crab-free-sweetcorn-fritters` | 蟹肉玉米饼 | 见蟹肉丝与玉米粒 |
+| #   | slug                                  | 中文             | 这次必须画对的地方                         |
+| --- | ------------------------------------- | ---------------- | ------------------------------------------ |
+| 1   | `midautumn-lotus-paste-mooncake`      | 莲蓉蛋黄月饼     | **切开一只,露出完整橙红咸蛋黄**            |
+| 2   | `midautumn-salted-yolk-pumpkin`       | 咸蛋黄焗南瓜     | 南瓜条裹金沙咸蛋黄,颗粒感明显              |
+| 3   | `cny-claypot-cured-meat-rice`         | 腊味煲仔饭       | **腊肠斜切片**铺面,不是火腿片;砂锅边有锅巴 |
+| 4   | `mapo-tofu`                           | 麻婆豆腐         | 红油厚重、见豆瓣酱碎,撒花椒粉与葱花        |
+| 5   | `midautumn-pomelo-honey-jelly`        | 柚子蜂蜜冻       | **柚子粗粒果肉**悬在琥珀冻里,不是橙瓣      |
+| 6   | `japanese-tuna-free-avocado-tartare`  | 金枪鱼牛油果挞挞 | 生金枪鱼丁与牛油果丁分层堆叠               |
+| 7   | `japanese-matcha-free-sesame-pudding` | 抹茶黑芝麻布丁   | 抹茶绿与芝麻灰双层                         |
+| 8   | `cny-pineapple-free-sweet-sour-pork`  | 菠萝咕咾肉       | 见菠萝块,糖醋芡亮不糊                      |
+| 9   | `xmas-cherry-free-berry-trifle`       | 樱桃浆果乳脂松糕 | 玻璃杯分层,顶部整颗樱桃                    |
+| 10  | `bbq-watermelon-free-peach-salad`     | 西瓜蜜桃沙拉     | 西瓜块 + 烤桃 + 羊乳酪 + 薄荷              |
+| 11  | `midautumn-five-kernel-free-nut-tart` | 五仁挞           | 表面五种坚果仁清晰可辨                     |
+| 12  | `xmas-brie-free-baked-ricotta`        | 布里烤奶酪       | 整轮布里烤至中心流心                       |
+| 13  | `indian-cardamom-free-rice-pudding`   | 小豆蔻米布丁     | 表面点缀绿豆蔻荚与开心果碎                 |
+| 14  | `century-egg-congee`(如已存在则沿用)  | 皮蛋瘦肉粥       | 皮蛋切瓣墨绿溏心清晰                       |
+| 15  | `smoked-salmon-toast`(沿用现 slug)    | 烟熏三文鱼吐司   | 橙红鱼片卷褶,配酸奶油与莳萝                |
+| 16  | `xmas-roast-potatoes-duck-fat-free`   | 鸭油烤土豆       | 表皮极脆起壳,边角焦金                      |
+| 17  | `french-coconut-chocolate-free-pots`  | 椰香巧克力盅     | 小陶盅装深色慕斯,顶部椰丝                  |
+| 18  | `cny-crab-free-sweetcorn-fritters`    | 蟹肉玉米饼       | 见蟹肉丝与玉米粒                           |
 
 > slug 若与仓库现有文件名不符,**以仓库现有为准**,不要新建。
 
@@ -53,28 +53,28 @@
 
 ### B1 · 中秋 mid_autumn(20)
 
-| slug | 中文 | 要点 |
-|---|---|---|
-| `midautumn-crab-lion-head-meatball` | 蟹粉狮子头 | 大肉圆浸清汤,顶部蟹黄 |
-| `midautumn-osmanthus-candied-lotus` | 桂花糖藕 | 藕片见糯米孔,淋桂花糖浆 |
-| `midautumn-lotus-leaf-steamed-pork` | 荷叶粉蒸肉 | 荷叶半开,内见米粉裹肉 |
-| `midautumn-chestnut-braised-chicken-pot` | 板栗烧鸡煲 | 砂锅,栗子完整不散 |
-| `midautumn-eight-treasure-duck` | 八宝鸭 | 整鸭油亮,盘边露糯米馅 |
-| `midautumn-taro-pork-claypot` | 芋头扣肉煲 | 芋片与五花相间码放 |
-| `midautumn-scallop-winter-melon-soup` | 干贝冬瓜盅 | 冬瓜盅盛清汤,见干贝丝 |
-| `midautumn-crab-roe-tofu` | 蟹黄豆腐 | 橙黄蟹黄芡裹白豆腐 |
-| `midautumn-pear-pork-rib-soup` | 秋梨炖排骨 | 清汤见梨块与排骨 |
-| `midautumn-five-kernel-mooncake` | 五仁月饼 | 切开见五种坚果断面 |
-| `midautumn-red-bean-mooncake` | 豆沙月饼 | 切开见细腻豆沙 |
-| `midautumn-snowskin-mooncake` | 冰皮月饼 | 粉白半透明皮,3–4 只 |
-| `midautumn-osmanthus-rice-wine-balls` | 桂花酒酿圆子 | 小圆子浮酒酿,撒桂花 |
-| `midautumn-osmanthus-pumpkin-cake` | 糖桂花南瓜饼 | 金黄圆饼,表面桂花 |
-| `midautumn-pomegranate-duck-breast` | 石榴汁烤鸭胸 | 鸭胸斜切见粉红中心,石榴籽点缀 |
-| `midautumn-water-chestnut-prawn` | 菱角炒虾仁 | 虾仁弹白,菱角脆白 |
-| `midautumn-lily-lotus-seed-soup` | 百合莲子羹 | 清甜羹汤,见百合瓣与莲子 |
-| `midautumn-pomelo-salad` | 柚子沙拉 | 柚子粗粒果肉 + 叶菜 |
-| `midautumn-osmanthus-wine-steamed-fish` | 桂花米酒蒸鱼 | 整鱼,酒酿汁,撒桂花 |
-| `midautumn-chestnut-cream-square` | 栗子蓉小方 | 栗子蓉裱花小方块 |
+| slug                                     | 中文         | 要点                          |
+| ---------------------------------------- | ------------ | ----------------------------- |
+| `midautumn-crab-lion-head-meatball`      | 蟹粉狮子头   | 大肉圆浸清汤,顶部蟹黄         |
+| `midautumn-osmanthus-candied-lotus`      | 桂花糖藕     | 藕片见糯米孔,淋桂花糖浆       |
+| `midautumn-lotus-leaf-steamed-pork`      | 荷叶粉蒸肉   | 荷叶半开,内见米粉裹肉         |
+| `midautumn-chestnut-braised-chicken-pot` | 板栗烧鸡煲   | 砂锅,栗子完整不散             |
+| `midautumn-eight-treasure-duck`          | 八宝鸭       | 整鸭油亮,盘边露糯米馅         |
+| `midautumn-taro-pork-claypot`            | 芋头扣肉煲   | 芋片与五花相间码放            |
+| `midautumn-scallop-winter-melon-soup`    | 干贝冬瓜盅   | 冬瓜盅盛清汤,见干贝丝         |
+| `midautumn-crab-roe-tofu`                | 蟹黄豆腐     | 橙黄蟹黄芡裹白豆腐            |
+| `midautumn-pear-pork-rib-soup`           | 秋梨炖排骨   | 清汤见梨块与排骨              |
+| `midautumn-five-kernel-mooncake`         | 五仁月饼     | 切开见五种坚果断面            |
+| `midautumn-red-bean-mooncake`            | 豆沙月饼     | 切开见细腻豆沙                |
+| `midautumn-snowskin-mooncake`            | 冰皮月饼     | 粉白半透明皮,3–4 只           |
+| `midautumn-osmanthus-rice-wine-balls`    | 桂花酒酿圆子 | 小圆子浮酒酿,撒桂花           |
+| `midautumn-osmanthus-pumpkin-cake`       | 糖桂花南瓜饼 | 金黄圆饼,表面桂花             |
+| `midautumn-pomegranate-duck-breast`      | 石榴汁烤鸭胸 | 鸭胸斜切见粉红中心,石榴籽点缀 |
+| `midautumn-water-chestnut-prawn`         | 菱角炒虾仁   | 虾仁弹白,菱角脆白             |
+| `midautumn-lily-lotus-seed-soup`         | 百合莲子羹   | 清甜羹汤,见百合瓣与莲子       |
+| `midautumn-pomelo-salad`                 | 柚子沙拉     | 柚子粗粒果肉 + 叶菜           |
+| `midautumn-osmanthus-wine-steamed-fish`  | 桂花米酒蒸鱼 | 整鱼,酒酿汁,撒桂花            |
+| `midautumn-chestnut-cream-square`        | 栗子蓉小方   | 栗子蓉裱花小方块              |
 
 ### B2 · 烧烤 bbq(16)
 

@@ -18,6 +18,7 @@ import { batchF } from './batch-f';
 import { batchG } from './batch-g';
 import { batchH } from './batch-h';
 import { batchI } from './batch-i';
+import { batchJ } from './batch-j';
 import { expansionV3IngredientCatalog } from './expansion-v3-shared';
 import { expansionV2IngredientCatalog } from './expansion-v2-shared';
 import { expansionV4IngredientCatalog } from './expansion-v4-shared';
@@ -85,7 +86,7 @@ export const launchRecipes: RecipeImport[] = [
         }
       : launchImage(recipe),
   })),
-  ...[...batchE, ...batchF, ...batchG, ...batchH, ...batchI].map((recipe) => {
+  ...[...batchE, ...batchF, ...batchG, ...batchH, ...batchI, ...batchJ].map((recipe) => {
     const produced = generatedMedia[recipe.slug];
     return produced ? { ...recipe, media: { ...recipe.media, ...produced } } : recipe;
   }),

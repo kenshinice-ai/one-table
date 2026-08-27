@@ -254,24 +254,6 @@ export const expansionV2IngredientCatalog = [
   },
   { id: 'dates', nameEn: 'Dates', nameZh: '椰枣', category: 'fruit', defaultUnit: 'g' as const },
   {
-    id: 'dark_chocolate',
-    nameEn: 'Dark chocolate',
-    nameZh: '黑巧克力',
-    category: 'pantry',
-    defaultUnit: 'g' as const,
-    allergens: [
-      { code: 'milk', presence: 'may_contain' as const },
-      { code: 'soy', presence: 'may_contain' as const },
-    ],
-  },
-  {
-    id: 'cocoa',
-    nameEn: 'Cocoa powder',
-    nameZh: '可可粉',
-    category: 'pantry',
-    defaultUnit: 'g' as const,
-  },
-  {
     id: 'halloumi',
     nameEn: 'Halloumi',
     nameZh: '哈罗米奶酪',

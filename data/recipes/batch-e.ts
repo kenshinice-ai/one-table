@@ -92,7 +92,7 @@ const specs: ExpansionV2Spec[] = [
     role: 'starter',
     cuisine: 'japanese',
     method: 'raw',
-    ingredients: ['avocado', 'soy_sauce', 'sesame_oil', 'spring_onion', 'black_sesame'],
+    ingredients: ['tuna', 'avocado', 'soy_sauce', 'sesame_oil', 'spring_onion'],
     focusZh: '牛油果绵密与酱油咸香',
     focusEn: 'creamy avocado against savoury soy',
     health: 'balanced',

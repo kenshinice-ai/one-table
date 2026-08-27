@@ -36,51 +36,54 @@ const report = {
   ).length,
 };
 
-// Quotas for the 700-recipe catalogue. Batches E and F weighted the courses the
+// Quotas for the 752-recipe catalogue. Batches E and F weighted the courses the
 // launch set was thin in; wave three follows the commercial calendar; batch I
 // adds the celebration tier, which is why Cantonese and French move most — a
 // festive table leans on banquet Cantonese and on classical French technique.
+// Batch J goes back to the seasons that could not lay a table: Mid-Autumn had
+// seven mains, Easter seventeen dishes altogether, and a southern-hemisphere
+// barbecue summer had twenty-eight.
 const expectedRoles = {
-  main: 249,
-  side: 62,
-  salad: 55,
-  starter: 64,
-  soup: 57,
-  snack: 69,
-  staple: 51,
-  dessert: 93,
+  main: 270,
+  side: 67,
+  salad: 57,
+  starter: 68,
+  soup: 61,
+  snack: 72,
+  staple: 52,
+  dessert: 105,
 };
 const expectedCuisines = {
-  chinese_northern: 49,
+  chinese_northern: 50,
   chinese_sichuan: 27,
-  chinese_cantonese: 90,
-  chinese_jiangnan: 38,
+  chinese_cantonese: 99,
+  chinese_jiangnan: 46,
   japanese: 39,
   korean: 30,
-  southeast_asian: 35,
+  southeast_asian: 37,
   indian: 29,
-  mediterranean: 43,
-  italian: 43,
-  french: 60,
-  australian_modern: 55,
-  western_home: 72,
-  middle_eastern: 30,
-  latin_american: 25,
-  other: 35,
+  mediterranean: 50,
+  italian: 46,
+  french: 64,
+  australian_modern: 60,
+  western_home: 80,
+  middle_eastern: 31,
+  latin_american: 28,
+  other: 36,
 };
 const expectedMethods = {
-  bake: 102,
-  boil: 75,
-  braise: 59,
-  chill: 26,
+  bake: 109,
+  boil: 76,
+  braise: 64,
+  chill: 29,
   deep_fry: 19,
-  grill: 39,
-  pan_fry: 61,
-  raw: 86,
-  roast: 74,
-  simmer: 78,
-  steam: 38,
-  stir_fry: 43,
+  grill: 52,
+  pan_fry: 62,
+  raw: 90,
+  roast: 81,
+  simmer: 86,
+  steam: 40,
+  stir_fry: 44,
 };
 
 const mismatches = [
@@ -98,7 +101,7 @@ const mismatches = [
     })),
 );
 
-if (batch.recipes.length !== 700 || mismatches.length) {
+if (batch.recipes.length !== 752 || mismatches.length) {
   console.error({ recipeCount: batch.recipes.length, mismatches });
   process.exit(1);
 }
