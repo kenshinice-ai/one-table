@@ -1,5 +1,7 @@
 # 生图任务 ①：节庆大菜 100 张菜品图
 
+> ✅ **已完成并上线。不要重做。**
+
 > 整份交给产图方。**交付物只有图片文件；不改任何代码、数据、脚本、配置。** 尺寸档、注册、部署全部由主线接管。
 > 项目根目录：`/Users/llmacbookpro/Library/Mobile Documents/com~apple~CloudDocs/receipt_cal`
 > 输出路径：`public/media/<slug>.webp` —— slug 用下表原文，一个字符都不要改。

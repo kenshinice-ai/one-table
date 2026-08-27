@@ -1,5 +1,7 @@
 # 生图任务 ③：食材图 5 张（意面形状 + 烩饭米 + 生火腿）
 
+> ✅ **已完成并上线。不要重做。**
+
 > 补丁批次，不是新一轮。**交付物只有图片文件。**
 > 项目根目录：`/Users/llmacbookpro/Library/Mobile Documents/com~apple~CloudDocs/receipt_cal`
 > 输出路径：`public/media/ingredients/<id>.webp` —— 文件名用下表原文。

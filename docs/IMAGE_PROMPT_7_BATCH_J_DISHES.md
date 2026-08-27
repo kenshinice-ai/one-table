@@ -1,5 +1,8 @@
 # 生图任务 ⑦:菜品图 78 张
 
+> ✅ **已完成并上线（2026-08-23）。不要重做。**
+> 762 道菜全部有图，菜品图已无待办。
+
 > **交付物只有图片文件。不要改任何注册表 / JSON / 代码。**
 > 与任务 ⑥(食材)是两条独立流水线,可并行。
 > 项目根目录:`/Users/llmacbookpro/Library/Mobile Documents/com~apple~CloudDocs/receipt_cal`

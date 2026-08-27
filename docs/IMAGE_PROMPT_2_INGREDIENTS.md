@@ -1,5 +1,7 @@
 # 生图任务 ②：食材图 88 张
 
+> ✅ **已完成并上线。不要重做。**
+
 > 与任务 ① 是两条独立流水线，可并行。**交付物只有图片文件。**
 > 项目根目录：`/Users/llmacbookpro/Library/Mobile Documents/com~apple~CloudDocs/receipt_cal`
 > 输出路径：`public/media/ingredients/<id>.webp` —— 文件名用下表原文。

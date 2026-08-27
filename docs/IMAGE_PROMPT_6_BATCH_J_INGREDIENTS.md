@@ -1,5 +1,8 @@
 # 生图任务 ⑥:食材图 60 张
 
+> ✅ **已完成并上线（2026-08-23）。不要重做。**
+> 后续仍缺的 6 张见 `IMAGE_PROMPT_8_REMAINING_SIX.md`。
+
 > **交付物只有图片文件。不要改任何注册表 / JSON / 代码。**
 > 项目根目录:`/Users/llmacbookpro/Library/Mobile Documents/com~apple~CloudDocs/receipt_cal`
 > 输出路径:`public/media/ingredients/<id>.webp` —— 文件名用下表 id 原文,不要改。
