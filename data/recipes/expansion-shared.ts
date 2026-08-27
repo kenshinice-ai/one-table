@@ -623,6 +623,32 @@ export const expansionIngredientCatalog = [
       { code: 'sulphites', presence: 'may_contain' as const },
     ],
   },
+
+  // And three the Italian tier asked for by name. Sage butter without sage,
+  // gnocchi al gorgonzola without gorgonzola, and a tiramisu with no coffee
+  // would each have been a workaround of exactly the kind this wave removes.
+  {
+    id: 'sage',
+    nameEn: 'Sage',
+    nameZh: '鼠尾草',
+    category: 'herb',
+    defaultUnit: 'g' as const,
+  },
+  {
+    id: 'gorgonzola',
+    nameEn: 'Gorgonzola',
+    nameZh: '戈贡佐拉蓝纹奶酪',
+    category: 'dairy',
+    defaultUnit: 'g' as const,
+    allergens: [{ code: 'milk', presence: 'contains' as const }],
+  },
+  {
+    id: 'coffee',
+    nameEn: 'Espresso coffee',
+    nameZh: '浓缩咖啡',
+    category: 'pantry',
+    defaultUnit: 'ml' as const,
+  },
 ];
 
 export type ExpansionSpec = {

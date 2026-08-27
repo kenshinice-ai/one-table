@@ -3758,5 +3758,55 @@
     "objectKey": "media/smoked-salmon-toast.webp",
     "generatedAt": "2026-08-27T11:25:04.583Z",
     "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-ribbon-pasta-wild-mushroom": {
+    "objectKey": "media/italian-ribbon-pasta-wild-mushroom.webp",
+    "generatedAt": "2026-08-27T11:46:44.898Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-filled-pasta-sage-butter": {
+    "objectKey": "media/italian-filled-pasta-sage-butter.webp",
+    "generatedAt": "2026-08-27T11:46:44.898Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-gnocchi-gorgonzola": {
+    "objectKey": "media/italian-gnocchi-gorgonzola.webp",
+    "generatedAt": "2026-08-27T11:46:44.898Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-lasagne-classic": {
+    "objectKey": "media/italian-lasagne-classic.webp",
+    "generatedAt": "2026-08-27T11:46:44.898Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-pesto-beans-pasta": {
+    "objectKey": "media/italian-pesto-beans-pasta.webp",
+    "generatedAt": "2026-08-27T11:46:44.898Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-anchovy-caper-pasta": {
+    "objectKey": "media/italian-anchovy-caper-pasta.webp",
+    "generatedAt": "2026-08-27T11:46:44.898Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-burrata-tomato-basil": {
+    "objectKey": "media/italian-burrata-tomato-basil.webp",
+    "generatedAt": "2026-08-27T11:46:44.898Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-salami-antipasto": {
+    "objectKey": "media/italian-salami-antipasto.webp",
+    "generatedAt": "2026-08-27T11:46:44.898Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-pancetta-carbonara": {
+    "objectKey": "media/italian-pancetta-carbonara.webp",
+    "generatedAt": "2026-08-27T11:46:44.898Z",
+    "aiModel": "imagegen-editorial-v2"
+  },
+  "italian-tiramisu-mascarpone": {
+    "objectKey": "media/italian-tiramisu-mascarpone.webp",
+    "generatedAt": "2026-08-27T11:46:44.898Z",
+    "aiModel": "imagegen-editorial-v2"
   }
 }

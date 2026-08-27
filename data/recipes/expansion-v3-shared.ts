@@ -150,6 +150,9 @@ const amounts: Record<string, [number, 'g' | 'ml' | 'count']> = {
   // Wave-5. Same reasoning as the wave-4 block below: the 180–330g default is
   // nonsense for a spoon of matcha and for a garnish of goji, and a shopping
   // list that asks a counter for 300g of za'atar is worse than no list.
+  sage: [12, 'g'],
+  gorgonzola: [180, 'g'],
+  coffee: [180, 'ml'],
   water_chestnut: [250, 'g'],
   beef_brisket: [1400, 'g'],
   sausage: [600, 'g'],

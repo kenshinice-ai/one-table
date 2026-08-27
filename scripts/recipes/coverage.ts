@@ -36,7 +36,7 @@ const report = {
   ).length,
 };
 
-// Quotas for the 752-recipe catalogue. Batches E and F weighted the courses the
+// Quotas for the 762-recipe catalogue. Batches E and F weighted the courses the
 // launch set was thin in; wave three follows the commercial calendar; batch I
 // adds the celebration tier, which is why Cantonese and French move most — a
 // festive table leans on banquet Cantonese and on classical French technique.
@@ -44,14 +44,14 @@ const report = {
 // seven mains, Easter seventeen dishes altogether, and a southern-hemisphere
 // barbecue summer had twenty-eight.
 const expectedRoles = {
-  main: 270,
+  main: 277,
   side: 67,
   salad: 57,
-  starter: 68,
+  starter: 69,
   soup: 61,
-  snack: 72,
+  snack: 73,
   staple: 52,
-  dessert: 105,
+  dessert: 106,
 };
 const expectedCuisines = {
   chinese_northern: 50,
@@ -63,7 +63,7 @@ const expectedCuisines = {
   southeast_asian: 37,
   indian: 29,
   mediterranean: 50,
-  italian: 46,
+  italian: 56,
   french: 64,
   australian_modern: 60,
   western_home: 80,
@@ -72,14 +72,14 @@ const expectedCuisines = {
   other: 36,
 };
 const expectedMethods = {
-  bake: 109,
-  boil: 76,
+  bake: 110,
+  boil: 80,
   braise: 64,
-  chill: 29,
+  chill: 30,
   deep_fry: 19,
   grill: 52,
-  pan_fry: 62,
-  raw: 90,
+  pan_fry: 64,
+  raw: 92,
   roast: 81,
   simmer: 86,
   steam: 40,
@@ -101,7 +101,7 @@ const mismatches = [
     })),
 );
 
-if (batch.recipes.length !== 752 || mismatches.length) {
+if (batch.recipes.length !== 762 || mismatches.length) {
   console.error({ recipeCount: batch.recipes.length, mismatches });
   process.exit(1);
 }

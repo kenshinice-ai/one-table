@@ -237,7 +237,10 @@
     "crumpet": "ferguson",
     "puff_pastry": "ferguson",
     "filo_pastry": "ferguson",
-    "sparkling_wine": "liquorland"
+    "sparkling_wine": "liquorland",
+    "gorgonzola": "vics",
+    "sage": "colonial",
+    "coffee": "coles"
   },
   "conciergePoiId": "concierge",
   "conciergeFinish": true
