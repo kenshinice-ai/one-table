@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Inter, 'PingFang SC', sans-serif">
+  <!--
+    The Market Pavilion · concept schematic.
+
+    Drawn from the centre's own published ground-level directory, simplified to
+    the product's plan style: relative position and the walking line are kept,
+    exact geometry is not. Trading names are the centre's; this file is an
+    independent concept demonstration, not a Chadstone product.
+
+    The point this plan makes is the one a supermarket aisle map cannot: a
+    table's shopping list lands in six or seven specialist shops, and the walk
+    ends at the Food Concierge — where the bags go into the fridge and the
+    afternoon carries on.
+
+    Walkways are clear at y=132, y=236, y=372 and x=170, x=618. Every POI
+    coordinate in venue.json sits on one of those lines, never inside a block.
+  -->
+  <rect width="800" height="500" fill="#fcfaf5"/>
+  <rect x="12" y="12" width="776" height="476" rx="18" fill="none" stroke="#e8ded1" stroke-width="2"/>
+
+  <!-- walkway spine: the loop from the car park entrance, up and around -->
+  <path d="M40 372 H640" fill="none" stroke="#efe7da" stroke-width="26" stroke-linecap="round" opacity="0.75"/>
+  <path d="M618 372 V132 H170 V372" fill="none" stroke="#efe7da" stroke-width="26"
+        stroke-linejoin="round" stroke-linecap="round" opacity="0.75"/>
+  <path d="M170 236 H618" fill="none" stroke="#efe7da" stroke-width="22"
+        stroke-linecap="round" opacity="0.6"/>
+
+  <!-- entrance, car park E -->
+  <path d="M40 396 L14 396" stroke="#77746d" stroke-width="3"/>
+  <text x="30" y="384" text-anchor="middle" fill="#77746d" font-size="11" letter-spacing="1">IN</text>
+
+  <!-- anchors, drawn heavier than the specialist shops -->
+  <g stroke="#c6b9a6" stroke-width="1.8" fill="#f6f1e8">
+    <rect x="640" y="30" width="120" height="86" rx="10"/>
+    <rect x="456" y="392" width="304" height="70" rx="10"/>
+  </g>
+
+  <!-- specialist providores -->
+  <g stroke="#cfc4b4" stroke-width="1.6" fill="#fff">
+    <!-- north row -->
+    <rect x="196" y="36" width="112" height="76" rx="10"/>
+    <rect x="324" y="36" width="112" height="76" rx="10"/>
+    <rect x="452" y="36" width="120" height="76" rx="10"/>
+    <!-- west band -->
+    <rect x="40" y="150" width="112" height="132" rx="10"/>
+    <!-- centre fresh band -->
+    <rect x="196" y="258" width="130" height="92" rx="10"/>
+    <rect x="344" y="258" width="130" height="92" rx="10"/>
+    <rect x="492" y="258" width="108" height="92" rx="10"/>
+    <!-- east -->
+    <rect x="640" y="160" width="120" height="60" rx="10"/>
+    <rect x="640" y="266" width="120" height="84" rx="10"/>
+    <!-- dining laneway -->
+    <rect x="40" y="392" width="222" height="70" rx="10"/>
+  </g>
+
+  <!-- the demonstration kitchen: a feature of the pavilion, not a stop -->
+  <rect x="300" y="152" width="196" height="62" rx="10" fill="#fbf4ec" stroke="#e3d2bd"
+        stroke-width="1.6" stroke-dasharray="6 4"/>
+
+  <!-- the concierge, drawn in the accent because the walk ends here -->
+  <rect x="288" y="392" width="142" height="70" rx="10" fill="#fdf0e9" stroke="#d98b6a" stroke-width="2"/>
+
+  <!-- shop names -->
+  <g fill="#4f4b45" font-size="13" text-anchor="middle">
+    <text x="252" y="70">Gewurzhaus</text>
+    <text x="380" y="70">Amalfi</text>
+    <text x="380" y="86">Fresh Pasta</text>
+    <text x="512" y="62">Ferguson Plarre</text>
+    <text x="512" y="78">Bakehouse</text>
+    <text x="96" y="206">Maita</text>
+    <text x="96" y="222">Asian Grocer</text>
+    <text x="261" y="296">Colonial</text>
+    <text x="261" y="312">Fresh Market</text>
+    <text x="409" y="296">Vic's Butcher</text>
+    <text x="409" y="312">&amp; Deli</text>
+    <text x="546" y="304">Fishmonger</text>
+    <text x="700" y="196">Liquorland</text>
+    <text x="700" y="312">Aldi</text>
+    <text x="359" y="424">Food Concierge</text>
+  </g>
+
+  <!-- anchors get their own weight -->
+  <g fill="#57524b" font-size="15" font-weight="600" text-anchor="middle">
+    <text x="700" y="80">Coles</text>
+    <text x="608" y="432">Woolworths</text>
+  </g>
+
+  <!-- Chinese descriptors: the shoppers this centre serves read both -->
+  <g fill="#8d8578" font-size="11" text-anchor="middle">
+    <text x="252" y="88">香料 · 干货</text>
+    <text x="380" y="102">鲜面</text>
+    <text x="512" y="94">面包 · 烘焙</text>
+    <text x="96" y="240">亚洲食材</text>
+    <text x="261" y="330">蔬果生鲜</text>
+    <text x="409" y="330">肉档 · 熟食</text>
+    <text x="546" y="322">海鲜档</text>
+    <text x="700" y="212">酒窖</text>
+    <text x="700" y="328">超市</text>
+    <text x="700" y="96">超市</text>
+    <text x="608" y="450">超市</text>
+    <text x="151" y="446">餐饮小巷 Dining Laneway</text>
+  </g>
+  <text x="359" y="440" text-anchor="middle" fill="#b0472a" font-size="11">冷藏寄存 · 取货</text>
+
+  <!-- the kitchen -->
+  <text x="398" y="180" text-anchor="middle" fill="#8d7f6d" font-size="13">The Kitchen</text>
+  <text x="398" y="197" text-anchor="middle" fill="#a89a86" font-size="11">现场烹饪示范 · demonstrations</text>
+
+  <text x="400" y="486" text-anchor="middle" fill="#b9ad9c" font-size="11" letter-spacing="3">THE MARKET PAVILION · CONCEPT SCHEMATIC</text>
+</svg>
