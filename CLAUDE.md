@@ -40,4 +40,5 @@
 | 橱窗屏 | 用 `?kiosk=1` 打开的店内大屏模式 | kiosk（URL 参数和代码标识符除外） |
 | 场合 | 一组预设条件，如春节家宴、快手周中。URL 参数 `occasion` | 当季（指场合本身时） |
 | 当季 chip 行 | 首页和橱窗屏上的一行场合 chip。默认按日历选；租户可在 `tenant.json` 的 `seasonal` 里固定 | — |
-| 租户 | `tenants/<id>/` 下一家场地的配置：`tenant.json`、`venue.json`、平面图 | 店（指这份配置时） |
+| 租户 | `tenants/<id>/` 下一家场地的配置：`tenant.json`、`venue.json`、平面图 | 店（指这份配置时）、demo |
+| 演示站 | Wrangler env `demo` / `demo-grocer` / `demo-pavilion` 部署出来的站点 | demo（指站点时）、租户 |

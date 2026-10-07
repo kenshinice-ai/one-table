@@ -12,7 +12,6 @@ This repository currently contains the product blueprint, data model, responsive
 - [UX/UI specification](docs/UX_UI_SPEC.md)
 - [200-recipe content plan](docs/CONTENT_PLAN_200_RECIPES.md)
 - [Implementation checklist](docs/EXECUTION_CHECKLIST.md)
-- [Luna-Max execution runbook](docs/LUNA_MAX_EXECUTION_RUNBOOK.md)
 - [Skill routing](docs/SKILL_ROUTING.md)
 - [Wireframes](docs/wireframes/README.md)
 - [Concept render notes](docs/RENDER_NOTES.md)
